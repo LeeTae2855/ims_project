@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ims.sunmmon.domain.Account;
 import ims.sunmmon.persistance.AccountMapper;
+import ims.sunmmon.util.options.sort.AccountSortOption;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -16,7 +17,7 @@ public class AccountServiceImpl implements AccountService {
 	AccountMapper accountMapper;
 	
 	@Override
-	public List<Account> list(Account account) {
+	public List<Account> list(Account account, AccountSortOption option) {
 		return this.accountMapper.list(account);
 	}
 
