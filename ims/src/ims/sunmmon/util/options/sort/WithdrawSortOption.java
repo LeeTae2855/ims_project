@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum WithdrawSortOption {
-    // ¹øÈ£, Ãâ±İÀÏ, °Å·¡Ã³¹øÈ£, ±İ¾×, ¼¼¾×
+	// ë²ˆí˜¸, ì¶œê¸ˆì¼, ê±°ë˜ì²˜ë²ˆí˜¸, ê¸ˆì•¡, ì„¸ì•¡
     NO, WITH_DATE, CLIENT_NO, AMMOUNT, TAX;
 }

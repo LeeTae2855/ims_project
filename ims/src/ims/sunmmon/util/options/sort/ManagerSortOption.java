@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum ManagerSortOption {
-    // ΉψΘ£, ΄γ΄ηΐΪΈν, ΊΞΌ­Έν
+    // λ²νΈ, λ‹΄λ‹Ήμλª…, λ¶€μ„λª…
 	NO, NAME, DEP_NAME;
 }

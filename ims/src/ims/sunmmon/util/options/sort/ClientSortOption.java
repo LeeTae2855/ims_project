@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum ClientSortOption {
-	// °Ε·΅Γ³ΉψΘ£, °Ε·΅Γ³Έν, »σΘ£Έν, ΄λΗ¥ΐΪ, »ηΎχΐΪΉψΘ£
+	// κ±°λμ²λ²νΈ, κ±°λμ²λª…, μƒνΈλª…, λ€ν‘μ, μ‚¬μ—…μλ²νΈ
     NO, CLEINT_NAME, COMP_NAME, REP, BSN_LIC_NO;
 }

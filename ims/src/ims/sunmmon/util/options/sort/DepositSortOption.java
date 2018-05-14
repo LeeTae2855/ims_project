@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum DepositSortOption {
-	// ¹øÈ£, ÀÔ±İÀÏ, °Å·¡Ã³¹øÈ£, ±İ¾×, ¼¼¾×
+	// ë²ˆí˜¸, ì…ê¸ˆì¼, ê±°ë˜ì²˜ë²ˆí˜¸, ê¸ˆì•¡, ì„¸ì•¡
     DEP_NO, DEP_DATE, CLEINT_NO, AMMOUNT, TAX;
 }

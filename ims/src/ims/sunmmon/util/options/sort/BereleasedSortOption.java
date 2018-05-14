@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum BereleasedSortOption {
-	// ¹øÈ£, Ç°¸ñ¹øÈ£, Ãâ°í¿¹Á¤ÀÏ, Ãâ°í´ÜÀ§, ¸ÅÃâ´Ü°¡, ÇÒÀÎ±İ¾×
+	// ë²ˆí˜¸, í’ˆëª©ë²ˆí˜¸, ì¶œê³ ì˜ˆì •ì¼, ì¶œê³ ë‹¨ìœ„, ë§¤ì¶œë‹¨ê°€, í• ì¸ê¸ˆì•¡
     BE_NO, ITEM_NO, BE_DATE, UNIT, PRICE, DISCOUNT;
 }

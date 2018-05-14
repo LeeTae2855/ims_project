@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum WarehousingSortOption {
-	// ╧Ьхё, г╟╦Я, ют╟М©╧а╓юо, ют╟М╢эю╖, ╦еют╢э╟║, грюн╠щ╬в
+	// К╡┬М≤╦, М▓┬К╙╘, Л·┘ЙЁ═Л≤┬Л═∙Л²╪, Л·┘ЙЁ═К▀╗Л°└, К╖╓Л·┘К▀╗Й╟─, М∙═Л²╦Й╦┬Л∙║
     WARE_NO, ITEM_NO, WARE_DATE, UNIT, PRICE, DISCOUNT;
 }

@@ -1,6 +1,6 @@
 package ims.sunmmon.util.options.sort;
 
 public enum AccountSortOption {
-	// °èÁÂ¹øÈ£, °èÁÂ¸í, ÀºÇà¸í
+	// ê³„ì¢Œë²ˆí˜¸, ê³„ì •ëª…, ì€í–‰ëª…
 	NO, NAME, BANK_NAME;
 }
