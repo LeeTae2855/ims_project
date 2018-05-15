@@ -6,7 +6,7 @@ import ims.sunmmon.domain.WW;
 import ims.sunmmon.util.options.sort.WWSortOption;
 
 public interface WWService {
-	List<WW> list(WW ww, WWSortOption option);
+	public List<WW> list(WW ww, WWSortOption option);
 	
 	public void add(WW ww);
 

@@ -2,39 +2,45 @@ package ims.sunmmon.service.deposit;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ims.sunmmon.domain.Deposit;
+import ims.sunmmon.persistance.DepositMapper;
 import ims.sunmmon.util.options.sort.DepositSortOption;
 
+@Service
 public class DepositServiceImpl implements DepositService {
-
+	@Resource
+	private DepositMapper depositMapper;
+	
 	@Override
 	public List<Deposit> list(Deposit deposit, DepositSortOption option) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.depositMapper.list(deposit, option);
 	}
 
 	@Override
+	@Transactional
 	public void add(Deposit deposit) {
-		// TODO Auto-generated method stub
-
+		this.depositMapper.insert(deposit);
 	}
 
 	@Override
 	public Deposit view(Deposit deposit) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.depositMapper.select(deposit);
 	}
 
 	@Override
+	@Transactional
 	public void edit(Deposit deposit) {
-		// TODO Auto-generated method stub
-
+		this.depositMapper.update(deposit);
 	}
 
 	@Override
+	@Transactional
 	public void remove(String depositNo) {
-		// TODO Auto-generated method stub
-
+		this.depositMapper.delete(depositNo);
 	}
-
 }

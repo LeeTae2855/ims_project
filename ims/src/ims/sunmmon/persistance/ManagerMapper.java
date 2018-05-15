@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Manager;
+import ims.sunmmon.util.options.sort.ManagerSortOption;
 
 public interface ManagerMapper {
-	List<Manager> list(Manager manager);
+	public List<Manager> list(Manager manager, ManagerSortOption option);
 
-	void insert(Manager manager);
+	public void insert(Manager manager);
 
-	Manager select(Manager manager);
+	public Manager select(Manager manager);
 
-	void update(Manager manager);
+	public void update(Manager manager);
 
-	void delete(String managerNo);
+	public void delete(String managerNo);
 }

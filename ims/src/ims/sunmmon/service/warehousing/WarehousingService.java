@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Warehousing;
 import ims.sunmmon.util.options.sort.WarehousingSortOption;
 
 public interface WarehousingService {
-	List<Warehousing> list(Warehousing warehousing, WarehousingSortOption option);
+	public List<Warehousing> list(Warehousing warehousing, WarehousingSortOption option);
 	
 	public void add(Warehousing warehousing);
 

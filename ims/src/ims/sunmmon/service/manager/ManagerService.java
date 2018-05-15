@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Manager;
 import ims.sunmmon.util.options.sort.ManagerSortOption;
 
 public interface ManagerService {
-	List<Manager> list(Manager manager, ManagerSortOption option);
+	public List<Manager> list(Manager manager, ManagerSortOption option);
 	
 	public void add(Manager manager);
 

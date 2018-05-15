@@ -6,13 +6,13 @@ import ims.sunmmon.domain.BD;
 import ims.sunmmon.util.options.sort.BDSortOption;
 
 public interface BDService {
-	List<BD> list(BD account, BDSortOption option);
+	public List<BD> list(BD bd, BDSortOption option);
 	
-	public void add(BD account);
+	public void add(BD bd);
 
-	public BD view(BD account);
+	public BD view(BD bd);
 
-	public void edit(BD account);
+	public void edit(BD bd);
 
 	public void remove(String bdNo);
 }

@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Transferslip;
 import ims.sunmmon.util.options.sort.TransferslipSortOption;
 
 public interface TransferslipService {
-	List<Transferslip> list(Transferslip transferslip, TransferslipSortOption option);
+	public List<Transferslip> list(Transferslip transferslip, TransferslipSortOption option);
 	
 	public void add(Transferslip transferslip);
 

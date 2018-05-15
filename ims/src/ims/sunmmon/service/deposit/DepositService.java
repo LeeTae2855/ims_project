@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Deposit;
 import ims.sunmmon.util.options.sort.DepositSortOption;
 
 public interface DepositService {
-	List<Deposit> list(Deposit deposit, DepositSortOption option);
+	public List<Deposit> list(Deposit deposit, DepositSortOption option);
 	
 	public void add(Deposit deposit);
 

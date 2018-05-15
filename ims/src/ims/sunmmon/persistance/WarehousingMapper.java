@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Warehousing;
+import ims.sunmmon.util.options.sort.WarehousingSortOption;
 
 public interface WarehousingMapper {
-	List<Warehousing> list(Warehousing warehousing);
+	public List<Warehousing> list(Warehousing warehousing, WarehousingSortOption option);
 
-	void insert(Warehousing warehousing);
+	public void insert(Warehousing warehousing);
 
-	Warehousing select(Warehousing warehousing);
+	public Warehousing select(Warehousing warehousing);
 
-	void update(Warehousing warehousing);
+	public void update(Warehousing warehousing);
 
-	void delete(String warehousingNo);
+	public void delete(String warehousingNo);
 }

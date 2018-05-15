@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Account;
+import ims.sunmmon.util.options.sort.AccountSortOption;
 
 public interface AccountMapper {
-	List<Account> list(Account account);
+	public List<Account> list(Account account, AccountSortOption option);
 
-	void insert(Account account);
+	public void insert(Account account);
 
-	Account select(Account account);
+	public Account select(Account account);
 
-	void update(Account account);
+	public void update(Account account);
 
-	void delete(String accountNo);
+	public void delete(String accountNo);
 }

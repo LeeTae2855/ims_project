@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Bereleased;
 import ims.sunmmon.util.options.sort.BereleasedSortOption;
 
 public interface BereleasedService {
-	List<Bereleased> list(Bereleased bereleased, BereleasedSortOption option);
+	public List<Bereleased> list(Bereleased bereleased, BereleasedSortOption option);
 	
 	public void add(Bereleased bereleased);
 

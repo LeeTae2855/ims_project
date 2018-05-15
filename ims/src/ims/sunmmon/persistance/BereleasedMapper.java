@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Bereleased;
+import ims.sunmmon.util.options.sort.BereleasedSortOption;
 
 public interface BereleasedMapper {
-	List<Bereleased> list();
+	public List<Bereleased> list(Bereleased bereleased, BereleasedSortOption option);
 	
-	void insert(Bereleased bereleased);
+	public void insert(Bereleased bereleased);
 	
-	Bereleased select(Bereleased bereleased);
+	public Bereleased select(Bereleased bereleased);
 
-	void update(Bereleased bereleased);
+	public void update(Bereleased bereleased);
 
-	void delete(String bereleasedNo);
+	public void delete(String bereleasedNo);
 }

@@ -2,39 +2,45 @@ package ims.sunmmon.service.transferslip;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ims.sunmmon.domain.Transferslip;
+import ims.sunmmon.persistance.TransferslipMapper;
 import ims.sunmmon.util.options.sort.TransferslipSortOption;
 
+@Service
 public class TransferslipServiceImpl implements TransferslipService {
-
+	@Resource
+	private TransferslipMapper transferslipMapper;
+	
 	@Override
 	public List<Transferslip> list(Transferslip transferslip, TransferslipSortOption option) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.transferslipMapper.list(transferslip, option);
 	}
 
 	@Override
+	@Transactional
 	public void add(Transferslip transferslip) {
-		// TODO Auto-generated method stub
-
+		this.transferslipMapper.insert(transferslip);
 	}
 
 	@Override
 	public Transferslip view(Transferslip transferslip) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.transferslipMapper.select(transferslip);
 	}
 
 	@Override
+	@Transactional
 	public void edit(Transferslip transferslip) {
-		// TODO Auto-generated method stub
-
+		this.transferslipMapper.update(transferslip);
 	}
 
 	@Override
+	@Transactional
 	public void remove(String transferslipNo) {
-		// TODO Auto-generated method stub
-
+		this.transferslipMapper.delete(transferslipNo);
 	}
-
 }

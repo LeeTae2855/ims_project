@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Transferslip;
+import ims.sunmmon.util.options.sort.TransferslipSortOption;
 
 public interface TransferslipMapper {
-	List<Transferslip> list(Transferslip transferslip);
+	public List<Transferslip> list(Transferslip transferslip, TransferslipSortOption option);
 
-	void insert(Transferslip transferslip);
+	public void insert(Transferslip transferslip);
 
-	Transferslip select(Transferslip transferslip);
+	public Transferslip select(Transferslip transferslip);
 
-	void update(Transferslip transferslip);
+	public void update(Transferslip transferslip);
 
-	void delete(String transferslipNo);
+	public void delete(String transferslipNo);
 }

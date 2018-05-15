@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Client;
 import ims.sunmmon.util.options.sort.ClientSortOption;
 
 public interface ClientService {
-	List<Client> list(Client client, ClientSortOption option);
+	public List<Client> list(Client client, ClientSortOption option);
 	
 	public void add(Client client);
 

@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Deposit;
+import ims.sunmmon.util.options.sort.DepositSortOption;
 
 public interface DepositMapper {
-	List<Deposit> list();
+	public List<Deposit> list(Deposit deposit, DepositSortOption option);
 	
-	void insert(Deposit deposit);
+	public void insert(Deposit deposit);
 	
-	Deposit select(Deposit deposit);
+	public Deposit select(Deposit deposit);
 
-	void update(Deposit deposit);
+	public void update(Deposit deposit);
 
-	void delete(String depositNo);
+	public void delete(String depositNo);
 }

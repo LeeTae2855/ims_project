@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.BD;
+import ims.sunmmon.util.options.sort.BDSortOption;
 
 public interface BDMapper {
-	List<BD> list(BD bd);
+	public List<BD> list(BD bd, BDSortOption option);
 
-	void insert(BD bd);
+	public void insert(BD bd);
 
-	BD select(BD bd);
+	public BD select(BD bd);
 
-	void update(BD bd);
+	public void update(BD bd);
 
-	void delete(String bdNo);
+	public void delete(String bdNo);
 }

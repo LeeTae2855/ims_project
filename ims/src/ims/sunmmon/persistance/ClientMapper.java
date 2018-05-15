@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Client;
+import ims.sunmmon.util.options.sort.ClientSortOption;
 
 public interface ClientMapper {
-	List<Client> list();
+	public List<Client> list(Client client, ClientSortOption option);
 	
-	void insert(Client client);
+	public void insert(Client client);
 	
-	Client select(Client client);
+	public Client select(Client client);
 
-	void update(Client client);
+	public void update(Client client);
 
-	void delete(String clientNo);
+	public void delete(String clientNo);
 }

@@ -3,15 +3,16 @@ package ims.sunmmon.persistance;
 import java.util.List;
 
 import ims.sunmmon.domain.Withdraw;
+import ims.sunmmon.util.options.sort.WithdrawSortOption;
 
 public interface WithdrawMapper {
-	List<Withdraw> list(Withdraw withdraw);
+	public List<Withdraw> list(Withdraw withdraw, WithdrawSortOption option);
 
-	void insert(Withdraw withdraw);
+	public void insert(Withdraw withdraw);
 
-	Withdraw select(Withdraw withdraw);
+	public Withdraw select(Withdraw withdraw);
 
-	void update(Withdraw withdraw);
+	public void update(Withdraw withdraw);
 
-	void delete(String withdrawNo);
+	public void delete(String withdrawNo);
 }

@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Item;
 import ims.sunmmon.util.options.sort.ItemSortOption;
 
 public interface ItemService {
-	List<Item> list(Item item, ItemSortOption option);
+	public List<Item> list(Item item, ItemSortOption option);
 	
 	public void add(Item item);
 

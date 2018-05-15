@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Withdraw;
 import ims.sunmmon.util.options.sort.WithdrawSortOption;
 
 public interface WithdrawService {
-	List<Withdraw> list(Withdraw withdraw, WithdrawSortOption option);
+	public List<Withdraw> list(Withdraw withdraw, WithdrawSortOption option);
 	
 	public void add(Withdraw withdraw);
 
