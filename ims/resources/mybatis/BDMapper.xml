@@ -15,4 +15,27 @@
 		<result column="CON_VER" property="conVer" />
 		<result column="NOTE" property="note" />
 	</resultMap>
+	
+	<select id="list" parameterType="bd" resultMap="bdResultMap">
+		SELECT BD_NO
+			  ,BE_NO
+			  ,DEP_NO
+			  ,BD_DATE
+			  ,QUANTITY
+			  ,AMMOUNT
+			  ,CON_VER
+			  ,NOTE
+		FROM BD
+		<where>
+			<if test="bdNo != null and bdNo != ''">
+				AND BD_NO LIKE '%'|| #{bdNo} || '%'
+			</if>
+			<if test="beNo != null and model != ''">
+				AND BE_NO LIKE '%' || #{model} || '%'
+			</if>
+			<if test="depNo != null and depNo != ''">
+				AND DEP_NO LIKE '%' || #{status} || '%'
+			</if>
+		</where>
+	</select>
 </mapper>

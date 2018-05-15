@@ -14,7 +14,7 @@ import ims.sunmmon.util.options.sort.AccountSortOption;
 @Service
 public class AccountServiceImpl implements AccountService {
 	@Resource
-	AccountMapper accountMapper;
+	private AccountMapper accountMapper;
 	
 	@Override
 	public List<Account> list(Account account, AccountSortOption option) {
