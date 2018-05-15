@@ -33,7 +33,7 @@
 			<mvc:exclude-mapping path="/logout" />
 			<bean class="ims.sunmoon.interceptor.Interceptor" />
 		</mvc:interceptor>
-
+		
 		<mvc:interceptor>
 			<mvc:mapping path="/bd/**" />
 			<mvc:exclude-mapping path="/login" />
