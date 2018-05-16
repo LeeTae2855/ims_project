@@ -54,23 +54,25 @@
 			</if>
 			AND USEABLE = 1
 		</where>
-		<if test="bdSortOption.name() == 'NO'">
-			ORDER BY BD_NO DESC
-		</if>
-		<if test="bdSortOption.name() == 'BE_NO'">
-			ORDER BY BE_NO DESC
-		</if>
-		<if test="bdSortOption.name() == 'DEP_NO'">
-			ORDER BY DEP_NO DESC
-		</if>
-		<if test="bdSortOption.name() == 'BD_DATE'">
-			ORDER BY BD_DATE DESC
-		</if>
-		<if test="bdSortOption.name() == 'QUANTITY'">
-			ORDER BY QUANTITY DESC
-		</if>
-		<if test="bdSortOption.name() == 'AMMOUNT'">
-			ORDER BY AMMOUNT DESC
+		<if test="bdSortOption != null">
+			<if test="bdSortOption.name() == 'NO'">
+				ORDER BY BD_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'BE_NO'">
+				ORDER BY BE_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'DEP_NO'">
+				ORDER BY DEP_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'BD_DATE'">
+				ORDER BY BD_DATE DESC
+			</if>
+			<if test="bdSortOption.name() == 'QUANTITY'">
+				ORDER BY QUANTITY DESC
+			</if>
+			<if test="bdSortOption.name() == 'AMMOUNT'">
+				ORDER BY AMMOUNT DESC
+			</if>
 		</if>
 	</select>
 	
@@ -93,7 +95,7 @@
 			FROM DUAL
 		</selectKey>
 		INSERT INTO RENTAL
-			(BD_NO
+			( BD_NO
 			  ,BE_NO
 			  ,DEP_NO
 			  ,BD_DATE
@@ -101,7 +103,7 @@
 			  ,AMMOUNT
 			  ,CON_VER
 			  ,NOTE
-			  ,USEABLE)
+			  ,USEABLE )
 		VALUES
 			(#{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, #{ammount}, #{conVer}, #{note}, 1)
 	</insert>
@@ -110,15 +112,15 @@
 		UPDATE 
 		BD
 		SET
-		BE_NO = #{beNo},
-		DEP_NO = #{depNo},
-		BD_DATE = #{bdDate},
+		BE_NO    = #{beNo},
+		DEP_NO   = #{depNo},
+		BD_DATE  = #{bdDate},
 		QUANTITY = #{quantity},
-		AMMOUNT = #{ammount},
-		CON_VER = #{conVer},
-		NOTE = #{note}
+		AMMOUNT  = #{ammount},
+		CON_VER  = #{conVer},
+		NOTE     = #{note}
 		WHERE
-		BD_NO = #{bdNo}
+		BD_NO    = #{bdNo}
 	</update>
 
 	<update id="delete" parameterType="bd">
