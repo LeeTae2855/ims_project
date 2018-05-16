@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.BereleasedSortOption;
+
 // 출고 
 public class Bereleased implements Serializable {
 
@@ -30,6 +32,10 @@ public class Bereleased implements Serializable {
     // 사용(조회)가능여부 
     private Integer useable;
 
+    private BereleasedSortOption bereleasedSortOption;
+    private Date first;
+    private Date last;
+    
     public Integer getBeNo() {
         return beNo;
     }
@@ -94,7 +100,31 @@ public class Bereleased implements Serializable {
         this.useable = useable;
     }
 
-    // Bereleased 모델 복사
+    public BereleasedSortOption getBereleasedSortOption() {
+		return bereleasedSortOption;
+	}
+
+	public void setBereleasedSortOption(BereleasedSortOption bereleasedSortOption) {
+		this.bereleasedSortOption = bereleasedSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Bereleased 모델 복사
     public void CopyData(Bereleased param)
     {
         this.beNo = param.getBeNo();
@@ -105,5 +135,8 @@ public class Bereleased implements Serializable {
         this.discount = param.getDiscount();
         this.conVer = param.getConVer();
         this.useable = param.getUseable();
+        this.bereleasedSortOption = param.bereleasedSortOption;
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }
