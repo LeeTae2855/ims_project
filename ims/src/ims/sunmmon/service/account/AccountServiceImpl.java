@@ -17,8 +17,8 @@ public class AccountServiceImpl implements AccountService {
 	private AccountMapper accountMapper;
 	
 	@Override
-	public List<Account> list(Account account, AccountSortOption option) {
-		return this.accountMapper.list(account, option);
+	public List<Account> list(Account account) {
+		return this.accountMapper.list(account);
 	}
 
 	@Override

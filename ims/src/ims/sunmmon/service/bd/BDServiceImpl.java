@@ -1,5 +1,6 @@
 package ims.sunmmon.service.bd;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,8 +18,8 @@ public class BDServiceImpl implements BDService {
 	private BDMapper bdMapper;
 
 	@Override
-	public List<BD> list(BD bd, BDSortOption option) {
-		return this.bdMapper.list(bd, option);
+	public List<BD> list(BD bd) {
+		return this.bdMapper.list(bd);
 	}
 
 	@Override

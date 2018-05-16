@@ -1,12 +1,13 @@
 package ims.sunmmon.service.bd;
 
+import java.sql.Date;
 import java.util.List;
 
 import ims.sunmmon.domain.BD;
 import ims.sunmmon.util.options.sort.BDSortOption;
 
 public interface BDService {
-	public List<BD> list(BD bd, BDSortOption option);
+	public List<BD> list(BD bd);
 	
 	public void add(BD bd);
 
