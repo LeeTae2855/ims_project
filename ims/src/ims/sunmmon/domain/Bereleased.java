@@ -16,10 +16,10 @@ public class Bereleased implements Serializable {
     private Date beDate;
 
     // 출고단위 
-    private String unit;
+    private Integer unit;
 
     // 매출단가 
-    private String price;
+    private Integer price;
 
     // 할인금액 
     private Integer discount;
@@ -54,19 +54,19 @@ public class Bereleased implements Serializable {
         this.beDate = beDate;
     }
 
-    public String getUnit() {
+    public Integer getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
+    public void setUnit(Integer unit) {
         this.unit = unit;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

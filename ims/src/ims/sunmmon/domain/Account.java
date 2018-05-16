@@ -2,6 +2,9 @@
 
 import java.io.Serializable;
 
+import ims.sunmmon.util.cfc.AccountCFC;
+import ims.sunmmon.util.options.sort.AccountSortOption;
+
 // 계좌(계정 및 장부) 
 public class Account implements Serializable {
 
@@ -11,7 +14,7 @@ public class Account implements Serializable {
     // 계정명 
     private String accountName;
 
-    // 계정구분(매입/매출/장부) 
+    // 계정구분 (매입/매출/장부) 
     private String accountCfc;
 
     // 예금주 
@@ -31,6 +34,9 @@ public class Account implements Serializable {
 
     // 비고 
     private String note;
+    
+    private AccountSortOption accountSortOption;
+    private AccountCFC accountCfcOption;
 
     public Integer getAccountNo() {
         return accountNo;
@@ -103,8 +109,24 @@ public class Account implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+    
+    public AccountSortOption getAccountSortOption() {
+    	return accountSortOption;
+    }
+    
+    public void setAccountSortOption(AccountSortOption accountSortOption) {
+    	this.accountSortOption = accountSortOption;
+    }
 
-    // Account 모델 복사
+    public AccountCFC getAccountCfcOption() {
+		return accountCfcOption;
+	}
+
+	public void setAccountCfcOption(AccountCFC accountCfcOption) {
+		this.accountCfcOption = accountCfcOption;
+	}
+
+	// Account 모델 복사
     public void CopyData(Account param)
     {
         this.accountNo = param.getAccountNo();
@@ -116,5 +138,7 @@ public class Account implements Serializable {
         this.isowner = param.getIsowner();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.accountSortOption = param.getAccountSortOption();
+        this.accountCfcOption = param.getAccountCfcOption();
     }
 }

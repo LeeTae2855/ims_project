@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.BDSortOption;
+
 // 출고/입금 
 public class BD implements Serializable {
 
@@ -32,6 +34,10 @@ public class BD implements Serializable {
 
     // 비고 
     private String note;
+    
+    private BDSortOption bdSortOption;
+    private Date first;
+    private Date last;
 
     public Integer getBdNo() {
         return bdNo;
@@ -105,7 +111,31 @@ public class BD implements Serializable {
         this.note = note;
     }
 
-    // Bd 모델 복사
+    public BDSortOption getBdSortOption() {
+		return bdSortOption;
+	}
+
+	public void setBdSortOption(BDSortOption bdSortOption) {
+		this.bdSortOption = bdSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Bd 모델 복사
     public void CopyData(BD param)
     {
         this.bdNo = param.getBdNo();
@@ -117,5 +147,6 @@ public class BD implements Serializable {
         this.useable = param.getUseable();
         this.conVer = param.getConVer();
         this.note = param.getNote();
+        this.bdSortOption = param.getBdSortOption();
     }
 }

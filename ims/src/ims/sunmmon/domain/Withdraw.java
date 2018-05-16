@@ -1,6 +1,7 @@
 ﻿package ims.sunmmon.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 // 출금 
 public class Withdraw implements Serializable {
@@ -9,13 +10,13 @@ public class Withdraw implements Serializable {
     private Integer withNo;
 
     // 출금일 
-    private String withDate;
+    private Date withDate;
 
     // 거래처번호 
-    private String clientNo;
+    private Integer clientNo;
 
     // 자사계정(계좌) 
-    private String accountNo;
+    private Integer accountNo;
 
     // 적요 
     private String conVer;
@@ -40,27 +41,27 @@ public class Withdraw implements Serializable {
         this.withNo = withNo;
     }
 
-    public String getWithDate() {
+    public Date getWithDate() {
         return withDate;
     }
 
-    public void setWithDate(String withDate) {
+    public void setWithDate(Date withDate) {
         this.withDate = withDate;
     }
 
-    public String getClientNo() {
+    public Integer getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(String clientNo) {
+    public void setClientNo(Integer clientNo) {
         this.clientNo = clientNo;
     }
 
-    public String getAccountNo() {
+    public Integer getAccountNo() {
         return accountNo;
     }
 
-    public void setAccountNo(String accountNo) {
+    public void setAccountNo(Integer accountNo) {
         this.accountNo = accountNo;
     }
 

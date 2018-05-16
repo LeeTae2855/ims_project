@@ -1,6 +1,7 @@
 ﻿package ims.sunmmon.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 // 대체거래 
 public class Transferslip implements Serializable {
@@ -9,10 +10,10 @@ public class Transferslip implements Serializable {
     private Integer tsNo;
 
     // 거래일 
-    private String tsDate;
+    private Date tsDate;
 
     // 거래처번호 
-    private String clientNo;
+    private Integer clientNo;
 
     // 적요 
     private String conVer;
@@ -43,19 +44,19 @@ public class Transferslip implements Serializable {
         this.tsNo = tsNo;
     }
 
-    public String getTsDate() {
+    public Date getTsDate() {
         return tsDate;
     }
 
-    public void setTsDate(String tsDate) {
+    public void setTsDate(Date tsDate) {
         this.tsDate = tsDate;
     }
 
-    public String getClientNo() {
+    public Integer getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(String clientNo) {
+    public void setClientNo(Integer clientNo) {
         this.clientNo = clientNo;
     }
 
