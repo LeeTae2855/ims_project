@@ -148,5 +148,7 @@ public class BD implements Serializable {
         this.conVer = param.getConVer();
         this.note = param.getNote();
         this.bdSortOption = param.getBdSortOption();
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }
