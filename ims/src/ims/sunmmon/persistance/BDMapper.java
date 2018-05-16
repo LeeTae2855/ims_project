@@ -6,7 +6,7 @@ import ims.sunmmon.domain.BD;
 import ims.sunmmon.util.options.sort.BDSortOption;
 
 public interface BDMapper {
-	public List<BD> list(BD bd, BDSortOption option);
+	public List<BD> list(BD bd);
 
 	public void insert(BD bd);
 

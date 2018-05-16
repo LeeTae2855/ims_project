@@ -1,6 +1,7 @@
 ﻿package ims.sunmmon.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 // 입금 
 public class Deposit implements Serializable {
@@ -9,10 +10,10 @@ public class Deposit implements Serializable {
     private Integer depNo;
 
     // 입금일 
-    private String depDate;
+    private Date depDate;
 
     // 거래처번호 
-    private String clientNo;
+    private Integer clientNo;
 
     // 자사계정(계좌) 
     private Integer accountNo;
@@ -40,19 +41,19 @@ public class Deposit implements Serializable {
         this.depNo = depNo;
     }
 
-    public String getDepDate() {
+    public Date getDepDate() {
         return depDate;
     }
 
-    public void setDepDate(String depDate) {
+    public void setDepDate(Date depDate) {
         this.depDate = depDate;
     }
 
-    public String getClientNo() {
+    public Integer getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(String clientNo) {
+    public void setClientNo(Integer clientNo) {
         this.clientNo = clientNo;
     }
 

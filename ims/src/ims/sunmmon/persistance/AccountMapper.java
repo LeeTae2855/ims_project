@@ -6,7 +6,7 @@ import ims.sunmmon.domain.Account;
 import ims.sunmmon.util.options.sort.AccountSortOption;
 
 public interface AccountMapper {
-	public List<Account> list(Account account, AccountSortOption option);
+	public List<Account> list(Account account);
 
 	public void insert(Account account);
 
