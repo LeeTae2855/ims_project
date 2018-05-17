@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import ims.sunmmon.util.cfc.ItemCFC;
 import ims.sunmmon.util.options.sort.ItemSortOption;
+import ims.sunmmon.util.options.status.ItemStatus;
 
 // 품목(재고) 
 public class Item implements Serializable {
@@ -34,6 +35,7 @@ public class Item implements Serializable {
     
     private ItemSortOption itemSortOption;
     private ItemCFC itemCfcOption;
+    private ItemStatus itemStatusOption;
 
     public String getItemCode() {
         return itemCode;
@@ -115,6 +117,14 @@ public class Item implements Serializable {
 		this.itemCfcOption = itemCfcOption;
 	}
 
+	public ItemStatus getItemStatusOption() {
+		return itemStatusOption;
+	}
+
+	public void setItemStatusOption(ItemStatus itemStatusOption) {
+		this.itemStatusOption = itemStatusOption;
+	}
+
 	// Item 모델 복사
     public void CopyData(Item param)
     {
@@ -128,5 +138,6 @@ public class Item implements Serializable {
         this.note = param.getNote();
         this.itemSortOption = param.getItemSortOption();
         this.itemCfcOption = param.getItemCfcOption();
+        this.itemStatusOption = param.getItemStatusOption();
     }
 }

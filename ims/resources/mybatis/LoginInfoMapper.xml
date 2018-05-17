@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.LoginInfoMapper">
+	<resultMap id="loginInfoResultMap" type="loginInfo">
+		<id column="LOGIN_ID" property="loginId" />
+		<result column="LOGIN_PASSWORD" property="loginPassword" />
+	</resultMap>
+	
+	<select id="select" parameterType="loginInfo" resultMap="loginInfoResultMap">
+		SELECT LOGIN_ID
+		      ,LOGIN_PASSWORD
+		FROM LOGIN_INFO
+		WHERE 
+		LOGIN_ID = #{loginId}
+	</select>
+
+	<update id="update" parameterType="loginInfo">
+		UPDATE 
+		ACCOUNT
+		SET
+		NOTE         = #{note}
+		WHERE
+		ACCOUNT_NO   = #{accountNo}
+	</update>
+</mapper>
