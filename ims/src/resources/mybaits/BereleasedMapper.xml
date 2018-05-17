@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.BereleasedMapper">
+	<resultMap id="berelasedResultMap" type="berelased">
+		<id column="BE_NO" property="beNo" />
+		<result column="ITEM_NO" property="itemNo" />
+		<result column="BE_DATE" property="beDate" />
+		<result column="UNIT" property="unit" />
+		<result column="PRICE" property="price" />
+		<result column="DISCOUNT" property="discount" />
+		<result column="CON_VER" property="conVer" />
+		<result column="USEABLE" property="useable" />
+	</resultMap>
+	
+	<select id="list" parameterType="berelased" resultMap="berelasedResultMap">
+		SELECT BE_NO
+			  ,ITEM_NO
+			  ,BE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE
+		FROM BERELEASED
+		<where>
+			<if test="beNo > 0">
+				AND BE_NO = #{beNo}
+			</if>
+			<if test="itemNo != null and itemNo != ''">
+				AND UPPER( ACCOUNT_NAME ) LIKE UPPER ( '%' || #{itemNo} || '%' )
+			</if>
+			<if test="beDate != null and beDate != ''">
+				AND BE_DATE = #{beDate}
+			</if>
+			<if test="first != null and last != null">
+				AND BE_DATE BETWEEN #{first}
+				AND #{last} + 1
+			</if>
+			AND USEABLE = 1
+		</where>
+		<if test="berelasedSortOption != null">
+			<if test="berelasedSortOption.name() == 'BE_NO'">
+				ORDER BY BE_NO ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'ITEM_NO'">
+				ORDER BY ITEM_NO ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'BE_DATE'">
+				ORDER BY BE_DATE ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'UNIT'">
+				ORDER BY UNIT ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'PRICE'">
+				ORDER BY PRICE ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'DISCOUNT'">
+				ORDER BY DISCOUNT ASC
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" parameterType="berelased" resultMap="berelasedResultMap">
+		SELECT BE_NO
+			  ,ITEM_NO
+			  ,BE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE
+		FROM BERELEASED
+		WHERE BE_NO = #{beNo}
+		AND USEABLE = 1
+	</select>
+
+	<insert id="insert" parameterType="berelased">
+		<selectKey keyColumn="BE_NO" keyProperty="beNo" resultType="int" order="BEFORE">
+			SELECT BERELEASED_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO BERELEASED
+			( BE_NO
+			  ,ITEM_NO
+			  ,BE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE )
+		VALUES
+			(#{beNo}, #{itemNo}, #{beDate}, #{unit}, #{price},
+			 #{discount}, #{conVer}, 1)
+	</insert>
+
+	<update id="update" parameterType="berelased">
+		UPDATE 
+		BERELEASED
+		SET
+		ITEM_NO   = #{itemNo}, 
+		BE_DATE   = #{beDate}, 
+		UNIT      = #{unit}, 
+		PRICE     = #{price}, 
+		DISCOUNT  = #{discount},
+		CON_VER   = #{conVer}
+		WHERE
+		BE_NO     = #{beNo}
+	</update>
+
+	<update id="delete" parameterType="berelased">
+		UPDATE
+		BERELEASED
+		SET
+		USEABLE = 0
+		WHERE
+		BE_NO = #{beNo}
+	</update>
+</mapper>

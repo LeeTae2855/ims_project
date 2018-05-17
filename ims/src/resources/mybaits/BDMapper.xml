@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.BDMapper">
+	<resultMap id="bdResultMap" type="bd">
+		<id column="BD_NO" property="bdNo" />
+		<result column="BE_NO" property="beNo" />
+		<result column="DEP_NO" property="depNo" />
+		<result column="BD_DATE" property="bdDate" />
+		<result column="QUANTITY" property="quantity" />
+		<result column="AMMOUNT" property="ammount" />
+		<result column="USEABLE" property="useable" />
+		<result column="CON_VER" property="conVer" />
+		<result column="NOTE" property="note" />
+	</resultMap>
+	
+	<select id="list" parameterType="bd" resultMap="bdResultMap">
+		SELECT BD_NO
+			  ,BE_NO
+			  ,DEP_NO
+			  ,BD_DATE
+			  ,QUANTITY
+			  ,AMMOUNT
+			  ,CON_VER
+			  ,NOTE
+		FROM BD
+		<where>
+			<if test="bdNo > 0">
+				AND BD_NO = #{bdNo}
+			</if>
+			<if test="beNo > 0">
+				AND BE_NO = #{model}
+			</if>
+			<if test="depNo > 0">
+				AND DEP_NO = #{depNo}
+			</if>
+			<if test="bdDate != null and bdDate != ''">
+				AND BD_DATE = #{bdDate}
+			</if>
+			<if test="quantity > 0">
+				AND QUANTITY = #{quantity}
+			</if>
+			<if test="ammount > 0">
+				AND AMMOUNT = #{ammount}
+			</if>
+			<if test="conVer != null and conVer != ''">
+				AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
+			</if>
+			<if test="first != null and last != null">
+				AND BD_DATE BETWEEN #{first}
+				AND #{last} + 1
+			</if>
+			AND USEABLE = 1
+		</where>
+		<if test="bdSortOption != null">
+			<if test="bdSortOption.name() == 'NO'">
+				ORDER BY BD_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'BE_NO'">
+				ORDER BY BE_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'DEP_NO'">
+				ORDER BY DEP_NO DESC
+			</if>
+			<if test="bdSortOption.name() == 'BD_DATE'">
+				ORDER BY BD_DATE DESC
+			</if>
+			<if test="bdSortOption.name() == 'QUANTITY'">
+				ORDER BY QUANTITY DESC
+			</if>
+			<if test="bdSortOption.name() == 'AMMOUNT'">
+				ORDER BY AMMOUNT DESC
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" parameterType="bd" resultMap="bdResultMap">
+		SELECT BD_NO
+			  ,BE_NO
+			  ,DEP_NO
+			  ,BD_DATE
+			  ,QUANTITY
+			  ,AMMOUNT
+			  ,CON_VER
+			  ,NOTE
+		FROM BD
+		WHERE BD_NO = #{bdNo}
+		AND USEABLE = 1
+	</select>
+
+	<insert id="insert" parameterType="bd">
+		<selectKey keyColumn="BD_NO" keyProperty="bdNo" resultType="int" order="BEFORE">
+			SELECT BD_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO RENTAL
+			( BD_NO
+			  ,BE_NO
+			  ,DEP_NO
+			  ,BD_DATE
+			  ,QUANTITY
+			  ,AMMOUNT
+			  ,CON_VER
+			  ,NOTE
+			  ,USEABLE )
+		VALUES
+			(#{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, 
+			 #{ammount}, #{conVer}, #{note}, 1)
+	</insert>
+
+	<update id="update" parameterType="bd">
+		UPDATE 
+		BD
+		SET
+		BE_NO    = #{beNo},
+		DEP_NO   = #{depNo},
+		BD_DATE  = #{bdDate},
+		QUANTITY = #{quantity},
+		AMMOUNT  = #{ammount},
+		CON_VER  = #{conVer},
+		NOTE     = #{note}
+		WHERE
+		BD_NO    = #{bdNo}
+	</update>
+
+	<update id="delete" parameterType="bd">
+		UPDATE
+		BD
+		SET
+		USEABLE = 0
+		WHERE
+		BD_NO = #{bdNo}
+	</update>
+</mapper>

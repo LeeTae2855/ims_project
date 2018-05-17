@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.AccountMapper">
+	<resultMap id="accountResultMap" type="account">
+		<id column="ACCOUNT_NO" property="accountNo" />
+		<result column="ACCOUNT_NAME" property="accountName" />
+		<result column="ACCOUNT_CFC" property="accountCfc" />
+		<result column="MASTER_NAME" property="masterName" />
+		<result column="CELLPHONE" property="cellphone" />
+		<result column="BANK_NAME" property="bankName" />
+		<result column="ISOWNER" property="isowner" />
+		<result column="USEABLE" property="useable" />
+		<result column="NOTE" property="note" />
+	</resultMap>
+	
+	<select id="list" parameterType="account" resultMap="accountResultMap">
+		SELECT ACCOUNT_NO
+			  ,ACCOUNT_NAME
+			  ,ACCOUNT_CFC
+			  ,MASTER_NAME
+			  ,CELLPHONE
+			  ,BANK_NAME
+			  ,ISOWNER
+			  ,USEABLE
+			  ,NOTE
+		FROM ACCOUNT
+		<where>
+			<if test="accountNo > 0">
+				AND ACCOUNT_NO = #{accountNo}
+			</if>
+			<if test="accountName != null and accountName != ''">
+				AND UPPER( ACCOUNT_NAME ) LIKE UPPER ( '%' || #{accountName} || '%' )
+			</if>
+			<if test="masterName != null and masterName != ''">
+				AND UPPER( MASTER_NAME ) LIKE UPPER ( '%' || #{masterName} || '%' )
+			</if>
+			<if test="cellphone > 0">
+				AND CELLPHONE = #{cellphone}
+			</if>
+			<if test="bankName != null and bankName != ''">
+				AND UPPER( BANK_NAME ) LIKE UPPER ( '%' || #{bankName} || '%' )
+			</if>
+			<if test="isowner == 0">
+				AND ISOWNER = 0
+			</if>
+			<if test="isowner == 1">
+				AND ISOWNER = 1
+			</if>
+			<if test="accountCfc != null and accountCfc != ''">
+				AND UPPER( ACCOUNT_CFC ) LIKE UPPER ( '%' || #{accountCfc} || '%' )
+			</if>
+			<if test="accountCfcOption != null">
+				AND UPPER( ACCOUNT_CFC ) LIKE UPPER ( '%' || #{accountCfcOption.name()} || '%' )
+			</if>
+			AND USEABLE = 1
+		</where>
+		<if test="accountSortOption != null">
+			<if test="accountSortOption.name() == 'NO'">
+				ORDER BY ACCOUNT_NO ASC
+			</if>
+			<if test="accountSortOption.name() == 'NAME'">
+				ORDER BY ACCOUNT_NAME ASC
+			</if>
+			<if test="accountSortOption.name() == 'BANK_NAME'">
+				ORDER BY BD_NO ASC
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" parameterType="account" resultMap="accountResultMap">
+		SELECT ACCOUNT_NO
+			  ,ACCOUNT_NAME
+			  ,ACCOUNT_CFC
+			  ,MASTER_NAME
+			  ,CELLPHONE
+			  ,BANK_NAME
+			  ,ISOWNER
+			  ,USEABLE
+			  ,NOTE
+		FROM ACCOUNT
+		WHERE 
+		ACCOUNT_NO = #{accountNo}
+		AND USEABLE = 1
+	</select>
+
+	<insert id="insert" parameterType="account">
+		INSERT INTO ACCOUNT
+			( ACCOUNT_NO
+			  ,ACCOUNT_NAME
+			  ,ACCOUNT_CFC
+			  ,MASTER_NAME
+			  ,CELLPHONE
+			  ,BANK_NAME
+			  ,ISOWNER
+			  ,USEABLE
+			  ,NOTE )
+		VALUES
+			(#{accountNo}, #{accountName}, #{accountCfc}, #{masterName}, #{cellphone},
+			 #{bankName}, #{isowner}, 1, #{note})
+	</insert>
+
+	<update id="update" parameterType="account">
+		UPDATE 
+		ACCOUNT
+		SET
+		ACCOUNT_NAME = #{accountName},
+		ACCOUNT_CFC  = #{accountCfc},
+		MASTER_NAME  = #{masterName},
+		CELLPHONE    = #{cellphone},
+		BANK_NAME    = #{bankName},
+		ISOWNER      = #{isowner},
+		NOTE         = #{note}
+		WHERE
+		ACCOUNT_NO   = #{accountNo}
+	</update>
+
+	<update id="delete" parameterType="account">
+		UPDATE
+		ACCOUNT
+		SET
+		USEABLE = 0
+		WHERE
+		ACCOUNT_NO = #{accountNo}
+	</update>
+</mapper>
