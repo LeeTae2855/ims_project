@@ -38,10 +38,10 @@
 				AND CLIENT_NO = #{clientNo}
 			</if>
 			<if test="first != null and last != null">
-				AND BE_DATE BETWEEN #{first}
+				AND DEP_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
-			AND USEABLE = 1
+			AND USEABLE = #{useable}
 		</where>
 		<if test="depositSortOption != null">
 			<if test="depositSortOption.name() == 'DEP_NO'">
@@ -74,7 +74,7 @@
 			  ,NOTE      
 		FROM DEPOSIT
 		WHERE DEP_NO = #{depNo}
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="deposit">
@@ -93,7 +93,7 @@
 			  ,USEABLE   
 			  ,NOTE )
 		VALUES
-			(#{depNo}, #{depDate}, #{clientNo}, #{accountNo}, #{conVer},
+			(#{depNo}, SYSDATE, #{clientNo}, #{accountNo}, #{conVer},
 			 #{ammount}, #{tax}, 1, #{note})
 	</insert>
 
@@ -101,15 +101,16 @@
 		UPDATE 
 		DEPOSIT
 		SET
-		,DEP_DATE   = #{depDate}
-		,CLIENT_NO  = #{clientNo}
-		,ACCOUNT_NO = #{accountNo}
-		,CON_VER    = #{conVer}
-		,AMMOUNT    = #{ammount}
-		,TAX        = #{tax}
-		,NOTE       = #{note}
+		DEP_DATE   = #{depDate},
+		CLIENT_NO  = #{clientNo},
+		ACCOUNT_NO = #{accountNo},
+		CON_VER    = #{conVer},
+		AMMOUNT    = #{ammount},
+		TAX        = #{tax},
+		USEABLE    = #{useable},
+		NOTE       = #{note}
 		WHERE
-		DEP_NO      = #{depNo}
+		DEP_NO     = #{depNo}
 	</update>
 
 	<update id="delete" parameterType="deposit">

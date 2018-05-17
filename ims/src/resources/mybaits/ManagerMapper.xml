@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.ManagerMapper">
+	<resultMap id="managerResultMap" type="manager">
+		<id column="MANAGER_NO" property="managerNo" />
+		<result column="MANAGER_NAME" property="managerName" />
+		<result column="DEP_NAME" property="depName" />
+		<result column="TELEPHONE" property="telephone" />
+		<result column="CELLPHONE" property="cellphone" />
+		<result column="EMAIL" property="email" />
+		<result column="FAX" property="isowner" />
+		<result column="USEABLE" property="useable" />
+		<result column="NOTE" property="note" />
+	</resultMap>
+
+	<select id="list" parameterType="manager" resultMap="managerResultMap">
+		SELECT MANAGER_NO
+			  ,MANAGER_NAME
+			  ,DEP_NAME
+			  ,TELEPHONE
+			  ,CELLPHONE
+			  ,EMAIL
+			  ,FAX
+			  ,USEABLE
+			  ,NOTE
+		FROM MANAGER
+		<where>
+			<if test="managerNo > 0">
+				AND MANAGER_NO = #{managerNo}
+			</if>
+			<if test="managerName != null and managerName != ''">
+				AND UPPER( MANAGER_NAME ) LIKE UPPER ( '%' || #{managerName} || '%' )
+			</if>
+			AND USEABLE = #{useable}
+		</where>
+		<if test="managerSortOption != null">
+			<if test="managerSortOption.name() == 'NO'">
+				ORDER BY MANAGER_NO ASC
+			</if>
+			<if test="managerSortOption.name() == 'NAME'">
+				ORDER BY MANAGER_NAME ASC
+			</if>
+			<if test="managerSortOption.name() == 'DEP_NAME'">
+				ORDER BY DEP_NAME ASC
+			</if>
+		</if>
+	</select>
+
+	<select id="select" parameterType="manager" resultMap="managerResultMap">
+		SELECT MANAGER_NO
+			  ,MANAGER_NAME
+			  ,DEP_NAME
+			  ,TELEPHONE
+			  ,CELLPHONE
+			  ,EMAIL
+			  ,FAX
+			  ,USEABLE
+			  ,NOTE
+		FROM MANAGER
+		WHERE
+		MANAGER_NO = #{managerNo}
+		AND USEABLE = #{useable}
+	</select>
+
+	<insert id="insert" parameterType="manager">
+		<selectKey keyColumn="MANAGER_NO" keyProperty="managerNo" resultType="int" order="BEFORE">
+			SELECT MANAGER_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO MANAGER
+			( MANAGER_NO     
+			 ,MANAGER_NAME
+			 ,DEP_NAME    
+			 ,TELEPHONE   
+			 ,CELLPHONE   
+			 ,EMAIL       
+			 ,FAX         
+			 ,USEABLE     
+			 ,NOTE )
+		VALUES
+			(#{managerNo}, #{managerName}, #{depName}, #{telephone}, #{cellphone},
+			 #{email}, #{fax}, 1, #{note})
+	</insert>
+
+	<update id="update" parameterType="manager">
+		UPDATE 
+		MANAGER
+		SET
+		MANAGER_NAME = #{managerName},
+		DEP_NAME     = #{depName},
+		TELEPHONE    = #{telephone},
+		CELLPHONE    = #{cellphone},
+		EMAIL        = #{email},
+		FAX          = #{fax},
+		USEABLE      = #{useable},
+		NOTE         = #{note}
+		WHERE
+		MANAGER_NO   = #{managerNo}
+	</update>
+
+	<update id="delete" parameterType="manager">
+		UPDATE
+		MANAGER
+		SET
+		USEABLE = 0
+		WHERE
+		MANAGER_NO = #{managerNo}
+	</update>
+</mapper>

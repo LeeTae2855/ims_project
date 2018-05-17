@@ -39,30 +39,21 @@
 			<if test="bdDate != null and bdDate != ''">
 				AND BD_DATE = #{bdDate}
 			</if>
-			<if test="quantity > 0">
-				AND QUANTITY = #{quantity}
-			</if>
-			<if test="ammount > 0">
-				AND AMMOUNT = #{ammount}
-			</if>
-			<if test="conVer != null and conVer != ''">
-				AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
-			</if>
 			<if test="first != null and last != null">
 				AND BD_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
-			AND USEABLE = 1
+			AND USEABLE = #{useable}
 		</where>
 		<if test="bdSortOption != null">
 			<if test="bdSortOption.name() == 'NO'">
-				ORDER BY BD_NO DESC
+				ORDER BY BD_NO ASC
 			</if>
 			<if test="bdSortOption.name() == 'BE_NO'">
-				ORDER BY BE_NO DESC
+				ORDER BY BE_NO ASC
 			</if>
 			<if test="bdSortOption.name() == 'DEP_NO'">
-				ORDER BY DEP_NO DESC
+				ORDER BY DEP_NO ASC
 			</if>
 			<if test="bdSortOption.name() == 'BD_DATE'">
 				ORDER BY BD_DATE DESC
@@ -87,7 +78,7 @@
 			  ,NOTE
 		FROM BD
 		WHERE BD_NO = #{bdNo}
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="bd">
@@ -95,7 +86,7 @@
 			SELECT BD_SEQ.NEXTVAL
 			FROM DUAL
 		</selectKey>
-		INSERT INTO RENTAL
+		INSERT INTO BD
 			( BD_NO
 			  ,BE_NO
 			  ,DEP_NO
@@ -120,6 +111,7 @@
 		QUANTITY = #{quantity},
 		AMMOUNT  = #{ammount},
 		CON_VER  = #{conVer},
+		USEABLE  = #{useable},
 		NOTE     = #{note}
 		WHERE
 		BD_NO    = #{bdNo}

@@ -2,6 +2,8 @@
 
 import java.io.Serializable;
 
+import ims.sunmmon.util.options.sort.ManagerSortOption;
+
 // 담당자 
 public class Manager implements Serializable {
 
@@ -31,6 +33,8 @@ public class Manager implements Serializable {
 
     // 비고 
     private String note;
+    
+    private ManagerSortOption managerSortOption;
 
     public Integer getManagerNo() {
         return managerNo;
@@ -104,7 +108,15 @@ public class Manager implements Serializable {
         this.note = note;
     }
 
-    // Manager 모델 복사
+    public ManagerSortOption getManagerSortOption() {
+		return managerSortOption;
+	}
+
+	public void setManagerSortOption(ManagerSortOption managerSortOption) {
+		this.managerSortOption = managerSortOption;
+	}
+
+	// Manager 모델 복사
     public void CopyData(Manager param)
     {
         this.managerNo = param.getManagerNo();
@@ -116,5 +128,6 @@ public class Manager implements Serializable {
         this.fax = param.getFax();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.managerSortOption = param.getManagerSortOption();
     }
 }

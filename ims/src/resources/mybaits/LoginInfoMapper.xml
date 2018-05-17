@@ -18,11 +18,11 @@
 	</select>
 
 	<update id="update" parameterType="loginInfo">
-		UPDATE 
-		ACCOUNT
+		UPDATE
+		LOGIN_INFO
 		SET
-		NOTE         = #{note}
+		LOGIN_PASSWORD = #{loginPassword}
 		WHERE
-		ACCOUNT_NO   = #{accountNo}
+		LOGIN_ID       = #{loginId}
 	</update>
 </mapper>
