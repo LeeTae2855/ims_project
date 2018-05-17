@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.TransferslipMapper">
+	<resultMap id="transferslipResultMap" type="transferslip">
+		<id column="TS_NO" property="tsNo" />
+		<result column="TS_DATE" property="tsDate" />
+		<result column="CLIENT_NO" property="clientNo" />
+		<result column="CON_VER" property="conVer" />
+		<result column="DEBTOR_NO" property="debtorNo" />
+		<result column="DEBTOR_AMMOUNT" property="debtorAmmount" />
+		<result column="CREDIT_NO" property="creditNo" />
+		<result column="CREDIT_AMMOUNT" property="creditAmmount" />
+		<result column="USEABLE" property="useable" />
+		<result column="NOTE" property="note" />
+	</resultMap>
+	
+	<select id="list" parameterType="transferslip" resultMap="transferslipResultMap">
+		SELECT TS_NO
+			  ,TS_DATE
+			  ,CLIENT_NO
+			  ,CON_VER
+			  ,DEBTOR_NO
+			  ,DEBTOR_AMMOUNT
+			  ,CREDIT_NO
+			  ,CREDIT_AMMOUNT
+			  ,USEABLE
+			  ,NOTE
+		FROM TRANSFERSLIP
+		<where>
+			<if test="tsNo > 0">
+				AND TS_NO = #{tsNo}
+			</if>
+			<if test="tsDate != null and tsDate != ''">
+				AND TS_DATE = #{tsDate}
+			</if>
+			<if test="clientNo > 0">
+				AND CLIENT_NO = #{clientNo}
+			</if>
+			<if test="debtorNo > 0">
+				AND DEBTOR_NO = #{debtorNo}
+			</if>
+			<if test="creditNo > 0">
+				AND CREDIT_NO = #{creditNo}
+			</if>
+			<if test="first != null and last != null">
+				AND TS_DATE BETWEEN #{first}
+				AND #{last} + 1
+			</if>
+			AND USEABLE = #{useable}
+		</where>
+		<if test="transferslipSortOption != null">
+			<if test="transferslipSortOption.name() == 'NO'">
+				ORDER BY TS_NO ASC
+			</if>
+			<if test="transferslipSortOption.name() == 'TS_DATE'">
+				ORDER BY TS_DATE DESC
+			</if>
+			<if test="transferslipSortOption.name() == 'CLIENT_NO'">
+				ORDER BY CLIENT_NO ASC
+			</if>
+			<if test="transferslipSortOption.name() == 'DEBTOR_NO'">
+				ORDER BY DEBTOR_NO ASC
+			</if>
+			<if test="transferslipSortOption.name() == 'DEBTOR_AMMOUNT'">
+				ORDER BY DEBTOR_AMMOUNT DESC
+			</if>
+			<if test="transferslipSortOption.name() == 'CREDIT_NO'">
+				ORDER BY CREDIT_NO ASC
+			</if>
+			<if test="transferslipSortOption.name() == 'CREDIT_AMMOUNT'">
+				ORDER BY CREDIT_AMMOUNT DESC
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" parameterType="transferslip" resultMap="transferslipResultMap">
+		SELECT TS_NO
+			  ,TS_DATE
+			  ,CLIENT_NO
+			  ,CON_VER
+			  ,DEBTOR_NO
+			  ,DEBTOR_AMMOUNT
+			  ,CREDIT_NO
+			  ,CREDIT_AMMOUNT
+			  ,USEABLE
+			  ,NOTE
+		FROM TRANSFERSLIP
+		WHERE TS_NO = #{tsNo}
+		AND USEABLE = #{useable}
+	</select>
+
+	<insert id="insert" parameterType="transferslip">
+		<selectKey keyColumn="TS_NO" keyProperty="tsNo" resultType="int" order="BEFORE">
+			SELECT TRANSFERSLIP_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO TRANSFERSLIP
+			( TS_NO
+			  ,TS_DATE
+			  ,CLIENT_NO
+			  ,CON_VER
+			  ,DEBTOR_NO
+			  ,DEBTOR_AMMOUNT
+			  ,CREDIT_NO
+			  ,CREDIT_AMMOUNT
+			  ,USEABLE
+			  ,NOTE)
+		VALUES
+			(#{tsNo}, SYSDATE, #{clientNo}, #{conVer}, #{debtorNo}, 
+			 #{debtorAmmount}, #{creditNo}, #{creditAmmount}, 1, #{note})
+	</insert>
+
+	<update id="update" parameterType="transferslip">
+		UPDATE 
+		TRANSFERSLIP
+		SET
+		TS_DATE        = #{tsDate},
+		CLIENT_NO      = #{clientNo},
+		CON_VER        = #{conVer},
+		DEBTOR_NO      = #{debtorNo},
+		DEBTOR_AMMOUNT = #{debtorAmmount},
+		CREDIT_NO      = #{creditNo},
+		CREDIT_AMMOUNT = #{creditAmmount},
+		USEABLE        = #{useable},
+		NOTE           = #{note},
+		WHERE
+		TS_NO          = #{tsNo}
+	</update>
+
+	<update id="delete" parameterType="transferslip">
+		UPDATE
+		TRANSFERSLIP
+		SET
+		USEABLE = 0
+		WHERE
+		TS_NO = #{tsNo}
+	</update>
+</mapper>
