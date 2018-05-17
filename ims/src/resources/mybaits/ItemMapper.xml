@@ -56,12 +56,12 @@
 				AND UPPER( STANDARD ) LIKE UPPER ( '%' || #{standard} || '%' )
 			</if>
 			<if test="itemStatus != null and itemStatus != ''">
-				AND UPPER( STANDARD ) LIKE UPPER ( '%' || #{itemStatus} || '%' )
+				AND UPPER( ITEM_STATUS ) LIKE UPPER ( '%' || #{itemStatus} || '%' )
 			</if>
 			<if test="itemStatusOption != null">
 				AND UPPER( ITEM_STATUS ) LIKE UPPER ( '%' || #{itemStatusOption.name()} || '%' )
 			</if>
-			AND USEABLE = 1
+			AND USEABLE = #{useable}
 		</where>
 		<if test="itemSortOption != null">
 			<if test="itemSortOption.name() == 'ITEM_CODE'">
@@ -94,7 +94,7 @@
 		FROM ITEM
 		WHERE
 		UPPER( ITEM_CODE ) LIKE UPPER ( '%' || #{itemCode} || '%' )
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="item">
@@ -121,6 +121,7 @@
 		STANDARD      = #{standard},
 		BASE_QUANTITY = #{baseQuantity},
 		ITEM_STATUS   = #{itemStatus},
+		USEABLE       = #{useable},
 		NOTE          = #{note}
 		WHERE
 		UPPER( ITEM_CODE ) LIKE UPPER ( '%' || #{itemCode} || '%' )

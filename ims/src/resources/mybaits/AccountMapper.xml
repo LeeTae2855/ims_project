@@ -37,17 +37,8 @@
 			<if test="masterName != null and masterName != ''">
 				AND UPPER( MASTER_NAME ) LIKE UPPER ( '%' || #{masterName} || '%' )
 			</if>
-			<if test="cellphone > 0">
-				AND CELLPHONE = #{cellphone}
-			</if>
 			<if test="bankName != null and bankName != ''">
 				AND UPPER( BANK_NAME ) LIKE UPPER ( '%' || #{bankName} || '%' )
-			</if>
-			<if test="isowner == 0">
-				AND ISOWNER = 0
-			</if>
-			<if test="isowner == 1">
-				AND ISOWNER = 1
 			</if>
 			<if test="accountCfc != null and accountCfc != ''">
 				AND UPPER( ACCOUNT_CFC ) LIKE UPPER ( '%' || #{accountCfc} || '%' )
@@ -55,7 +46,8 @@
 			<if test="accountCfcOption != null">
 				AND UPPER( ACCOUNT_CFC ) LIKE UPPER ( '%' || #{accountCfcOption.name()} || '%' )
 			</if>
-			AND USEABLE = 1
+			AND ISOWNER = #{isowner}
+			AND USEABLE = #{useable}
 		</where>
 		<if test="accountSortOption != null">
 			<if test="accountSortOption.name() == 'NO'">
@@ -83,7 +75,7 @@
 		FROM ACCOUNT
 		WHERE 
 		ACCOUNT_NO = #{accountNo}
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="account">
@@ -112,6 +104,7 @@
 		CELLPHONE    = #{cellphone},
 		BANK_NAME    = #{bankName},
 		ISOWNER      = #{isowner},
+		USEABLE      = #{useable},
 		NOTE         = #{note}
 		WHERE
 		ACCOUNT_NO   = #{accountNo}

@@ -39,7 +39,7 @@
 				AND BE_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
-			AND USEABLE = 1
+			AND USEABLE = #{useable}
 		</where>
 		<if test="berelasedSortOption != null">
 			<if test="berelasedSortOption.name() == 'BE_NO'">
@@ -49,13 +49,13 @@
 				ORDER BY ITEM_NO ASC
 			</if>
 			<if test="berelasedSortOption.name() == 'BE_DATE'">
-				ORDER BY BE_DATE ASC
+				ORDER BY BE_DATE DESC
 			</if>
 			<if test="berelasedSortOption.name() == 'UNIT'">
-				ORDER BY UNIT ASC
+				ORDER BY UNIT DESC
 			</if>
 			<if test="berelasedSortOption.name() == 'PRICE'">
-				ORDER BY PRICE ASC
+				ORDER BY PRICE DESC
 			</if>
 			<if test="berelasedSortOption.name() == 'DISCOUNT'">
 				ORDER BY DISCOUNT ASC
@@ -74,7 +74,7 @@
 			  ,USEABLE
 		FROM BERELEASED
 		WHERE BE_NO = #{beNo}
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="berelased">
@@ -92,7 +92,7 @@
 			  ,CON_VER
 			  ,USEABLE )
 		VALUES
-			(#{beNo}, #{itemNo}, #{beDate}, #{unit}, #{price},
+			(#{beNo}, #{itemNo}, SYSDATE, #{unit}, #{price},
 			 #{discount}, #{conVer}, 1)
 	</insert>
 
@@ -105,7 +105,8 @@
 		UNIT      = #{unit}, 
 		PRICE     = #{price}, 
 		DISCOUNT  = #{discount},
-		CON_VER   = #{conVer}
+		CON_VER   = #{conVer},
+		USEABLE   = #{useable}
 		WHERE
 		BE_NO     = #{beNo}
 	</update>

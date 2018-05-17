@@ -64,7 +64,7 @@
 			<if test="event != null and event != ''">
 				AND UPPER( EVENT ) LIKE UPPER ( '%' || #{event} || '%' )
 			</if>
-			AND USEABLE = 1
+			AND USEABLE = #{useable}
 		</where>
 		<if test="clientSortOption != null">
 			<if test="clientSortOption.name() == 'NO'">
@@ -109,7 +109,7 @@
 			   ,NOTE   
 		FROM CLIENT
 		WHERE CLIENT_NO = #{clientNo}
-		AND USEABLE = 1
+		AND USEABLE = #{useable}
 	</select>
 
 	<insert id="insert" parameterType="client">
@@ -117,7 +117,7 @@
 			SELECT CLIENT_SEQ.NEXTVAL
 			FROM DUAL
 		</selectKey>
-		INSERT INTO ACCOUNT
+		INSERT INTO CLIENT
 			( CLIENT_NO   
 			   ,CLIENT_NAME 
 			   ,COMP_NAME   
@@ -145,7 +145,7 @@
 
 	<update id="update" parameterType="client">
 		UPDATE 
-		ACCOUNT
+		CLIENT
 		SET
 		CLIENT_NAME  = #{clientName}, 
 		COMP_NAME    = #{compName}, 
@@ -162,6 +162,7 @@
 		MANAGER_NO   = #{managerNo}, 
 		ZIP_NO       = #{zipNo},
 		ACCOUNT_NO   = #{accountNo}, 
+		USEABLE      = #{useable},
 		NOTE         = #{note}
 		WHERE
 		CLIENT_NO    = #{clientNo}
