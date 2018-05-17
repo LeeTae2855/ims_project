@@ -41,23 +41,25 @@
 			</if>
 			AND USEABLE = 1
 		</where>
-		<if test="berelasedSortOption.name() == 'BE_NO'">
-			ORDER BY BE_NO ASC
-		</if>
-		<if test="berelasedSortOption.name() == 'ITEM_NO'">
-			ORDER BY ITEM_NO ASC
-		</if>
-		<if test="berelasedSortOption.name() == 'BE_DATE'">
-			ORDER BY BE_DATE ASC
-		</if>
-		<if test="berelasedSortOption.name() == 'UNIT'">
-			ORDER BY UNIT ASC
-		</if>
-		<if test="berelasedSortOption.name() == 'PRICE'">
-			ORDER BY PRICE ASC
-		</if>
-		<if test="berelasedSortOption.name() == 'DISCOUNT'">
-			ORDER BY DISCOUNT ASC
+		<if test="berelasedSortOption != null">
+			<if test="berelasedSortOption.name() == 'BE_NO'">
+				ORDER BY BE_NO ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'ITEM_NO'">
+				ORDER BY ITEM_NO ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'BE_DATE'">
+				ORDER BY BE_DATE ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'UNIT'">
+				ORDER BY UNIT ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'PRICE'">
+				ORDER BY PRICE ASC
+			</if>
+			<if test="berelasedSortOption.name() == 'DISCOUNT'">
+				ORDER BY DISCOUNT ASC
+			</if>
 		</if>
 	</select>
 	
@@ -72,11 +74,12 @@
 			  ,USEABLE
 		FROM BERELEASED
 		WHERE BE_NO = #{beNo}
+		AND USEABLE = 1
 	</select>
 
 	<insert id="insert" parameterType="berelased">
 		<selectKey keyColumn="BE_NO" keyProperty="beNo" resultType="int" order="BEFORE">
-			SELECT BE_NO_SEQ.NEXTVAL
+			SELECT BERELEASED_SEQ.NEXTVAL
 			FROM DUAL
 		</selectKey>
 		INSERT INTO BERELEASED
@@ -89,7 +92,8 @@
 			  ,CON_VER
 			  ,USEABLE )
 		VALUES
-			(#{beNo}, #{itemNo}, #{beDate}, #{unit}, #{price}, #{discount}, #{conVer}, 1)
+			(#{beNo}, #{itemNo}, #{beDate}, #{unit}, #{price},
+			 #{discount}, #{conVer}, 1)
 	</insert>
 
 	<update id="update" parameterType="berelased">
@@ -103,7 +107,7 @@
 		DISCOUNT  = #{discount},
 		CON_VER   = #{conVer}
 		WHERE
-		BE_NO     = #{beNo},
+		BE_NO     = #{beNo}
 	</update>
 
 	<update id="delete" parameterType="berelased">
@@ -112,6 +116,6 @@
 		SET
 		USEABLE = 0
 		WHERE
-		ACCOUNT_NO = #{accountNo}
+		BE_NO = #{beNo}
 	</update>
 </mapper>

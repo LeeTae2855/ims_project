@@ -87,11 +87,12 @@
 			  ,NOTE
 		FROM BD
 		WHERE BD_NO = #{bdNo}
+		AND USEABLE = 1
 	</select>
 
 	<insert id="insert" parameterType="bd">
 		<selectKey keyColumn="BD_NO" keyProperty="bdNo" resultType="int" order="BEFORE">
-			SELECT BD_NO_SEQ.NEXTVAL
+			SELECT BD_SEQ.NEXTVAL
 			FROM DUAL
 		</selectKey>
 		INSERT INTO RENTAL
@@ -105,7 +106,8 @@
 			  ,NOTE
 			  ,USEABLE )
 		VALUES
-			(#{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, #{ammount}, #{conVer}, #{note}, 1)
+			(#{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, 
+			 #{ammount}, #{conVer}, #{note}, 1)
 	</insert>
 
 	<update id="update" parameterType="bd">

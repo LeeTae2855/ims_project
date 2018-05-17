@@ -57,14 +57,16 @@
 			</if>
 			AND USEABLE = 1
 		</where>
-		<if test="accountSortOption.name() == 'NO'">
-			ORDER BY ACCOUNT_NO ASC
-		</if>
-		<if test="accountSortOption.name() == 'NAME'">
-			ORDER BY ACCOUNT_NAME ASC
-		</if>
-		<if test="accountSortOption.name() == 'BANK_NAME'">
-			ORDER BY BD_NO ASC
+		<if test="accountSortOption != null">
+			<if test="accountSortOption.name() == 'NO'">
+				ORDER BY ACCOUNT_NO ASC
+			</if>
+			<if test="accountSortOption.name() == 'NAME'">
+				ORDER BY ACCOUNT_NAME ASC
+			</if>
+			<if test="accountSortOption.name() == 'BANK_NAME'">
+				ORDER BY BD_NO ASC
+			</if>
 		</if>
 	</select>
 	
@@ -79,7 +81,9 @@
 			  ,USEABLE
 			  ,NOTE
 		FROM ACCOUNT
-		WHERE ACCOUNT_NO = #{accountNo}
+		WHERE 
+		ACCOUNT_NO = #{accountNo}
+		AND USEABLE = 1
 	</select>
 
 	<insert id="insert" parameterType="account">
@@ -94,7 +98,8 @@
 			  ,USEABLE
 			  ,NOTE )
 		VALUES
-			(#{accountNo}, #{accountName}, #{accountCfc}, #{masterName}, #{cellphone}, #{bankName}, #{isowner}, 1, #{note})
+			(#{accountNo}, #{accountName}, #{accountCfc}, #{masterName}, #{cellphone},
+			 #{bankName}, #{isowner}, 1, #{note})
 	</insert>
 
 	<update id="update" parameterType="account">
