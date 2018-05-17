@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.TransferslipSortOption;
+
 // 대체거래 
 public class Transferslip implements Serializable {
 
@@ -35,6 +37,10 @@ public class Transferslip implements Serializable {
 
     // 비고 
     private String note;
+    
+    private TransferslipSortOption transferslipSortOption;
+    private Date first;
+    private Date last;
 
     public Integer getTsNo() {
         return tsNo;
@@ -116,7 +122,31 @@ public class Transferslip implements Serializable {
         this.note = note;
     }
 
-    // Transferslip 모델 복사
+    public TransferslipSortOption getTransferslipSortOption() {
+		return transferslipSortOption;
+	}
+
+	public void setTransferslipSortOption(TransferslipSortOption transferslipSortOption) {
+		this.transferslipSortOption = transferslipSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Transferslip 모델 복사
     public void CopyData(Transferslip param)
     {
         this.tsNo = param.getTsNo();
@@ -129,5 +159,8 @@ public class Transferslip implements Serializable {
         this.creditAmmount = param.getCreditAmmount();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.transferslipSortOption = param.getTransferslipSortOption();
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }
