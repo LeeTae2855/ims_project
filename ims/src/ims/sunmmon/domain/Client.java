@@ -2,6 +2,8 @@
 
 import java.io.Serializable;
 
+import ims.sunmmon.util.options.sort.ClientSortOption;
+
 // 거래처(회사) 
 public class Client implements Serializable {
 
@@ -58,6 +60,8 @@ public class Client implements Serializable {
 
     // 비고 
     private String note;
+    
+    private ClientSortOption clientSortOption;
 
     public Integer getClientNo() {
         return clientNo;
@@ -203,7 +207,15 @@ public class Client implements Serializable {
         this.note = note;
     }
 
-    // Client 모델 복사
+    public ClientSortOption getClientSortOption() {
+		return clientSortOption;
+	}
+
+	public void setClientSortOption(ClientSortOption clientSortOption) {
+		this.clientSortOption = clientSortOption;
+	}
+
+	// Client 모델 복사
     public void CopyData(Client param)
     {
         this.clientNo = param.getClientNo();
@@ -224,5 +236,6 @@ public class Client implements Serializable {
         this.accountNo = param.getAccountNo();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.clientSortOption = param.getClientSortOption();
     }
 }

@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.DepositSortOption;
+
 // 입금 
 public class Deposit implements Serializable {
 
@@ -32,6 +34,10 @@ public class Deposit implements Serializable {
 
     // 비고 
     private String note;
+    
+    private DepositSortOption depositSortOption;
+    private Date first;
+    private Date last;
 
     public Integer getDepNo() {
         return depNo;
@@ -105,7 +111,31 @@ public class Deposit implements Serializable {
         this.note = note;
     }
 
-    // Deposit 모델 복사
+    public DepositSortOption getDepositSortOption() {
+		return depositSortOption;
+	}
+
+	public void setDepositSortOption(DepositSortOption depositSortOption) {
+		this.depositSortOption = depositSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Deposit 모델 복사
     public void CopyData(Deposit param)
     {
         this.depNo = param.getDepNo();
@@ -117,5 +147,8 @@ public class Deposit implements Serializable {
         this.tax = param.getTax();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.depositSortOption = param.getDepositSortOption();
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }
