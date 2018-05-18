@@ -59,6 +59,9 @@
 			<if test="accountSortOption.name() == 'BANK_NAME'">
 				ORDER BY BANK_NAME ASC
 			</if>
+			<if test="accountSortOption.name() == 'CFC'">
+				ORDER BY ACCOUNT_CFC ASC
+			</if>
 		</if>
 	</select>
 	
