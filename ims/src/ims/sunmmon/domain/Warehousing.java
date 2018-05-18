@@ -123,7 +123,7 @@ public class Warehousing implements Serializable {
 	public void setWarehousingSortOption(WarehousingSortOption warehousingSortOption) {
 		this.warehousingSortOption = warehousingSortOption;
 	}
-
+ 
 	// Warehousing 모델 복사
     public void CopyData(Warehousing param)
     {
