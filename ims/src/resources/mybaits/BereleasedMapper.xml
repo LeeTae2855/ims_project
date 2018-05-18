@@ -30,7 +30,7 @@
 				AND BE_NO = #{beNo}
 			</if>
 			<if test="itemNo != null and itemNo != ''">
-				AND UPPER( ACCOUNT_NAME ) LIKE UPPER ( '%' || #{itemNo} || '%' )
+				AND UPPER( ITEM_NO ) LIKE UPPER ( '%' || #{itemNo} || '%' )
 			</if>
 			<if test="beDate != null and beDate != ''">
 				AND BE_DATE = #{beDate}

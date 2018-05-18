@@ -3,10 +3,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.DepositMapper">
-	<resultMap id="depositResultMap" type="deposit">
-		<id column="DEP_NO" property="depNo" />
-		<result column="DEP_DATE" property="depDate" />
+<mapper namespace="ims.sunmoon.persistence.WithdrawMapper">
+	<resultMap id="withdrawResultMap" type="withdraw">
+		<id column="WITH_NO" property="withNo" />
+		<result column="WITH_DATE" property="withDate" />
 		<result column="CLIENT_NO" property="clientNo" />
 		<result column="ACCOUNT_NO" property="accountNo" />
 		<result column="CON_VER" property="conVer" />
@@ -16,9 +16,9 @@
 		<result column="NOTE" property="note" />
 	</resultMap>
 	
-	<select id="list" parameterType="deposit" resultMap="depositResultMap">
-		SELECT DEP_NO     
-			  ,DEP_DATE  
+	<select id="list" parameterType="withdraw" resultMap="withdrawResultMap">
+		SELECT WITH_NO     
+			  ,WITH_DATE  
 			  ,CLIENT_NO 
 			  ,ACCOUNT_NO
 			  ,CON_VER   
@@ -26,45 +26,45 @@
 			  ,TAX       
 			  ,USEABLE   
 			  ,NOTE      
-		FROM DEPOSIT
+		FROM WITHDRAW
 		<where>
-			<if test="depNo > 0">
-				AND DEP_NO = #{depNo}
+			<if test="withNo > 0">
+				AND WITH_NO = #{withNo}
 			</if>
-			<if test="depDate != null and depDate != ''">
-				AND DEP_DATE = #{depDate}
+			<if test="withDate != null and withDate != ''">
+				AND WITH_DATE = #{withDate}
 			</if>
 			<if test="clientNo > 0">
 				AND CLIENT_NO = #{clientNo}
 			</if>
 			<if test="first != null and last != null">
-				AND DEP_DATE BETWEEN #{first}
+				AND WITH_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
 			AND USEABLE = #{useable}
 		</where>
-		<if test="depositSortOption != null">
-			<if test="depositSortOption.name() == 'DEP_NO'">
-				ORDER BY DEP_NO ASC
+		<if test="withdrawSortOption != null">
+			<if test="withdrawSortOption.name() == 'NO'">
+				ORDER BY WITH_NO ASC
 			</if>
-			<if test="depositSortOption.name() == 'DEP_DATE'">
-				ORDER BY DEP_DATE DESC
+			<if test="withdrawSortOption.name() == 'WITH_DATE'">
+				ORDER BY WITH_DATE DESC
 			</if>
-			<if test="depositSortOption.name() == 'CLEINT_NO'">
+			<if test="withdrawSortOption.name() == 'CLEINT_NO'">
 				ORDER BY CLEINT_NO ASC
 			</if>
-			<if test="depositSortOption.name() == 'AMMOUNT'">
+			<if test="withdrawSortOption.name() == 'AMMOUNT'">
 				ORDER BY AMMOUNT DESC
 			</if>
-			<if test="depositSortOption.name() == 'TAX'">
+			<if test="withdrawSortOption.name() == 'TAX'">
 				ORDER BY TAX DESC
 			</if>
 		</if>
 	</select>
 	
-	<select id="select" parameterType="deposit" resultMap="depositResultMap">
-		SELECT DEP_NO     
-			  ,DEP_DATE  
+	<select id="select" parameterType="withdraw" resultMap="withdrawResultMap">
+		SELECT WITH_NO     
+			  ,WITH_DATE  
 			  ,CLIENT_NO 
 			  ,ACCOUNT_NO
 			  ,CON_VER   
@@ -72,19 +72,19 @@
 			  ,TAX       
 			  ,USEABLE   
 			  ,NOTE      
-		FROM DEPOSIT
-		WHERE DEP_NO = #{depNo}
+		FROM WITHDRAW
+		WHERE WITH_NO = #{withNo}
 		AND USEABLE = #{useable}
 	</select>
 
-	<insert id="insert" parameterType="deposit">
-		<selectKey keyColumn="DEP_NO" keyProperty="depNo" resultType="int" order="BEFORE">
-			SELECT DEPOSIT_SEQ.NEXTVAL
+	<insert id="insert" parameterType="withdraw">
+		<selectKey keyColumn="WITH_NO" keyProperty="withNo" resultType="int" order="BEFORE">
+			SELECT WITHDRAW_SEQ.NEXTVAL
 			FROM DUAL
 		</selectKey>
-		INSERT INTO DEPOSIT
-			( DEP_NO     
-			  ,DEP_DATE  
+		INSERT INTO WITHDRAW
+			( WITH_NO     
+			  ,WITH_DATE  
 			  ,CLIENT_NO 
 			  ,ACCOUNT_NO
 			  ,CON_VER   
@@ -93,15 +93,15 @@
 			  ,USEABLE   
 			  ,NOTE )
 		VALUES
-			(#{depNo}, SYSDATE, #{clientNo}, #{accountNo}, #{conVer},
+			(#{withNo}, SYSDATE, #{clientNo}, #{accountNo}, #{conVer},
 			 #{ammount}, #{tax}, 1, #{note})
 	</insert>
 
-	<update id="update" parameterType="deposit">
+	<update id="update" parameterType="withdraw">
 		UPDATE 
-		DEPOSIT
+		WITHDRAW
 		SET
-		DEP_DATE   = #{depDate},
+		WITH_DATE   = #{withDate},
 		CLIENT_NO  = #{clientNo},
 		ACCOUNT_NO = #{accountNo},
 		CON_VER    = #{conVer},
@@ -110,15 +110,15 @@
 		USEABLE    = #{useable},
 		NOTE       = #{note}
 		WHERE
-		DEP_NO     = #{depNo}
+		WITH_NO     = #{withNo}
 	</update>
 
-	<update id="delete" parameterType="deposit">
+	<update id="delete" parameterType="withdraw">
 		UPDATE
-		DEPOSIT
+		WITHDRAW
 		SET
 		USEABLE = 0
 		WHERE
-		DEP_NO  = #{depNo}
+		WITH_NO  = #{withNo}
 	</update>
 </mapper>
