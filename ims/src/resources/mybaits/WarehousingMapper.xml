@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ims.sunmoon.persistence.WarehousingMapper">
+	<resultMap id="warehousingResultMap" type="warehousing">
+		<id column="WARE_NO" property="beNo" />
+		<result column="ITEM_NO" property="itemNo" />
+		<result column="WARE_DATE" property="beDate" />
+		<result column="UNIT" property="unit" />
+		<result column="PRICE" property="price" />
+		<result column="DISCOUNT" property="discount" />
+		<result column="CON_VER" property="conVer" />
+		<result column="USEABLE" property="useable" />
+	</resultMap>
+	
+	<select id="list" parameterType="warehousing" resultMap="warehousingResultMap">
+		SELECT WARE_NO
+			  ,ITEM_NO
+			  ,WARE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE
+		FROM BERELEASED
+		<where>
+			<if test="beNo > 0">
+				AND WARE_NO = #{wareNo}
+			</if>
+			<if test="itemNo != null and itemNo != ''">
+				AND UPPER( ACCOUNT_NAME ) LIKE UPPER ( '%' || #{itemNo} || '%' )
+			</if>
+			<if test="beDate != null and beDate != ''">
+				AND WARE_DATE = #{wareDate}
+			</if>
+			<if test="first != null and last != null">
+				AND WARE_DATE BETWEEN #{first}
+				AND #{last} + 1
+			</if>
+			AND USEABLE = #{useable}
+		</where>
+		<if test="warehousingSortOption != null">
+			<if test="warehousingSortOption.name() == 'WARE_NO'">
+				ORDER BY WARE_NO ASC
+			</if>
+			<if test="warehousingSortOption.name() == 'ITEM_NO'">
+				ORDER BY ITEM_NO ASC
+			</if>
+			<if test="warehousingSortOption.name() == 'WARE_DATE'">
+				ORDER BY WARE_DATE DESC
+			</if>
+			<if test="warehousingSortOption.name() == 'UNIT'">
+				ORDER BY UNIT DESC
+			</if>
+			<if test="warehousingSortOption.name() == 'PRICE'">
+				ORDER BY PRICE DESC
+			</if>
+			<if test="warehousingSortOption.name() == 'DISCOUNT'">
+				ORDER BY DISCOUNT ASC
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" parameterType="warehousing" resultMap="warehousingResultMap">
+		SELECT WARE_NO
+			  ,ITEM_NO
+			  ,WARE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE
+		FROM WAREHOUSING
+		WHERE WARE_NO = #{wareNo}
+		AND USEABLE = #{useable}
+	</select>
+
+	<insert id="insert" parameterType="warehousing">
+		<selectKey keyColumn="WARE_NO" keyProperty="wareNo" resultType="int" order="BEFORE">
+			SELECT WAREHOUSING_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO WAREHOUSING
+			( WARE_NO
+			  ,ITEM_NO
+			  ,WARE_DATE
+			  ,UNIT
+			  ,PRICE
+			  ,DISCOUNT
+			  ,CON_VER
+			  ,USEABLE )
+		VALUES
+			(#{wareNo}, #{itemNo}, SYSDATE, #{unit}, #{price},
+			 #{discount}, #{conVer}, 1)
+	</insert>
+
+	<update id="update" parameterType="warehousing">
+		UPDATE 
+		WAREHOUSING
+		SET
+		ITEM_NO   = #{itemNo}, 
+		BE_DATE   = #{wareDate}, 
+		UNIT      = #{unit}, 
+		PRICE     = #{price}, 
+		DISCOUNT  = #{discount},
+		CON_VER   = #{conVer},
+		USEABLE   = #{useable}
+		WHERE
+		WARE_NO     = #{wareNo}
+	</update>
+
+	<update id="delete" parameterType="warehousing">
+		UPDATE
+		WAREHOUSING
+		SET
+		USEABLE = 0
+		WHERE
+		WARE_NO = #{wareNo}
+	</update>
+</mapper>
