@@ -24,13 +24,13 @@
 			  ,DISCOUNT
 			  ,CON_VER
 			  ,USEABLE
-		FROM BERELEASED
+		FROM WAREHOUSING
 		<where>
 			<if test="beNo > 0">
 				AND WARE_NO = #{wareNo}
 			</if>
 			<if test="itemNo != null and itemNo != ''">
-				AND UPPER( ACCOUNT_NAME ) LIKE UPPER ( '%' || #{itemNo} || '%' )
+				AND UPPER( ITEM_NO ) LIKE UPPER ( '%' || #{itemNo} || '%' )
 			</if>
 			<if test="beDate != null and beDate != ''">
 				AND WARE_DATE = #{wareDate}

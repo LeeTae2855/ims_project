@@ -29,10 +29,10 @@
 		FROM DEPOSIT
 		<where>
 			<if test="depNo > 0">
-				AND DEP_NO = #{beNo}
+				AND DEP_NO = #{depNo}
 			</if>
 			<if test="depDate != null and depDate != ''">
-				AND DEP_DATE = #{beDate}
+				AND DEP_DATE = #{depDate}
 			</if>
 			<if test="clientNo > 0">
 				AND CLIENT_NO = #{clientNo}

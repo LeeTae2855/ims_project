@@ -23,6 +23,7 @@
 			  ,BD_DATE
 			  ,QUANTITY
 			  ,AMMOUNT
+			  ,USEABLE
 			  ,CON_VER
 			  ,NOTE
 		FROM BD
@@ -31,7 +32,7 @@
 				AND BD_NO = #{bdNo}
 			</if>
 			<if test="beNo > 0">
-				AND BE_NO = #{model}
+				AND BE_NO = #{beNo}
 			</if>
 			<if test="depNo > 0">
 				AND DEP_NO = #{depNo}
@@ -74,6 +75,7 @@
 			  ,BD_DATE
 			  ,QUANTITY
 			  ,AMMOUNT
+			  ,USEABLE
 			  ,CON_VER
 			  ,NOTE
 		FROM BD

@@ -57,7 +57,7 @@
 				ORDER BY ACCOUNT_NAME ASC
 			</if>
 			<if test="accountSortOption.name() == 'BANK_NAME'">
-				ORDER BY BD_NO ASC
+				ORDER BY BANK_NAME ASC
 			</if>
 		</if>
 	</select>
