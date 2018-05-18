@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.WarehousingSortOption;
+
 // 입고 
 public class Warehousing implements Serializable {
 
@@ -29,6 +31,10 @@ public class Warehousing implements Serializable {
 
     // 사용(조회)가능여부 
     private Integer useable;
+    
+    private Date first;
+    private Date last;
+    private WarehousingSortOption warehousingSortOption;  
 
     public Integer getWareNo() {
         return wareNo;
@@ -94,7 +100,31 @@ public class Warehousing implements Serializable {
         this.useable = useable;
     }
 
-    // Warehousing 모델 복사
+    public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	public WarehousingSortOption getWarehousingSortOption() {
+		return warehousingSortOption;
+	}
+
+	public void setWarehousingSortOption(WarehousingSortOption warehousingSortOption) {
+		this.warehousingSortOption = warehousingSortOption;
+	}
+
+	// Warehousing 모델 복사
     public void CopyData(Warehousing param)
     {
         this.wareNo = param.getWareNo();
@@ -105,5 +135,8 @@ public class Warehousing implements Serializable {
         this.discount = param.getDiscount();
         this.conVer = param.getConVer();
         this.useable = param.getUseable();
+        this.first = param.getFirst();
+        this.last = param.getLast();
+        this.warehousingSortOption = param.getWarehousingSortOption();
     }
 }
