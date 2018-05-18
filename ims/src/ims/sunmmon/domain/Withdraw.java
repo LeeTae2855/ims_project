@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.WithdrawSortOption;
+
 // 출금 
 public class Withdraw implements Serializable {
 
@@ -32,6 +34,10 @@ public class Withdraw implements Serializable {
 
     // 비고 
     private String note;
+    
+    private WithdrawSortOption withdrawSortOption;
+    private Date first;
+    private Date last;
 
     public Integer getWithNo() {
         return withNo;
@@ -105,7 +111,31 @@ public class Withdraw implements Serializable {
         this.note = note;
     }
 
-    // Withdraw 모델 복사
+    public WithdrawSortOption getWithdrawSortOption() {
+		return withdrawSortOption;
+	}
+
+	public void setWithdrawSortOption(WithdrawSortOption withdrawSortOption) {
+		this.withdrawSortOption = withdrawSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Withdraw 모델 복사
     public void CopyData(Withdraw param)
     {
         this.withNo = param.getWithNo();
@@ -117,5 +147,8 @@ public class Withdraw implements Serializable {
         this.tax = param.getTax();
         this.useable = param.getUseable();
         this.note = param.getNote();
+        this.withdrawSortOption = param.getWithdrawSortOption();
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }

@@ -3,6 +3,8 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmmon.util.options.sort.WWSortOption;
+
 // 입고/출금 
 public class WW implements Serializable {
 
@@ -32,6 +34,10 @@ public class WW implements Serializable {
 
     // 비고 
     private String note;
+    
+    private WWSortOption wwSortOption;
+    private Date first;
+    private Date last;
 
     public Integer getWwNo() {
         return wwNo;
@@ -105,7 +111,31 @@ public class WW implements Serializable {
         this.note = note;
     }
 
-    // Ww 모델 복사
+    public WWSortOption getWwSortOption() {
+		return wwSortOption;
+	}
+
+	public void setWwSortOption(WWSortOption wwSortOption) {
+		this.wwSortOption = wwSortOption;
+	}
+
+	public Date getFirst() {
+		return first;
+	}
+
+	public void setFirst(Date first) {
+		this.first = first;
+	}
+
+	public Date getLast() {
+		return last;
+	}
+
+	public void setLast(Date last) {
+		this.last = last;
+	}
+
+	// Ww 모델 복사
     public void CopyData(WW param)
     {
         this.wwNo = param.getWwNo();
@@ -117,5 +147,8 @@ public class WW implements Serializable {
         this.useable = param.getUseable();
         this.conVer = param.getConVer();
         this.note = param.getNote();
+        this.wwSortOption = param.getWwSortOption();
+        this.first = param.getFirst();
+        this.last = param.getLast();
     }
 }
