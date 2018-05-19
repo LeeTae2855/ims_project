@@ -7,127 +7,123 @@ import ims.sunmoon.util.option.sort.TransferslipSortOption;
 
 // 대체거래 
 public class Transferslip implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -5947602189668879720L;
 
-	// 번호 
-    private Integer tsNo;
+	// 번호
+	private Integer tsNo;
 
-    // 거래일 
-    private Date tsDate;
+	// 거래일
+	private Date tsDate;
 
-    // 거래처번호 
-    private Integer clientNo;
+	// 거래처번호
+	private Integer clientNo;
 
-    // 적요 
-    private String conVer;
+	// 적요
+	private String conVer;
 
-    // 차변계정 
-    private Integer debtorNo;
+	// 차변계정
+	private Integer debtorNo;
 
-    // 차변금액 
-    private Integer debtorAmmount;
+	// 차변금액
+	private Integer debtorAmmount;
 
-    // 대변계정 
-    private Integer creditNo;
+	// 대변계정
+	private Integer creditNo;
 
-    // 대변금액 
-    private Integer creditAmmount;
+	// 대변금액
+	private Integer creditAmmount;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    // 비고 
-    private String note;
-    
-    private TransferslipSortOption transferslipSortOption;
-    private Date first;
-    private Date last;
+	// 비고
+	private String note;
 
-    public Integer getTsNo() {
-        return tsNo;
-    }
+	private TransferslipSortOption transferslipSortOption;
+	private Date first;
+	private Date last;
 
-    public void setTsNo(Integer tsNo) {
-        this.tsNo = tsNo;
-    }
+	public Integer getTsNo() {
+		return tsNo;
+	}
 
-    public Date getTsDate() {
-        return tsDate;
-    }
+	public void setTsNo(Integer tsNo) {
+		this.tsNo = tsNo;
+	}
 
-    public void setTsDate(Date tsDate) {
-        this.tsDate = tsDate;
-    }
+	public Date getTsDate() {
+		return tsDate;
+	}
 
-    public Integer getClientNo() {
-        return clientNo;
-    }
+	public void setTsDate(Date tsDate) {
+		this.tsDate = tsDate;
+	}
 
-    public void setClientNo(Integer clientNo) {
-        this.clientNo = clientNo;
-    }
+	public Integer getClientNo() {
+		return clientNo;
+	}
 
-    public String getConVer() {
-        return conVer;
-    }
+	public void setClientNo(Integer clientNo) {
+		this.clientNo = clientNo;
+	}
 
-    public void setConVer(String conVer) {
-        this.conVer = conVer;
-    }
+	public String getConVer() {
+		return conVer;
+	}
 
-    public Integer getDebtorNo() {
-        return debtorNo;
-    }
+	public void setConVer(String conVer) {
+		this.conVer = conVer;
+	}
 
-    public void setDebtorNo(Integer debtorNo) {
-        this.debtorNo = debtorNo;
-    }
+	public Integer getDebtorNo() {
+		return debtorNo;
+	}
 
-    public Integer getDebtorAmmount() {
-        return debtorAmmount;
-    }
+	public void setDebtorNo(Integer debtorNo) {
+		this.debtorNo = debtorNo;
+	}
 
-    public void setDebtorAmmount(Integer debtorAmmount) {
-        this.debtorAmmount = debtorAmmount;
-    }
+	public Integer getDebtorAmmount() {
+		return debtorAmmount;
+	}
 
-    public Integer getCreditNo() {
-        return creditNo;
-    }
+	public void setDebtorAmmount(Integer debtorAmmount) {
+		this.debtorAmmount = debtorAmmount;
+	}
 
-    public void setCreditNo(Integer creditNo) {
-        this.creditNo = creditNo;
-    }
+	public Integer getCreditNo() {
+		return creditNo;
+	}
 
-    public Integer getCreditAmmount() {
-        return creditAmmount;
-    }
+	public void setCreditNo(Integer creditNo) {
+		this.creditNo = creditNo;
+	}
 
-    public void setCreditAmmount(Integer creditAmmount) {
-        this.creditAmmount = creditAmmount;
-    }
+	public Integer getCreditAmmount() {
+		return creditAmmount;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setCreditAmmount(Integer creditAmmount) {
+		this.creditAmmount = creditAmmount;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public TransferslipSortOption getTransferslipSortOption() {
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public TransferslipSortOption getTransferslipSortOption() {
 		return transferslipSortOption;
 	}
 
@@ -152,20 +148,19 @@ public class Transferslip implements Serializable {
 	}
 
 	// Transferslip 모델 복사
-    public void CopyData(Transferslip param)
-    {
-        this.tsNo = param.getTsNo();
-        this.tsDate = param.getTsDate();
-        this.clientNo = param.getClientNo();
-        this.conVer = param.getConVer();
-        this.debtorNo = param.getDebtorNo();
-        this.debtorAmmount = param.getDebtorAmmount();
-        this.creditNo = param.getCreditNo();
-        this.creditAmmount = param.getCreditAmmount();
-        this.useable = param.getUseable();
-        this.note = param.getNote();
-        this.transferslipSortOption = param.getTransferslipSortOption();
-        this.first = param.getFirst();
-        this.last = param.getLast();
-    }
+	public void CopyData(Transferslip param) {
+		this.tsNo = param.getTsNo();
+		this.tsDate = param.getTsDate();
+		this.clientNo = param.getClientNo();
+		this.conVer = param.getConVer();
+		this.debtorNo = param.getDebtorNo();
+		this.debtorAmmount = param.getDebtorAmmount();
+		this.creditNo = param.getCreditNo();
+		this.creditAmmount = param.getCreditAmmount();
+		this.useable = param.getUseable();
+		this.note = param.getNote();
+		this.transferslipSortOption = param.getTransferslipSortOption();
+		this.first = param.getFirst();
+		this.last = param.getLast();
+	}
 }

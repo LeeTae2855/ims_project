@@ -8,105 +8,101 @@ import ims.sunmoon.util.cfc.ItemCFC;
 
 // 품목(재고) 
 public class Item implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 4753338407070233273L;
 
-	// 품목코드 
-    private String itemCode;
+	// 품목코드
+	private String itemCode;
 
-    // 품목구분 (상품, 제품, 부품, 반제품, 세트)
-    private Integer itemCfc;
+	// 품목구분 (상품, 제품, 부품, 반제품, 세트)
+	private Integer itemCfc;
 
-    // 품목명 
-    private String itemName;
+	// 품목명
+	private String itemName;
 
-    // 규격/별칭 
-    private String standard;
+	// 규격/별칭
+	private String standard;
 
-    // 기초재고량 
-    private Integer baseQuantity;
+	// 기초재고량
+	private Integer baseQuantity;
 
-    // 재고상태 
-    private String itemStatus;
+	// 재고상태
+	private String itemStatus;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    // 비고 
-    private String note;
-    
-    private ItemSortOption itemSortOption;
-    private ItemCFC itemCfcOption;
-    private ItemStatus itemStatusOption;
+	// 비고
+	private String note;
 
-    public String getItemCode() {
-        return itemCode;
-    }
+	private ItemSortOption itemSortOption;
+	private ItemCFC itemCfcOption;
+	private ItemStatus itemStatusOption;
 
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
-    }
+	public String getItemCode() {
+		return itemCode;
+	}
 
-    public Integer getItemCfc() {
-        return itemCfc;
-    }
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
+	}
 
-    public void setItemCfc(Integer itemCfc) {
-        this.itemCfc = itemCfc;
-    }
+	public Integer getItemCfc() {
+		return itemCfc;
+	}
 
-    public String getItemName() {
-        return itemName;
-    }
+	public void setItemCfc(Integer itemCfc) {
+		this.itemCfc = itemCfc;
+	}
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
+	public String getItemName() {
+		return itemName;
+	}
 
-    public String getStandard() {
-        return standard;
-    }
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
 
-    public void setStandard(String standard) {
-        this.standard = standard;
-    }
+	public String getStandard() {
+		return standard;
+	}
 
-    public Integer getBaseQuantity() {
-        return baseQuantity;
-    }
+	public void setStandard(String standard) {
+		this.standard = standard;
+	}
 
-    public void setBaseQuantity(Integer baseQuantity) {
-        this.baseQuantity = baseQuantity;
-    }
+	public Integer getBaseQuantity() {
+		return baseQuantity;
+	}
 
-    public String getItemStatus() {
-        return itemStatus;
-    }
+	public void setBaseQuantity(Integer baseQuantity) {
+		this.baseQuantity = baseQuantity;
+	}
 
-    public void setItemStatus(String itemStatus) {
-        this.itemStatus = itemStatus;
-    }
+	public String getItemStatus() {
+		return itemStatus;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setItemStatus(String itemStatus) {
+		this.itemStatus = itemStatus;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public ItemSortOption getItemSortOption() {
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public ItemSortOption getItemSortOption() {
 		return itemSortOption;
 	}
 
@@ -131,18 +127,17 @@ public class Item implements Serializable {
 	}
 
 	// Item 모델 복사
-    public void CopyData(Item param)
-    {
-        this.itemCode = param.getItemCode();
-        this.itemCfc = param.getItemCfc();
-        this.itemName = param.getItemName();
-        this.standard = param.getStandard();
-        this.baseQuantity = param.getBaseQuantity();
-        this.itemStatus = param.getItemStatus();
-        this.useable = param.getUseable();
-        this.note = param.getNote();
-        this.itemSortOption = param.getItemSortOption();
-        this.itemCfcOption = param.getItemCfcOption();
-        this.itemStatusOption = param.getItemStatusOption();
-    }
+	public void CopyData(Item param) {
+		this.itemCode = param.getItemCode();
+		this.itemCfc = param.getItemCfc();
+		this.itemName = param.getItemName();
+		this.standard = param.getStandard();
+		this.baseQuantity = param.getBaseQuantity();
+		this.itemStatus = param.getItemStatus();
+		this.useable = param.getUseable();
+		this.note = param.getNote();
+		this.itemSortOption = param.getItemSortOption();
+		this.itemCfcOption = param.getItemCfcOption();
+		this.itemStatusOption = param.getItemStatusOption();
+	}
 }

@@ -7,116 +7,112 @@ import ims.sunmoon.util.option.sort.DepositSortOption;
 
 // 입금 
 public class Deposit implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -6466091675486781353L;
 
-	// 번호 
-    private Integer depNo;
+	// 번호
+	private Integer depNo;
 
-    // 입금일 
-    private Date depDate;
+	// 입금일
+	private Date depDate;
 
-    // 거래처번호 
-    private Integer clientNo;
+	// 거래처번호
+	private Integer clientNo;
 
-    // 자사계정(계좌) 
-    private Integer accountNo;
+	// 자사계정(계좌)
+	private Integer accountNo;
 
-    // 적요 
-    private String conVer;
+	// 적요
+	private String conVer;
 
-    // 금액 
-    private Integer ammount;
+	// 금액
+	private Integer ammount;
 
-    // 세액 
-    private Integer tax;
+	// 세액
+	private Integer tax;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    // 비고 
-    private String note;
-    
-    private DepositSortOption depositSortOption;
-    private Date first;
-    private Date last;
+	// 비고
+	private String note;
 
-    public Integer getDepNo() {
-        return depNo;
-    }
+	private DepositSortOption depositSortOption;
+	private Date first;
+	private Date last;
 
-    public void setDepNo(Integer depNo) {
-        this.depNo = depNo;
-    }
+	public Integer getDepNo() {
+		return depNo;
+	}
 
-    public Date getDepDate() {
-        return depDate;
-    }
+	public void setDepNo(Integer depNo) {
+		this.depNo = depNo;
+	}
 
-    public void setDepDate(Date depDate) {
-        this.depDate = depDate;
-    }
+	public Date getDepDate() {
+		return depDate;
+	}
 
-    public Integer getClientNo() {
-        return clientNo;
-    }
+	public void setDepDate(Date depDate) {
+		this.depDate = depDate;
+	}
 
-    public void setClientNo(Integer clientNo) {
-        this.clientNo = clientNo;
-    }
+	public Integer getClientNo() {
+		return clientNo;
+	}
 
-    public Integer getAccountNo() {
-        return accountNo;
-    }
+	public void setClientNo(Integer clientNo) {
+		this.clientNo = clientNo;
+	}
 
-    public void setAccountNo(Integer accountNo) {
-        this.accountNo = accountNo;
-    }
+	public Integer getAccountNo() {
+		return accountNo;
+	}
 
-    public String getConVer() {
-        return conVer;
-    }
+	public void setAccountNo(Integer accountNo) {
+		this.accountNo = accountNo;
+	}
 
-    public void setConVer(String conVer) {
-        this.conVer = conVer;
-    }
+	public String getConVer() {
+		return conVer;
+	}
 
-    public Integer getAmmount() {
-        return ammount;
-    }
+	public void setConVer(String conVer) {
+		this.conVer = conVer;
+	}
 
-    public void setAmmount(Integer ammount) {
-        this.ammount = ammount;
-    }
+	public Integer getAmmount() {
+		return ammount;
+	}
 
-    public Integer getTax() {
-        return tax;
-    }
+	public void setAmmount(Integer ammount) {
+		this.ammount = ammount;
+	}
 
-    public void setTax(Integer tax) {
-        this.tax = tax;
-    }
+	public Integer getTax() {
+		return tax;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setTax(Integer tax) {
+		this.tax = tax;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public DepositSortOption getDepositSortOption() {
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public DepositSortOption getDepositSortOption() {
 		return depositSortOption;
 	}
 
@@ -141,19 +137,18 @@ public class Deposit implements Serializable {
 	}
 
 	// Deposit 모델 복사
-    public void CopyData(Deposit param)
-    {
-        this.depNo = param.getDepNo();
-        this.depDate = param.getDepDate();
-        this.clientNo = param.getClientNo();
-        this.accountNo = param.getAccountNo();
-        this.conVer = param.getConVer();
-        this.ammount = param.getAmmount();
-        this.tax = param.getTax();
-        this.useable = param.getUseable();
-        this.note = param.getNote();
-        this.depositSortOption = param.getDepositSortOption();
-        this.first = param.getFirst();
-        this.last = param.getLast();
-    }
+	public void CopyData(Deposit param) {
+		this.depNo = param.getDepNo();
+		this.depDate = param.getDepDate();
+		this.clientNo = param.getClientNo();
+		this.accountNo = param.getAccountNo();
+		this.conVer = param.getConVer();
+		this.ammount = param.getAmmount();
+		this.tax = param.getTax();
+		this.useable = param.getUseable();
+		this.note = param.getNote();
+		this.depositSortOption = param.getDepositSortOption();
+		this.first = param.getFirst();
+		this.last = param.getLast();
+	}
 }

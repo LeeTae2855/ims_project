@@ -7,116 +7,112 @@ import ims.sunmoon.util.option.sort.WWSortOption;
 
 // 입고/출금 
 public class WW implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 6034568100243562754L;
 
-	// 번호 
-    private Integer wwNo;
+	// 번호
+	private Integer wwNo;
 
-    // 입고번호 
-    private Integer wareNo;
+	// 입고번호
+	private Integer wareNo;
 
-    // 출금번호 
-    private Integer withNo;
+	// 출금번호
+	private Integer withNo;
 
-    // 거래완료일 
-    private Date wwDate;
+	// 거래완료일
+	private Date wwDate;
 
-    // 매입수량 
-    private Integer quantity;
+	// 매입수량
+	private Integer quantity;
 
-    // 금액합계 
-    private Integer ammount;
+	// 금액합계
+	private Integer ammount;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    // 적요 
-    private String conVer;
+	// 적요
+	private String conVer;
 
-    // 비고 
-    private String note;
-    
-    private WWSortOption wwSortOption;
-    private Date first;
-    private Date last;
+	// 비고
+	private String note;
 
-    public Integer getWwNo() {
-        return wwNo;
-    }
+	private WWSortOption wwSortOption;
+	private Date first;
+	private Date last;
 
-    public void setWwNo(Integer wwNo) {
-        this.wwNo = wwNo;
-    }
+	public Integer getWwNo() {
+		return wwNo;
+	}
 
-    public Integer getWareNo() {
-        return wareNo;
-    }
+	public void setWwNo(Integer wwNo) {
+		this.wwNo = wwNo;
+	}
 
-    public void setWareNo(Integer wareNo) {
-        this.wareNo = wareNo;
-    }
+	public Integer getWareNo() {
+		return wareNo;
+	}
 
-    public Integer getWithNo() {
-        return withNo;
-    }
+	public void setWareNo(Integer wareNo) {
+		this.wareNo = wareNo;
+	}
 
-    public void setWithNo(Integer withNo) {
-        this.withNo = withNo;
-    }
+	public Integer getWithNo() {
+		return withNo;
+	}
 
-    public Date getWwDate() {
-        return wwDate;
-    }
+	public void setWithNo(Integer withNo) {
+		this.withNo = withNo;
+	}
 
-    public void setWwDate(Date wwDate) {
-        this.wwDate = wwDate;
-    }
+	public Date getWwDate() {
+		return wwDate;
+	}
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+	public void setWwDate(Date wwDate) {
+		this.wwDate = wwDate;
+	}
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	public Integer getQuantity() {
+		return quantity;
+	}
 
-    public Integer getAmmount() {
-        return ammount;
-    }
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
-    public void setAmmount(Integer ammount) {
-        this.ammount = ammount;
-    }
+	public Integer getAmmount() {
+		return ammount;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setAmmount(Integer ammount) {
+		this.ammount = ammount;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public String getConVer() {
-        return conVer;
-    }
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
 
-    public void setConVer(String conVer) {
-        this.conVer = conVer;
-    }
+	public String getConVer() {
+		return conVer;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setConVer(String conVer) {
+		this.conVer = conVer;
+	}
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public WWSortOption getWwSortOption() {
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public WWSortOption getWwSortOption() {
 		return wwSortOption;
 	}
 
@@ -141,19 +137,18 @@ public class WW implements Serializable {
 	}
 
 	// Ww 모델 복사
-    public void CopyData(WW param)
-    {
-        this.wwNo = param.getWwNo();
-        this.wareNo = param.getWareNo();
-        this.withNo = param.getWithNo();
-        this.wwDate = param.getWwDate();
-        this.quantity = param.getQuantity();
-        this.ammount = param.getAmmount();
-        this.useable = param.getUseable();
-        this.conVer = param.getConVer();
-        this.note = param.getNote();
-        this.wwSortOption = param.getWwSortOption();
-        this.first = param.getFirst();
-        this.last = param.getLast();
-    }
+	public void CopyData(WW param) {
+		this.wwNo = param.getWwNo();
+		this.wareNo = param.getWareNo();
+		this.withNo = param.getWithNo();
+		this.wwDate = param.getWwDate();
+		this.quantity = param.getQuantity();
+		this.ammount = param.getAmmount();
+		this.useable = param.getUseable();
+		this.conVer = param.getConVer();
+		this.note = param.getNote();
+		this.wwSortOption = param.getWwSortOption();
+		this.first = param.getFirst();
+		this.last = param.getLast();
+	}
 }

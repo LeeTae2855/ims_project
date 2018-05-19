@@ -7,105 +7,101 @@ import ims.sunmoon.util.option.sort.BereleasedSortOption;
 
 // 출고 
 public class Bereleased implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -2885921527723339404L;
 
-	// 번호 
-    private Integer beNo;
+	// 번호
+	private Integer beNo;
 
-    // 품목 
-    private String itemNo;
+	// 품목
+	private String itemNo;
 
-    // 출고예정일 
-    private Date beDate;
+	// 출고예정일
+	private Date beDate;
 
-    // 출고단위 
-    private Integer unit;
+	// 출고단위
+	private Integer unit;
 
-    // 매출단가 
-    private Integer price;
+	// 매출단가
+	private Integer price;
 
-    // 할인금액 
-    private Integer discount;
+	// 할인금액
+	private Integer discount;
 
-    // 적요 
-    private String conVer;
+	// 적요
+	private String conVer;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    private BereleasedSortOption bereleasedSortOption;
-    private Date first;
-    private Date last;
-    
-    public Integer getBeNo() {
-        return beNo;
-    }
+	private BereleasedSortOption bereleasedSortOption;
+	private Date first;
+	private Date last;
 
-    public void setBeNo(Integer beNo) {
-        this.beNo = beNo;
-    }
+	public Integer getBeNo() {
+		return beNo;
+	}
 
-    public String getItemNo() {
-        return itemNo;
-    }
+	public void setBeNo(Integer beNo) {
+		this.beNo = beNo;
+	}
 
-    public void setItemNo(String itemNo) {
-        this.itemNo = itemNo;
-    }
+	public String getItemNo() {
+		return itemNo;
+	}
 
-    public Date getBeDate() {
-        return beDate;
-    }
+	public void setItemNo(String itemNo) {
+		this.itemNo = itemNo;
+	}
 
-    public void setBeDate(Date beDate) {
-        this.beDate = beDate;
-    }
+	public Date getBeDate() {
+		return beDate;
+	}
 
-    public Integer getUnit() {
-        return unit;
-    }
+	public void setBeDate(Date beDate) {
+		this.beDate = beDate;
+	}
 
-    public void setUnit(Integer unit) {
-        this.unit = unit;
-    }
+	public Integer getUnit() {
+		return unit;
+	}
 
-    public Integer getPrice() {
-        return price;
-    }
+	public void setUnit(Integer unit) {
+		this.unit = unit;
+	}
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
+	public Integer getPrice() {
+		return price;
+	}
 
-    public Integer getDiscount() {
-        return discount;
-    }
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
 
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
-    }
+	public Integer getDiscount() {
+		return discount;
+	}
 
-    public String getConVer() {
-        return conVer;
-    }
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
 
-    public void setConVer(String conVer) {
-        this.conVer = conVer;
-    }
+	public String getConVer() {
+		return conVer;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setConVer(String conVer) {
+		this.conVer = conVer;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public BereleasedSortOption getBereleasedSortOption() {
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
+
+	public BereleasedSortOption getBereleasedSortOption() {
 		return bereleasedSortOption;
 	}
 
@@ -130,18 +126,17 @@ public class Bereleased implements Serializable {
 	}
 
 	// Bereleased 모델 복사
-    public void CopyData(Bereleased param)
-    {
-        this.beNo = param.getBeNo();
-        this.itemNo = param.getItemNo();
-        this.beDate = param.getBeDate();
-        this.unit = param.getUnit();
-        this.price = param.getPrice();
-        this.discount = param.getDiscount();
-        this.conVer = param.getConVer();
-        this.useable = param.getUseable();
-        this.bereleasedSortOption = param.bereleasedSortOption;
-        this.first = param.getFirst();
-        this.last = param.getLast();
-    }
+	public void CopyData(Bereleased param) {
+		this.beNo = param.getBeNo();
+		this.itemNo = param.getItemNo();
+		this.beDate = param.getBeDate();
+		this.unit = param.getUnit();
+		this.price = param.getPrice();
+		this.discount = param.getDiscount();
+		this.conVer = param.getConVer();
+		this.useable = param.getUseable();
+		this.bereleasedSortOption = param.bereleasedSortOption;
+		this.first = param.getFirst();
+		this.last = param.getLast();
+	}
 }
