@@ -25,9 +25,7 @@ public class AccountController {
 
 	@RequestMapping(value = "/list")
 	public ModelAndView listGet(HttpServletRequest request) throws Exception {
-		Account find = new Account();
-		find.setUseable(1);
-		List<Account> listAccount = accountService.list(find);
+		List<Account> listAccount = accountService.list(new Account());
 
 		ModelAndView modelAndView = new ModelAndView("/account/list");
 		modelAndView.addObject("listAccount", listAccount);
@@ -36,27 +34,8 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public ModelAndView listPost(AccountFindOption findOption, AccountSortOption sortOption, String keyword, HttpServletRequest request) throws Exception {
-		Account find = new Account();
-		find.setUseable(1);
-		find.setAccountSortOption(sortOption);
-		
-		switch (findOption) {
-		case NO:
-			find.setAccountNo(Integer.parseInt(keyword));
-			break;
-		case NAME:
-			find.setAccountName(keyword);
-			break;
-		case BANK_NAME:
-			find.setBankName(keyword);
-			break;
-		case CFC:
-			find.setAccountCfc(keyword);
-			break;
-		}
-		
-		List<Account> listAccount = accountService.list(find);
+	public ModelAndView listPost(String keyword, HttpServletRequest request) throws Exception {
+		List<Account> listAccount = accountService.list(new Account(), keyword);
 
 		ModelAndView modelAndView = new ModelAndView("/account/list");
 		modelAndView.addObject("listAccount", listAccount);
@@ -85,14 +64,8 @@ public class AccountController {
 
 	@RequestMapping(value = "/edit/{accountNo}", method = RequestMethod.GET)
 	public ModelAndView editGet(@PathVariable String accountNo, HttpServletRequest request) throws Exception {
-		Account find = new Account();
-		find.setAccountNo(Integer.parseInt(accountNo));
-		
-		Account result = new Account();
-		result.CopyData(this.accountService.view(find));
-
 		ModelAndView modelAndView = new ModelAndView("/account/edit");
-		modelAndView.addObject("account", result);
+		modelAndView.addObject("account", this.accountService.view(accountNo));
 
 		return modelAndView;
 	}
@@ -113,14 +86,8 @@ public class AccountController {
 
 	@RequestMapping(value = "/view/{accountNo}", method = RequestMethod.GET)
 	public ModelAndView view(@PathVariable String accountNo, HttpServletRequest request) throws Exception {
-		Account find = new Account();
-		find.setAccountNo(Integer.parseInt(accountNo));
-		
-		Account result = new Account();
-		result.CopyData(this.accountService.view(find));
-
 		ModelAndView modelAndView = new ModelAndView("/account/view");
-		modelAndView.addObject("account", result);
+		modelAndView.addObject("account", this.accountService.view(accountNo));
 
 		return modelAndView;
 	}

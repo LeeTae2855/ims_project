@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 
+import ims.sunmoon.util.option.find.AccountFindOption;
 import ims.sunmoon.util.option.sort.AccountSortOption;
 import ims.sunmoon.util.cfc.AccountCFC;
 
@@ -37,6 +38,7 @@ public class Account implements Serializable {
     
     private AccountSortOption accountSortOption;
     private AccountCFC accountCfcOption;
+    private AccountFindOption findOption;
 
     public Integer getAccountNo() {
         return accountNo;
@@ -126,6 +128,14 @@ public class Account implements Serializable {
 		this.accountCfcOption = accountCfcOption;
 	}
 
+	public AccountFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(AccountFindOption findOption) {
+		this.findOption = findOption;
+	}
+
 	// Account 모델 복사
     public void CopyData(Account param)
     {
@@ -140,5 +150,6 @@ public class Account implements Serializable {
         this.note = param.getNote();
         this.accountSortOption = param.getAccountSortOption();
         this.accountCfcOption = param.getAccountCfcOption();
+        this.findOption = param.getFindOption();
     }
 }
