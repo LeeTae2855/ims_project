@@ -5,7 +5,12 @@ import java.io.Serializable;
 // 계정(로그인아이디) 
 public class LoginInfo implements Serializable {
 
-    // 아이디 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1791786387681141437L;
+
+	// 아이디 
     private String loginId;
 
     // 비밀번호 

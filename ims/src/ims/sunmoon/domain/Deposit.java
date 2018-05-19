@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.DepositSortOption;
 // 입금 
 public class Deposit implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6466091675486781353L;
+
+	// 번호 
     private Integer depNo;
 
     // 입금일 

@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.WithdrawSortOption;
 // 출금 
 public class Withdraw implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2992659377697548830L;
+
+	// 번호 
     private Integer withNo;
 
     // 출금일 

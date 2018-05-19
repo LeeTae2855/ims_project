@@ -9,7 +9,12 @@ import ims.sunmoon.util.cfc.AccountCFC;
 // 계좌(계정 및 장부) 
 public class Account implements Serializable {
 
-    // 계좌번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6583655179180632563L;
+
+	// 계좌번호 
     private Integer accountNo;
 
     // 계정명 

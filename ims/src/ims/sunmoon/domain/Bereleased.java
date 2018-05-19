@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.BereleasedSortOption;
 // 출고 
 public class Bereleased implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2885921527723339404L;
+
+	// 번호 
     private Integer beNo;
 
     // 품목 
