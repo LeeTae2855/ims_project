@@ -6,114 +6,110 @@ import ims.sunmoon.util.option.sort.ManagerSortOption;
 
 // 담당자 
 public class Manager implements Serializable {
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 4402120488709154294L;
 
-	// 번호 
-    private Integer managerNo;
+	// 번호
+	private Integer managerNo;
 
-    // 담당자명 
-    private String managerName;
+	// 담당자명
+	private String managerName;
 
-    // 부서명 
-    private String depName;
+	// 부서명
+	private String depName;
 
-    // 전화(집) 
-    private String telephone;
+	// 전화(집)
+	private String telephone;
 
-    // 휴대전화 
-    private Integer cellphone;
+	// 휴대전화
+	private Integer cellphone;
 
-    // 이메일 
-    private String email;
+	// 이메일
+	private String email;
 
-    // 팩스 
-    private Integer fax;
+	// 팩스
+	private Integer fax;
 
-    // 사용(조회)가능여부 
-    private Integer useable;
+	// 사용(조회)가능여부
+	private Integer useable;
 
-    // 비고 
-    private String note;
-    
-    private ManagerSortOption managerSortOption;
+	// 비고
+	private String note;
 
-    public Integer getManagerNo() {
-        return managerNo;
-    }
+	private ManagerSortOption managerSortOption;
 
-    public void setManagerNo(Integer managerNo) {
-        this.managerNo = managerNo;
-    }
+	public Integer getManagerNo() {
+		return managerNo;
+	}
 
-    public String getManagerName() {
-        return managerName;
-    }
+	public void setManagerNo(Integer managerNo) {
+		this.managerNo = managerNo;
+	}
 
-    public void setManagerName(String managerName) {
-        this.managerName = managerName;
-    }
+	public String getManagerName() {
+		return managerName;
+	}
 
-    public String getDepName() {
-        return depName;
-    }
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
 
-    public void setDepName(String depName) {
-        this.depName = depName;
-    }
+	public String getDepName() {
+		return depName;
+	}
 
-    public String getTelephone() {
-        return telephone;
-    }
+	public void setDepName(String depName) {
+		this.depName = depName;
+	}
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
+	public String getTelephone() {
+		return telephone;
+	}
 
-    public Integer getCellphone() {
-        return cellphone;
-    }
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
 
-    public void setCellphone(Integer cellphone) {
-        this.cellphone = cellphone;
-    }
+	public Integer getCellphone() {
+		return cellphone;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setCellphone(Integer cellphone) {
+		this.cellphone = cellphone;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public Integer getFax() {
-        return fax;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setFax(Integer fax) {
-        this.fax = fax;
-    }
+	public Integer getFax() {
+		return fax;
+	}
 
-    public Integer getUseable() {
-        return useable;
-    }
+	public void setFax(Integer fax) {
+		this.fax = fax;
+	}
 
-    public void setUseable(Integer useable) {
-        this.useable = useable;
-    }
+	public Integer getUseable() {
+		return useable;
+	}
 
-    public String getNote() {
-        return note;
-    }
+	public void setUseable(Integer useable) {
+		this.useable = useable;
+	}
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+	public String getNote() {
+		return note;
+	}
 
-    public ManagerSortOption getManagerSortOption() {
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public ManagerSortOption getManagerSortOption() {
 		return managerSortOption;
 	}
 
@@ -122,17 +118,16 @@ public class Manager implements Serializable {
 	}
 
 	// Manager 모델 복사
-    public void CopyData(Manager param)
-    {
-        this.managerNo = param.getManagerNo();
-        this.managerName = param.getManagerName();
-        this.depName = param.getDepName();
-        this.telephone = param.getTelephone();
-        this.cellphone = param.getCellphone();
-        this.email = param.getEmail();
-        this.fax = param.getFax();
-        this.useable = param.getUseable();
-        this.note = param.getNote();
-        this.managerSortOption = param.getManagerSortOption();
-    }
+	public void CopyData(Manager param) {
+		this.managerNo = param.getManagerNo();
+		this.managerName = param.getManagerName();
+		this.depName = param.getDepName();
+		this.telephone = param.getTelephone();
+		this.cellphone = param.getCellphone();
+		this.email = param.getEmail();
+		this.fax = param.getFax();
+		this.useable = param.getUseable();
+		this.note = param.getNote();
+		this.managerSortOption = param.getManagerSortOption();
+	}
 }
