@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.WWSortOption;
 // 입고/출금 
 public class WW implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6034568100243562754L;
+
+	// 번호 
     private Integer wwNo;
 
     // 입고번호 

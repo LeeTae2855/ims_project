@@ -9,7 +9,12 @@ import ims.sunmoon.util.cfc.ItemCFC;
 // 품목(재고) 
 public class Item implements Serializable {
 
-    // 품목코드 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4753338407070233273L;
+
+	// 품목코드 
     private String itemCode;
 
     // 품목구분 (상품, 제품, 부품, 반제품, 세트)

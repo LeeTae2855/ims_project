@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.WarehousingSortOption;
 // 입고 
 public class Warehousing implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7255749714589554695L;
+
+	// 번호 
     private Integer wareNo;
 
     // 품목 

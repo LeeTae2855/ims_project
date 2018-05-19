@@ -7,7 +7,12 @@ import ims.sunmoon.util.option.sort.ClientSortOption;
 // 거래처(회사) 
 public class Client implements Serializable {
 
-    // 거래처번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1681075868260788039L;
+
+	// 거래처번호 
     private Integer clientNo;
 
     // 거래처명 

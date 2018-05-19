@@ -7,7 +7,12 @@ import ims.sunmoon.util.option.sort.ManagerSortOption;
 // 담당자 
 public class Manager implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4402120488709154294L;
+
+	// 번호 
     private Integer managerNo;
 
     // 담당자명 

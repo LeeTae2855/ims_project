@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.BDSortOption;
 // 출고/입금 
 public class BD implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8387324458241293413L;
+
+	// 번호 
     private Integer bdNo;
 
     // 출고번호 

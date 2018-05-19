@@ -8,7 +8,12 @@ import ims.sunmoon.util.option.sort.TransferslipSortOption;
 // 대체거래 
 public class Transferslip implements Serializable {
 
-    // 번호 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5947602189668879720L;
+
+	// 번호 
     private Integer tsNo;
 
     // 거래일 
