@@ -1,5 +1,6 @@
 package ims.sunmoon.service.deposit;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.util.option.sort.DepositSortOption;
 import ims.sunmoon.domain.Deposit;
 import ims.sunmoon.persistance.DepositMapper;
 
@@ -15,10 +15,19 @@ import ims.sunmoon.persistance.DepositMapper;
 public class DepositServiceImpl implements DepositService {
 	@Resource
 	private DepositMapper depositMapper;
-	
+
 	@Override
 	public List<Deposit> list(Deposit deposit) {
+		deposit.setUseable(1);
 		return this.depositMapper.list(deposit);
+	}
+
+	@Override
+	public List<Deposit> list(Date first, Date last) {
+		Deposit find = new Deposit();
+		find.setFirst(first);
+		find.setLast(last);
+		return this.list(find);
 	}
 
 	@Override
@@ -33,6 +42,13 @@ public class DepositServiceImpl implements DepositService {
 	}
 
 	@Override
+	public Deposit view(String depNo) {
+		Deposit find = new Deposit();
+		find.setDepNo(Integer.parseInt(depNo));
+		return this.view(find);
+	}
+
+	@Override
 	@Transactional
 	public void edit(Deposit deposit) {
 		this.depositMapper.update(deposit);
@@ -40,7 +56,7 @@ public class DepositServiceImpl implements DepositService {
 
 	@Override
 	@Transactional
-	public void remove(String depositNo) {
-		this.depositMapper.delete(depositNo);
+	public void remove(String depNo) {
+		this.depositMapper.delete(depNo);
 	}
 }

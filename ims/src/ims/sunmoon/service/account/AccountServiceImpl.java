@@ -23,7 +23,6 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public List<Account> list(Account account, String keyword) {
-		account.setUseable(1);
 		if (account.getFindOption() != null) {
 			switch (account.getFindOption()) {
 			case NO:
@@ -40,8 +39,7 @@ public class AccountServiceImpl implements AccountService {
 				break;
 			}
 		}
-		
-		return this.accountMapper.list(account);
+		return this.list(account);
 	}
 
 	@Override
