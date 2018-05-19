@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.util.option.sort.AccountSortOption;
 import ims.sunmoon.domain.Account;
 import ims.sunmoon.persistance.AccountMapper;
 
@@ -18,6 +17,30 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public List<Account> list(Account account) {
+		account.setUseable(1);
+		return this.accountMapper.list(account);
+	}
+	
+	@Override
+	public List<Account> list(Account account, String keyword) {
+		account.setUseable(1);
+		if (account.getFindOption() != null) {
+			switch (account.getFindOption()) {
+			case NO:
+				account.setAccountNo(Integer.parseInt(keyword));
+				break;
+			case NAME:
+				account.setAccountName(keyword);
+				break;
+			case BANK_NAME:
+				account.setBankName(keyword);
+				break;
+			case CFC:
+				account.setAccountCfc(keyword);
+				break;
+			}
+		}
+		
 		return this.accountMapper.list(account);
 	}
 
@@ -29,6 +52,13 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account view(Account account) {
+		return this.accountMapper.select(account);
+	}
+	
+	@Override
+	public Account view(String accountNo) {
+		Account account = new Account();
+		account.setAccountNo(Integer.parseInt(accountNo));
 		return this.accountMapper.select(account);
 	}
 
