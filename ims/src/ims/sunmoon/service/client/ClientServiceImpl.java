@@ -14,9 +14,10 @@ import ims.sunmoon.persistance.ClientMapper;
 public class ClientServiceImpl implements ClientService {
 	@Resource
 	private ClientMapper clientMapper;
-	
+
 	@Override
 	public List<Client> list(Client client) {
+		client.setUseable(1);
 		return this.clientMapper.list(client);
 	}
 
@@ -29,6 +30,14 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public Client view(Client client) {
 		return this.clientMapper.select(client);
+	}
+
+	@Override
+	public Client view(String clientNo) {
+		Client find = new Client();
+		find.setUseable(1);
+		find.setClientNo(Integer.parseInt(clientNo));
+		return this.clientMapper.select(find);
 	}
 
 	@Override

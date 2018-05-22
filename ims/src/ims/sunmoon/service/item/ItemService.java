@@ -6,10 +6,12 @@ import ims.sunmoon.domain.Item;
 
 public interface ItemService {
 	public List<Item> list(Item item);
-	
+
 	public void add(Item item);
 
 	public Item view(Item item);
+
+	public Item view(String itemCode);
 
 	public void edit(Item item);
 

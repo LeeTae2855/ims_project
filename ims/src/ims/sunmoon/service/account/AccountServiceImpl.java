@@ -14,13 +14,13 @@ import ims.sunmoon.persistance.AccountMapper;
 public class AccountServiceImpl implements AccountService {
 	@Resource
 	private AccountMapper accountMapper;
-	
+
 	@Override
 	public List<Account> list(Account account) {
 		account.setUseable(1);
 		return this.accountMapper.list(account);
 	}
-	
+
 	@Override
 	public List<Account> list(Account account, String keyword) {
 		if (account.getFindOption() != null) {
@@ -52,12 +52,12 @@ public class AccountServiceImpl implements AccountService {
 	public Account view(Account account) {
 		return this.accountMapper.select(account);
 	}
-	
+
 	@Override
 	public Account view(String accountNo) {
-		Account account = new Account();
-		account.setAccountNo(Integer.parseInt(accountNo));
-		return this.accountMapper.select(account);
+		Account find = new Account();
+		find.setAccountNo(Integer.parseInt(accountNo));
+		return this.view(find);
 	}
 
 	@Override

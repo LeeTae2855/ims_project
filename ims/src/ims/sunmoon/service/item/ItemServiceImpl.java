@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.util.option.sort.ItemSortOption;
 import ims.sunmoon.domain.Item;
 import ims.sunmoon.persistance.ItemMapper;
 
@@ -15,9 +14,10 @@ import ims.sunmoon.persistance.ItemMapper;
 public class ItemServiceImpl implements ItemService {
 	@Resource
 	private ItemMapper itemMapper;
-	
+
 	@Override
 	public List<Item> list(Item item) {
+		item.setUseable(1);
 		return this.itemMapper.list(item);
 	}
 
@@ -30,6 +30,13 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public Item view(Item item) {
 		return this.itemMapper.select(item);
+	}
+
+	@Override
+	public Item view(String itemCode) {
+		Item find = new Item();
+		find.setItemCode(itemCode);
+		return this.itemMapper.select(find);
 	}
 
 	@Override

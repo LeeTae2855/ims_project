@@ -7,6 +7,8 @@ import ims.sunmoon.domain.Deposit;
 
 public interface DepositService {
 	public List<Deposit> list(Deposit deposit);
+	
+	public List<Deposit> list(Deposit deposit, String keyword);
 
 	public List<Deposit> list(Date first, Date last);
 

@@ -68,6 +68,61 @@
 		</if>
 	</select>
 	
+	<select id="findItem" parameterType="bd" resultMap="bdResultMap">
+        SELECT B.BD_NO
+		      ,B.BE_NO
+		      ,B.DEP_NO
+		      ,B.BD_DATE
+		      ,B.QUANTITY
+		      ,B.AMMOUNT
+		      ,B.USEABLE
+		      ,B.CON_VER
+		      ,B.NOTE
+		      ,BE.BE_NO
+		      ,I.ITEM_CODE
+		      ,I.ITEM_NAME
+       FROM BD B
+       LEFT OUTER JOIN BERELEASED BE
+       ON B.BE_NO = BE.BE_NO
+       LEFT OUTER JOIN ITEM I
+       ON BE.ITEM_NO = I.ITEM_CODE
+       <where>
+           <if test="findOption != null">
+               <if test="findOption().name == 'ITEM_CODE'">
+                   AND UPPER( I.ITEM_CODE ) LIKE UPPER ( '%' || #{keyword} || '%' )
+               </if>
+               <if test="findOption().name == 'ITEM_NAME'"> 
+                   AND UPPER( I.ITEM_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+               </if>
+            </if>
+            AND B.USEABLE = #{useable}
+       </where>
+       ORDER BY BD_DATE DESC
+	</select>
+	
+	<select id="findClient">
+          SELECT B.BD_NO
+		       ,B.BE_NO
+		       ,B.DEP_NO
+		       ,B.BD_DATE
+		       ,B.QUANTITY
+		       ,B.AMMOUNT
+		       ,B.USEABLE
+		       ,B.CON_VER
+		       ,B.NOTE
+               ,D.DEP_NO
+		       ,C.CLIENT_NO
+		       ,C.CLIENT_NAME
+         FROM BD B
+         LEFT OUTER JOIN DEPOSIT D
+         ON B.DEP_NO = D.DEP_NO
+         LEFT OUTER JOIN CLIENT C
+         ON D.CLIENT_NO = C.CLIENT_NO
+         WHERE C.CLIENT_NAME = #{keyword};
+         AND B.USEABLE = #{useable}
+         ORDER BY BD_DATE;
+	</select>
+	
 	<select id="select" parameterType="bd" resultMap="bdResultMap">
 		SELECT BD_NO
 			  ,BE_NO

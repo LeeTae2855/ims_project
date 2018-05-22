@@ -8,18 +8,44 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ims.sunmoon.domain.Client;
 import ims.sunmoon.domain.Deposit;
 import ims.sunmoon.persistance.DepositMapper;
+import ims.sunmoon.service.client.ClientService;
 
 @Service
 public class DepositServiceImpl implements DepositService {
 	@Resource
 	private DepositMapper depositMapper;
+	@Resource
+	private ClientService clientService;
 
 	@Override
 	public List<Deposit> list(Deposit deposit) {
 		deposit.setUseable(1);
 		return this.depositMapper.list(deposit);
+	}
+
+	@Override
+	public List<Deposit> list(Deposit deposit, String keyword) {
+		if (deposit.getFindOption() != null) {
+			Client find = new Client();
+			switch (deposit.getFindOption()) {
+			case DEP_NO:
+				deposit.setDepNo(Integer.parseInt(keyword));
+				break;
+
+			case CLEINT_NO:
+				deposit.setClientNo(this.clientService.view(keyword).getClientNo());
+				break;
+
+			case CLIENT_NAME:
+				find.setClientName(keyword);
+				deposit.setClientNo(this.clientService.view(find).getClientNo());
+				break;
+			}
+		}
+		return this.list(deposit);
 	}
 
 	@Override

@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.BDFindOption;
 import ims.sunmoon.util.option.sort.BDSortOption;
 
 // 출고/입금 
@@ -37,8 +38,10 @@ public class BD implements Serializable {
 	private String note;
 
 	private BDSortOption bdSortOption;
+	private BDFindOption findOption;
 	private Date first;
 	private Date last;
+	private String keyword;
 
 	public Integer getBdNo() {
 		return bdNo;
@@ -136,6 +139,22 @@ public class BD implements Serializable {
 		this.last = last;
 	}
 
+	public BDFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(BDFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Bd 모델 복사
 	public void CopyData(BD param) {
 		this.bdNo = param.getBdNo();
@@ -150,5 +169,7 @@ public class BD implements Serializable {
 		this.bdSortOption = param.getBdSortOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }
