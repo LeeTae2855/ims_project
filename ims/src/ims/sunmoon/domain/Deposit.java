@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.DepositFindOption;
 import ims.sunmoon.util.option.sort.DepositSortOption;
 
 // 입금 
@@ -37,6 +38,7 @@ public class Deposit implements Serializable {
 	private String note;
 
 	private DepositSortOption depositSortOption;
+	private DepositFindOption findOption;
 	private Date first;
 	private Date last;
 
@@ -136,6 +138,14 @@ public class Deposit implements Serializable {
 		this.last = last;
 	}
 
+	public DepositFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(DepositFindOption findOption) {
+		this.findOption = findOption;
+	}
+
 	// Deposit 모델 복사
 	public void CopyData(Deposit param) {
 		this.depNo = param.getDepNo();
@@ -148,6 +158,7 @@ public class Deposit implements Serializable {
 		this.useable = param.getUseable();
 		this.note = param.getNote();
 		this.depositSortOption = param.getDepositSortOption();
+		this.findOption = param.getFindOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
 	}

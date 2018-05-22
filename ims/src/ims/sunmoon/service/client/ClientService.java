@@ -10,6 +10,8 @@ public interface ClientService {
 	public void add(Client client);
 
 	public Client view(Client client);
+	
+	public Client view(String clientNo);
 
 	public void edit(Client client);
 
