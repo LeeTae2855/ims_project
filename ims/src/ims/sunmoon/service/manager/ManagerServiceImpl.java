@@ -14,10 +14,17 @@ import ims.sunmoon.persistance.ManagerMapper;
 public class ManagerServiceImpl implements ManagerService {
 	@Resource
 	private ManagerMapper managerMapper;
-	
+
 	@Override
 	public List<Manager> list(Manager manager) {
+		manager.setUseable(1);
 		return this.managerMapper.list(manager);
+	}
+
+	@Override
+	public List<Manager> list(Manager manager, String keyword) {
+		// TODO: 검색옵션에 따라 로직 구현
+		return null;
 	}
 
 	@Override
@@ -28,7 +35,15 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public Manager view(Manager manager) {
+		manager.setUseable(1);
 		return this.managerMapper.select(manager);
+	}
+
+	@Override
+	public Manager view(String managerNo) {
+		Manager find = new Manager();
+		find.setManagerNo(Integer.parseInt(managerNo));
+		return this.view(find);
 	}
 
 	@Override

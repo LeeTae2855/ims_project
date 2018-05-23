@@ -1,5 +1,6 @@
 package ims.sunmoon.service.bereleased;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -37,6 +38,15 @@ public class BereleasedServiceImpl implements BereleasedService {
 			}
 		}
 		return find;
+	}
+
+	@Override
+	public List<Bereleased> list(Date first, Date last) {
+		Bereleased find = new Bereleased();
+		find.setUseable(1);
+		find.setFirst(first);
+		find.setLast(last);
+		return this.list(find);
 	}
 
 	@Override
