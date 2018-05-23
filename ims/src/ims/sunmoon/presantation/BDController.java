@@ -1,7 +1,5 @@
 package ims.sunmoon.presantation;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,22 +20,21 @@ public class BDController {
 	private BDService bdService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView listGet(HttpServletRequest request) throws Exception {
+	public ModelAndView list(BD bd, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/list");
-		modelAndView.addObject("listBD", this.bdService.list(new BD()));
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public ModelAndView listPost(BD bd, HttpServletRequest request) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("/bd/list");
-		modelAndView.addObject("listBD", this.bdService.list(bd));
+		if ("".equals(keyword) || keyword == null) {
+			modelAndView.addObject("listBD", this.bdService.list(bd));
+		} else {
+			modelAndView.addObject("listBD", this.bdService.list(bd, keyword));
+		}
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
-		return new ModelAndView("/bd/add");
+		ModelAndView modelAndView = new ModelAndView("/bd/add");
+		modelAndView.addObject("message", request.getParameter("message"));
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)

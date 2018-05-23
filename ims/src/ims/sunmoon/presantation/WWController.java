@@ -1,5 +1,7 @@
 package ims.sunmoon.presantation;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,28 +20,33 @@ public class WWController {
 	@Resource
 	private WWService wwService;
 
-	@RequestMapping(value = "/ww/list")
-	public ModelAndView listGet(HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/list")
+	public ModelAndView list(WW ww, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/list");
-		modelAndView.addObject("listWW", this.wwService.list(new WW()));
+		List<WW> find = null;
+		
+		if ("".equals(keyword) || keyword == null) {
+			if (ww.getFirst() != null && ww.getLast() != null) {
+				find = this.wwService.list(ww.getFirst(), ww.getLast());
+			} else {
+				find = this.wwService.list(ww);
+			}
+		} else {
+			find = this.wwService.list(ww, keyword);
+		}
+
+		modelAndView.addObject("listAccount", find);
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/ww/list", method = RequestMethod.POST)
-	public ModelAndView listPost(WW ww, HttpServletRequest request) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("/ww/list");
-		modelAndView.addObject("listWW", this.wwService.list(ww));
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/ww/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView addGet(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/add");
-		modelAndView.addObject("ww", this.wwService.view(ww));
+		modelAndView.addObject("message", request.getParameter("message"));
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/ww/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/add");
 		if (this.wwService.list(ww).isEmpty()) {
@@ -52,20 +59,20 @@ public class WWController {
 		}
 	}
 
-	@RequestMapping(value = "/ww/edit/{wwNo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{wwNo}", method = RequestMethod.GET)
 	public ModelAndView editGet(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/edit");
 		modelAndView.addObject("ww", this.wwService.view(ww));
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/ww/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(WW ww, HttpServletRequest request) throws Exception {
 		this.wwService.edit(ww);
 		return new ModelAndView(new RedirectView("/ww/list"));
 	}
 
-	@RequestMapping(value = "/ww/remove/{wwNo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/remove/{wwNo}", method = RequestMethod.GET)
 	public ModelAndView removeGet(String wwNo, HttpServletRequest request) throws Exception {
 		this.wwService.remove(wwNo);
 		return new ModelAndView(new RedirectView("/ww/list"));
