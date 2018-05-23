@@ -17,16 +17,16 @@
 	</resultMap>
 	
 	<select id="list" parameterType="bd" resultMap="bdResultMap">
-		SELECT BD_NO
-			  ,BE_NO
-			  ,DEP_NO
-			  ,BD_DATE
-			  ,QUANTITY
-			  ,AMMOUNT
-			  ,USEABLE
-			  ,CON_VER
-			  ,NOTE
-		FROM BD
+        SELECT BD_NO
+            ,BE_NO
+            ,DEP_NO
+            ,BD_DATE
+            ,QUANTITY
+            ,AMMOUNT
+			,USEABLE
+			,CON_VER
+            ,NOTE
+        FROM BD
 		<where>
 			<if test="bdNo > 0">
 				AND BD_NO = #{bdNo}
@@ -70,17 +70,17 @@
 	
 	<select id="findItem" parameterType="bd" resultMap="bdResultMap">
         SELECT B.BD_NO
-		      ,B.BE_NO
-		      ,B.DEP_NO
-		      ,B.BD_DATE
-		      ,B.QUANTITY
-		      ,B.AMMOUNT
-		      ,B.USEABLE
-		      ,B.CON_VER
-		      ,B.NOTE
-		      ,BE.BE_NO
-		      ,I.ITEM_CODE
-		      ,I.ITEM_NAME
+            ,B.BE_NO
+            ,B.DEP_NO
+            ,B.BD_DATE
+            ,B.QUANTITY
+            ,B.AMMOUNT
+            ,B.USEABLE
+            ,B.CON_VER
+            ,B.NOTE
+            ,BE.BE_NO
+            ,I.ITEM_CODE
+            ,I.ITEM_NAME
        FROM BD B
        LEFT OUTER JOIN BERELEASED BE
        ON B.BE_NO = BE.BE_NO
@@ -101,18 +101,18 @@
 	</select>
 	
 	<select id="findClient">
-          SELECT B.BD_NO
-		       ,B.BE_NO
-		       ,B.DEP_NO
-		       ,B.BD_DATE
-		       ,B.QUANTITY
-		       ,B.AMMOUNT
-		       ,B.USEABLE
-		       ,B.CON_VER
-		       ,B.NOTE
-               ,D.DEP_NO
-		       ,C.CLIENT_NO
-		       ,C.CLIENT_NAME
+        SELECT B.BD_NO
+            ,B.BE_NO
+            ,B.DEP_NO
+            ,B.BD_DATE
+            ,B.QUANTITY
+            ,B.AMMOUNT
+            ,B.USEABLE
+            ,B.CON_VER
+            ,B.NOTE
+            ,D.DEP_NO
+            ,C.CLIENT_NO
+            ,C.CLIENT_NAME
          FROM BD B
          LEFT OUTER JOIN DEPOSIT D
          ON B.DEP_NO = D.DEP_NO
@@ -124,15 +124,15 @@
 	</select>
 	
 	<select id="select" parameterType="bd" resultMap="bdResultMap">
-		SELECT BD_NO
-			  ,BE_NO
-			  ,DEP_NO
-			  ,BD_DATE
-			  ,QUANTITY
-			  ,AMMOUNT
-			  ,USEABLE
-			  ,CON_VER
-			  ,NOTE
+        SELECT BD_NO
+            ,BE_NO
+            ,DEP_NO
+            ,BD_DATE
+            ,QUANTITY
+            ,AMMOUNT
+            ,USEABLE
+            ,CON_VER
+            ,NOTE
 		FROM BD
 		WHERE BD_NO = #{bdNo}
 		AND USEABLE = #{useable}
@@ -145,17 +145,17 @@
 		</selectKey>
 		INSERT INTO BD
 			( BD_NO
-			  ,BE_NO
-			  ,DEP_NO
-			  ,BD_DATE
-			  ,QUANTITY
-			  ,AMMOUNT
-			  ,CON_VER
-			  ,NOTE
-			  ,USEABLE )
+			 ,BE_NO
+			 ,DEP_NO
+			 ,BD_DATE
+			 ,QUANTITY
+			 ,AMMOUNT
+			 ,CON_VER
+			 ,NOTE
+			 ,USEABLE )
 		VALUES
-			(#{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, 
-			 #{ammount}, #{conVer}, #{note}, 1)
+            ( #{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, 
+			 #{ammount}, #{conVer}, #{note}, 1 )
 	</insert>
 
 	<update id="update" parameterType="bd">
