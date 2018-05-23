@@ -1,7 +1,5 @@
 package ims.sunmoon.presantation;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,22 +20,21 @@ public class AccountController {
 	private AccountService accountService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView listGet(HttpServletRequest request) throws Exception {
+	public ModelAndView list(Account account, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/list");
-		modelAndView.addObject("listAccount", this.accountService.list(new Account()));
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public ModelAndView listPost(Account account, HttpServletRequest request) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("/account/list");
-		modelAndView.addObject("listAccount", this.accountService.list(account));
+		if ("".equals(keyword) || keyword == null) {
+			modelAndView.addObject("listAccount", this.accountService.list(account));
+		} else {
+			modelAndView.addObject("listAccount", this.accountService.list(account, keyword));
+		}
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
-		return new ModelAndView("/account/add");
+		ModelAndView modelAndView = new ModelAndView("/account/add");
+		modelAndView.addObject("message", request.getParameter("message"));
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -47,7 +44,7 @@ public class AccountController {
 			this.accountService.add(account);
 			return new ModelAndView(new RedirectView("/account/list"));
 		} else {
-			String message = "해당 계좌가 이미 등록되어 있거나 잘못된 계좌번호를 입력하셨습니다.";
+			String message = "정보를 등록하는데 오류가 발생하였습니다.";
 			modelAndView.addObject("message", message);
 			return modelAndView;
 		}
