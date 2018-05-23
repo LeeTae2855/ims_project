@@ -14,4 +14,6 @@ public interface BereleasedMapper {
 	public void update(Bereleased bereleased);
 
 	public void delete(String bereleasedNo);
+
+	public List<Bereleased> findItem(Bereleased bereleased);
 }

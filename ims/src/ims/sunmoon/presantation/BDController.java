@@ -23,21 +23,15 @@ public class BDController {
 
 	@RequestMapping(value = "/list")
 	public ModelAndView listGet(HttpServletRequest request) throws Exception {
-		List<BD> listBD = this.bdService.list(new BD());
-
 		ModelAndView modelAndView = new ModelAndView("/bd/list");
-		modelAndView.addObject("listBD", listBD);
-
+		modelAndView.addObject("listBD", this.bdService.list(new BD()));
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public ModelAndView listPost(String keyword, HttpServletRequest request) throws Exception {
-		List<BD> listBD = this.bdService.list(new BD(), keyword);
-
+	public ModelAndView listPost(BD bd, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/list");
-		modelAndView.addObject("listBD", listBD);
-
+		modelAndView.addObject("listBD", this.bdService.list(bd));
 		return modelAndView;
 	}
 
@@ -49,13 +43,11 @@ public class BDController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(BD bd, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/add");
-
-		// TODO: bd 등록 예외처리 로직 작성
 		if (this.bdService.list(bd).isEmpty()) {
 			this.bdService.add(bd);
 			return new ModelAndView(new RedirectView("/bd/list"));
 		} else {
-			String message = "에러 메시지";
+			String message = "정보를 등록하는데 오류가 발생하였습니다.";
 			modelAndView.addObject("message", message);
 			return modelAndView;
 		}
@@ -65,21 +57,18 @@ public class BDController {
 	public ModelAndView editGet(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/edit");
 		modelAndView.addObject("bd", this.bdService.view(bdNo));
-
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(BD bd, HttpServletRequest request) throws Exception {
 		this.bdService.edit(bd);
-
 		return new ModelAndView(new RedirectView("/bd/list"));
 	}
 
 	@RequestMapping(value = "/remove/{bdNo}", method = RequestMethod.GET)
 	public ModelAndView remove(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		this.bdService.remove(bdNo);
-
 		return new ModelAndView(new RedirectView("/bd/list"));
 	}
 
@@ -87,7 +76,6 @@ public class BDController {
 	public ModelAndView view(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/view");
 		modelAndView.addObject("bd", this.bdService.view(bdNo));
-
 		return modelAndView;
 	}
 }

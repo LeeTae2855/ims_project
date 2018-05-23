@@ -13,33 +13,59 @@ import ims.sunmoon.persistance.BereleasedMapper;
 @Service
 public class BereleasedServiceImpl implements BereleasedService {
 	@Resource
-	private BereleasedMapper bereleadedMapper;
-	
+	private BereleasedMapper bereleasedMapper;
+
 	@Override
 	public List<Bereleased> list(Bereleased bereleased) {
-		return this.bereleadedMapper.list(bereleased);
+		bereleased.setUseable(1);
+		return this.bereleasedMapper.list(bereleased);
+	}
+
+	@Override
+	public List<Bereleased> list(Bereleased bereleased, String keyword) {
+		List<Bereleased> find = null;
+		bereleased.setUseable(1);
+		if (bereleased.getFindOption() != null) {
+			switch (bereleased.getFindOption()) {
+			case ITEM_NAME:
+				find = this.bereleasedMapper.findItem(bereleased);
+				break;
+
+			case CON_VER:
+				find = this.list(bereleased);
+				break;
+			}
+		}
+		return find;
 	}
 
 	@Override
 	@Transactional
 	public void add(Bereleased bereleased) {
-		this.bereleadedMapper.insert(bereleased);
+		this.bereleasedMapper.insert(bereleased);
 	}
 
 	@Override
 	public Bereleased view(Bereleased bereleased) {
-		return this.bereleadedMapper.select(bereleased);
+		return this.bereleasedMapper.select(bereleased);
+	}
+
+	@Override
+	public Bereleased view(String beNo) {
+		Bereleased find = new Bereleased();
+		find.setBeNo(Integer.parseInt(beNo));
+		return this.bereleasedMapper.select(find);
 	}
 
 	@Override
 	@Transactional
 	public void edit(Bereleased bereleased) {
-		this.bereleadedMapper.update(bereleased);
+		this.bereleasedMapper.update(bereleased);
 	}
 
 	@Override
 	@Transactional
 	public void remove(String bereleasedNo) {
-		this.bereleadedMapper.delete(bereleasedNo);
+		this.bereleasedMapper.delete(bereleasedNo);
 	}
 }

@@ -23,21 +23,15 @@ public class AccountController {
 
 	@RequestMapping(value = "/list")
 	public ModelAndView listGet(HttpServletRequest request) throws Exception {
-		List<Account> listAccount = accountService.list(new Account());
-
 		ModelAndView modelAndView = new ModelAndView("/account/list");
-		modelAndView.addObject("listAccount", listAccount);
-
+		modelAndView.addObject("listAccount", this.accountService.list(new Account()));
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public ModelAndView listPost(String keyword, HttpServletRequest request) throws Exception {
-		List<Account> listAccount = accountService.list(new Account(), keyword);
-
+	public ModelAndView listPost(Account account, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/list");
-		modelAndView.addObject("listAccount", listAccount);
-
+		modelAndView.addObject("listAccount", this.accountService.list(account));
 		return modelAndView;
 	}
 
@@ -49,7 +43,6 @@ public class AccountController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(Account account, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/add");
-
 		if (this.accountService.list(account).isEmpty()) {
 			this.accountService.add(account);
 			return new ModelAndView(new RedirectView("/account/list"));
@@ -64,21 +57,18 @@ public class AccountController {
 	public ModelAndView editGet(@PathVariable String accountNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/edit");
 		modelAndView.addObject("account", this.accountService.view(accountNo));
-
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(Account account, HttpServletRequest request) throws Exception {
 		accountService.edit(account);
-		
 		return new ModelAndView(new RedirectView("/account/list"));
 	}
 
 	@RequestMapping(value = "/remove/{accountNo}", method = RequestMethod.GET)
 	public ModelAndView remove(@PathVariable String accountNo, HttpServletRequest request) throws Exception {
 		this.accountService.remove(accountNo);
-		
 		return new ModelAndView(new RedirectView("/account/list"));
 	}
 
@@ -86,7 +76,6 @@ public class AccountController {
 	public ModelAndView view(@PathVariable String accountNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/view");
 		modelAndView.addObject("account", this.accountService.view(accountNo));
-
 		return modelAndView;
 	}
 }

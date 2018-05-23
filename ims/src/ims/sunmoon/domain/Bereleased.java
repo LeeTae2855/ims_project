@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.BereleasedFindOption;
 import ims.sunmoon.util.option.sort.BereleasedSortOption;
 
 // 출고 
@@ -36,6 +37,7 @@ public class Bereleased implements Serializable {
 	private BereleasedSortOption bereleasedSortOption;
 	private Date first;
 	private Date last;
+	private BereleasedFindOption findOption;
 
 	public Integer getBeNo() {
 		return beNo;
@@ -125,6 +127,14 @@ public class Bereleased implements Serializable {
 		this.last = last;
 	}
 
+	public BereleasedFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(BereleasedFindOption findOption) {
+		this.findOption = findOption;
+	}
+
 	// Bereleased 모델 복사
 	public void CopyData(Bereleased param) {
 		this.beNo = param.getBeNo();
@@ -138,5 +148,6 @@ public class Bereleased implements Serializable {
 		this.bereleasedSortOption = param.bereleasedSortOption;
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.findOption = param.getFindOption();
 	}
 }
