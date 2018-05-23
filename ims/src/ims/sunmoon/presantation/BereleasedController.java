@@ -1,5 +1,7 @@
 package ims.sunmoon.presantation;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,26 +20,32 @@ public class BereleasedController {
 	@Resource
 	private BereleasedService bereleasedService;
 
-	@RequestMapping(value = "/be/list", method = RequestMethod.GET)
-	public ModelAndView listGet(HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/list")
+	public ModelAndView list(Bereleased bereleased, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/be/list");
-		modelAndView.addObject("listBe", this.bereleasedService.list(new Bereleased()));
+		List<Bereleased> find = null;
+		if ("".equals(keyword) || keyword == null) {
+			if (bereleased.getFirst() != null && bereleased.getLast() != null) {
+				find = this.bereleasedService.list(bereleased.getFirst(), bereleased.getLast());
+			} else {
+				find = this.bereleasedService.list(bereleased);
+			}
+		} else {
+			find = this.bereleasedService.list(bereleased, keyword);
+		}
+
+		modelAndView.addObject("listBe", find);
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/be/list", method = RequestMethod.POST)
-	public ModelAndView listPost(Bereleased bereleased, HttpServletRequest request) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("/be/list");
-		modelAndView.addObject("listBe", this.bereleasedService.list(bereleased));
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/be/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
-		return new ModelAndView("/be/add");
+		ModelAndView modelAndView = new ModelAndView("/be/add");
+		modelAndView.addObject("message", request.getParameter("message"));
+		return modelAndView;
 	}
 
-	@RequestMapping(value = "/be/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(Bereleased bereleased, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/be/add");
 		if (this.bereleasedService.list(bereleased).isEmpty()) {
@@ -50,20 +58,20 @@ public class BereleasedController {
 		}
 	}
 
-	@RequestMapping(value = "/be/edit/{beNo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{beNo}", method = RequestMethod.GET)
 	public ModelAndView editGet(Bereleased bereleased, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/be/edit");
 		modelAndView.addObject("bereleased", this.bereleasedService.view(bereleased));
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/be/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(Bereleased bereleased, HttpServletRequest request) throws Exception {
 		this.bereleasedService.edit(bereleased);
 		return new ModelAndView(new RedirectView("/be/list"));
 	}
 
-	@RequestMapping(value = "/be/remove/{beNo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/remove/{beNo}", method = RequestMethod.GET)
 	public ModelAndView remove(String beNo, HttpServletRequest request) throws Exception {
 		this.bereleasedService.remove(beNo);
 		return new ModelAndView(new RedirectView("/be/list"));

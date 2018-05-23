@@ -22,6 +22,12 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+	public List<Item> list(Item item, String keyword) {
+		// TODO: 검색옵션에 따라 로직 구현
+		return null;
+	}
+
+	@Override
 	@Transactional
 	public void add(Item item) {
 		this.itemMapper.insert(item);
@@ -29,6 +35,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public Item view(Item item) {
+		item.setUseable(1);
 		return this.itemMapper.select(item);
 	}
 
@@ -36,7 +43,7 @@ public class ItemServiceImpl implements ItemService {
 	public Item view(String itemCode) {
 		Item find = new Item();
 		find.setItemCode(itemCode);
-		return this.itemMapper.select(find);
+		return this.view(find);
 	}
 
 	@Override
