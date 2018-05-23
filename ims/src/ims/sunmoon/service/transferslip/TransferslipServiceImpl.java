@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.util.option.sort.TransferslipSortOption;
 import ims.sunmoon.domain.Transferslip;
 import ims.sunmoon.persistance.TransferslipMapper;
 

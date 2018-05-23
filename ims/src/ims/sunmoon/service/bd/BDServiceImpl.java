@@ -25,6 +25,7 @@ public class BDServiceImpl implements BDService {
 	@Override
 	public List<BD> list(BD bd, String keyword) {
 		List<BD> find = null;
+		bd.setUseable(1);
 		bd.setKeyword(keyword);
 		if (bd.getFindOption() != null) {
 			switch (bd.getFindOption()) {
