@@ -15,72 +15,72 @@
 		<result column="CON_VER" property="conVer" />
 		<result column="NOTE" property="note" />
 	</resultMap>
-	
+
 	<select id="list" parameterType="bd" resultMap="bdResultMap">
         SELECT BD_NO
-            ,BE_NO
-            ,DEP_NO
-            ,BD_DATE
-            ,QUANTITY
-            ,AMMOUNT
-			,USEABLE
-			,CON_VER
-            ,NOTE
+              ,BE_NO
+              ,DEP_NO
+              ,BD_DATE
+              ,QUANTITY
+              ,AMMOUNT
+              ,USEABLE
+              ,CON_VER
+              ,NOTE
         FROM BD
-		<where>
-			<if test="bdNo > 0">
-				AND BD_NO = #{bdNo}
-			</if>
-			<if test="beNo > 0">
-				AND BE_NO = #{beNo}
-			</if>
-			<if test="depNo > 0">
-				AND DEP_NO = #{depNo}
-			</if>
-			<if test="bdDate != null and bdDate != ''">
-				AND BD_DATE = #{bdDate}
-			</if>
-			<if test="first != null and last != null">
-				AND BD_DATE BETWEEN #{first}
-				AND #{last} + 1
-			</if>
-			AND USEABLE = #{useable}
-		</where>
+        <where>
+            <if test="bdNo > 0">
+                AND BD_NO = #{bdNo}
+            </if>
+            <if test="beNo > 0">
+                AND BE_NO = #{beNo}
+            </if>
+            <if test="depNo > 0">
+                AND DEP_NO = #{depNo}
+            </if>
+            <if test="bdDate != null and bdDate != ''">
+                AND BD_DATE = #{bdDate}
+            </if>
+            <if test="first != null and last != null">
+                AND BD_DATE BETWEEN #{first}
+                AND #{last} + 1
+            </if>
+            AND USEABLE = #{useable}
+        </where>
 		<if test="bdSortOption != null">
-			<if test="bdSortOption.name() == 'NO'">
+            <if test="bdSortOption.name() == 'NO'">
 				ORDER BY BD_NO ASC
-			</if>
-			<if test="bdSortOption.name() == 'BE_NO'">
+            </if>
+            <if test="bdSortOption.name() == 'BE_NO'">
 				ORDER BY BE_NO ASC
-			</if>
-			<if test="bdSortOption.name() == 'DEP_NO'">
+            </if>
+            <if test="bdSortOption.name() == 'DEP_NO'">
 				ORDER BY DEP_NO ASC
-			</if>
-			<if test="bdSortOption.name() == 'BD_DATE'">
+            </if>
+            <if test="bdSortOption.name() == 'BD_DATE'">
 				ORDER BY BD_DATE DESC
-			</if>
-			<if test="bdSortOption.name() == 'QUANTITY'">
+            </if>
+            <if test="bdSortOption.name() == 'QUANTITY'">
 				ORDER BY QUANTITY DESC
-			</if>
-			<if test="bdSortOption.name() == 'AMMOUNT'">
+            </if>
+            <if test="bdSortOption.name() == 'AMMOUNT'">
 				ORDER BY AMMOUNT DESC
-			</if>
-		</if>
-	</select>
-	
+            </if>
+        </if>
+    </select>
+
 	<select id="findItem" parameterType="bd" resultMap="bdResultMap">
         SELECT B.BD_NO
-            ,B.BE_NO
-            ,B.DEP_NO
-            ,B.BD_DATE
-            ,B.QUANTITY
-            ,B.AMMOUNT
-            ,B.USEABLE
-            ,B.CON_VER
-            ,B.NOTE
-            ,BE.BE_NO
-            ,I.ITEM_CODE
-            ,I.ITEM_NAME
+              ,B.BE_NO
+              ,B.DEP_NO
+              ,B.BD_DATE
+              ,B.QUANTITY
+              ,B.AMMOUNT
+              ,B.USEABLE
+              ,B.CON_VER
+              ,B.NOTE
+              ,BE.BE_NO
+              ,I.ITEM_CODE
+              ,I.ITEM_NAME
        FROM BD B
        LEFT OUTER JOIN BERELEASED BE
        ON B.BE_NO = BE.BE_NO
@@ -99,8 +99,8 @@
        </where>
        ORDER BY BD_DATE DESC
 	</select>
-	
-	<select id="findClient">
+
+    <select id="findClient" parameterType="bd" resultMap="bdResultMap">
         SELECT B.BD_NO
             ,B.BE_NO
             ,B.DEP_NO
@@ -121,29 +121,29 @@
          WHERE C.CLIENT_NAME = #{keyword};
          AND B.USEABLE = #{useable}
          ORDER BY BD_DATE;
-	</select>
-	
-	<select id="select" parameterType="bd" resultMap="bdResultMap">
-        SELECT BD_NO
-            ,BE_NO
-            ,DEP_NO
-            ,BD_DATE
-            ,QUANTITY
-            ,AMMOUNT
-            ,USEABLE
-            ,CON_VER
-            ,NOTE
-		FROM BD
-		WHERE BD_NO = #{bdNo}
-		AND USEABLE = #{useable}
-	</select>
+    </select>
 
-	<insert id="insert" parameterType="bd">
-		<selectKey keyColumn="BD_NO" keyProperty="bdNo" resultType="int" order="BEFORE">
-			SELECT BD_SEQ.NEXTVAL
-			FROM DUAL
-		</selectKey>
-		INSERT INTO BD
+    <select id="select" parameterType="bd" resultMap="bdResultMap">
+        SELECT BD_NO
+              ,BE_NO
+              ,DEP_NO
+              ,BD_DATE
+              ,QUANTITY
+              ,AMMOUNT
+              ,USEABLE
+              ,CON_VER
+              ,NOTE
+        FROM BD
+        WHERE BD_NO = #{bdNo}
+        AND USEABLE = #{useable}
+    </select>
+
+    <insert id="insert" parameterType="bd">
+        <selectKey keyColumn="BD_NO" keyProperty="bdNo" resultType="int" order="BEFORE">
+            SELECT BD_SEQ.NEXTVAL
+            FROM DUAL
+        </selectKey>
+        INSERT INTO BD
 			( BD_NO
 			 ,BE_NO
 			 ,DEP_NO
@@ -153,10 +153,10 @@
 			 ,CON_VER
 			 ,NOTE
 			 ,USEABLE )
-		VALUES
+        VALUES
             ( #{bdNo}, #{beNo}, #{depNo}, SYSDATE, #{quantity}, 
 			 #{ammount}, #{conVer}, #{note}, 1 )
-	</insert>
+    </insert>
 
 	<update id="update" parameterType="bd">
 		UPDATE 
