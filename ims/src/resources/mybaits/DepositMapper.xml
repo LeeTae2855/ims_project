@@ -28,6 +28,7 @@
 			  ,NOTE      
 		FROM DEPOSIT
 		<where>
+		AND USEABLE = #{useable}
 			<if test="depNo > 0">
 				AND DEP_NO = #{depNo}
 			</if>
@@ -44,7 +45,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="depositSortOption != null">
 			<if test="depositSortOption.name() == 'DEP_NO'">
@@ -78,6 +78,35 @@
 		FROM DEPOSIT
 		WHERE DEP_NO = #{depNo}
 		AND USEABLE = #{useable}
+	</select>
+	
+	<select id="find" parameterType="deposit" resultMap="depositResultMap">
+		SELECT D.DEP_NO     
+			  ,D.DEP_DATE  
+			  ,D.CLIENT_NO 
+			  ,D.ACCOUNT_NO
+			  ,D.CON_VER   
+			  ,D.AMMOUNT   
+			  ,D.TAX       
+			  ,D.USEABLE   
+			  ,D.NOTE
+              ,C.CLIENT_NAME
+	    FROM DEPOSIT D
+		LEFT OUTER JOIN CLIENT C
+		ON D.CLIENT_NO = C.CLIENT_NO
+		<where>
+		AND D.USEABLE = #{useable}
+			<if test="findOption != null">
+				<if test="findOption.name() == 'CLIENT_NO'">
+					AND C.CLIENT_NO = #{clientNo}
+					ORDER BY C.CLIENT_NO ASC
+				</if>
+				<if test="findOption.name() == 'CLIENT_NAME'">
+					AND UPPER( C.CLIENT_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+					ORDER BY C.CLIENT_NAME ASC
+				</if>
+			</if>
+		</where>
 	</select>
 
 	<insert id="insert" parameterType="deposit">

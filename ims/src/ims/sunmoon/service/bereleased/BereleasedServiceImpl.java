@@ -19,6 +19,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 	@Override
 	public List<Bereleased> list(Bereleased bereleased) {
 		bereleased.setUseable(1);
+
 		return this.bereleasedMapper.list(bereleased);
 	}
 
@@ -26,10 +27,11 @@ public class BereleasedServiceImpl implements BereleasedService {
 	public List<Bereleased> list(Bereleased bereleased, String keyword) {
 		List<Bereleased> find = null;
 		bereleased.setUseable(1);
+
 		if (bereleased.getFindOption() != null) {
 			switch (bereleased.getFindOption()) {
 			case NONE:
-				this.list(bereleased);
+				find = this.list(bereleased);
 				break;
 
 			case ITEM_NAME:
@@ -41,6 +43,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 				break;
 			}
 		}
+
 		return find;
 	}
 
@@ -50,6 +53,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 		find.setUseable(1);
 		find.setFirst(first);
 		find.setLast(last);
+
 		return this.list(find);
 	}
 
@@ -68,6 +72,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 	public Bereleased view(String beNo) {
 		Bereleased find = new Bereleased();
 		find.setBeNo(Integer.parseInt(beNo));
+
 		return this.bereleasedMapper.select(find);
 	}
 

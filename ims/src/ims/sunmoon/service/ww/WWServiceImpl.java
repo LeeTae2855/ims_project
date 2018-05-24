@@ -19,6 +19,7 @@ public class WWServiceImpl implements WWService {
 	@Override
 	public List<WW> list(WW ww) {
 		ww.setUseable(1);
+
 		return this.wwMapper.list(ww);
 	}
 
@@ -28,19 +29,20 @@ public class WWServiceImpl implements WWService {
 		find.setUseable(1);
 		find.setFirst(first);
 		find.setLast(last);
+
 		return this.list(find);
 	}
 
 	@Override
 	public List<WW> list(WW ww, String keyword) {
-		// TODO: 검색옵션에 따라 로직 구현
 		List<WW> find = null;
 		ww.setUseable(1);
 		ww.setKeyword(keyword);
+
 		if (ww.getFindOption() != null) {
 			switch (ww.getFindOption()) {
 			case NONE:
-				this.list(ww);
+				find = this.list(ww);
 				break;
 
 			case ITEM_CODE:
@@ -58,6 +60,7 @@ public class WWServiceImpl implements WWService {
 				break;
 			}
 		}
+
 		return find;
 	}
 

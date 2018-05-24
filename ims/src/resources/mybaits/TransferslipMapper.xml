@@ -30,6 +30,7 @@
 			  ,NOTE
 		FROM TRANSFERSLIP
 		<where>
+		AND USEABLE = #{useable}
 			<if test="tsNo > 0">
 				AND TS_NO = #{tsNo}
 			</if>
@@ -52,7 +53,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="transferslipSortOption != null">
 			<if test="transferslipSortOption.name() == 'NO'">
@@ -114,6 +114,7 @@
         LEFT OUTER JOIN ACCOUNT DE
         ON TS.DEBTOR_NO = DE.ACCOUNT_NO
         <where>
+        AND TS.USEABLE = #{useable}
         	<if test="findOption != null">
         		<if test="findOption.name() == 'DEBTOR_NO'">
         			AND TS.DEBTOR_NO = #{debtorNo}
@@ -132,7 +133,6 @@
         			ORDER BY CR.ACCOUNT_NAME ASC
         		</if>
         	</if>
-        	AND USEABLE = #{useable}
         </where>
     </select>
 

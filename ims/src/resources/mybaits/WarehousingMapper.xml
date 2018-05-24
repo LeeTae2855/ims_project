@@ -26,6 +26,7 @@
 			  ,USEABLE
 		FROM WAREHOUSING
 		<where>
+		AND USEABLE = #{useable}
 			<if test="beNo > 0">
 				AND WARE_NO = #{wareNo}
 			</if>
@@ -42,7 +43,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="warehousingSortOption != null">
 			<if test="warehousingSortOption.name() == 'WARE_NO'">

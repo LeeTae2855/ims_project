@@ -28,13 +28,13 @@
 			  ,NOTE
 		FROM MANAGER
 		<where>
+		AND USEABLE = #{useable}
 			<if test="managerNo > 0">
 				AND MANAGER_NO = #{managerNo}
 			</if>
 			<if test="managerName != null and managerName != ''">
 				AND UPPER( MANAGER_NAME ) LIKE UPPER ( '%' || #{managerName} || '%' )
 			</if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="managerSortOption != null">
 			<if test="managerSortOption.name() == 'NO'">

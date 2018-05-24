@@ -41,6 +41,7 @@ public class Deposit implements Serializable {
 	private DepositFindOption findOption;
 	private Date first;
 	private Date last;
+	private String keyword;
 
 	public Integer getDepNo() {
 		return depNo;
@@ -146,6 +147,14 @@ public class Deposit implements Serializable {
 		this.findOption = findOption;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Deposit 모델 복사
 	public void CopyData(Deposit param) {
 		this.depNo = param.getDepNo();
@@ -161,5 +170,6 @@ public class Deposit implements Serializable {
 		this.findOption = param.getFindOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.keyword = param.getKeyword();
 	}
 }
