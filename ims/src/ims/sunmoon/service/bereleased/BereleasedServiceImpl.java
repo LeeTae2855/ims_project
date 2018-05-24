@@ -28,6 +28,10 @@ public class BereleasedServiceImpl implements BereleasedService {
 		bereleased.setUseable(1);
 		if (bereleased.getFindOption() != null) {
 			switch (bereleased.getFindOption()) {
+			case NONE:
+				this.list(bereleased);
+				break;
+
 			case ITEM_NAME:
 				find = this.bereleasedMapper.findItem(bereleased);
 				break;

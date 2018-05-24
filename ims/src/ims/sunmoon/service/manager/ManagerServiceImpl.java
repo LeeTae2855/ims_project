@@ -25,10 +25,14 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<Manager> list(Manager manager, String keyword) {
 		if (manager.getFindOption() != null) {
 			switch (manager.getFindOption()) {
+			case NONE:
+				this.list(manager);
+				break;
+
 			case NO:
 				manager.setManagerNo(Integer.parseInt(keyword));
 				break;
-				
+
 			case NAME:
 				manager.setManagerName(keyword);
 				break;

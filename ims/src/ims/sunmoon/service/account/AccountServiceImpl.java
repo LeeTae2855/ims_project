@@ -25,6 +25,10 @@ public class AccountServiceImpl implements AccountService {
 	public List<Account> list(Account account, String keyword) {
 		if (account.getFindOption() != null) {
 			switch (account.getFindOption()) {
+			case NONE:
+				this.list(account);
+				break;
+
 			case NO:
 				account.setAccountNo(Integer.parseInt(keyword));
 				break;

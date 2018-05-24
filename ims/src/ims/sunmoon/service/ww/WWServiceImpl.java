@@ -39,6 +39,10 @@ public class WWServiceImpl implements WWService {
 		ww.setKeyword(keyword);
 		if (ww.getFindOption() != null) {
 			switch (ww.getFindOption()) {
+			case NONE:
+				this.list(ww);
+				break;
+
 			case ITEM_CODE:
 			case ITEM_NAME:
 				find = this.wwMapper.findItem(ww);

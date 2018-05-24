@@ -53,6 +53,10 @@ public class TransferslipServiceImpl implements TransferslipService {
 		transferslip.setKeyword(keyword);
 		if (transferslip.getFindOption() != null) {
 			switch (transferslip.getFindOption()) {
+			case NONE:
+				this.list(transferslip);
+				break;
+
 			case DEBTOR_NO:
 				transferslip.setDebtorNo(Integer.parseInt(keyword));
 				break;

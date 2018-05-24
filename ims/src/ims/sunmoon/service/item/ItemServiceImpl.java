@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.domain.BD;
 import ims.sunmoon.domain.Item;
 import ims.sunmoon.persistance.ItemMapper;
 
@@ -27,6 +26,10 @@ public class ItemServiceImpl implements ItemService {
 		item.setKeyword(keyword);
 		if (item.getFindOption() != null) {
 			switch (item.getFindOption()) {
+			case NONE:
+				this.list(item);
+				break;
+
 			case ITEM_CODE:
 				item.setItemCode(keyword);
 				break;

@@ -25,6 +25,10 @@ public class ClientServiceImpl implements ClientService {
 	public List<Client> list(Client client, String keyword) {
 		if (client.getFindOption() != null) {
 			switch (client.getFindOption()) {
+			case NONE:
+				this.list(client);
+				break;
+
 			case NO:
 				client.setClientNo(Integer.parseInt(keyword));
 				break;

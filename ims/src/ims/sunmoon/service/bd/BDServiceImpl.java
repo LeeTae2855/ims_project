@@ -29,6 +29,10 @@ public class BDServiceImpl implements BDService {
 		bd.setKeyword(keyword);
 		if (bd.getFindOption() != null) {
 			switch (bd.getFindOption()) {
+			case NONE:
+				this.list(bd);
+				break;
+
 			case ITEM_CODE:
 			case ITEM_NAME:
 				find = this.bdMapper.findItem(bd);
