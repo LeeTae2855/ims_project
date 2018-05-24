@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 
+import ims.sunmoon.util.option.find.ManagerFindOption;
 import ims.sunmoon.util.option.sort.ManagerSortOption;
 
 // 담당자 
@@ -36,6 +37,8 @@ public class Manager implements Serializable {
 	private String note;
 
 	private ManagerSortOption managerSortOption;
+	private ManagerFindOption findOption;
+	private String keyword;
 
 	public Integer getManagerNo() {
 		return managerNo;
@@ -117,6 +120,22 @@ public class Manager implements Serializable {
 		this.managerSortOption = managerSortOption;
 	}
 
+	public ManagerFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(ManagerFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Manager 모델 복사
 	public void CopyData(Manager param) {
 		this.managerNo = param.getManagerNo();
@@ -129,5 +148,7 @@ public class Manager implements Serializable {
 		this.useable = param.getUseable();
 		this.note = param.getNote();
 		this.managerSortOption = param.getManagerSortOption();
+		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }

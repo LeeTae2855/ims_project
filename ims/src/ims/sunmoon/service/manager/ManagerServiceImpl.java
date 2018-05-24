@@ -23,8 +23,18 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public List<Manager> list(Manager manager, String keyword) {
-		// TODO: 검색옵션에 따라 로직 구현
-		return null;
+		if (manager.getFindOption() != null) {
+			switch (manager.getFindOption()) {
+			case NO:
+				manager.setManagerNo(Integer.parseInt(keyword));
+				break;
+				
+			case NAME:
+				manager.setManagerName(keyword);
+				break;
+			}
+		}
+		return this.list(manager);
 	}
 
 	@Override

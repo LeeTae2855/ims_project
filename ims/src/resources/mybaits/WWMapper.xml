@@ -43,6 +43,9 @@
 				AND WW_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
+			<if test="conVer != null and conVer != ''">
+                AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
+            </if>
 			AND USEABLE = #{useable}
 		</where>
 		<if test="wwSortOption != null">
@@ -80,6 +83,61 @@
 		WHERE WW_NO = #{wwNo}
 		AND USEABLE = #{useable}
 	</select>
+	
+	<select id="findItem" parameterType="ww" resultMap="wwResultMap">
+        SELECT W.WW_NO
+              ,W.WARE_NO
+              ,W.WITH_NO
+              ,W.WW_DATE
+              ,W.QUANTITY
+              ,W.AMMOUNT
+              ,W.USEABLE
+              ,W.CON_VER
+              ,W.NOTE
+              ,WA.WARE_NO
+              ,I.ITEM_CODE
+              ,I.ITEM_NAME
+       FROM WW W
+       LEFT OUTER JOIN WAREHOUSING WA
+       ON W.WARE_NO = WA.WARE_NO
+       LEFT OUTER JOIN ITEM I
+       ON WA.ITEM_NO = I.ITEM_CODE
+       <where>
+           <if test="findOption != null">
+               <if test="findOption().name == 'ITEM_CODE'">
+                   AND UPPER( I.ITEM_CODE ) LIKE UPPER ( '%' || #{keyword} || '%' )
+               </if>
+               <if test="findOption().name == 'ITEM_NAME'"> 
+                   AND UPPER( I.ITEM_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+               </if>
+            </if>
+            AND W.USEABLE = #{useable}
+       </where>
+       ORDER BY WW_DATE DESC
+	</select>
+
+    <select id="findClient" parameterType="ww" resultMap="wwResultMap">
+        SELECT W.WW_NO
+              ,W.WARE_NO
+              ,W.WITH_NO
+              ,W.WW_DATE
+              ,W.QUANTITY
+              ,W.AMMOUNT
+              ,W.USEABLE
+              ,W.CON_VER
+              ,W.NOTE
+              ,WA.WARE_NO
+              ,I.ITEM_CODE
+              ,I.ITEM_NAME
+       FROM WW W
+       LEFT OUTER JOIN WITHDRAW WI
+       ON W.WITH_NO = WI.WITH_NO
+       LEFT OUTER JOIN CLIENT C
+       ON WI.CLIENT_NO = C.CLIENT_NO
+       WHERE C.CLIENT_NAME = #{keyword};
+       AND W.USEABLE = #{useable}
+       ORDER BY WW_DATE;
+    </select>
 
 	<insert id="insert" parameterType="bd">
 		<selectKey keyColumn="WW_NO" keyProperty="wwNo" resultType="int" order="BEFORE">

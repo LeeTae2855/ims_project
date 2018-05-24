@@ -40,7 +40,7 @@ public class BDServiceImpl implements BDService {
 
 			case CON_VER:
 				bd.setConVer(keyword);
-				find = this.bdMapper.list(bd);
+				find = this.list(bd);
 				break;
 			}
 		}

@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.WWFindOption;
 import ims.sunmoon.util.option.sort.WWSortOption;
 
 // 입고/출금 
@@ -37,8 +38,10 @@ public class WW implements Serializable {
 	private String note;
 
 	private WWSortOption wwSortOption;
+	private WWFindOption findOption;
 	private Date first;
 	private Date last;
+	private String keyword;
 
 	public Integer getWwNo() {
 		return wwNo;
@@ -136,6 +139,22 @@ public class WW implements Serializable {
 		this.last = last;
 	}
 
+	public WWFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(WWFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Ww 모델 복사
 	public void CopyData(WW param) {
 		this.wwNo = param.getWwNo();
@@ -150,5 +169,7 @@ public class WW implements Serializable {
 		this.wwSortOption = param.getWwSortOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }

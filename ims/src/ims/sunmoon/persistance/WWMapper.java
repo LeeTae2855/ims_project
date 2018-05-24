@@ -14,4 +14,8 @@ public interface WWMapper {
 	public void update(WW ww);
 
 	public void delete(String wwNo);
+
+	public List<WW> findItem(WW ww);
+
+	public List<WW> findClient(WW ww);
 }

@@ -21,7 +21,7 @@ public class WWServiceImpl implements WWService {
 		ww.setUseable(1);
 		return this.wwMapper.list(ww);
 	}
-	
+
 	@Override
 	public List<WW> list(Date first, Date last) {
 		WW find = new WW();
@@ -34,7 +34,27 @@ public class WWServiceImpl implements WWService {
 	@Override
 	public List<WW> list(WW ww, String keyword) {
 		// TODO: 검색옵션에 따라 로직 구현
-		return null;
+		List<WW> find = null;
+		ww.setUseable(1);
+		ww.setKeyword(keyword);
+		if (ww.getFindOption() != null) {
+			switch (ww.getFindOption()) {
+			case ITEM_CODE:
+			case ITEM_NAME:
+				find = this.wwMapper.findItem(ww);
+				break;
+
+			case CLIENT_NAME:
+				find = this.wwMapper.findClient(ww);
+				break;
+
+			case CON_VER:
+				ww.setConVer(keyword);
+				find = this.list(ww);
+				break;
+			}
+		}
+		return find;
 	}
 
 	@Override
