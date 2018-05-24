@@ -25,8 +25,8 @@ public class DepositController {
 		ModelAndView modelAndView = new ModelAndView("/dep/list");
 		List<Deposit> find = null;
 
-		if ("".equals(keyword) || keyword == null) {
-			if (deposit.getFirst() != null && deposit.getLast() != null) {
+		if (("".equals(keyword)) || (keyword == null)) {
+			if ((deposit.getFirst() != null) && (deposit.getLast() != null)) {
 				find = this.depositService.list(deposit.getFirst(), deposit.getLast());
 			} else {
 				find = this.depositService.list(deposit);
@@ -43,12 +43,14 @@ public class DepositController {
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/dep/add");
 		modelAndView.addObject("message", request.getParameter("message"));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(Deposit deposit, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/dep/add");
+
 		if (this.depositService.list(deposit).isEmpty()) {
 			this.depositService.add(deposit);
 			return new ModelAndView(new RedirectView("/dep/list"));
@@ -63,18 +65,21 @@ public class DepositController {
 	public ModelAndView editGet(Deposit deposit, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/dep/edit");
 		modelAndView.addObject("deposit", this.depositService.view(deposit));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(Deposit deposit, HttpServletRequest request) throws Exception {
 		this.depositService.edit(deposit);
+
 		return new ModelAndView(new RedirectView("/dep/list"));
 	}
 
 	@RequestMapping(value = "/remove/{depNo}", method = RequestMethod.GET)
 	public ModelAndView remove(String depNo, HttpServletRequest request) throws Exception {
 		this.depositService.remove(depNo);
+
 		return new ModelAndView(new RedirectView("/dep/list"));
 	}
 }

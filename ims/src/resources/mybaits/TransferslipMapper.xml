@@ -94,6 +94,47 @@
 		WHERE TS_NO = #{tsNo}
 		AND USEABLE = #{useable}
 	</select>
+	
+    <select id="find" parameterType="transferslip" resultMap="transferslipResultMap">
+    	SELECT TS.TS_NO
+       		   ,TS.TS_DATE
+			   ,TS.CLIENT_NO
+			   ,TS.CON_VER
+			   ,TS.DEBTOR_NO
+			   ,TS.DEBTOR_AMMOUNT
+			   ,TS.CREDIT_NO
+			   ,TS.CREDIT_AMMOUNT
+			   ,TS.USEABLE
+			   ,TS.NOTE
+               ,CR.ACCOUNT_NAME AS CREDIT_NAME
+               ,DE.ACCOUNT_NAME AS DEBTOR_NAME
+        FROM TRANSFERSLIP TS
+        LEFT OUTER JOIN ACCOUNT CR
+        ON TS.CREDIT_NO = CR.ACCOUNT_NO
+        LEFT OUTER JOIN ACCOUNT DE
+        ON TS.DEBTOR_NO = DE.ACCOUNT_NO
+        <where>
+        	<if test="findOption != null">
+        		<if test="findOption.name() == 'DEBTOR_NO'">
+        			AND TS.DEBTOR_NO = #{debtorNo}
+        			ORDER BY TS.DEBTOR_NO ASC
+        		</if>
+        		<if test="findOption.name() == 'CREDIT_NO'">
+        			AND TS.CREDIT_NO = #{creditNo}
+        			ORDER BY TS.CREDIT_NO ASC
+        		</if>
+        		<if test="findOption.name() == 'DEBTOR_NAME'">
+        			AND UPPER( DE.ACCOUNT_NAME ) LIKE UPPER ( '%' || #{debtorName} || '%' )
+        			ORDER BY DE.ACCOUNT_NAME ASC
+        		</if>
+        		<if test="findOption.name() == 'CREDIT_NAME'">
+        			AND UPPER( CR.ACCOUNT_NAME ) LIKE UPPER ( '%' || #{creditName} || '%' )
+        			ORDER BY CR.ACCOUNT_NAME ASC
+        		</if>
+        	</if>
+        	AND USEABLE = #{useable}
+        </where>
+    </select>
 
 	<insert id="insert" parameterType="transferslip">
 		<selectKey keyColumn="TS_NO" keyProperty="tsNo" resultType="int" order="BEFORE">
