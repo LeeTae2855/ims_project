@@ -13,7 +13,7 @@
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-	<context:component-scan base-package="serms.sunmoon" />
+	<context:component-scan base-package="ims.sunmoon" />
 
 	<mvc:annotation-driven />
 
@@ -31,7 +31,14 @@
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/resources/**" />
 			<mvc:exclude-mapping path="/logout" />
-			<bean class="ims.sunmoon.interceptor.Interceptor" />
+			<bean class="ims.sunmoon.interceptor.LoginInfoInterceptor" />
+		</mvc:interceptor>
+		 
+		<mvc:interceptor>
+			<mvc:mapping path="/account/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.AccountInterceptor" />
 		</mvc:interceptor>
 		
 		<mvc:interceptor>
@@ -39,6 +46,69 @@
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/logout" />
 			<bean class="ims.sunmoon.interceptor.BDInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/be/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.BereleasedInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/client/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.ClientInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/dep/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.DepositInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/item/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.ItemInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/manager/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.ManagerInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/ts/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.TransferslipInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/ware/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.WarehousingInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/with/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.WithdrawInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/ww/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<bean class="ims.sunmoon.interceptor.WWInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

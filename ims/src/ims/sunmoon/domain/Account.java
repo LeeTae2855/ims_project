@@ -41,6 +41,26 @@ public class Account implements Serializable {
 	private AccountCFC accountCfcOption;
 	private AccountFindOption findOption;
 
+	public Account() {
+	}
+
+	public Account(Integer accountNo, String accountName, String accountCfc, String masterName, Integer cellphone,
+			String bankName, Integer isowner, Integer useable, String note, AccountSortOption accountSortOption,
+			AccountCFC accountCfcOption, AccountFindOption findOption) {
+		this.accountNo = accountNo;
+		this.accountName = accountName;
+		this.accountCfc = accountCfc;
+		this.masterName = masterName;
+		this.cellphone = cellphone;
+		this.bankName = bankName;
+		this.isowner = isowner;
+		this.useable = useable;
+		this.note = note;
+		this.accountSortOption = accountSortOption;
+		this.accountCfcOption = accountCfcOption;
+		this.findOption = findOption;
+	}
+
 	public Integer getAccountNo() {
 		return accountNo;
 	}

@@ -48,6 +48,32 @@ public class Transferslip implements Serializable {
 	private String creditName;
 	private String debtorName;
 
+	public Transferslip() {
+	}
+
+	public Transferslip(Integer tsNo, Date tsDate, Integer clientNo, String conVer, Integer debtorNo,
+			Integer debtorAmmount, Integer creditNo, Integer creditAmmount, Integer useable, String note,
+			TransferslipSortOption transferslipSortOption, Date first, Date last, String keyword,
+			TransferslipFindOption findOption, String creditName, String debtorName) {
+		this.tsNo = tsNo;
+		this.tsDate = tsDate;
+		this.clientNo = clientNo;
+		this.conVer = conVer;
+		this.debtorNo = debtorNo;
+		this.debtorAmmount = debtorAmmount;
+		this.creditNo = creditNo;
+		this.creditAmmount = creditAmmount;
+		this.useable = useable;
+		this.note = note;
+		this.transferslipSortOption = transferslipSortOption;
+		this.first = first;
+		this.last = last;
+		this.keyword = keyword;
+		this.findOption = findOption;
+		this.creditName = creditName;
+		this.debtorName = debtorName;
+	}
+
 	public Integer getTsNo() {
 		return tsNo;
 	}

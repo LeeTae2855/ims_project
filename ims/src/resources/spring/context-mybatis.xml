@@ -23,7 +23,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="serms.sunmoon.domain" />
+		<property name="typeAliasesPackage" value="ims.sunmoon.domain" />
 		<property name="mapperLocations" value="classpath:resources/mybatis/*.xml" />
 	</bean>
 
@@ -39,7 +39,7 @@
 	</bean>
 
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="serms.sunmoon.persistence" />
+		<property name="basePackage" value="ims.sunmoon.persistance" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 </beans>

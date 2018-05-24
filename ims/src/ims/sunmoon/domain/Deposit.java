@@ -43,6 +43,28 @@ public class Deposit implements Serializable {
 	private Date last;
 	private String keyword;
 
+	public Deposit() {
+	}
+
+	public Deposit(Integer depNo, Date depDate, Integer clientNo, Integer accountNo, String conVer, Integer ammount,
+			Integer tax, Integer useable, String note, DepositSortOption depositSortOption,
+			DepositFindOption findOption, Date first, Date last, String keyword) {
+		this.depNo = depNo;
+		this.depDate = depDate;
+		this.clientNo = clientNo;
+		this.accountNo = accountNo;
+		this.conVer = conVer;
+		this.ammount = ammount;
+		this.tax = tax;
+		this.useable = useable;
+		this.note = note;
+		this.depositSortOption = depositSortOption;
+		this.findOption = findOption;
+		this.first = first;
+		this.last = last;
+		this.keyword = keyword;
+	}
+
 	public Integer getDepNo() {
 		return depNo;
 	}

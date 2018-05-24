@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.WWMapper">
+<mapper namespace="ims.sunmoon.persistance.WWMapper">
 	<resultMap id="wwResultMap" type="ww">
 		<id column="WW_NO" property="wwNo" />
 		<result column="WARE_NO" property="wareNo" />
@@ -70,7 +70,7 @@
 		</if>
 	</select>
 	
-	<select id="select" parameterType="bd" resultMap="bdResultMap">
+	<select id="select" parameterType="ww" resultMap="wwResultMap">
 		SELECT WW_NO
 			  ,WARE_NO
 			  ,WITH_NO
@@ -139,7 +139,7 @@
        ORDER BY WW_DATE;
     </select>
 
-	<insert id="insert" parameterType="bd">
+	<insert id="insert" parameterType="ww">
 		<selectKey keyColumn="WW_NO" keyProperty="wwNo" resultType="int" order="BEFORE">
 			SELECT WW_SEQ.NEXTVAL
 			FROM DUAL
@@ -159,7 +159,7 @@
 			 #{ammount}, #{conVer}, #{note}, 1)
 	</insert>
 
-	<update id="update" parameterType="bd">
+	<update id="update" parameterType="ww">
 		UPDATE 
 		WW
 		SET
@@ -175,7 +175,7 @@
 		WW_NO    = #{wwNo}
 	</update>
 
-	<update id="delete" parameterType="bd">
+	<update id="delete" parameterType="ww">
 		UPDATE
 		WW
 		SET

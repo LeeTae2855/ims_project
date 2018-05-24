@@ -12,6 +12,14 @@ public class LoginInfo implements Serializable {
 	// 비밀번호
 	private String loginPassword;
 	
+	public LoginInfo() {
+	}
+
+	public LoginInfo(String loginId, String loginPassword) {
+		this.loginId = loginId;
+		this.loginPassword = loginPassword;
+	}
+
 	public String getLoginId() {
 		return loginId;
 	}

@@ -43,6 +43,28 @@ public class BD implements Serializable {
 	private Date last;
 	private String keyword;
 
+	public BD() {
+	}
+
+	public BD(Integer bdNo, Integer beNo, Integer depNo, Date bdDate, Integer quantity, Integer ammount,
+			Integer useable, String conVer, String note, BDSortOption bdSortOption, BDFindOption findOption, Date first,
+			Date last, String keyword) {
+		this.bdNo = bdNo;
+		this.beNo = beNo;
+		this.depNo = depNo;
+		this.bdDate = bdDate;
+		this.quantity = quantity;
+		this.ammount = ammount;
+		this.useable = useable;
+		this.conVer = conVer;
+		this.note = note;
+		this.bdSortOption = bdSortOption;
+		this.findOption = findOption;
+		this.first = first;
+		this.last = last;
+		this.keyword = keyword;
+	}
+
 	public Integer getBdNo() {
 		return bdNo;
 	}

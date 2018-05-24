@@ -3,8 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.AccountMapper">
-	<resultMap id="accountResultMap" type="account">
+<mapper namespace="ims.sunmoon.persistance.ItemMapper">
+	<resultMap id="itemResultMap" type="item">
 		<id column="ITEM_CODE" property="itemCode" />
 		<result column="ITEM_CFC" property="itemCfc" />
 		<result column="ITEM_NAME" property="itemName" />

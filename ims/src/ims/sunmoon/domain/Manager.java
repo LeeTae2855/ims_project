@@ -40,6 +40,26 @@ public class Manager implements Serializable {
 	private ManagerFindOption findOption;
 	private String keyword;
 
+	public Manager() {
+	}
+
+	public Manager(Integer managerNo, String managerName, String depName, String telephone, Integer cellphone,
+			String email, Integer fax, Integer useable, String note, ManagerSortOption managerSortOption,
+			ManagerFindOption findOption, String keyword) {
+		this.managerNo = managerNo;
+		this.managerName = managerName;
+		this.depName = depName;
+		this.telephone = telephone;
+		this.cellphone = cellphone;
+		this.email = email;
+		this.fax = fax;
+		this.useable = useable;
+		this.note = note;
+		this.managerSortOption = managerSortOption;
+		this.findOption = findOption;
+		this.keyword = keyword;
+	}
+
 	public Integer getManagerNo() {
 		return managerNo;
 	}
