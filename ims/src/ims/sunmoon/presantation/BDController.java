@@ -23,11 +23,12 @@ public class BDController {
 	public ModelAndView list(BD bd, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/list");
 
-		if ("".equals(keyword) || keyword == null) {
+		if (("".equals(keyword)) || (keyword == null)) {
 			if ((bd.getFirst() != null) && (bd.getLast() != null)) {
-
+				modelAndView.addObject("listBD", this.bdService.list(bd.getFirst(), bd.getLast()));
+			} else {
+				modelAndView.addObject("listBD", this.bdService.list(bd));
 			}
-			modelAndView.addObject("listBD", this.bdService.list(bd));
 		} else {
 			modelAndView.addObject("listBD", this.bdService.list(bd, keyword));
 		}

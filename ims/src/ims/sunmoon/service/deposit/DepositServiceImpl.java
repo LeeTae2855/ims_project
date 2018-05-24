@@ -31,6 +31,10 @@ public class DepositServiceImpl implements DepositService {
 		if (deposit.getFindOption() != null) {
 			Client find = new Client();
 			switch (deposit.getFindOption()) {
+			case NONE:
+				this.list(deposit);
+				break;
+
 			case DEP_NO:
 				deposit.setDepNo(Integer.parseInt(keyword));
 				break;
@@ -43,7 +47,7 @@ public class DepositServiceImpl implements DepositService {
 				find.setClientName(keyword);
 				deposit.setClientNo(this.clientService.view(find).getClientNo());
 				break;
-				
+
 			case CON_VER:
 				deposit.setConVer(keyword);
 				break;

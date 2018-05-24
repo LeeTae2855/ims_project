@@ -23,7 +23,7 @@ public class TransferslipController {
 	public ModelAndView list(Transferslip transferslip, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ts/list");
 
-		if ("".equals(keyword) || keyword == null) {
+		if (("".equals(keyword)) || (keyword == null)) {
 			if ((transferslip.getFirst() != null) && (transferslip.getLast() != null)) {
 				modelAndView.addObject("listTs",
 						this.transferslipService.list(transferslip.getFirst(), transferslip.getLast()));
