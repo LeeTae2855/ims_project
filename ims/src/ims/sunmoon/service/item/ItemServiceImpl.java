@@ -18,36 +18,44 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Item> list(Item item) {
 		item.setUseable(1);
+
 		return this.itemMapper.list(item);
 	}
 
 	@Override
 	public List<Item> list(Item item, String keyword) {
+		List<Item> find = null;
 		item.setKeyword(keyword);
+
 		if (item.getFindOption() != null) {
 			switch (item.getFindOption()) {
 			case NONE:
-				this.list(item);
+				find = this.list(item);
 				break;
 
 			case ITEM_CODE:
 				item.setItemCode(keyword);
+				find = this.list(item);
 				break;
 
 			case ITEM_NAME:
 				item.setItemName(keyword);
+				find = this.list(item);
 				break;
 
 			case ITEM_CFC:
 				// Change CfcOption
+				find = this.list(item);
 				break;
 
 			case ITEM_STATUS:
 				item.setItemStatus(keyword);
+				find = this.list(item);
 				break;
 			}
 		}
-		return this.list(item);
+
+		return find;
 	}
 
 	@Override
@@ -59,6 +67,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public Item view(Item item) {
 		item.setUseable(1);
+
 		return this.itemMapper.select(item);
 	}
 
@@ -66,6 +75,7 @@ public class ItemServiceImpl implements ItemService {
 	public Item view(String itemCode) {
 		Item find = new Item();
 		find.setItemCode(itemCode);
+
 		return this.view(find);
 	}
 

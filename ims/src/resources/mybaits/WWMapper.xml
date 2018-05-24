@@ -27,6 +27,7 @@
 			  ,NOTE
 		FROM WW
 		<where>
+		AND USEABLE = #{useable}
 			<if test="wwNo > 0">
 				AND WW_NO = #{wwNo}
 			</if>
@@ -46,7 +47,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="wwSortOption != null">
 			<if test="wwSortOption.name() == 'NO'">
@@ -103,6 +103,7 @@
        LEFT OUTER JOIN ITEM I
        ON WA.ITEM_NO = I.ITEM_CODE
        <where>
+       AND W.USEABLE = #{useable}
            <if test="findOption != null">
                <if test="findOption().name == 'ITEM_CODE'">
                    AND UPPER( I.ITEM_CODE ) LIKE UPPER ( '%' || #{keyword} || '%' )
@@ -111,7 +112,6 @@
                    AND UPPER( I.ITEM_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
                </if>
             </if>
-            AND W.USEABLE = #{useable}
        </where>
        ORDER BY WW_DATE DESC
 	</select>

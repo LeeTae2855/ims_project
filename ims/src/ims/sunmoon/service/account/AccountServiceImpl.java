@@ -18,32 +18,43 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Account> list(Account account) {
 		account.setUseable(1);
+
 		return this.accountMapper.list(account);
 	}
 
 	@Override
 	public List<Account> list(Account account, String keyword) {
+		List<Account> find = null;
+
 		if (account.getFindOption() != null) {
 			switch (account.getFindOption()) {
 			case NONE:
-				this.list(account);
+				find = this.list(account);
 				break;
 
 			case NO:
 				account.setAccountNo(Integer.parseInt(keyword));
+				find = this.list(account);
 				break;
+
 			case NAME:
 				account.setAccountName(keyword);
+				find = this.list(account);
 				break;
+
 			case BANK_NAME:
 				account.setBankName(keyword);
+				find = this.list(account);
 				break;
+
 			case CFC:
 				account.setAccountCfc(keyword);
+				find = this.list(account);
 				break;
 			}
 		}
-		return this.list(account);
+
+		return find;
 	}
 
 	@Override
@@ -61,6 +72,7 @@ public class AccountServiceImpl implements AccountService {
 	public Account view(String accountNo) {
 		Account find = new Account();
 		find.setAccountNo(Integer.parseInt(accountNo));
+
 		return this.view(find);
 	}
 

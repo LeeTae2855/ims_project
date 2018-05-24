@@ -26,6 +26,7 @@
 			  ,USEABLE
 		FROM BERELEASED
 		<where>
+		AND USEABLE = #{useable}
 			<if test="beNo > 0">
 				AND BE_NO = #{beNo}
 			</if>
@@ -42,7 +43,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="berelasedSortOption != null">
 			<if test="berelasedSortOption.name() == 'BE_NO'">

@@ -18,27 +18,33 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public List<Manager> list(Manager manager) {
 		manager.setUseable(1);
+
 		return this.managerMapper.list(manager);
 	}
 
 	@Override
 	public List<Manager> list(Manager manager, String keyword) {
+		List<Manager> find = null;
+
 		if (manager.getFindOption() != null) {
 			switch (manager.getFindOption()) {
 			case NONE:
-				this.list(manager);
+				find = this.list(manager);
 				break;
 
 			case NO:
 				manager.setManagerNo(Integer.parseInt(keyword));
+				find = this.list(manager);
 				break;
 
 			case NAME:
 				manager.setManagerName(keyword);
+				find = this.list(manager);
 				break;
 			}
 		}
-		return this.list(manager);
+
+		return find;
 	}
 
 	@Override
@@ -50,6 +56,7 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public Manager view(Manager manager) {
 		manager.setUseable(1);
+
 		return this.managerMapper.select(manager);
 	}
 
@@ -57,6 +64,7 @@ public class ManagerServiceImpl implements ManagerService {
 	public Manager view(String managerNo) {
 		Manager find = new Manager();
 		find.setManagerNo(Integer.parseInt(managerNo));
+
 		return this.view(find);
 	}
 

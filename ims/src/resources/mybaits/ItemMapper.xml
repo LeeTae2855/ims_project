@@ -26,6 +26,7 @@
 			  ,NOTE
 		FROM ITEM
 		<where>
+		AND USEABLE = #{useable}
 			<if test="itemCode != null and itemCode != ''">
 				AND UPPER( ITEM_CODE ) LIKE UPPER ( '%' || #{itemCode} || '%' )
 			</if>
@@ -61,7 +62,6 @@
 			<if test="itemStatusOption != null">
 				AND UPPER( ITEM_STATUS ) LIKE UPPER ( '%' || #{itemStatusOption.name()} || '%' )
 			</if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="itemSortOption != null">
 			<if test="itemSortOption.name() == 'ITEM_CODE'">

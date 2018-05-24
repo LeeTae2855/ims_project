@@ -46,6 +46,7 @@
 			   ,NOTE   
 		FROM CLIENT
 		<where>
+		AND USEABLE = #{useable}
 			<if test="clientNo > 0">
 				AND CLIENT_NO = #{clientNo}
 			</if>
@@ -64,7 +65,6 @@
 			<if test="event != null and event != ''">
 				AND UPPER( EVENT ) LIKE UPPER ( '%' || #{event} || '%' )
 			</if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="clientSortOption != null">
 			<if test="clientSortOption.name() == 'NO'">

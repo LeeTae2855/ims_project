@@ -18,27 +18,33 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public List<Client> list(Client client) {
 		client.setUseable(1);
+
 		return this.clientMapper.list(client);
 	}
 
 	@Override
 	public List<Client> list(Client client, String keyword) {
+		List<Client> find = null;
+
 		if (client.getFindOption() != null) {
 			switch (client.getFindOption()) {
 			case NONE:
-				this.list(client);
+				find = this.list(client);
 				break;
 
 			case NO:
 				client.setClientNo(Integer.parseInt(keyword));
+				find = this.list(client);
 				break;
-				
+
 			case NAME:
 				client.setClientName(keyword);
+				find = this.list(client);
 				break;
 			}
 		}
-		return this.list(client);
+
+		return find;
 	}
 
 	@Override
@@ -57,6 +63,7 @@ public class ClientServiceImpl implements ClientService {
 		Client find = new Client();
 		find.setUseable(1);
 		find.setClientNo(Integer.parseInt(clientNo));
+
 		return this.clientMapper.select(find);
 	}
 

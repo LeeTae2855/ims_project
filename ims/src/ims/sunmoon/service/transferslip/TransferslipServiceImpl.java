@@ -19,6 +19,7 @@ public class TransferslipServiceImpl implements TransferslipService {
 	@Override
 	public List<Transferslip> list(Transferslip transferslip) {
 		transferslip.setUseable(1);
+
 		return this.transferslipMapper.list(transferslip);
 	}
 
@@ -49,42 +50,51 @@ public class TransferslipServiceImpl implements TransferslipService {
 
 	@Override
 	public List<Transferslip> list(Transferslip transferslip, String keyword) {
+		List<Transferslip> find = null;
 		transferslip.setUseable(1);
 		transferslip.setKeyword(keyword);
+
 		if (transferslip.getFindOption() != null) {
 			switch (transferslip.getFindOption()) {
 			case NONE:
-				this.list(transferslip);
+				find = this.list(transferslip);
 				break;
 
 			case DEBTOR_NO:
 				transferslip.setDebtorNo(Integer.parseInt(keyword));
+				find = this.transferslipMapper.find(transferslip);
 				break;
 
 			case CREDIT_NO:
 				transferslip.setCreditNo(Integer.parseInt(keyword));
+				find = this.transferslipMapper.find(transferslip);
 				break;
 
 			case CREDIT_NAME:
 				transferslip.setCreditName(keyword);
+				find = this.transferslipMapper.find(transferslip);
 				break;
 
 			case DEBTOR_NAME:
 				transferslip.setCreditName(keyword);
+				find = this.transferslipMapper.find(transferslip);
 				break;
 
 			case CON_VER:
 				transferslip.setConVer(keyword);
+				find = this.transferslipMapper.find(transferslip);
 				break;
 			}
 		}
-		return this.transferslipMapper.find(transferslip);
+
+		return find;
 	}
 
 	@Override
 	public Transferslip view(String tsNo) {
 		Transferslip find = new Transferslip();
 		find.setTsNo(Integer.parseInt(tsNo));
+
 		return this.view(find);
 	}
 
@@ -93,6 +103,7 @@ public class TransferslipServiceImpl implements TransferslipService {
 		Transferslip find = new Transferslip();
 		find.setFirst(first);
 		find.setLast(last);
+
 		return this.list(find);
 	}
 }

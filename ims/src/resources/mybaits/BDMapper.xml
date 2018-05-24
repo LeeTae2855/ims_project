@@ -28,6 +28,7 @@
               ,NOTE
         FROM BD
         <where>
+        AND USEABLE = #{useable}
             <if test="bdNo > 0">
                 AND BD_NO = #{bdNo}
             </if>
@@ -47,7 +48,6 @@
             <if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-            AND USEABLE = #{useable}
         </where>
 		<if test="bdSortOption != null">
             <if test="bdSortOption.name() == 'NO'">

@@ -28,6 +28,7 @@
 			  ,NOTE      
 		FROM WITHDRAW
 		<where>
+		AND USEABLE = #{useable}
 			<if test="withNo > 0">
 				AND WITH_NO = #{withNo}
 			</if>
@@ -44,7 +45,6 @@
 			<if test="conVer != null and conVer != ''">
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
-			AND USEABLE = #{useable}
 		</where>
 		<if test="withdrawSortOption != null">
 			<if test="withdrawSortOption.name() == 'NO'">

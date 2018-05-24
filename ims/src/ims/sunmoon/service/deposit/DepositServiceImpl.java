@@ -8,52 +8,54 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ims.sunmoon.domain.Client;
 import ims.sunmoon.domain.Deposit;
 import ims.sunmoon.persistance.DepositMapper;
-import ims.sunmoon.service.client.ClientService;
 
 @Service
 public class DepositServiceImpl implements DepositService {
 	@Resource
 	private DepositMapper depositMapper;
-	@Resource
-	private ClientService clientService;
 
 	@Override
 	public List<Deposit> list(Deposit deposit) {
 		deposit.setUseable(1);
+
 		return this.depositMapper.list(deposit);
 	}
 
 	@Override
 	public List<Deposit> list(Deposit deposit, String keyword) {
+		List<Deposit> find = null;
+		deposit.setKeyword(keyword);
+
 		if (deposit.getFindOption() != null) {
-			Client find = new Client();
 			switch (deposit.getFindOption()) {
 			case NONE:
-				this.list(deposit);
+				find = this.list(deposit);
 				break;
 
 			case DEP_NO:
 				deposit.setDepNo(Integer.parseInt(keyword));
+				find = this.list(deposit);
 				break;
 
 			case CLEINT_NO:
-				deposit.setClientNo(this.clientService.view(keyword).getClientNo());
+				deposit.setClientNo(Integer.parseInt(keyword));
+				find = this.depositMapper.find(deposit);
 				break;
 
 			case CLIENT_NAME:
-				find.setClientName(keyword);
-				deposit.setClientNo(this.clientService.view(find).getClientNo());
+				find = this.depositMapper.find(deposit);
 				break;
 
 			case CON_VER:
 				deposit.setConVer(keyword);
+				find = this.list(deposit);
 				break;
 			}
 		}
-		return this.list(deposit);
+
+		return find;
 	}
 
 	@Override
@@ -61,6 +63,7 @@ public class DepositServiceImpl implements DepositService {
 		Deposit find = new Deposit();
 		find.setFirst(first);
 		find.setLast(last);
+
 		return this.list(find);
 	}
 
@@ -79,6 +82,7 @@ public class DepositServiceImpl implements DepositService {
 	public Deposit view(String depNo) {
 		Deposit find = new Deposit();
 		find.setDepNo(Integer.parseInt(depNo));
+
 		return this.view(find);
 	}
 
