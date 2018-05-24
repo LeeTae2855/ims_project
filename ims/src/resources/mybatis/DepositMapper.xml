@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.DepositMapper">
+<mapper namespace="ims.sunmoon.persistance.DepositMapper">
 	<resultMap id="depositResultMap" type="deposit">
 		<id column="DEP_NO" property="depNo" />
 		<result column="DEP_DATE" property="depDate" />

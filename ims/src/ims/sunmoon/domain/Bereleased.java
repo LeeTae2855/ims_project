@@ -39,6 +39,26 @@ public class Bereleased implements Serializable {
 	private Date last;
 	private BereleasedFindOption findOption;
 
+	public Bereleased() {
+	}
+
+	public Bereleased(Integer beNo, String itemNo, Date beDate, Integer unit, Integer price, Integer discount,
+			String conVer, Integer useable, BereleasedSortOption bereleasedSortOption, Date first, Date last,
+			BereleasedFindOption findOption) {
+		this.beNo = beNo;
+		this.itemNo = itemNo;
+		this.beDate = beDate;
+		this.unit = unit;
+		this.price = price;
+		this.discount = discount;
+		this.conVer = conVer;
+		this.useable = useable;
+		this.bereleasedSortOption = bereleasedSortOption;
+		this.first = first;
+		this.last = last;
+		this.findOption = findOption;
+	}
+
 	public Integer getBeNo() {
 		return beNo;
 	}

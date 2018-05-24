@@ -67,6 +67,36 @@ public class Client implements Serializable {
 	private ClientFindOption findOption;
 	private String keyword;
 
+	public Client() {
+	}
+
+	public Client(Integer clientNo, String clientName, String compName, String rep, Integer bsnLicNo, String bsnEst,
+			String bsnEstAddr, String bsnCdt, String event, Integer repPhone, Integer repFax, String email,
+			Integer cellphone, Integer managerNo, Integer zipNo, Integer accountNo, Integer useable, String note,
+			ClientSortOption clientSortOption, ClientFindOption findOption, String keyword) {
+		this.clientNo = clientNo;
+		this.clientName = clientName;
+		this.compName = compName;
+		this.rep = rep;
+		this.bsnLicNo = bsnLicNo;
+		this.bsnEst = bsnEst;
+		this.bsnEstAddr = bsnEstAddr;
+		this.bsnCdt = bsnCdt;
+		this.event = event;
+		this.repPhone = repPhone;
+		this.repFax = repFax;
+		this.email = email;
+		this.cellphone = cellphone;
+		this.managerNo = managerNo;
+		this.zipNo = zipNo;
+		this.accountNo = accountNo;
+		this.useable = useable;
+		this.note = note;
+		this.clientSortOption = clientSortOption;
+		this.findOption = findOption;
+		this.keyword = keyword;
+	}
+
 	public Integer getClientNo() {
 		return clientNo;
 	}

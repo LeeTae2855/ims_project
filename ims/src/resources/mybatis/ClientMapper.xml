@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.ClientMapper">
+<mapper namespace="ims.sunmoon.persistance.ClientMapper">
 	<resultMap id="clientResultMap" type="client">
 		<id column="CLIENT_NO" property="clientNo" />
 		<result column="CLIENT_NAME" property="clientName" />

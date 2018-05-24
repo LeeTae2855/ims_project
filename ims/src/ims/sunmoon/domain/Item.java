@@ -41,6 +41,27 @@ public class Item implements Serializable {
 	private ItemFindOption findOption;
 	private String keyword;
 
+	public Item() {
+	}
+
+	public Item(String itemCode, Integer itemCfc, String itemName, String standard, Integer baseQuantity,
+			String itemStatus, Integer useable, String note, ItemSortOption itemSortOption, ItemCFC itemCfcOption,
+			ItemStatus itemStatusOption, ItemFindOption findOption, String keyword) {
+		this.itemCode = itemCode;
+		this.itemCfc = itemCfc;
+		this.itemName = itemName;
+		this.standard = standard;
+		this.baseQuantity = baseQuantity;
+		this.itemStatus = itemStatus;
+		this.useable = useable;
+		this.note = note;
+		this.itemSortOption = itemSortOption;
+		this.itemCfcOption = itemCfcOption;
+		this.itemStatusOption = itemStatusOption;
+		this.findOption = findOption;
+		this.keyword = keyword;
+	}
+
 	public String getItemCode() {
 		return itemCode;
 	}

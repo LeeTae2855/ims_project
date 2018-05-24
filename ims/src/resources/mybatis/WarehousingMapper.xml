@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.WarehousingMapper">
+<mapper namespace="ims.sunmoon.persistance.WarehousingMapper">
 	<resultMap id="warehousingResultMap" type="warehousing">
 		<id column="WARE_NO" property="beNo" />
 		<result column="ITEM_NO" property="itemNo" />

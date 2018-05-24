@@ -43,6 +43,28 @@ public class WW implements Serializable {
 	private Date last;
 	private String keyword;
 
+	public WW() {
+	}
+
+	public WW(Integer wwNo, Integer wareNo, Integer withNo, Date wwDate, Integer quantity, Integer ammount,
+			Integer useable, String conVer, String note, WWSortOption wwSortOption, WWFindOption findOption, Date first,
+			Date last, String keyword) {
+		this.wwNo = wwNo;
+		this.wareNo = wareNo;
+		this.withNo = withNo;
+		this.wwDate = wwDate;
+		this.quantity = quantity;
+		this.ammount = ammount;
+		this.useable = useable;
+		this.conVer = conVer;
+		this.note = note;
+		this.wwSortOption = wwSortOption;
+		this.findOption = findOption;
+		this.first = first;
+		this.last = last;
+		this.keyword = keyword;
+	}
+
 	public Integer getWwNo() {
 		return wwNo;
 	}

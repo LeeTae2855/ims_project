@@ -37,6 +37,24 @@ public class Warehousing implements Serializable {
 	private Date last;
 	private WarehousingSortOption warehousingSortOption;
 
+	public Warehousing() {
+	}
+
+	public Warehousing(Integer wareNo, String itemNo, Date wareDate, Integer unit, Integer price, Integer discount,
+			String conVer, Integer useable, Date first, Date last, WarehousingSortOption warehousingSortOption) {
+		this.wareNo = wareNo;
+		this.itemNo = itemNo;
+		this.wareDate = wareDate;
+		this.unit = unit;
+		this.price = price;
+		this.discount = discount;
+		this.conVer = conVer;
+		this.useable = useable;
+		this.first = first;
+		this.last = last;
+		this.warehousingSortOption = warehousingSortOption;
+	}
+
 	public Integer getWareNo() {
 		return wareNo;
 	}

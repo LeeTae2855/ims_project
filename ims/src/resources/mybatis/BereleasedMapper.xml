@@ -3,8 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.BereleasedMapper">
-	<resultMap id="berelasedResultMap" type="berelased">
+<mapper namespace="ims.sunmoon.persistance.BereleasedMapper">
+	<resultMap id="bereleasedResultMap" type="bereleased">
 		<id column="BE_NO" property="beNo" />
 		<result column="ITEM_NO" property="itemNo" />
 		<result column="BE_DATE" property="beDate" />
@@ -15,7 +15,7 @@
 		<result column="USEABLE" property="useable" />
 	</resultMap>
 	
-	<select id="list" parameterType="berelased" resultMap="berelasedResultMap">
+	<select id="list" parameterType="bereleased" resultMap="bereleasedResultMap">
 		SELECT BE_NO
 			  ,ITEM_NO
 			  ,BE_DATE
@@ -66,7 +66,7 @@
 		</if>
 	</select>
 	
-	<select id="select" parameterType="berelased" resultMap="berelasedResultMap">
+	<select id="select" parameterType="bereleased" resultMap="bereleasedResultMap">
 		SELECT BE_NO
 			  ,ITEM_NO
 			  ,BE_DATE
@@ -80,7 +80,7 @@
 		AND USEABLE = #{useable}
 	</select>
 
-	<insert id="insert" parameterType="berelased">
+	<insert id="insert" parameterType="bereleased">
 		<selectKey keyColumn="BE_NO" keyProperty="beNo" resultType="int" order="BEFORE">
 			SELECT BERELEASED_SEQ.NEXTVAL
 			FROM DUAL
@@ -99,7 +99,7 @@
 			 #{discount}, #{conVer}, 1)
 	</insert>
 
-	<update id="update" parameterType="berelased">
+	<update id="update" parameterType="bereleased">
 		UPDATE 
 		BERELEASED
 		SET
@@ -114,7 +114,7 @@
 		BE_NO     = #{beNo}
 	</update>
 
-	<update id="delete" parameterType="berelased">
+	<update id="delete" parameterType="bereleased">
 		UPDATE
 		BERELEASED
 		SET

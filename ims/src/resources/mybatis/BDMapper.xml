@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ims.sunmoon.persistence.BDMapper">
+<mapper namespace="ims.sunmoon.persistance.BDMapper">
 	<resultMap id="bdResultMap" type="bd">
 		<id column="BD_NO" property="bdNo" />
 		<result column="BE_NO" property="beNo" />

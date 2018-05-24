@@ -40,6 +40,25 @@ public class Withdraw implements Serializable {
 	private Date first;
 	private Date last;
 
+	public Withdraw() {
+	}
+
+	public Withdraw(Integer withNo, Date withDate, Integer clientNo, Integer accountNo, String conVer, Integer ammount,
+			Integer tax, Integer useable, String note, WithdrawSortOption withdrawSortOption, Date first, Date last) {
+		this.withNo = withNo;
+		this.withDate = withDate;
+		this.clientNo = clientNo;
+		this.accountNo = accountNo;
+		this.conVer = conVer;
+		this.ammount = ammount;
+		this.tax = tax;
+		this.useable = useable;
+		this.note = note;
+		this.withdrawSortOption = withdrawSortOption;
+		this.first = first;
+		this.last = last;
+	}
+
 	public Integer getWithNo() {
 		return withNo;
 	}
