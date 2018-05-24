@@ -39,6 +39,9 @@
 				AND WARE_DATE BETWEEN #{first}
 				AND #{last} + 1
 			</if>
+			<if test="conVer != null and conVer != ''">
+                AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
+            </if>
 			AND USEABLE = #{useable}
 		</where>
 		<if test="warehousingSortOption != null">

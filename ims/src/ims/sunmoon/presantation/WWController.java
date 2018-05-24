@@ -24,7 +24,7 @@ public class WWController {
 	public ModelAndView list(WW ww, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/list");
 		List<WW> find = null;
-		
+
 		if ("".equals(keyword) || keyword == null) {
 			if (ww.getFirst() != null && ww.getLast() != null) {
 				find = this.wwService.list(ww.getFirst(), ww.getLast());

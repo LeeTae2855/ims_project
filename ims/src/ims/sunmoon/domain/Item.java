@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 
+import ims.sunmoon.util.option.find.ItemFindOption;
 import ims.sunmoon.util.option.sort.ItemSortOption;
 import ims.sunmoon.util.option.status.ItemStatus;
 import ims.sunmoon.util.cfc.ItemCFC;
@@ -37,6 +38,8 @@ public class Item implements Serializable {
 	private ItemSortOption itemSortOption;
 	private ItemCFC itemCfcOption;
 	private ItemStatus itemStatusOption;
+	private ItemFindOption findOption;
+	private String keyword;
 
 	public String getItemCode() {
 		return itemCode;
@@ -126,6 +129,22 @@ public class Item implements Serializable {
 		this.itemStatusOption = itemStatusOption;
 	}
 
+	public ItemFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(ItemFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Item 모델 복사
 	public void CopyData(Item param) {
 		this.itemCode = param.getItemCode();
@@ -139,5 +158,7 @@ public class Item implements Serializable {
 		this.itemSortOption = param.getItemSortOption();
 		this.itemCfcOption = param.getItemCfcOption();
 		this.itemStatusOption = param.getItemStatusOption();
+		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }

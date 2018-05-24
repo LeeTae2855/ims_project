@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ims.sunmoon.domain.BD;
 import ims.sunmoon.domain.Item;
 import ims.sunmoon.persistance.ItemMapper;
 
@@ -23,8 +24,27 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> list(Item item, String keyword) {
-		// TODO: 검색옵션에 따라 로직 구현
-		return null;
+		item.setKeyword(keyword);
+		if (item.getFindOption() != null) {
+			switch (item.getFindOption()) {
+			case ITEM_CODE:
+				item.setItemCode(keyword);
+				break;
+
+			case ITEM_NAME:
+				item.setItemName(keyword);
+				break;
+
+			case ITEM_CFC:
+				// Change CfcOption
+				break;
+
+			case ITEM_STATUS:
+				item.setItemStatus(keyword);
+				break;
+			}
+		}
+		return this.list(item);
 	}
 
 	@Override

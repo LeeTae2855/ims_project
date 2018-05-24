@@ -43,6 +43,10 @@ public class DepositServiceImpl implements DepositService {
 				find.setClientName(keyword);
 				deposit.setClientNo(this.clientService.view(find).getClientNo());
 				break;
+				
+			case CON_VER:
+				deposit.setConVer(keyword);
+				break;
 			}
 		}
 		return this.list(deposit);

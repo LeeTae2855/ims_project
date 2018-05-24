@@ -22,6 +22,22 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
+	public List<Client> list(Client client, String keyword) {
+		if (client.getFindOption() != null) {
+			switch (client.getFindOption()) {
+			case NO:
+				client.setClientNo(Integer.parseInt(keyword));
+				break;
+				
+			case NAME:
+				client.setClientName(keyword);
+				break;
+			}
+		}
+		return this.list(client);
+	}
+
+	@Override
 	@Transactional
 	public void add(Client client) {
 		this.clientMapper.insert(client);

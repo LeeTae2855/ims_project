@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 
+import ims.sunmoon.util.option.find.ClientFindOption;
 import ims.sunmoon.util.option.sort.ClientSortOption;
 
 // 거래처(회사) 
@@ -58,11 +59,13 @@ public class Client implements Serializable {
 
 	// 사용(조회)가능여부
 	private Integer useable;
-
+	
 	// 비고
 	private String note;
 
 	private ClientSortOption clientSortOption;
+	private ClientFindOption findOption;
+	private String keyword;
 
 	public Integer getClientNo() {
 		return clientNo;
@@ -216,6 +219,22 @@ public class Client implements Serializable {
 		this.clientSortOption = clientSortOption;
 	}
 
+	public ClientFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(ClientFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Client 모델 복사
 	public void CopyData(Client param) {
 		this.clientNo = param.getClientNo();
@@ -237,5 +256,7 @@ public class Client implements Serializable {
 		this.useable = param.getUseable();
 		this.note = param.getNote();
 		this.clientSortOption = param.getClientSortOption();
+		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }
