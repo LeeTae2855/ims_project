@@ -25,8 +25,8 @@ public class WWController {
 		ModelAndView modelAndView = new ModelAndView("/ww/list");
 		List<WW> find = null;
 
-		if ("".equals(keyword) || keyword == null) {
-			if (ww.getFirst() != null && ww.getLast() != null) {
+		if (("".equals(keyword)) || (keyword == null)) {
+			if ((ww.getFirst() != null) && (ww.getLast() != null)) {
 				find = this.wwService.list(ww.getFirst(), ww.getLast());
 			} else {
 				find = this.wwService.list(ww);
@@ -43,12 +43,14 @@ public class WWController {
 	public ModelAndView addGet(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/add");
 		modelAndView.addObject("message", request.getParameter("message"));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/add");
+
 		if (this.wwService.list(ww).isEmpty()) {
 			this.wwService.add(ww);
 			return new ModelAndView(new RedirectView("/ww/list"));
@@ -63,18 +65,21 @@ public class WWController {
 	public ModelAndView editGet(WW ww, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/edit");
 		modelAndView.addObject("ww", this.wwService.view(ww));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(WW ww, HttpServletRequest request) throws Exception {
 		this.wwService.edit(ww);
+
 		return new ModelAndView(new RedirectView("/ww/list"));
 	}
 
 	@RequestMapping(value = "/remove/{wwNo}", method = RequestMethod.GET)
 	public ModelAndView removeGet(String wwNo, HttpServletRequest request) throws Exception {
 		this.wwService.remove(wwNo);
+
 		return new ModelAndView(new RedirectView("/ww/list"));
 	}
 }

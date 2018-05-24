@@ -22,11 +22,16 @@ public class BDController {
 	@RequestMapping(value = "/list")
 	public ModelAndView list(BD bd, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/list");
+
 		if ("".equals(keyword) || keyword == null) {
+			if ((bd.getFirst() != null) && (bd.getLast() != null)) {
+
+			}
 			modelAndView.addObject("listBD", this.bdService.list(bd));
 		} else {
 			modelAndView.addObject("listBD", this.bdService.list(bd, keyword));
 		}
+
 		return modelAndView;
 	}
 
@@ -34,12 +39,14 @@ public class BDController {
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/add");
 		modelAndView.addObject("message", request.getParameter("message"));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(BD bd, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/add");
+
 		if (this.bdService.list(bd).isEmpty()) {
 			this.bdService.add(bd);
 			return new ModelAndView(new RedirectView("/bd/list"));
@@ -54,18 +61,21 @@ public class BDController {
 	public ModelAndView editGet(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/edit");
 		modelAndView.addObject("bd", this.bdService.view(bdNo));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(BD bd, HttpServletRequest request) throws Exception {
 		this.bdService.edit(bd);
+
 		return new ModelAndView(new RedirectView("/bd/list"));
 	}
 
 	@RequestMapping(value = "/remove/{bdNo}", method = RequestMethod.GET)
 	public ModelAndView remove(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		this.bdService.remove(bdNo);
+
 		return new ModelAndView(new RedirectView("/bd/list"));
 	}
 
@@ -73,6 +83,7 @@ public class BDController {
 	public ModelAndView view(@PathVariable String bdNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/view");
 		modelAndView.addObject("bd", this.bdService.view(bdNo));
+
 		return modelAndView;
 	}
 }

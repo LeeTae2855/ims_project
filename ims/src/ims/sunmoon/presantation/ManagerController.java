@@ -22,11 +22,13 @@ public class ManagerController {
 	@RequestMapping(value = "/list")
 	public ModelAndView list(Manager manager, String keyword, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/list");
-		if ("".equals(keyword) || keyword == null) {
+
+		if (("".equals(keyword)) || (keyword == null)) {
 			modelAndView.addObject("listManager", this.managerService.list(manager));
 		} else {
 			modelAndView.addObject("listItem", this.managerService.list(manager, keyword));
 		}
+
 		return modelAndView;
 	}
 
@@ -34,12 +36,14 @@ public class ManagerController {
 	public ModelAndView addGet(HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/add");
 		modelAndView.addObject("message", request.getParameter("message"));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addPost(Manager manager, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/add");
+
 		if (this.managerService.list(manager).isEmpty()) {
 			this.managerService.add(manager);
 			return new ModelAndView(new RedirectView("/manager/list"));
@@ -54,18 +58,21 @@ public class ManagerController {
 	public ModelAndView editGet(@PathVariable String managerNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/edit");
 		modelAndView.addObject("manager", this.managerService.view(managerNo));
+
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ModelAndView editPost(Manager manager, HttpServletRequest request) throws Exception {
-		managerService.edit(manager);
+		this.managerService.edit(manager);
+
 		return new ModelAndView(new RedirectView("/manager/list"));
 	}
 
 	@RequestMapping(value = "/remove/{managerNo}", method = RequestMethod.GET)
 	public ModelAndView remove(@PathVariable String managerNo, HttpServletRequest request) throws Exception {
 		this.managerService.remove(managerNo);
+
 		return new ModelAndView(new RedirectView("/manager/list"));
 	}
 
@@ -73,6 +80,7 @@ public class ManagerController {
 	public ModelAndView view(@PathVariable String managerNo, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/view");
 		modelAndView.addObject("manager", this.managerService.view(managerNo));
+
 		return modelAndView;
 	}
 }

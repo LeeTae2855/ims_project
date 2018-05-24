@@ -17,5 +17,4 @@ public class LoginServiceImpl implements LoginService {
 	public LoginInfo login(HttpServletRequest request) throws Exception {
 		return null;
 	}
-
 }

@@ -1,5 +1,6 @@
 package ims.sunmoon.service.transferslip;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,16 +15,19 @@ import ims.sunmoon.persistance.TransferslipMapper;
 public class TransferslipServiceImpl implements TransferslipService {
 	@Resource
 	private TransferslipMapper transferslipMapper;
-	
+
 	@Override
 	public List<Transferslip> list(Transferslip transferslip) {
+		transferslip.setUseable(1);
 		return this.transferslipMapper.list(transferslip);
 	}
 
 	@Override
 	@Transactional
 	public void add(Transferslip transferslip) {
-		this.transferslipMapper.insert(transferslip);
+		if (transferslip.getDebtorNo() != transferslip.getCreditNo()) {
+			this.transferslipMapper.insert(transferslip);
+		}
 	}
 
 	@Override
@@ -41,5 +45,50 @@ public class TransferslipServiceImpl implements TransferslipService {
 	@Transactional
 	public void remove(String transferslipNo) {
 		this.transferslipMapper.delete(transferslipNo);
+	}
+
+	@Override
+	public List<Transferslip> list(Transferslip transferslip, String keyword) {
+		transferslip.setUseable(1);
+		transferslip.setKeyword(keyword);
+		if (transferslip.getFindOption() != null) {
+			switch (transferslip.getFindOption()) {
+			case DEBTOR_NO:
+				transferslip.setDebtorNo(Integer.parseInt(keyword));
+				break;
+
+			case CREDIT_NO:
+				transferslip.setCreditNo(Integer.parseInt(keyword));
+				break;
+
+			case CREDIT_NAME:
+				transferslip.setCreditName(keyword);
+				break;
+
+			case DEBTOR_NAME:
+				transferslip.setCreditName(keyword);
+				break;
+
+			case CON_VER:
+				transferslip.setConVer(keyword);
+				break;
+			}
+		}
+		return this.transferslipMapper.find(transferslip);
+	}
+
+	@Override
+	public Transferslip view(String tsNo) {
+		Transferslip find = new Transferslip();
+		find.setTsNo(Integer.parseInt(tsNo));
+		return this.view(find);
+	}
+
+	@Override
+	public List<Transferslip> list(Date first, Date last) {
+		Transferslip find = new Transferslip();
+		find.setFirst(first);
+		find.setLast(last);
+		return this.list(find);
 	}
 }

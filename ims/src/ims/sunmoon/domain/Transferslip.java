@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.TransferslipFindOption;
 import ims.sunmoon.util.option.sort.TransferslipSortOption;
 
 // 대체거래 
@@ -42,6 +43,10 @@ public class Transferslip implements Serializable {
 	private TransferslipSortOption transferslipSortOption;
 	private Date first;
 	private Date last;
+	private String keyword;
+	private TransferslipFindOption findOption;
+	private String creditName;
+	private String debtorName;
 
 	public Integer getTsNo() {
 		return tsNo;
@@ -147,6 +152,38 @@ public class Transferslip implements Serializable {
 		this.last = last;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public TransferslipFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(TransferslipFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getCreditName() {
+		return creditName;
+	}
+
+	public void setCreditName(String creditName) {
+		this.creditName = creditName;
+	}
+
+	public String getDebtorName() {
+		return debtorName;
+	}
+
+	public void setDebtorName(String debtorName) {
+		this.debtorName = debtorName;
+	}
+
 	// Transferslip 모델 복사
 	public void CopyData(Transferslip param) {
 		this.tsNo = param.getTsNo();
@@ -162,5 +199,9 @@ public class Transferslip implements Serializable {
 		this.transferslipSortOption = param.getTransferslipSortOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.keyword = param.getKeyword();
+		this.findOption = param.getFindOption();
+		this.creditName = param.getCreditName();
+		this.debtorName = param.getDebtorName();
 	}
 }
