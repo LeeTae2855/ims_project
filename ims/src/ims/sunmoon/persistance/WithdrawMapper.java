@@ -13,5 +13,5 @@ public interface WithdrawMapper {
 
 	public void update(Withdraw withdraw);
 
-	public void delete(String withdrawNo);
+	public void delete(String withNo);
 }
