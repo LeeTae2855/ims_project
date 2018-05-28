@@ -121,9 +121,9 @@
          ON B.DEP_NO = D.DEP_NO
          LEFT OUTER JOIN CLIENT C
          ON D.CLIENT_NO = C.CLIENT_NO
-         WHERE C.CLIENT_NAME = #{keyword};
+         WHERE UPPER( C.CLIENT_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
          AND B.USEABLE = #{useable}
-         ORDER BY BD_DATE;
+         ORDER BY BD_DATE
     </select>
 
     <select id="select" parameterType="bd" resultMap="bdResultMap">

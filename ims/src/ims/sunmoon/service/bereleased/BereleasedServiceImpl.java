@@ -27,6 +27,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 	public List<Bereleased> list(Bereleased bereleased, String keyword) {
 		List<Bereleased> find = null;
 		bereleased.setUseable(1);
+		bereleased.setKeyword(keyword);
 
 		if (bereleased.getFindOption() != null) {
 			switch (bereleased.getFindOption()) {

@@ -33,6 +33,8 @@ public class Bereleased implements Serializable {
 
 	// 사용(조회)가능여부
 	private Integer useable;
+	
+	private String keyword;
 
 	private BereleasedSortOption bereleasedSortOption;
 	private Date first;
@@ -44,7 +46,7 @@ public class Bereleased implements Serializable {
 
 	public Bereleased(Integer beNo, String itemNo, Date beDate, Integer unit, Integer price, Integer discount,
 			String conVer, Integer useable, BereleasedSortOption bereleasedSortOption, Date first, Date last,
-			BereleasedFindOption findOption) {
+			BereleasedFindOption findOption, String keyword) {
 		this.beNo = beNo;
 		this.itemNo = itemNo;
 		this.beDate = beDate;
@@ -57,6 +59,7 @@ public class Bereleased implements Serializable {
 		this.first = first;
 		this.last = last;
 		this.findOption = findOption;
+		this.keyword = keyword;
 	}
 
 	public Integer getBeNo() {
@@ -155,6 +158,14 @@ public class Bereleased implements Serializable {
 		this.findOption = findOption;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Bereleased 모델 복사
 	public void CopyData(Bereleased param) {
 		this.beNo = param.getBeNo();
@@ -169,5 +180,6 @@ public class Bereleased implements Serializable {
 		this.first = param.getFirst();
 		this.last = param.getLast();
 		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }

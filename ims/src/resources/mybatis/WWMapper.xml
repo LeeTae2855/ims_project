@@ -126,17 +126,14 @@
               ,W.USEABLE
               ,W.CON_VER
               ,W.NOTE
-              ,WA.WARE_NO
-              ,I.ITEM_CODE
-              ,I.ITEM_NAME
        FROM WW W
        LEFT OUTER JOIN WITHDRAW WI
        ON W.WITH_NO = WI.WITH_NO
        LEFT OUTER JOIN CLIENT C
        ON WI.CLIENT_NO = C.CLIENT_NO
-       WHERE C.CLIENT_NAME = #{keyword};
+       WHERE UPPER( C.CLIENT_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
        AND W.USEABLE = #{useable}
-       ORDER BY WW_DATE;
+       ORDER BY WW_DATE
     </select>
 
 	<insert id="insert" parameterType="ww">

@@ -14,7 +14,7 @@ import ims.sunmoon.persistance.WithdrawMapper;
 public class WithdrawServiceImpl implements WithdrawService {
 	@Resource
 	private WithdrawMapper withdrawMapper;
-	
+
 	@Override
 	public List<Withdraw> list(Withdraw withdraw) {
 		return this.withdrawMapper.list(withdraw);

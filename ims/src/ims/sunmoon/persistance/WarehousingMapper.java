@@ -6,6 +6,8 @@ import ims.sunmoon.domain.Warehousing;
 
 public interface WarehousingMapper {
 	public List<Warehousing> list(Warehousing warehousing);
+	
+	public List<Warehousing> findItem(Warehousing warehousing);
 
 	public void insert(Warehousing warehousing);
 
@@ -13,5 +15,5 @@ public interface WarehousingMapper {
 
 	public void update(Warehousing warehousing);
 
-	public void delete(String warehousingNo);
+	public void delete(String wareNo);
 }

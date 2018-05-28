@@ -79,6 +79,23 @@
 		WHERE BE_NO = #{beNo}
 		AND USEABLE = #{useable}
 	</select>
+	
+	<select id="findItem" parameterType="bereleased" resultMap="bereleasedResultMap">
+		SELECT BE.BE_NO
+              ,BE.ITEM_NO
+			  ,BE.BE_DATE
+			  ,BE.UNIT
+			  ,BE.PRICE
+			  ,BE.DISCOUNT
+			  ,BE.CON_VER
+			  ,BE.USEABLE
+		FROM BERELEASED BE
+		LEFT OUTER JOIN ITEM I
+		ON BE.ITEM_NO = I.ITEM_CODE
+		WHERE UPPER( I.ITEM_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+		AND BE.USEABLE = #{useable}
+		ORDER BY BE.BE_DATE DESC
+	</select>
 
 	<insert id="insert" parameterType="bereleased">
 		<selectKey keyColumn="BE_NO" keyProperty="beNo" resultType="int" order="BEFORE">

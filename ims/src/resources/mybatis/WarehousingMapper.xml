@@ -79,6 +79,23 @@
 		WHERE WARE_NO = #{wareNo}
 		AND USEABLE = #{useable}
 	</select>
+	
+	<select id="findItem" parameterType="warehousing" resultMap="warehousingResultMap">
+		SELECT W.WARE_NO
+              ,W.ITEM_NO
+			  ,W.WARE_DATE
+			  ,W.UNIT
+			  ,W.PRICE
+			  ,W.DISCOUNT
+			  ,W.CON_VER
+			  ,W.USEABLE
+		FROM WAREHOUSING W
+		LEFT OUTER JOIN ITEM I
+		ON W.ITEM_NO = I.ITEM_CODE
+		WHERE UPPER( I.ITEM_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+		AND W.USEABLE = #{useable}
+		ORDER BY W.WARE_DATE DESC
+	</select>
 
 	<insert id="insert" parameterType="warehousing">
 		<selectKey keyColumn="WARE_NO" keyProperty="wareNo" resultType="int" order="BEFORE">
