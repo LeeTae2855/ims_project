@@ -20,9 +20,10 @@ public class AccountController {
 	private AccountService accountService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Account account, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Account account, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/list");
 
+		String keyword = account.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			modelAndView.addObject("listAccount", this.accountService.list(account));
 		} else {

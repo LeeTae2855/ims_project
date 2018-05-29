@@ -20,9 +20,10 @@ public class TransferslipController {
 	private TransferslipService transferslipService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Transferslip transferslip, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Transferslip transferslip, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ts/list");
 
+		String keyword = transferslip.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			if ((transferslip.getFirst() != null) && (transferslip.getLast() != null)) {
 				modelAndView.addObject("listTs",

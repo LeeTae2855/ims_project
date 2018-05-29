@@ -20,13 +20,14 @@ public class ManagerController {
 	private ManagerService managerService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Manager manager, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Manager manager, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/manager/list");
 
+		String keyword = manager.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			modelAndView.addObject("listManager", this.managerService.list(manager));
 		} else {
-			modelAndView.addObject("listItem", this.managerService.list(manager, keyword));
+			modelAndView.addObject("listManager", this.managerService.list(manager, keyword));
 		}
 
 		return modelAndView;

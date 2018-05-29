@@ -1,5 +1,7 @@
 package ims.sunmoon.presantation;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,29 +15,42 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import ims.sunmoon.domain.Warehousing;
+import ims.sunmoon.service.item.ItemService;
 import ims.sunmoon.service.warehousing.WarehousingService;
 
 @Controller
 public class WarehousingController {
 	@Resource
 	private WarehousingService warehousingService;
+	@Resource
+	private ItemService itemService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Warehousing warehousing, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Warehousing warehousing, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ware/list");
-		List<Warehousing> find = null;
+		List<Warehousing> listWare = new ArrayList<Warehousing>();
+		List<Warehousing> list = null;
 
+		String keyword = warehousing.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			if ((warehousing.getFirst() != null) && (warehousing.getLast() != null)) {
-				find = this.warehousingService.list(warehousing.getFirst(), warehousing.getLast());
+				list = this.warehousingService.list(warehousing.getFirst(), warehousing.getLast());
 			} else {
-				find = this.warehousingService.list(warehousing);
+				list = this.warehousingService.list(warehousing);
 			}
 		} else {
-			find = this.warehousingService.list(warehousing, keyword);
+			list = this.warehousingService.list(warehousing, keyword);
 		}
 
-		modelAndView.addObject("listBe", find);
+		Iterator<Warehousing> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			Warehousing resultWare = iterator.next();
+			resultWare.setItemName(this.itemService.view(resultWare.getItemNo()).getItemName());
+
+			listWare.add(resultWare);
+		}
+
+		modelAndView.addObject("listWare", listWare);
 		return modelAndView;
 	}
 
