@@ -37,6 +37,9 @@ public class BD implements Serializable {
 	// 비고
 	private String note;
 
+	private String itemName;
+	private String clientName;
+
 	private BDSortOption bdSortOption;
 	private BDFindOption findOption;
 	private Date first;
@@ -48,7 +51,7 @@ public class BD implements Serializable {
 
 	public BD(Integer bdNo, Integer beNo, Integer depNo, Date bdDate, Integer quantity, Integer ammount,
 			Integer useable, String conVer, String note, BDSortOption bdSortOption, BDFindOption findOption, Date first,
-			Date last, String keyword) {
+			Date last, String keyword, String itemName, String clientName) {
 		this.bdNo = bdNo;
 		this.beNo = beNo;
 		this.depNo = depNo;
@@ -63,6 +66,8 @@ public class BD implements Serializable {
 		this.first = first;
 		this.last = last;
 		this.keyword = keyword;
+		this.itemName = itemName;
+		this.clientName = clientName;
 	}
 
 	public Integer getBdNo() {
@@ -177,6 +182,22 @@ public class BD implements Serializable {
 		this.keyword = keyword;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
 	// Bd 모델 복사
 	public void CopyData(BD param) {
 		this.bdNo = param.getBdNo();
@@ -193,5 +214,7 @@ public class BD implements Serializable {
 		this.last = param.getLast();
 		this.findOption = param.getFindOption();
 		this.keyword = param.getKeyword();
+		this.itemName = param.getItemName();
+		this.clientName = param.getClientName();
 	}
 }

@@ -20,7 +20,11 @@ public class BDServiceImpl implements BDService {
 	public List<BD> list(BD bd) {
 		bd.setUseable(1);
 
-		return this.bdMapper.list(bd);
+		if (bd.getKeyword() != null || !"".equals(bd.getKeyword())) {
+			return this.list(bd, bd.getKeyword());
+		} else {
+			return this.bdMapper.list(bd);
+		}
 	}
 
 	@Override
@@ -32,7 +36,7 @@ public class BDServiceImpl implements BDService {
 		if (bd.getFindOption() != null) {
 			switch (bd.getFindOption()) {
 			case NONE:
-				find = this.list(bd);
+				find = this.bdMapper.list(bd);
 				break;
 
 			case ITEM_CODE:
@@ -46,7 +50,7 @@ public class BDServiceImpl implements BDService {
 
 			case CON_VER:
 				bd.setConVer(keyword);
-				find = this.list(bd);
+				find = this.bdMapper.list(bd);
 				break;
 			}
 		}
@@ -60,7 +64,7 @@ public class BDServiceImpl implements BDService {
 		find.setFirst(first);
 		find.setLast(last);
 
-		return this.list(find);
+		return this.bdMapper.list(find);
 	}
 
 	@Override
@@ -71,6 +75,8 @@ public class BDServiceImpl implements BDService {
 
 	@Override
 	public BD view(BD bd) {
+		bd.setUseable(1);
+
 		return this.bdMapper.select(bd);
 	}
 

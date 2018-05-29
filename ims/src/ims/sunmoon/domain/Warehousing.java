@@ -33,7 +33,9 @@ public class Warehousing implements Serializable {
 
 	// 사용(조회)가능여부
 	private Integer useable;
-	
+
+	private String itemName;
+
 	private String keyword;
 
 	private Date first;
@@ -46,7 +48,7 @@ public class Warehousing implements Serializable {
 
 	public Warehousing(Integer wareNo, String itemNo, Date wareDate, Integer unit, Integer price, Integer discount,
 			String conVer, Integer useable, Date first, Date last, WarehousingSortOption warehousingSortOption,
-			WarehousingFindOption findOption, String keyword) {
+			WarehousingFindOption findOption, String keyword, String itemName) {
 		this.wareNo = wareNo;
 		this.itemNo = itemNo;
 		this.wareDate = wareDate;
@@ -60,6 +62,7 @@ public class Warehousing implements Serializable {
 		this.warehousingSortOption = warehousingSortOption;
 		this.findOption = findOption;
 		this.keyword = keyword;
+		this.itemName = itemName;
 	}
 
 	public Integer getWareNo() {
@@ -166,6 +169,14 @@ public class Warehousing implements Serializable {
 		this.keyword = keyword;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
 	// Warehousing 모델 복사
 	public void CopyData(Warehousing param) {
 		this.wareNo = param.getWareNo();
@@ -181,5 +192,6 @@ public class Warehousing implements Serializable {
 		this.warehousingSortOption = param.getWarehousingSortOption();
 		this.findOption = param.getFindOption();
 		this.keyword = param.getKeyword();
+		this.itemName = param.getItemName();
 	}
 }

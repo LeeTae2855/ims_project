@@ -37,6 +37,9 @@ public class WW implements Serializable {
 	// 비고
 	private String note;
 
+	private String itemName;
+	private String clientName;
+
 	private WWSortOption wwSortOption;
 	private WWFindOption findOption;
 	private Date first;
@@ -48,7 +51,7 @@ public class WW implements Serializable {
 
 	public WW(Integer wwNo, Integer wareNo, Integer withNo, Date wwDate, Integer quantity, Integer ammount,
 			Integer useable, String conVer, String note, WWSortOption wwSortOption, WWFindOption findOption, Date first,
-			Date last, String keyword) {
+			Date last, String keyword, String itemName, String clientName) {
 		this.wwNo = wwNo;
 		this.wareNo = wareNo;
 		this.withNo = withNo;
@@ -63,6 +66,8 @@ public class WW implements Serializable {
 		this.first = first;
 		this.last = last;
 		this.keyword = keyword;
+		this.itemName = itemName;
+		this.clientName = clientName;
 	}
 
 	public Integer getWwNo() {
@@ -177,6 +182,22 @@ public class WW implements Serializable {
 		this.keyword = keyword;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
 	// Ww 모델 복사
 	public void CopyData(WW param) {
 		this.wwNo = param.getWwNo();
@@ -193,5 +214,7 @@ public class WW implements Serializable {
 		this.last = param.getLast();
 		this.findOption = param.getFindOption();
 		this.keyword = param.getKeyword();
+		this.itemName = param.getItemName();
+		this.clientName = param.getClientName();
 	}
 }

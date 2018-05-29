@@ -15,6 +15,7 @@
 		FROM LOGIN_INFO
 		WHERE 
 		LOGIN_ID = #{loginId}
+		AND LOGIN_PASSWORD = #{loginPassword}
 	</select>
 
 	<update id="update" parameterType="loginInfo">

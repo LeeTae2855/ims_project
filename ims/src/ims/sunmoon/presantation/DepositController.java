@@ -21,10 +21,11 @@ public class DepositController {
 	private DepositService depositService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Deposit deposit, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Deposit deposit, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/dep/list");
 		List<Deposit> find = null;
 
+		String keyword = deposit.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			if ((deposit.getFirst() != null) && (deposit.getLast() != null)) {
 				find = this.depositService.list(deposit.getFirst(), deposit.getLast());

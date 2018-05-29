@@ -22,8 +22,8 @@ public class LoginController {
 	public ModelAndView loginGet(LoginInfo loginInfo, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession(true);
 
-		Boolean logging = session.getAttribute("logging") != null ? (Boolean) session.getAttribute("logging") : false;
-		if (logging) {
+		Boolean isLogin = session.getAttribute("isLogin") != null ? (Boolean) session.getAttribute("isLogin") : false;
+		if (isLogin) {
 			return new ModelAndView(new RedirectView("/bd/list"));
 		} else {
 			return new ModelAndView("/login");
@@ -32,8 +32,15 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(HttpServletRequest request) throws Exception {
+		LoginInfo loginInfo = this.loginService.login(request);
 
-		return null;
+		if (loginInfo == null) {
+			request.getSession().setAttribute("isLogin", false);
+		} else {
+			request.getSession().setAttribute("isLogin", true);
+		}
+
+		return new ModelAndView(new RedirectView("/bd/list"));
 	}
 
 	@RequestMapping(value = "/logout")

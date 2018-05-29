@@ -20,9 +20,10 @@ public class ItemController {
 	private ItemService itemService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Item item, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Item item, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/item/list");
 
+		String keyword = item.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			modelAndView.addObject("listItem", this.itemService.list(item));
 		} else {

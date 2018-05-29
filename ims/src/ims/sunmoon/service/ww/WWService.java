@@ -15,6 +15,8 @@ public interface WWService {
 	public void add(WW ww);
 
 	public WW view(WW ww);
+	
+	public WW view(String wwNo);
 
 	public void edit(WW ww);
 

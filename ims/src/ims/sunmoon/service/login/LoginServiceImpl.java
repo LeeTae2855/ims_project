@@ -15,6 +15,12 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public LoginInfo login(HttpServletRequest request) throws Exception {
-		return null;
+		LoginInfo loginInfo = new LoginInfo((String) request.getAttribute("id"), (String) request.getAttribute("password"));
+		
+		if (this.loginInfoMapper.select(loginInfo) == null) {
+			return null;
+		} else {
+			return loginInfo;
+		}
 	}
 }

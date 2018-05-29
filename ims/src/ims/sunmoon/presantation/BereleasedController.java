@@ -1,5 +1,7 @@
 package ims.sunmoon.presantation;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,29 +15,42 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import ims.sunmoon.domain.Bereleased;
 import ims.sunmoon.service.bereleased.BereleasedService;
+import ims.sunmoon.service.item.ItemService;
 
 @Controller
 @RequestMapping(value = "/be")
 public class BereleasedController {
 	@Resource
 	private BereleasedService bereleasedService;
+	@Resource
+	private ItemService itemService;
 
 	@RequestMapping(value = "/list")
-	public ModelAndView list(Bereleased bereleased, String keyword, HttpServletRequest request) throws Exception {
+	public ModelAndView list(Bereleased bereleased, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/be/list");
-		List<Bereleased> find = null;
+		List<Bereleased> listBe = new ArrayList<Bereleased>();
+		List<Bereleased> list = null;
 
+		String keyword = bereleased.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {
 			if ((bereleased.getFirst() != null) && (bereleased.getLast() != null)) {
-				find = this.bereleasedService.list(bereleased.getFirst(), bereleased.getLast());
+				list = this.bereleasedService.list(bereleased.getFirst(), bereleased.getLast());
 			} else {
-				find = this.bereleasedService.list(bereleased);
+				list = this.bereleasedService.list(bereleased);
 			}
 		} else {
-			find = this.bereleasedService.list(bereleased, keyword);
+			list = this.bereleasedService.list(bereleased, keyword);
 		}
 
-		modelAndView.addObject("listBe", find);
+		Iterator<Bereleased> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			Bereleased resultBe = iterator.next();
+			resultBe.setItemName(this.itemService.view(resultBe.getItemNo()).getItemName());
+
+			listBe.add(resultBe);
+		}
+
+		modelAndView.addObject("listBe", listBe);
 		return modelAndView;
 	}
 
@@ -82,4 +97,6 @@ public class BereleasedController {
 
 		return new ModelAndView(new RedirectView("/be/list"));
 	}
+	
+	
 }
