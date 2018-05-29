@@ -40,13 +40,14 @@ public class Account implements Serializable {
 	private AccountSortOption accountSortOption;
 	private AccountCFC accountCfcOption;
 	private AccountFindOption findOption;
+	private String keyword;
 
 	public Account() {
 	}
 
 	public Account(Integer accountNo, String accountName, String accountCfc, String masterName, Integer cellphone,
 			String bankName, Integer isowner, Integer useable, String note, AccountSortOption accountSortOption,
-			AccountCFC accountCfcOption, AccountFindOption findOption) {
+			AccountCFC accountCfcOption, AccountFindOption findOption, String keyword) {
 		this.accountNo = accountNo;
 		this.accountName = accountName;
 		this.accountCfc = accountCfc;
@@ -59,6 +60,7 @@ public class Account implements Serializable {
 		this.accountSortOption = accountSortOption;
 		this.accountCfcOption = accountCfcOption;
 		this.findOption = findOption;
+		this.keyword = keyword;
 	}
 
 	public Integer getAccountNo() {
@@ -157,6 +159,14 @@ public class Account implements Serializable {
 		this.findOption = findOption;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Account 모델 복사
 	public void CopyData(Account param) {
 		this.accountNo = param.getAccountNo();
@@ -171,5 +181,6 @@ public class Account implements Serializable {
 		this.accountSortOption = param.getAccountSortOption();
 		this.accountCfcOption = param.getAccountCfcOption();
 		this.findOption = param.getFindOption();
+		this.keyword = param.getKeyword();
 	}
 }
