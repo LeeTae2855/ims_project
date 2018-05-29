@@ -6,6 +6,8 @@ import ims.sunmoon.domain.Withdraw;
 
 public interface WithdrawMapper {
 	public List<Withdraw> list(Withdraw withdraw);
+	
+	public List<Withdraw> find(Withdraw withdraw);
 
 	public void insert(Withdraw withdraw);
 

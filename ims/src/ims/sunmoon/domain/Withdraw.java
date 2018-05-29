@@ -3,6 +3,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
+import ims.sunmoon.util.option.find.WithdrawFindOption;
 import ims.sunmoon.util.option.sort.WithdrawSortOption;
 
 // 출금 
@@ -37,14 +38,17 @@ public class Withdraw implements Serializable {
 	private String note;
 
 	private WithdrawSortOption withdrawSortOption;
+	private WithdrawFindOption findOption;
 	private Date first;
 	private Date last;
+	private String keyword;
 
 	public Withdraw() {
 	}
 
 	public Withdraw(Integer withNo, Date withDate, Integer clientNo, Integer accountNo, String conVer, Integer ammount,
-			Integer tax, Integer useable, String note, WithdrawSortOption withdrawSortOption, Date first, Date last) {
+			Integer tax, Integer useable, String note, WithdrawSortOption withdrawSortOption,
+			WithdrawFindOption findOption, Date first, Date last, String keyword) {
 		this.withNo = withNo;
 		this.withDate = withDate;
 		this.clientNo = clientNo;
@@ -55,8 +59,10 @@ public class Withdraw implements Serializable {
 		this.useable = useable;
 		this.note = note;
 		this.withdrawSortOption = withdrawSortOption;
+		this.findOption = findOption;
 		this.first = first;
 		this.last = last;
+		this.keyword = keyword;
 	}
 
 	public Integer getWithNo() {
@@ -155,6 +161,22 @@ public class Withdraw implements Serializable {
 		this.last = last;
 	}
 
+	public WithdrawFindOption getFindOption() {
+		return findOption;
+	}
+
+	public void setFindOption(WithdrawFindOption findOption) {
+		this.findOption = findOption;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// Withdraw 모델 복사
 	public void CopyData(Withdraw param) {
 		this.withNo = param.getWithNo();
@@ -169,5 +191,7 @@ public class Withdraw implements Serializable {
 		this.withdrawSortOption = param.getWithdrawSortOption();
 		this.first = param.getFirst();
 		this.last = param.getLast();
+		this.keyword = param.getKeyword();
+		this.findOption = param.getFindOption();
 	}
 }
