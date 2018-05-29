@@ -72,6 +72,8 @@ public class WWServiceImpl implements WWService {
 
 	@Override
 	public WW view(WW ww) {
+		ww.setUseable(1);
+
 		return this.wwMapper.select(ww);
 	}
 
@@ -85,5 +87,13 @@ public class WWServiceImpl implements WWService {
 	@Transactional
 	public void remove(String wwNo) {
 		this.wwMapper.delete(wwNo);
+	}
+
+	@Override
+	public WW view(String wwNo) {
+		WW find = new WW();
+		find.setWwNo(Integer.parseInt(wwNo));
+
+		return this.view(find);
 	}
 }
