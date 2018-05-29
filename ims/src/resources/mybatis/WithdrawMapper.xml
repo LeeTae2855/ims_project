@@ -79,6 +79,34 @@
 		WHERE WITH_NO = #{withNo}
 		AND USEABLE = #{useable}
 	</select>
+	
+	<select id="find" parameterType="withdraw" resultMap="withdrawResultMap">
+		SELECT  WI.WITH_NO
+			   ,WI.WITH_DATE
+			   ,WI.CLIENT_NO
+			   ,WI.ACCOUNT_NO
+			   ,WI.CON_VER
+			   ,WI.AMMOUNT   
+			   ,WI.TAX       
+			   ,WI.USEABLE   
+			   ,WI.NOTE
+		FROM WITHDRAW WI
+		LEFT OUTER JOIN CLIENT C
+		ON WI.CLIENT_NO = C.CLINET_NO
+		<where>
+		AND WI.USEABLE = #{useable}
+			<if test="findOption != null">
+				<if test="findOption.name() == 'CLIENT_NO'">
+					AND C.CLIENT_NO = #{clientNo}
+					ORDER BY C.CLIENT_NO ASC
+				</if>
+				<if test="findOption.name() == 'CLIENT_NAME'">
+					AND UPPER( C.CLIENT_NAME ) LIKE UPPER ( '%' || #{keyword} || '%' )
+					ORDER BY C.CLIENT_NAME ASC
+				</if>
+			</if>
+		</where>
+	</select>
 
 	<insert id="insert" parameterType="withdraw">
 		<selectKey keyColumn="WITH_NO" keyProperty="withNo" resultType="int" order="BEFORE">
