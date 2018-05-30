@@ -383,7 +383,7 @@ a.article, a.article:hover {
 							<div class="input-group-btn search-panel">
 								<button type="button" class="btn btn-default dropdown-toggle"
 									data-toggle="dropdown">
-									<span id="DepositFindOption"> --선택-- </span> <span class="caret"></span>
+									<span id="search_concept"> --선택-- </span> <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#DEP_NO"> 입금번호 </a></li>
