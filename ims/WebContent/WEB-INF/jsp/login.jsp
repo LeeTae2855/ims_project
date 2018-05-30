@@ -37,11 +37,11 @@
 						<img src="../../resources/login/img.png">
 					</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디"
+						<input type="text" class="form-control" placeholder="아이디" id='id'
 							name="id" maxlength='20'>
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호"
+						<input type="password" class="form-control" placeholder="비밀번호" id='password'
 							name="password" maxlength='20'>
 					</div>
 					<div class="checkbox">
