@@ -5,6 +5,7 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -368,11 +369,10 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>조회</h3>
+			<h3>입금조회</h3>
 			<br />
 			<div id="write">
-					<h4>등록하기</h4>
-				</button>
+
 			</div>
 			<br />
 			<!-- Search Panel... -->
