@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import ims.sunmoon.service.account.AccountService;
 import ims.sunmoon.domain.Account;
+import ims.sunmoon.service.account.AccountService;
 
 @Controller
 @RequestMapping(value = "/account")
@@ -22,6 +22,7 @@ public class AccountController {
 	@RequestMapping(value = "/list")
 	public ModelAndView list(Account account, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/account/list");
+		account.setIsowner(1);
 
 		String keyword = account.getKeyword();
 		if (("".equals(keyword)) || (keyword == null)) {

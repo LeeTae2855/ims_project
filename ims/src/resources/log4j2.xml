@@ -7,7 +7,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Logger name="ims.sunmoon.persistence.AccountMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.AccountMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -15,7 +15,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.BDMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.BDMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -23,7 +23,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.BerelasedMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.BerelasedMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -31,7 +31,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.ClientMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.ClientMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -39,7 +39,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.DepositMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.DepositMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -47,7 +47,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.ItemMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.ItemMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -55,7 +55,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.LoginInfoMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.LoginInfoMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -63,7 +63,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.ManagerMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.ManagerMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -71,7 +71,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.TransferslipMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.TransferslipMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -79,7 +79,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.WarehousingMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.WarehousingMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -87,7 +87,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.WithdrawMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.WithdrawMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -95,7 +95,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 		
-		<Logger name="ims.sunmoon.persistence.WWMapper" level="trace"
+		<Logger name="ims.sunmoon.persistance.WWMapper" level="trace"
 			additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>계좌 장부</title>
+<title>발주 현황</title>
 </head>
 <body>
 	<table>

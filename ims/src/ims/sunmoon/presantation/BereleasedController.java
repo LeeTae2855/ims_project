@@ -98,5 +98,32 @@ public class BereleasedController {
 		return new ModelAndView(new RedirectView("/be/list"));
 	}
 	
-	
+	@RequestMapping(value ="/popup")
+	public ModelAndView popup(Bereleased bereleased) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("/be/popup");
+		List<Bereleased> listBe = new ArrayList<Bereleased>();
+		List<Bereleased> list = null;
+
+		String keyword = bereleased.getKeyword();
+		if (("".equals(keyword)) || (keyword == null)) {
+			if ((bereleased.getFirst() != null) && (bereleased.getLast() != null)) {
+				list = this.bereleasedService.list(bereleased.getFirst(), bereleased.getLast());
+			} else {
+				list = this.bereleasedService.list(bereleased);
+			}
+		} else {
+			list = this.bereleasedService.list(bereleased, keyword);
+		}
+
+		Iterator<Bereleased> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			Bereleased resultBe = iterator.next();
+			resultBe.setItemName(this.itemService.view(resultBe.getItemNo()).getItemName());
+
+			listBe.add(resultBe);
+		}
+
+		modelAndView.addObject("listBe", listBe);
+		return modelAndView;
+	}
 }

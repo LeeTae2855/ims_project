@@ -75,6 +75,8 @@ public class DepositServiceImpl implements DepositService {
 
 	@Override
 	public Deposit view(Deposit deposit) {
+		deposit.setUseable(1);
+
 		return this.depositMapper.select(deposit);
 	}
 
