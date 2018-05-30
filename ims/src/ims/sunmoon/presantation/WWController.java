@@ -81,11 +81,14 @@ public class WWController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ModelAndView addPost(WW ww, HttpServletRequest request) throws Exception {
+	public ModelAndView addPost(WW ww, Withdraw withdraw, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/ww/add");
 
 		if (this.wwService.list(ww).isEmpty()) {
+			this.withdrawService.add(withdraw);
+			ww.setWithNo(withdraw.getWithNo());
 			this.wwService.add(ww);
+
 			return new ModelAndView(new RedirectView("/ww/list"));
 		} else {
 			String message = "정보를 등록하는데 오류가 발생하였습니다.";
@@ -103,7 +106,8 @@ public class WWController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public ModelAndView editPost(WW ww, HttpServletRequest request) throws Exception {
+	public ModelAndView editPost(WW ww, Withdraw withdraw, HttpServletRequest request) throws Exception {
+		this.withdrawService.edit(withdraw);
 		this.wwService.edit(ww);
 
 		return new ModelAndView(new RedirectView("/ww/list"));

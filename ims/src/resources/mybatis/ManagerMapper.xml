@@ -11,7 +11,7 @@
 		<result column="TELEPHONE" property="telephone" />
 		<result column="CELLPHONE" property="cellphone" />
 		<result column="EMAIL" property="email" />
-		<result column="FAX" property="isowner" />
+		<result column="FAX" property="fax" />
 		<result column="USEABLE" property="useable" />
 		<result column="NOTE" property="note" />
 	</resultMap>

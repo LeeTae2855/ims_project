@@ -16,14 +16,17 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import ims.sunmoon.domain.BD;
 import ims.sunmoon.domain.Bereleased;
+import ims.sunmoon.domain.Client;
 import ims.sunmoon.domain.Deposit;
 import ims.sunmoon.domain.Document;
 import ims.sunmoon.domain.Item;
+import ims.sunmoon.domain.Manager;
 import ims.sunmoon.service.bd.BDService;
 import ims.sunmoon.service.bereleased.BereleasedService;
 import ims.sunmoon.service.client.ClientService;
 import ims.sunmoon.service.deposit.DepositService;
 import ims.sunmoon.service.item.ItemService;
+import ims.sunmoon.service.manager.ManagerService;
 
 @Controller
 @RequestMapping(value = "/bd")
@@ -38,6 +41,8 @@ public class BDController {
 	private DepositService depositService;
 	@Resource
 	private ClientService clientService;
+	@Resource
+	private ManagerService managerService;
 
 	@RequestMapping(value = "/list")
 	public ModelAndView list(BD bd, HttpServletRequest request) throws Exception {
@@ -81,10 +86,12 @@ public class BDController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ModelAndView addPost(BD bd, HttpServletRequest request) throws Exception {
+	public ModelAndView addPost(BD bd, Deposit deposit, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("/bd/add");
 
 		if (this.bdService.list(bd).isEmpty()) {
+			this.depositService.add(deposit);
+			bd.setDepNo(deposit.getDepNo());
 			this.bdService.add(bd);
 			return new ModelAndView(new RedirectView("/bd/list"));
 		} else {
@@ -103,7 +110,8 @@ public class BDController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public ModelAndView editPost(BD bd, HttpServletRequest request) throws Exception {
+	public ModelAndView editPost(BD bd, Deposit deposit, HttpServletRequest request) throws Exception {
+		this.depositService.edit(deposit);
 		this.bdService.edit(bd);
 
 		return new ModelAndView(new RedirectView("/bd/list"));
@@ -132,12 +140,16 @@ public class BDController {
 		Bereleased be = this.bereleasedService.view(bd.getBeNo().toString());
 		Item item = this.itemService.view(be.getItemNo());
 		Deposit dep = this.depositService.view(bd.getDepNo().toString());
+		Client client = this.clientService.view(dep.getClientNo().toString());
+		Manager manager = this.managerService.view(client.getManagerNo().toString());
 
 		Document doc = new Document();
 		doc.setBd(bd);
 		doc.setBe(be);
 		doc.setItem(item);
 		doc.setDep(dep);
+		doc.setClient(client);
+		doc.setManager(manager);
 
 		modelAndView.addObject("doc", doc);
 		return modelAndView;

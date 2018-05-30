@@ -44,23 +44,23 @@
                 AND UPPER( CON_VER ) LIKE UPPER ( '%' || #{conVer} || '%' )
             </if>
 		</where>
-		<if test="berelasedSortOption != null">
-			<if test="berelasedSortOption.name() == 'BE_NO'">
+		<if test="bereleasedSortOption != null">
+			<if test="bereleasedSortOption.name() == 'BE_NO'">
 				ORDER BY BE_NO ASC
 			</if>
-			<if test="berelasedSortOption.name() == 'ITEM_NO'">
+			<if test="bereleasedSortOption.name() == 'ITEM_NO'">
 				ORDER BY ITEM_NO ASC
 			</if>
-			<if test="berelasedSortOption.name() == 'BE_DATE'">
+			<if test="bereleasedSortOption.name() == 'BE_DATE'">
 				ORDER BY BE_DATE DESC
 			</if>
-			<if test="berelasedSortOption.name() == 'UNIT'">
+			<if test="bereleasedSortOption.name() == 'UNIT'">
 				ORDER BY UNIT DESC
 			</if>
-			<if test="berelasedSortOption.name() == 'PRICE'">
+			<if test="bereleasedSortOption.name() == 'PRICE'">
 				ORDER BY PRICE DESC
 			</if>
-			<if test="berelasedSortOption.name() == 'DISCOUNT'">
+			<if test="bereleasedSortOption.name() == 'DISCOUNT'">
 				ORDER BY DISCOUNT ASC
 			</if>
 		</if>

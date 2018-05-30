@@ -75,6 +75,7 @@ public class ItemServiceImpl implements ItemService {
 	public Item view(String itemCode) {
 		Item find = new Item();
 		find.setItemCode(itemCode);
+		find.setUseable(1);
 
 		return this.view(find);
 	}

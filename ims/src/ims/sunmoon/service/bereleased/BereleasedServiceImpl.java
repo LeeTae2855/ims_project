@@ -66,6 +66,8 @@ public class BereleasedServiceImpl implements BereleasedService {
 
 	@Override
 	public Bereleased view(Bereleased bereleased) {
+		bereleased.setUseable(1);
+
 		return this.bereleasedMapper.select(bereleased);
 	}
 
@@ -74,7 +76,7 @@ public class BereleasedServiceImpl implements BereleasedService {
 		Bereleased find = new Bereleased();
 		find.setBeNo(Integer.parseInt(beNo));
 
-		return this.bereleasedMapper.select(find);
+		return this.view(find);
 	}
 
 	@Override
