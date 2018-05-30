@@ -34,7 +34,7 @@
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form method="post" action="loginAction.jsp">
 					<h3 style="text-align: center;">
-						<img src="C:\jsp\projects\ERP\WebContent\img.png">
+						<img src="../../resources/login/img.png">
 					</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디"
