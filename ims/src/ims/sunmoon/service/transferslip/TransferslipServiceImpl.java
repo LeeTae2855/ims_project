@@ -33,6 +33,8 @@ public class TransferslipServiceImpl implements TransferslipService {
 
 	@Override
 	public Transferslip view(Transferslip transferslip) {
+		transferslip.setUseable(1);
+
 		return this.transferslipMapper.select(transferslip);
 	}
 

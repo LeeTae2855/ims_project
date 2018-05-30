@@ -15,7 +15,7 @@
 %>
 <table style="width:900px; margin:0 auto;" cellpadding="0" cellspacing="0">
     <tr>
-	    <td style="text-align:center; font-size:35px; font-weight:bold; padding-top:30px; padding-bottom:25px;">발 주 서</td>
+	    <td style="text-align:center; font-size:35px; font-weight:bold; padding-top:30px; padding-bottom:25px;">주 문 서</td>
     </tr>
         <tr>
 	    <td>
@@ -41,11 +41,11 @@
                             </tr>
                             <tr>
                                 <th style="background-color:#eaeaea; border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 0px; font-family:'Nanum Gothic', serif; font-size:12px">제&nbsp;&nbsp;&nbsp;목<br/><span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Subject</span></th>
-                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">발&nbsp;&nbsp;주</td>
+                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">수&nbsp;&nbsp;주</td>
                             </tr>
                             <tr>
-                                <th style="background-color:#eaeaea; border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 0px; font-family:'Nanum Gothic', serif; font-size:12px">발주번호<br/><span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Order No.</span></th>
-                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.bd.bdNo}" /></td>
+                                <th style="background-color:#eaeaea; border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 0px; font-family:'Nanum Gothic', serif; font-size:12px">수주번호<br/><span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Order No.</span></th>
+                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ww.wwNo}" /></td>
                             </tr>
                         </table>
                     </td>
@@ -58,7 +58,7 @@
                             <col width="80" />
                         </colgroup>
                             <tr>
-                                <th style="background-color:#ddd; padding:10px 5px; text-align:left; font-size:15px; font-family:'Nanum Gothic', serif;" colspan="3"><c:out value="${doc.client.clientNo}" /></th>
+                                <th style="background-color:#ddd; padding:10px 5px; text-align:left; font-size:15px; font-family:'Nanum Gothic', serif;" colspan="3">거래처 번호: <c:out value="${doc.client.clientNo}" /></th>
                             </tr>
                             <tr>
                                 <td style="padding:7px 5px; text-align:left;font-family:'Nanum Gothic', serif; font-size:12px">상&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;호 </td>
@@ -87,7 +87,7 @@
                             </tr>
                             <tr>
                                 <td style="padding:5px 5px; text-align:left;font-family:'Nanum Gothic', serif; font-size:12px">발주일자 </td>
-                                <td colspan="2" style="padding:5px 5px; text-align:left;font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.bd.bdDate}" /></td>
+                                <td colspan="2" style="padding:5px 5px; text-align:left;font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ww.wwDate}" /></td>
                             </tr>
                         </table>
                     </td>
@@ -100,7 +100,7 @@
         	<table cellpadding="0" cellspacing="0" style="width:100% ; border-top:2px solid #000;font-size:9pt; border-left:1px solid #000; border-bottom:1px solid #000; height:60px; table-layout:fixed; ">
             	<tr>
                 	<th style="width:100px; font-family:'Nanum Gothic', serif; font-size:12px; height:60px;">합 계<br /><span style="font-size:7pt; font-family:Verdana; font-weight:normal; ">Total</span></th>
-                  <td style="width:350px ; border-left:1px solid #000; padding:0 5px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.bd.ammount}" /></td>
+                  <td style="width:350px ; border-left:1px solid #000; padding:0 5px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.ww.ammount}" /></td>
                   <th style="width:100px ; border-left:1px solid #000;font-family:'Nanum Gothic', serif; font-size:12px">담당자<br /><span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Contact</span></th>
                   <td style="width:150px ; border-left:1px solid #000; border-right:1px solid #000; padding:0 5px;font-family:'Nanum Gothic', serif; font-size:12px ">&nbsp;&nbsp;<c:out value="${doc.manager.managerName}" /></td>
                 </tr>
@@ -145,13 +145,13 @@
                 </tr>
 <!-- HTMLBODY2 -->
                 <tr>
-                	<td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.be.beNo}" /></td>
+                	<td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ware.wareNo}" /></td>
                     <td colspan="2" style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:left; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.item.standard}" /></td>
-                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.be.unit}" /></td>
-                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.bd.quantity}" /></td>
-                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.be.price}" /></td>
-                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.dep.ammount}" /></td>
-                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.dep.tax}" /></td>
+                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ware.unit}" /></td>
+                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:center; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ww.quantity}" /></td>
+                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ware.price}" /></td>
+                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.with.ammount}" /></td>
+                    <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:2px 2px; height:30px; text-align:right; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.with.tax}" /></td>
                 </tr>
 <!-- HTMLTAIL -->
     	    </table>
@@ -175,12 +175,12 @@
                             <tr>
                                 <th style="background-color:#eaeaea; border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 0px; font-family:'Nanum Gothic', serif; font-size:12px; width:150px"  align="center">주문일자<br/>
                                 <span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Delivery Date</span></th>
-                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.be.beDate}" /></td>
+                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.ware.wareDate}" /></td>
                             </tr>
                             <tr>
                                 <th style="background-color:#eaeaea; border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 0px; font-family:'Nanum Gothic', serif; font-size:12px; width:150px"  align="center">적요<br/>
                                 <span style="font-size:7pt; font-family:Verdana; font-weight:normal;">Delivery Date</span></th>
-                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.bd.conVer}" /></td>
+                                <td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:7px 5px; text-align:left; height:16px;font-family:'Nanum Gothic', serif; font-size:12px">&nbsp;<c:out value="${doc.ww.conVer}" /></td>
                             </tr>
                     </td>
                     <td width="1"></td>
@@ -220,7 +220,7 @@
     	<td style="padding-top:2px;">
         	<table style="border-top:1px solid #000; border-left:1px solid #000; width:900px;" cellpadding="0" cellspacing="0">
                 <tr>
-                	<td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:0 7px; text-align:left; height:100px; table-layout:fixed; word-break:break-all; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.bd.note}" /></td>
+                	<td style="border-bottom:1px solid #000; border-right:1px solid #000; padding:0 7px; text-align:left; height:100px; table-layout:fixed; word-break:break-all; font-family:'Nanum Gothic', serif; font-size:12px"><c:out value="${doc.ww.note}" /></td>
                 </tr>
             </table>
         </td>

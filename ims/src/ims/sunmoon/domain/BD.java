@@ -217,4 +217,12 @@ public class BD implements Serializable {
 		this.itemName = param.getItemName();
 		this.clientName = param.getClientName();
 	}
+
+	@Override
+	public String toString() {
+		return "BD [bdNo=" + bdNo + ", beNo=" + beNo + ", depNo=" + depNo + ", bdDate=" + bdDate + ", quantity="
+				+ quantity + ", ammount=" + ammount + ", useable=" + useable + ", conVer=" + conVer + ", note=" + note
+				+ ", itemName=" + itemName + ", clientName=" + clientName + ", bdSortOption=" + bdSortOption
+				+ ", findOption=" + findOption + ", first=" + first + ", last=" + last + ", keyword=" + keyword + "]";
+	}
 }
