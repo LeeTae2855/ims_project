@@ -10,31 +10,6 @@
 <html lang="en">
 <head>
 
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	window.alert = function() {
-	};
-	var defaultCSS = document.getElementById('bootstrap-css');
-	function changeCSS(css) {
-		if (css)
-			$('head > link')
-					.filter(':first')
-					.replaceWith(
-							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-		else
-			$('head > link').filter(':first').replaceWith(defaultCSS);
-	}
-	$(document).ready(function() {
-		var iframe_height = parseInt($('html').height());
-		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-	});
-</script>
-
-
-
-
-
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -93,16 +68,6 @@ a, a:hover, a:focus {
 	height: 1px;
 	border-bottom: 1px dashed #ddd;
 	margin: 40px 0;
-}
-
-<!--
--->
-.container {
-	padding-bottom: 10px;
-	float: right;
-	align-items: stretch;
-	position: static;
-	float: right
 }
 
 /* ---------------------------------------------------
@@ -305,20 +270,16 @@ a.article, a.article:hover {
 		var iframe_height = parseInt($('html').height());
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
-	
 	function toggle(id, id2) {
-	    var n = document.getElementById(id);
-		if (n.style.display != 'none') 
-		  {
-		  n.style.display = 'none';
-	      document.getElementById(id2).setAttribute('aria-expanded', 'false');
-	  }
-	  else
-	  {
-	  n.style.display = '';
-	  document.getElementById(id2).setAttribute('aria-expanded', 'true');
-		  }
-	  }
+		var n = document.getElementById(id);
+		if (n.style.display != 'none') {
+			n.style.display = 'none';
+			document.getElementById(id2).setAttribute('aria-expanded', 'false');
+		} else {
+			n.style.display = '';
+			document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		}
+	}
 </script>
 </head>
 <body>
@@ -332,37 +293,39 @@ a.article, a.article:hover {
 
 			<ul class="list-unstyled components">
 
-				<li class="active"><a href="#homeSubmenu" 
-					data-toggle="collapse" aria-expanded="true" id='hsubmenu' onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
+				<li class="active"><a href="#homeSubmenu"
+					data-toggle="collapse" aria-expanded="true" id='hsubmenu'
+					onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#" style=color:white> 매입현황 </a></li>
-						<li><a href="#" style=color:white> 매출현황 </a></li>
-						<li><a href="#" style=color:white> 발주예약 </a></li>
-						<li><a href="#" style=color:white> 수주예약 </a></li>
-						<li><a href="#" style=color:white> 대체거래 </a></li>
-						<li><a href="#" style=color:white> 입금거래 </a></li>
-						<li><a href="#" style=color:white> 출금거래 </a></li>
+						<li><a href="#" style="color: white"> 매입현황 </a></li>
+						<li><a href="#" style="color: white"> 매출현황 </a></li>
+						<li><a href="#" style="color: white"> 발주예약 </a></li>
+						<li><a href="#" style="color: white"> 수주예약 </a></li>
+						<li><a href="#" style="color: white"> 대체거래 </a></li>
+						<li><a href="#" style="color: white"> 입금거래 </a></li>
+						<li><a href="#" style="color: white"> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='psubmenu' onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
+					data-toggle="collapse" aria-expanded="true" id='psubmenu'
+					onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
-						<li><a href="#" style=color:white> 담당자 조회 </a></li>
-						<li><a href="#" style=color:white> 거래처 조회 </a></li>
-						<li><a href="#" style=color:white> 재고조회 </a></li>
+						<li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
+						<li><a href="#" style="color: white"> 담당자 조회 </a></li>
+						<li><a href="#" style="color: white"> 거래처 조회 </a></li>
+						<li><a href="#" style="color: white"> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='bsubmenu' onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
+					data-toggle="collapse" aria-expanded="true" id='bsubmenu'
+					onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#" style=color:white> 손익보고서 </a></li>
-						<li><a href="#" style=color:white> 발주서 </a></li>
-						<li><a href="#" style=color:white> 주문서 </a></li>
+						<li><a href="#" style="color: white"> 손익보고서 </a></li>
+						<li><a href="#" style="color: white"> 발주서 </a></li>
+						<li><a href="#" style="color: white"> 주문서 </a></li>
 					</ul>
 		</nav>
 
 		<!-- Page Content Holder -->
 		<div id="content">
-
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 
@@ -383,110 +346,77 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>입금조회</h3>
-			<br />
-         <!-- Search Panel... -->
-         <div class="container">
-         <div class="row">
-               <div class="col-xs-8 col-xs-offset-2">
-                  <div class="input-group">
-                  
-                     <table style="border_color: white; align: center;">
-                     <input type="date" name="from" />  ~  <input type="date" name="to" />
-                     <br><br>
-                  <tr>
-                     <td><select id="findOption" name="findOption">
-                           <option value='NONE' selected>-- 선택 --</option>
-                           <option value='DEP_NO'>입금번호</option>
-                           <option value='CLEINT_NO'>거래처 등록번호</option>
-                           <option value='CLIENT_NAME'>거래처명</option>
-                           <option value='CON_VER'>적요</option>
-                        </select>
-                     </td>
-                     <td><input type="text" id="keyword" name="keyword" /></td>
-                     <td><input type="submit" value="검색" /></td>
-                  </tr>
-               </table>
-							
-						</div>
-					</div>
-				</div>
-				<br />
-				<script type="text/javascript">
-					$(document)
-							.ready(
-									function(e) {
-										$('.search-panel .dropdown-menu')
-												.find('a')
-												.click(
-														function(e) {
-															e.preventDefault();
-															var param = $(this)
-																	.attr(
-																			"href")
-																	.replace(
-																			"#",
-																			"");
-															var concept = $(
-																	this)
-																	.text();
-															$(
-																	'.search-panel span#search_concept')
-																	.text(
-																			concept);
-															$(
-																	'.input-group #search_param')
-																	.val(param);
-														});
-									});
-				</script>
-				<div>
-					<div class="container">
-
-            <br />
-            
-            <div>
-               <table class="table table-striped table-bordered table-hover">
-                  <thead>
-                     <tr>
-                         <th width="6%">번호</th>
-                        <th width="10%">입금일</th>
-                        <th width="10%">거래처번호</th>
-                        <th width="15%">자사계정(계좌)</th>
-                        <th width="10%">적요</th>
-                        <th width="10%">금액</th>	
-                        <th width="10%">세액</th>
-                        <th width="11%">상세조회</th>
-                        <th width="12%">비고</th>
-                        <th width="6%">수정</th>
-                        <th width="6%">삭제</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <c:forEach var="article" items="${articles}" varStatus="status">
-                        <tr align=center>
-                           <td>${article.articleNumber}</td>
-                           <td id="title"><c:if test="${article.depth > 0}">
-                  &nbsp;&nbsp;
-                </c:if> <a
-                              href="/bbs/content.bbs?articleNumber=${article.articleNumber}&pageNum=${pageNum}">${article.title}</a>
-                           </td>
-                           <td>${article.id}</td>
-                           <td>${article.writeDate}</td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td><button type="button" name="btnDetail" class="btn btn-primary btn-md">상세</button></td>
-                           <td></td>
-                           <td><button type="button" name="btnChange" class="btn btn-primary btn-md">수정</button></td>
-                           <td><button type="button" name="btnDelete" class="btn btn-primary btn-md">삭제</button></td>
-                        <tr>
-                     </c:forEach>
-
-                  </tbody>
-               </table>
-				</div>
+			<h3>입금등록</h3>
+			<br>
+			<br> <label for="sel1"> 번호 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="depNo">
 			</div>
+			<br>
+			<label for="sel1"> 입금일 </label><br>
+			
+			<input type="date" name="from" />
+			<br>
+			<br> <label for="sel1"> 거래처번호 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="clientNo">
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="sel1"> 은행 </label> <select class="form-control"
+					id="sel1">
+					<option>NH은행</option>
+					<option>신한은행</option>
+					<option>우리은행</option>
+					<option>Standard Chartered</option>
+					<option>하나은행</option>
+					<option>한국씨티은행</option>
+					<option>수협중앙회</option>
+					<option>대구은행</option>
+					<option>부산은행</option>
+					<option>광주은행</option>
+					<option>제주은행</option>
+					<option>전북은행</option>
+					<option>강남은행</option>
+				</select>
+			</div>
+			<label for="sel1"> 자사계정(계좌) </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="accountNo">
+			</div>
+			<br>
+			<label for="sel1"> 적요 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="conVer">
+			</div>
+			<br>
+			<label for="sel1"> 금액 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="ammount">
+			</div>
+			<br>
+			<label for="sel1"> 사용(조회)가능 여부 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="tax">
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="comment"> 비고 </label>
+				<textarea class="form-control" rows="10" id="comment"></textarea>
+			</div>
+			<button type="button" class="btn btn-primary btn-md">등록</button>
+			<button type="button" class="btn btn-primary btn-md">닫기</button>
+
+
+
+
+
 
 			<!-- jQuery CDN -->
 			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
