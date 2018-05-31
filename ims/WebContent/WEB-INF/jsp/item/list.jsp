@@ -305,6 +305,19 @@ a.article, a.article:hover {
 		var iframe_height = parseInt($('html').height());
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
+	function toggle(id, id2) {
+	    var n = document.getElementById(id);
+		if (n.style.display != 'none') 
+		  {
+		  n.style.display = 'none';
+	      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+	  }
+	  else
+	  {
+	  n.style.display = '';
+	  document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		  }
+	  }
 </script>
 </head>
 <body>
@@ -319,7 +332,7 @@ a.article, a.article:hover {
 			<ul class="list-unstyled components">
 
 				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="false"> 거래내역 </a>
+					data-toggle="collapse" aria-expanded="true" id='hsubmenu' onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
 						<li><a href="#" style=color:white> 매입현황 </a></li>
 						<li><a href="#" style=color:white> 매출현황 </a></li>
@@ -330,7 +343,7 @@ a.article, a.article:hover {
 						<li><a href="#" style=color:white> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
-					data-toggle="collapse" aria-expanded="false"> 기초정보 </a>
+					data-toggle="collapse" aria-expanded="true" id='psubmenu' onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
 						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
 						<li><a href="#" style=color:white> 담당자 조회 </a></li>
@@ -338,7 +351,7 @@ a.article, a.article:hover {
 						<li><a href="#" style=color:white> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
-					data-toggle="collapse" aria-expanded="false"> 보고서 </a>
+					data-toggle="collapse" aria-expanded="true" id='bsubmenu' onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
 						<li><a href="#" style=color:white> 손익보고서 </a></li>
 						<li><a href="#" style=color:white> 발주서 </a></li>
