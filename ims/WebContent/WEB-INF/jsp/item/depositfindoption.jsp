@@ -321,28 +321,28 @@ a.article, a.article:hover {
 				<li class="active"><a href="#homeSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#"> 매입현황 </a></li>
-						<li><a href="#"> 매출현황 </a></li>
-						<li><a href="#"> 발주예약 </a></li>
-						<li><a href="#"> 수주예약 </a></li>
-						<li><a href="#"> 대체거래 </a></li>
-						<li><a href="#"> 입금거래 </a></li>
-						<li><a href="#"> 출금거래 </a></li>
+						<li><a href="#" style=color:white> 매입현황 </a></li>
+						<li><a href="#" style=color:white> 매출현황 </a></li>
+						<li><a href="#" style=color:white> 발주예약 </a></li>
+						<li><a href="#" style=color:white> 수주예약 </a></li>
+						<li><a href="#" style=color:white> 대체거래 </a></li>
+						<li><a href="#" style=color:white> 입금거래 </a></li>
+						<li><a href="#" style=color:white> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#"> 계좌/장부 조회 </a></li>
-						<li><a href="#"> 담당자 조회 </a></li>
-						<li><a href="#"> 거래처 조회 </a></li>
-						<li><a href="#"> 재고조회 </a></li>
+						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
+						<li><a href="#" style=color:white> 담당자 조회 </a></li>
+						<li><a href="#" style=color:white> 거래처 조회 </a></li>
+						<li><a href="#" style=color:white> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#"> 손익보고서 </a></li>
-						<li><a href="#"> 발주서 </a></li>
-						<li><a href="#"> 주문서 </a></li>
+						<li><a href="#" style=color:white> 손익보고서 </a></li>
+						<li><a href="#" style=color:white> 발주서 </a></li>
+						<li><a href="#" style=color:white> 주문서 </a></li>
 					</ul>
 		</nav>
 
@@ -371,36 +371,29 @@ a.article, a.article:hover {
 			</nav>
 			<h3>입금조회</h3>
 			<br />
-			<div id="write">
-
-			</div>
-			<br />
-			<!-- Search Panel... -->
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-8 col-xs-offset-2">
-						<div class="input-group">
-							<div class="input-group-btn search-panel">
-								<button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown">
-									<span id="search_concept"> --선택-- </span> <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#DEP_NO"> 입금번호 </a></li>
-									<li><a href="#CLEINT_NO"> 거래처 등록번호 </a></li>
-									<li><a href="#CLIENT_NAME"> 거래처명 </a></li>
-									<li><a href="#CON_VER"> 거래처명 </a></li>
-
-								</ul>
-							</div>
-							<input type="hidden" name="search_param" value="all"
-								id="search_param"> <input type="text"
-								class="form-control" name="x" placeholder="search"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-							</span>
+         <!-- Search Panel... -->
+         <div class="container">
+         <div class="row">
+               <div class="col-xs-8 col-xs-offset-2">
+                  <div class="input-group">
+                  
+                     <table style="border_color: white; align: center;">
+                     <input type="date" name="from" />  ~  <input type="date" name="to" />
+                     <br><br>
+                  <tr>
+                     <td><select id="findOption" name="findOption">
+                           <option value='NONE' selected>-- 선택 --</option>
+                           <option value='DEP_NO'>입금번호</option>
+                           <option value='CLEINT_NO'>거래처 등록번호</option>
+                           <option value='CLIENT_NAME'>거래처명</option>
+                           <option value='CON_VER'>적요</option>
+                        </select>
+                     </td>
+                     <td><input type="text" id="keyword" name="keyword" /></td>
+                     <td><input type="submit" value="검색" /></td>
+                  </tr>
+               </table>
+							
 						</div>
 					</div>
 				</div>
@@ -442,15 +435,15 @@ a.article, a.article:hover {
                <table class="table table-striped table-bordered table-hover">
                   <thead>
                      <tr>
-                        <th width="5%">등록번호</th>
+                        <th width="5%">번호</th>
                         <th width="10%">입금일</th>
-                        <th width="10%">거래처</th>
-                        <th width="15%">거래계좌(자사)</th>
+                        <th width="10%">거래처번호</th>
+                        <th width="15%">자사계정(계좌)</th>
                         <th width="10%">적요</th>
                         <th width="10%">금액</th>	
                         <th width="10%">세액</th>
-                        <th width="12%">비고</th>
                         <th width="7%">상세조회</th>
+                        <th width="12%">비고</th>
                         <th width="7%">수정</th>
                         <th width="7%">삭제</th>
                      </tr>
@@ -478,25 +471,6 @@ a.article, a.article:hover {
 
                   </tbody>
                </table>
-
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-									class="sr-only">Next</span>
-							</a></li>
-						</ul>
-					</nav>
-
 				</div>
 			</div>
 
