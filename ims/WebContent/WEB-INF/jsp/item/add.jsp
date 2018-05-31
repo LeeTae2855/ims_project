@@ -286,28 +286,28 @@ a.article, a.article:hover {
 				<li class="active"><a href="#homeSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#"> 매입현황 </a></li>
-						<li><a href="#"> 매출현황 </a></li>
-						<li><a href="#"> 발주예약 </a></li>
-						<li><a href="#"> 수주예약 </a></li>
-						<li><a href="#"> 대체거래 </a></li>
-						<li><a href="#"> 입금거래 </a></li>
-						<li><a href="#"> 출금거래 </a></li>
+						<li><a href="#" style=color:white> 매입현황 </a></li>
+						<li><a href="#" style=color:white> 매출현황 </a></li>
+						<li><a href="#" style=color:white> 발주예약 </a></li>
+						<li><a href="#" style=color:white> 수주예약 </a></li>
+						<li><a href="#" style=color:white> 대체거래 </a></li>
+						<li><a href="#" style=color:white> 입금거래 </a></li>
+						<li><a href="#" style=color:white> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#"> 계좌/장부 조회 </a></li>
-						<li><a href="#"> 담당자 조회 </a></li>
-						<li><a href="#"> 거래처 조회 </a></li>
-						<li><a href="#"> 재고조회 </a></li>
+						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
+						<li><a href="#" style=color:white> 담당자 조회 </a></li>
+						<li><a href="#" style=color:white> 거래처 조회 </a></li>
+						<li><a href="#" style=color:white> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
 					data-toggle="collapse" aria-expanded="false"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#"> 손익보고서 </a></li>
-						<li><a href="#"> 발주서 </a></li>
-						<li><a href="#"> 주문서 </a></li>
+						<li><a href="#" style=color:white> 손익보고서 </a></li>
+						<li><a href="#" style=color:white> 발주서 </a></li>
+						<li><a href="#" style=color:white> 주문서 </a></li>
 					</ul>
 		</nav>
 
