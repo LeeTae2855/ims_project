@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +101,6 @@ a, a:hover, a:focus {
 	position: static;
 	float: right
 }
-
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -200,7 +196,6 @@ a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -209,7 +204,6 @@ a.article, a.article:hover {
 	min-height: 100vh;
 	transition: all 0.3s;
 }
-
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -242,7 +236,6 @@ a.article, a.article:hover {
 	}
 	window.onload = function() {
 		div2Resize();
-
 		// 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
 		window.addEventListener('resize', div2Resize);
 	}
@@ -305,7 +298,6 @@ a.article, a.article:hover {
 		var iframe_height = parseInt($('html').height());
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
-
 	function toggle(id, id2) {
 		var n = document.getElementById(id);
 		if (n.style.display != 'none') {
@@ -315,6 +307,23 @@ a.article, a.article:hover {
 			n.style.display = '';
 			document.getElementById(id2).setAttribute('aria-expanded', 'true');
 		}
+	}
+</script>
+<script type="text/javascript">
+	var openWin;
+
+	function accountPopupOpen() {
+		window.name = "accountPopup";
+
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/account/popup", "acPopup", option);
+	}
+
+	function clientPopupOpen() {
+		window.name = "clientPopup";
+
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/client/popup", "clPopup", option);
 	}
 </script>
 </head>
@@ -383,98 +392,128 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>bd add</h3>
-			<br /> <br> <label for="sel1"> 번호 </label>
+			<h3>출고입금 수정</h3>
+
+			<br> <label for="sel1"><h4>[출고입금 정보]</h4></label> <br> <label
+				for="sel1"> 출고입금 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
 					placeholder="bdNo">
+				<c:out value="${bd.bdNo}" />
 			</div>
-			<br> <label for="sel1"> 출고번호 </label>
+			<br> <label for="sel1"> 출고 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
 					placeholder="beNo">
+				<c:out value="${bd.beNo}" />
 			</div>
-			<br> <label for="sel1"> 입금번호 </label>
+			<br> <label for="sel1"> 입금 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
 					placeholder="depNo">
+				<c:out value="${bd.depNo}" />
 			</div>
-			<br> <label for="sel1"> 거래완료일 </label> <br>
-			<input type="date" name="from" /><br> <br> <label
-				for="sel1"> 매출수량 </label>
+			<br> <label for="sel1"> 거래 완료일 </label>
+			<div class="col-sm-20">
+				<input type="date" name="from" />
+				<c:out value="${bd.bdDate}" />
+			</div>
+			<br> <label for="sel1"> 매출수량 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="quantity"> <br> <label for="sel1">
-					금액합계 </label>
+					placeholder="quantity">
+				<c:out value="${bd.quantity}" />
 			</div>
+			<br> <label for="sel1"> 금액합계 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="ammount"> <br> <label for="sel1">
-					사용(조회) 가능여부 </label>
+					placeholder="ammount">
+				<c:out value="${bd.ammount}" />
 			</div>
+			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="useable"> <br> <label for="sel1">
-					적요 </label>
-				<div class="col-sm-20">
-					<input type="text" class="form-control" id="inputcode"
-						placeholder="conVer"> <br>
-					<div class="form-group">
-						<label for="comment"> 비고 </label>
-						<textarea class="form-control" rows="10" id="comment"></textarea>
-					</div>
-					<button type="button" class="btn btn-primary btn-md">등록</button>
-					<button type="button" class="btn btn-primary btn-md">닫기</button>
+					placeholder="useable">
+				<c:out value="${bd.useable}" />
+			</div>
+			<br> <label for="sel1"> 적요 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="conVer">
+				<c:out value="${bd.conVer}" />
+			</div>
+			
 
-
-
+		<br>
+		<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
+			for="sel1"> 거래처 </label>
+		<div class="col-sm-20">
+			<!-- 버튼 -->
+			<input type="text" class="form-control" id="clientNo"
+				placeholder="선택" onclick='clientPopupOpen();'>
+		</div>
+		<br> <label for="sel1"> 거래 계좌 </label> <br> <input
+			type="text" class="form-control" id="accountNo" placeholder="선택"
+			onclick='accountPopupOpen();'> <br> <label for="sel1">
+			거래 금액 </label>
+		<div class="col-sm-20">
+			<input type="text" class="form-control" id="ammount" placeholder="금액">
+		</div>
+		<br> <label for="sel1"> 세액 </label>
+		<div class="col-sm-20">
+			<input type="text" class="form-control" id="tax" placeholder="세액">
+		</div>
+		<div class="col-sm-20">
+			<br> <label for="sel1">적요 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="conVer" placeholder="내용">
+				<br>
+				<div class="form-group">
+					<label for="comment"> 비고 </label>
+					<textarea class="form-control" rows="10" id="note"></textarea>
 				</div>
+				<button type="button" class="btn btn-primary btn-md">수정</button>
+				<button type="button" class="btn btn-primary btn-md">닫기</button>
 			</div>
+		</div>
 
-			<!-- jQuery CDN -->
-			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-			<!-- Bootstrap Js CDN -->
-			<script
-				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- jQuery CDN -->
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<!-- Bootstrap Js CDN -->
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('#sidebarCollapse').on('click', function() {
-						$('#sidebar').toggleClass('active');
-					});
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#sidebarCollapse').on('click', function() {
+					$('#sidebar').toggleClass('active');
 				});
-			</script>
+			});
+		</script>
 
 
-			<script type="text/javascript">
-				$(document).ready(
-						function() {
-
-							$("#sidebar").mCustomScrollbar({
-								theme : "minimal"
-							});
-
-							// when opening the sidebar
-							$('#sidebarCollapse').on(
-									'click',
-									function() {
-										// open sidebar
-										$('#sidebar').addClass('active');
-										// fade in the overlay
-										$('.overlay').fadeIn();
-										$('.collapse.in').toggleClass('in');
-										$('a[aria-expanded=true]').attr(
-												'aria-expanded', 'false');
-									});
-
-							// if dismiss or overlay was clicked
-							$('#dismiss, .overlay').on('click', function() {
-								// hide the sidebar
-								$('#sidebar').removeClass('active');
-								// fade out the overlay
-								$('.overlay').fadeOut();
-							});
-						});
-			</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#sidebar").mCustomScrollbar({
+					theme : "minimal"
+				});
+				// when opening the sidebar
+				$('#sidebarCollapse').on('click', function() {
+					// open sidebar
+					$('#sidebar').addClass('active');
+					// fade in the overlay
+					$('.overlay').fadeIn();
+					$('.collapse.in').toggleClass('in');
+					$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+				});
+				// if dismiss or overlay was clicked
+				$('#dismiss, .overlay').on('click', function() {
+					// hide the sidebar
+					$('#sidebar').removeClass('active');
+					// fade out the overlay
+					$('.overlay').fadeOut();
+				});
+			});
+		</script>
 </body>
 </html>
