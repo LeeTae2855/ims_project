@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -399,39 +397,50 @@ a.article, a.article:hover {
          <br> <label for="sel1"><h4> [입고 출금 정보] </h4></label> <br> <label
             for="sel1"> 입고 출금 번호 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
+            <input type="text" class="form-control" id="wwNo"
                placeholder="wwNo">
             <c:out value="${ww.wwNo}" />
          </div>
          <br> <label for="sel1"> 입고 번호 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
+            <input type="text" class="form-control" id="wareNo"
                placeholder="wareNo">
             <c:out value="${ww.wareNo}" />
          </div>
-         <br> <label for="sel1">  </label>
+         <br> <label for="sel1"> 출금 번호 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
-               placeholder="wareNo">
-            <c:out value="${ww.wareNo}" />
+            <input type="text" class="form-control" id="withNo"
+               placeholder="withNo">
+            <c:out value="${ww.withNo}" />
          </div>
-         <br> <label for="sel1"> 출고 단위 </label>
+         <br> <label for="sel1"> 거래 완료일 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
-               placeholder="unit">
-            <c:out value="${bd.unit}" />
+            <input type="date" name="from" />
+            <c:out value="${ww.wwDate}" />
          </div>
-         <br> <label for="sel1"> 매출단가 </label>
+         <br> <label for="sel1"> 매입 수량 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
-               placeholder="price">
-            <c:out value="${bd.price}" />
+            <input type="text" class="form-control" id="quantity"
+               placeholder="quantity">
+            <c:out value="${ww.quantity}" />
          </div>
-         <br> <label for="sel1"> 할인금액 </label>
+         <br> <label for="sel1"> 금액 합계 </label>
          <div class="col-sm-20">
-            <input type="text" class="form-control" id="inputcode"
-               placeholder="discount">
-            <c:out value="${bd.price}" />
+            <input type="text" class="form-control" id="ammount"
+               placeholder="ammount">
+            <c:out value="${ww.ammount}" />
+         </div>
+         <br> <label for="sel1"> 사용(조회) 가능여부 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="useable"
+               placeholder="useable">
+            <c:out value="${ww.useable}" />
+         </div>
+          <br> <label for="sel1"> 적요 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="conVer"
+               placeholder="conVer">
+            <c:out value="${ww.conVer}" />
          </div>
 
          <br><br> <label for="sel1"><h4> [입금정보] </h4></label> <br> <label
