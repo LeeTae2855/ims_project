@@ -1,14 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	window.alert = function() {
+	};
+	var defaultCSS = document.getElementById('bootstrap-css');
+	function changeCSS(css) {
+		if (css)
+			$('head > link')
+					.filter(':first')
+					.replaceWith(
+							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+		else
+			$('head > link').filter(':first').replaceWith(defaultCSS);
+	}
+	$(document).ready(function() {
+		var iframe_height = parseInt($('html').height());
+		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+	});
+</script>
+
+
+
+
 
 <meta name="robots" content="noindex, nofollow">
 
@@ -70,6 +92,15 @@ a, a:hover, a:focus {
 	margin: 40px 0;
 }
 
+<!--
+-->
+.container {
+	padding-bottom: 10px;
+	float: right;
+	align-items: stretch;
+	position: static;
+	float: right
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -165,7 +196,6 @@ a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -174,7 +204,6 @@ a.article, a.article:hover {
 	min-height: 100vh;
 	transition: all 0.3s;
 }
-
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -207,7 +236,6 @@ a.article, a.article:hover {
 	}
 	window.onload = function() {
 		div2Resize();
-
 		// 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
 		window.addEventListener('resize', div2Resize);
 	}
@@ -271,18 +299,32 @@ a.article, a.article:hover {
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
 	function toggle(id, id2) {
-	    var n = document.getElementById(id);
-		if (n.style.display != 'none') 
-		  {
-		  n.style.display = 'none';
-	      document.getElementById(id2).setAttribute('aria-expanded', 'false');
-	  }
-	  else
-	  {
-	  n.style.display = '';
-	  document.getElementById(id2).setAttribute('aria-expanded', 'true');
-		  }
-	  }
+		var n = document.getElementById(id);
+		if (n.style.display != 'none') {
+			n.style.display = 'none';
+			document.getElementById(id2).setAttribute('aria-expanded', 'false');
+		} else {
+			n.style.display = '';
+			document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		}
+	}
+</script>
+<script type="text/javascript">
+	var openWin;
+
+	function accountPopupOpen() {
+		window.name = "accountPopup";
+
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/account/popup", "acPopup", option);
+	}
+
+	function clientPopupOpen() {
+		window.name = "clientPopup";
+
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/client/popup", "clPopup", option);
+	}
 </script>
 </head>
 <body>
@@ -297,30 +339,33 @@ a.article, a.article:hover {
 			<ul class="list-unstyled components">
 
 				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='hsubmenu' onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
+					data-toggle="collapse" aria-expanded="true" id='hsubmenu'
+					onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#" style=color:white> 매입현황 </a></li>
-						<li><a href="#" style=color:white> 매출현황 </a></li>
-						<li><a href="#" style=color:white> 발주예약 </a></li>
-						<li><a href="#" style=color:white> 수주예약 </a></li>
-						<li><a href="#" style=color:white> 대체거래 </a></li>
-						<li><a href="#" style=color:white> 입금거래 </a></li>
-						<li><a href="#" style=color:white> 출금거래 </a></li>
+						<li><a href="#" style="color: white"> 매입현황 </a></li>
+						<li><a href="#" style="color: white"> 매출현황 </a></li>
+						<li><a href="#" style="color: white"> 발주예약 </a></li>
+						<li><a href="#" style="color: white"> 수주예약 </a></li>
+						<li><a href="#" style="color: white"> 대체거래 </a></li>
+						<li><a href="#" style="color: white"> 입금거래 </a></li>
+						<li><a href="#" style="color: white"> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='psubmenu' onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
+					data-toggle="collapse" aria-expanded="true" id='psubmenu'
+					onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
-						<li><a href="#" style=color:white> 담당자 조회 </a></li>
-						<li><a href="#" style=color:white> 거래처 조회 </a></li>
-						<li><a href="#" style=color:white> 재고조회 </a></li>
+						<li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
+						<li><a href="#" style="color: white"> 담당자 조회 </a></li>
+						<li><a href="#" style="color: white"> 거래처 조회 </a></li>
+						<li><a href="#" style="color: white"> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='bsubmenu' onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
+					data-toggle="collapse" aria-expanded="true" id='bsubmenu'
+					onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#" style=color:white> 손익보고서 </a></li>
-						<li><a href="#" style=color:white> 발주서 </a></li>
-						<li><a href="#" style=color:white> 주문서 </a></li>
+						<li><a href="#" style="color: white"> 손익보고서 </a></li>
+						<li><a href="#" style="color: white"> 발주서 </a></li>
+						<li><a href="#" style="color: white"> 주문서 </a></li>
 					</ul>
 		</nav>
 
@@ -347,17 +392,20 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>품목등록</h3>
-			<br>
-			<br> <label for="sel1"> 품목코드 </label>
+			<h3>품목 등록</h3>
+
+			<br> <label for="sel1"><h4>[품목 정보]</h4></label> <br> <label
+				for="sel1"> 품목 코드 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="품목코드">
+				<input type="text" class="form-control" id="itemCode"
+					placeholder="itemCode">
+				<c:out value="${item.itemCode}" />
 			</div>
 			<br>
 			<div class="form-group">
-				<label for="sel1"> 품목구분 </label> <select class="form-control"
-					id="sel1">
+				<label for="sel1"> 품목구분 </label> <select class="form-control" id="itemCfc" 
+				placeholder="itemCfc">
+				<c:out value="${item.itemCfc}" />
 					<option>상품</option>
 					<option>제품</option>
 					<option>부품</option>
@@ -365,146 +413,112 @@ a.article, a.article:hover {
 					<option>세트</option>
 				</select>
 			</div>
-			<label for="sel1"> 품목명 </label>
+			<br> <label for="sel1"> 품목명 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="품목명">
+				<input type="text" class="form-control" id="itemName"
+					placeholder="itemName">
+				<c:out value="${item.itemName}" />
 			</div>
 			<br> <label for="sel1"> 규격/별칭 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="규격/별칭">
+				<input type="text" class="form-control" id="standard"
+					placeholder="standard">
+				<c:out value="${item.standard}" />
 			</div>
-			<br> <label for="sel1"> 기초 재고량 </label><br>
+			<br> <label for="sel1"> 기초 재고량 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="기초 재고량">
+				<input type="text" class="form-control" id="baseQuantity"
+					placeholder="baseQuantity">
+				<c:out value="${item.baseQuantity}" />
 			</div>
+			<br> <label for="sel1"> 재고상태 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="itemStatus"
+					placeholder="itemStatus">
+				<c:out value="${item.Status}" />
+			</div>
+			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="useable"
+					placeholder="useable">
+				<c:out value="${item.useable}" />
+			</div>
+
 			<br>
-			<div class="form-group">
-				<label for="comment"> 비고 </label>
-				<textarea class="form-control" rows="10" id="comment"></textarea>
+			<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
+				for="sel1"> 거래처 </label>
+			<div class="col-sm-20">
+				<!-- 버튼 -->
+				<input type="text" class="form-control" id="clientNo"
+					placeholder="선택" onclick='clientPopupOpen();'>
 			</div>
-			<button type="button" class="btn btn-primary btn-md">등록</button>
-			<button type="button" class="btn btn-primary btn-md">닫기</button>
+			<br> <label for="sel1"> 거래 계좌 </label> <br> <input
+				type="text" class="form-control" id="accountNo" placeholder="선택"
+				onclick='accountPopupOpen();'> <br> <label for="sel1">
+				거래 금액 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="ammount"
+					placeholder="금액">
+			</div>
+			<br> <label for="sel1"> 세액 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="tax" placeholder="세액">
+			</div>
+			<div class="col-sm-20">
+				<br> <label for="sel1">적요 </label>
+				<div class="col-sm-20">
+					<input type="text" class="form-control" id="conVer"
+						placeholder="내용"> <br>
+					<div class="form-group">
+						<label for="comment"> 비고 </label>
+						<textarea class="form-control" rows="10" id="note"></textarea>
+					</div>
+					<button type="button" class="btn btn-primary btn-md">등록</button>
+					<button type="button" class="btn btn-primary btn-md">닫기</button>
+				</div>
+			</div>
+
+			<!-- jQuery CDN -->
+			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+			<!-- Bootstrap Js CDN -->
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#sidebarCollapse').on('click', function() {
+						$('#sidebar').toggleClass('active');
+					});
+				});
+			</script>
 
 
-
-		</div>
-	</div>
-
-	<script type="text/javascript">
-		$(document)
-				.ready(
+			<script type="text/javascript">
+				$(document).ready(
 						function() {
-							$('.filterable .btn-filter')
-									.click(
-											function() {
-												var $panel = $(this).parents(
-														'.filterable'), $filters = $panel
-														.find('.filters input'), $tbody = $panel
-														.find('.table tbody');
-												if ($filters.prop('disabled') == true) {
-													$filters.prop('disabled',
-															false);
-													$filters.first().focus();
-												} else {
-													$filters.val('').prop(
-															'disabled', true);
-													$tbody.find('.no-result')
-															.remove();
-													$tbody.find('tr').show();
-												}
-											});
-
-							$('.filterable .filters input')
-									.keyup(
-											function(e) {
-												/* Ignore tab key */
-												var code = e.keyCode || e.which;
-												if (code == '9')
-													return;
-												/* Useful DOM data and selectors */
-												var $input = $(this), inputContent = $input
-														.val().toLowerCase(), $panel = $input
-														.parents('.filterable'), column = $panel
-														.find('.filters th')
-														.index(
-																$input
-																		.parents('th')), $table = $panel
-														.find('.table'), $rows = $table
-														.find('tbody tr');
-												/* Dirtiest filter function ever ;) */
-												var $filteredRows = $rows
-														.filter(function() {
-															var value = $(this)
-																	.find('td')
-																	.eq(column)
-																	.text()
-																	.toLowerCase();
-															return value
-																	.indexOf(inputContent) === -1;
-														});
-												/* Clean previous no-result if exist */
-												$table.find('tbody .no-result')
-														.remove();
-												/* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
-												$rows.show();
-												$filteredRows.hide();
-												/* Prepend no-result row if all rows are filtered */
-												if ($filteredRows.length === $rows.length) {
-													$table
-															.find('tbody')
-															.prepend(
-																	$('<tr class="no-result text-center"><td colspan="'
-																			+ $table
-																					.find('.filters th').length
-																			+ '">No result found</td></tr>'));
-												}
-											});
+							$("#sidebar").mCustomScrollbar({
+								theme : "minimal"
+							});
+							// when opening the sidebar
+							$('#sidebarCollapse').on(
+									'click',
+									function() {
+										// open sidebar
+										$('#sidebar').addClass('active');
+										// fade in the overlay
+										$('.overlay').fadeIn();
+										$('.collapse.in').toggleClass('in');
+										$('a[aria-expanded=true]').attr(
+												'aria-expanded', 'false');
+									});
+							// if dismiss or overlay was clicked
+							$('#dismiss, .overlay').on('click', function() {
+								// hide the sidebar
+								$('#sidebar').removeClass('active');
+								// fade out the overlay
+								$('.overlay').fadeOut();
+							});
 						});
-	</script>
-
-	<!-- jQuery CDN -->
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	<!-- Bootstrap Js CDN -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#sidebarCollapse').on('click', function() {
-				$('#sidebar').toggleClass('active');
-			});
-		});
-	</script>
-
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-
-			$("#sidebar").mCustomScrollbar({
-				theme : "minimal"
-			});
-
-			// when opening the sidebar
-			$('#sidebarCollapse').on('click', function() {
-				// open sidebar
-				$('#sidebar').addClass('active');
-				// fade in the overlay
-				$('.overlay').fadeIn();
-				$('.collapse.in').toggleClass('in');
-				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-			});
-
-			// if dismiss or overlay was clicked
-			$('#dismiss, .overlay').on('click', function() {
-				// hide the sidebar
-				$('#sidebar').removeClass('active');
-				// fade out the overlay
-				$('.overlay').fadeOut();
-			});
-		});
-	</script>
+			</script>
 </body>
 </html>
