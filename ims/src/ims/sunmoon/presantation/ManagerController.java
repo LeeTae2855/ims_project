@@ -84,4 +84,18 @@ public class ManagerController {
 
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "/popup")
+	public ModelAndView popup(Manager manager, HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("/manager/popup");
+
+		String keyword = manager.getKeyword();
+		if (("".equals(keyword)) || (keyword == null)) {
+			modelAndView.addObject("listManager", this.managerService.list(manager));
+		} else {
+			modelAndView.addObject("listManager", this.managerService.list(manager, keyword));
+		}
+
+		return modelAndView;
+	}
 }

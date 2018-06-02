@@ -85,4 +85,19 @@ public class AccountController {
 
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "/popup")
+	public ModelAndView popup(Account account, HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("/account/popup");
+		account.setIsowner(1);
+
+		String keyword = account.getKeyword();
+		if (("".equals(keyword)) || (keyword == null)) {
+			modelAndView.addObject("listAccount", this.accountService.list(account));
+		} else {
+			modelAndView.addObject("listAccount", this.accountService.list(account, keyword));
+		}
+
+		return modelAndView;
+	}
 }

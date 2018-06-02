@@ -65,6 +65,8 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account view(Account account) {
+		account.setUseable(1);
+
 		return this.accountMapper.select(account);
 	}
 
