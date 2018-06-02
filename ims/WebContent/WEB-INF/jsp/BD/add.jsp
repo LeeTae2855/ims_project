@@ -397,19 +397,19 @@ a.article, a.article:hover {
 			<br> <label for="sel1"><h4>[출고입금 정보]</h4></label> <br> <label
 				for="sel1"> 출고입금 번호 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="bdNo"
 					placeholder="bdNo">
 				<c:out value="${bd.bdNo}" />
 			</div>
 			<br> <label for="sel1"> 출고 번호 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="beNo"
 					placeholder="beNo">
 				<c:out value="${bd.beNo}" />
 			</div>
 			<br> <label for="sel1"> 입금 번호 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="depNo"
 					placeholder="depNo">
 				<c:out value="${bd.depNo}" />
 			</div>
@@ -420,25 +420,25 @@ a.article, a.article:hover {
 			</div>
 			<br> <label for="sel1"> 매출수량 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="quantity"
 					placeholder="quantity">
 				<c:out value="${bd.quantity}" />
 			</div>
 			<br> <label for="sel1"> 금액합계 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="ammount"
 					placeholder="ammount">
 				<c:out value="${bd.ammount}" />
 			</div>
 			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="useable"
 					placeholder="useable">
 				<c:out value="${bd.useable}" />
 			</div>
 			<br> <label for="sel1"> 적요 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
+				<input type="text" class="form-control" id="conVer"
 					placeholder="conVer">
 				<c:out value="${bd.conVer}" />
 			</div>
