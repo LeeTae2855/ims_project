@@ -392,7 +392,7 @@ a.article, a.article:hover {
                </div>
             </div>
          </nav>
-         <h3>입고 출금 등록</h3>
+         <h3>입고 출금 수정</h3>
 
          <br> <label for="sel1"><h4> [입고 출금 정보] </h4></label> <br> <label
             for="sel1"> 입고 출금 번호 </label>
@@ -472,7 +472,7 @@ a.article, a.article:hover {
                   <label for="comment"> 비고 </label>
                   <textarea class="form-control" rows="10" id="note"></textarea>
                </div>
-               <button type="button" class="btn btn-primary btn-md">등록</button>
+               <button type="button" class="btn btn-primary btn-md">수정</button>
                <button type="button" class="btn btn-primary btn-md">닫기</button>
             </div>
          </div>
