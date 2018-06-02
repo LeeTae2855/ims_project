@@ -77,10 +77,13 @@ public class BDController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView addGet(HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/add/{beNo}", method = RequestMethod.GET)
+	public ModelAndView addGet(@PathVariable String beNo, HttpServletRequest request) throws Exception {
+		Bereleased be = this.bereleasedService.view(beNo);
+
 		ModelAndView modelAndView = new ModelAndView("/bd/add");
 		modelAndView.addObject("message", request.getParameter("message"));
+		modelAndView.addObject("be", be);
 
 		return modelAndView;
 	}
