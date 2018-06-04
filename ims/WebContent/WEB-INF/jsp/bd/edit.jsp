@@ -144,7 +144,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li a:hover {
 	color: #7386D5;
-	background: #fff;
+	background: #7386D5;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
@@ -392,47 +392,47 @@ a.article, a.article:hover {
 				for="sel1"> 출고입금 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="bdNo" placeholder="bdNo">
-				<c:out value="${BD.bdNo}" />
+				<c:out value="${bd.bdNo}" />
 			</div>
 			<br> <label for="sel1"> 출고 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="beNo" placeholder="beNo">
-				<c:out value="${BD.beNo}" />
+				<c:out value="${bd.beNo}" />
 			</div>
 			<br> <label for="sel1"> 입금 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="depNo"
 					placeholder="depNo">
-				<c:out value="${BD.depNo}" />
+				<c:out value="${bd.depNo}" />
 			</div>
 			<br> <label for="sel1"> 거래 완료일 </label>
 			<div class="col-sm-20">
 				<input type="date" name="from" />
-				<c:out value="${BD.bdDate}" />
+				<c:out value="${bd.bdDate}" />
 			</div>
 			<br> <label for="sel1"> 매출수량 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="quantity"
 					placeholder="quantity">
-				<c:out value="${BD.quantity}" />
+				<c:out value="${bd.quantity}" />
 			</div>
 			<br> <label for="sel1"> 금액합계 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="ammount"
 					placeholder="ammount">
-				<c:out value="${BD.ammount}" />
+				<c:out value="${bd.ammount}" />
 			</div>
 			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="useable"
 					placeholder="useable">
-				<c:out value="${BD.useable}" />
+				<c:out value="${bd.useable}" />
 			</div>
 			<br> <label for="sel1"> 적요 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="conVer"
 					placeholder="conVer">
-				<c:out value="${BD.conVer}" />
+				<c:out value="${bd.conVer}" />
 			</div>
 
 
