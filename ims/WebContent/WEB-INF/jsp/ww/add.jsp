@@ -143,8 +143,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li a:hover {
-	color: #7386D5;
-	background: #7386D5;
+   color: #7386D5;
+   background: #7386D5;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
@@ -329,189 +329,195 @@ a.article, a.article:hover {
 </head>
 <body>
 
-	<div class="wrapper">
-		<!-- Sidebar Holder -->
-		<nav id="sidebar">
-			<div class="sidebar-header">
-				<h3>메뉴</h3>
-			</div>
+   <div class="wrapper">
+      <!-- Sidebar Holder -->
+      <nav id="sidebar">
+         <div class="sidebar-header">
+            <h3>메뉴</h3>
+         </div>
 
-			<ul class="list-unstyled components">
+         <ul class="list-unstyled components">
 
-				<
-				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='hsubmenu'
-					onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="/ww/list" style="color: white"> 매입현황 </a></li>
-						<li><a href="/bd/list" style="color: white"> 매출현황 </a></li>
-						<li><a href="/ware/list" style="color: white"> 발주예약 </a></li>
-						<li><a href="/be/list" style="color: white"> 수주예약 </a></li>
-						<li><a href="/ts/list" style="color: white"> 대체거래 </a></li>
-						<li><a href="/dep/list" style="color: white"> 입금거래 </a></li>
-						<li><a href="/with/list" style="color: white"> 출금거래 </a></li>
-					</ul></li>
-				<li class="active"><a href="#pageSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='psubmenu'
-					onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
-					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="/account/list" style="color: white"> 계좌/장부
-								조회 </a></li>
-						<li><a href="/manager/list" style="color: white"> 담당자 조회
-						</a></li>
-						<li><a href="/client/list" style="color: white"> 거래처 조회 </a></li>
-						<li><a href="/item/list" style="color: white"> 재고조회 </a></li>
-					</ul></li>
-		</nav>
+            <li class="active"><a href="#homeSubmenu"
+               data-toggle="collapse" aria-expanded="true" id='hsubmenu'
+               onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
+               <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li><a href="#" style="color: white"> 매입현황 </a></li>
+                  <li><a href="#" style="color: white"> 매출현황 </a></li>
+                  <li><a href="#" style="color: white"> 발주예약 </a></li>
+                  <li><a href="#" style="color: white"> 수주예약 </a></li>
+                  <li><a href="#" style="color: white"> 대체거래 </a></li>
+                  <li><a href="#" style="color: white"> 입금거래 </a></li>
+                  <li><a href="#" style="color: white"> 출금거래 </a></li>
+               </ul></li>
+            <li class="active"><a href="#pageSubmenu"
+               data-toggle="collapse" aria-expanded="true" id='psubmenu'
+               onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
+               <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
+                  <li><a href="#" style="color: white"> 담당자 조회 </a></li>
+                  <li><a href="#" style="color: white"> 거래처 조회 </a></li>
+                  <li><a href="#" style="color: white"> 재고조회 </a></li>
+               </ul></li>
+            <li class="active"><a href="#bogoSubmenu"
+               data-toggle="collapse" aria-expanded="true" id='bsubmenu'
+               onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
+               <ul class="collapse list-unstyled" id="bogoSubmenu">
+                  <li><a href="#" style="color: white"> 손익보고서 </a></li>
+                  <li><a href="#" style="color: white"> 발주서 </a></li>
+                  <li><a href="#" style="color: white"> 주문서 </a></li>
+               </ul>
+      </nav>
 
-		<!-- Page Content Holder -->
-		<div id="content">
+      <!-- Page Content Holder -->
+      <div id="content">
 
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
+         <nav class="navbar navbar-default">
+            <div class="container-fluid">
 
-					<div class="navbar-header">
-						<button type="button" id="sidebarCollapse"
-							class="btn btn-info navbar-btn">
-							<i class="glyphicon glyphicon-align-left"></i> <span>Sidebar</span>
-						</button>
-					</div>
+               <div class="navbar-header">
+                  <button type="button" id="sidebarCollapse"
+                     class="btn btn-info navbar-btn">
+                     <i class="glyphicon glyphicon-align-left"></i> <span>Sidebar</span>
+                  </button>
+               </div>
 
-					<div id="div2">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/account/list"> 계좌/장부 조회 </a></li>
-							<li><a href="/manager/list"> 담장자 조회 </a></li>
-							<li><a href="/client/list"> 거래처 조회 </a></li>
-							<li><a href="/item/list"> 재고 조회 </a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<h3>매입내역 등록</h3>
+               <div id="div2">
+                  <ul class="nav navbar-nav navbar-right">
+                     <li><a href="#"> 계좌/장부 조회 </a></li>
+                     <li><a href="#"> 담장자 조회 </a></li>
+                     <li><a href="#"> 거래처 조회 </a></li>
+                     <li><a href="#"> 재고 조회 </a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+         <h3>매입내역 등록</h3>
 
-			<br> <label for="sel1"><h4>[입고 출금 정보]</h4></label> <br> <label
-				for="sel1"> 입고 출금 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="wwNo" placeholder="wwNo">
-				<c:out value="${ww.wwNo}" />
-			</div>
-			<br> <label for="sel1"> 입고 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="wareNo"
-					placeholder="wareNo">
-				<c:out value="${ww.wareNo}" />
-			</div>
-			<br> <label for="sel1"> 출금 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="withNo"
-					placeholder="withNo">
-				<c:out value="${ww.withNo}" />
-			</div>
-			<br> <label for="sel1"> 거래 완료일 </label>
-			<div class="col-sm-20">
-				<input type="date" name="from" />
-				<c:out value="${ww.wwDate}" />
-			</div>
-			<br> <label for="sel1"> 매입 수량 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="quantity"
-					placeholder="quantity">
-				<c:out value="${ww.quantity}" />
-			</div>
-			<br> <label for="sel1"> 금액 합계 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="ammount">
-				<c:out value="${ww.ammount}" />
-			</div>
-			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="useable"
-					placeholder="useable">
-				<c:out value="${ww.useable}" />
-			</div>
-			<br> <label for="sel1"> 적요 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer"
-					placeholder="conVer">
-				<c:out value="${ww.conVer}" />
-			</div>
+         <br> <label for="sel1"><h4> [입고 출금 정보] </h4></label> <br> <label
+            for="sel1"> 입고 출금 번호 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="wwNo"
+               placeholder="wwNo">
+            <c:out value="${ww.wwNo}" />
+         </div>
+         <br> <label for="sel1"> 입고 번호 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="wareNo"
+               placeholder="wareNo">
+            <c:out value="${ww.wareNo}" />
+         </div>
+         <br> <label for="sel1"> 출금 번호 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="withNo"
+               placeholder="withNo">
+            <c:out value="${ww.withNo}" />
+         </div>
+         <br> <label for="sel1"> 거래 완료일 </label>
+         <div class="col-sm-20">
+            <input type="date" name="from" />
+            <c:out value="${ww.wwDate}" />
+         </div>
+         <br> <label for="sel1"> 매입 수량 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="quantity"
+               placeholder="quantity">
+            <c:out value="${ww.quantity}" />
+         </div>
+         <br> <label for="sel1"> 금액 합계 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="ammount"
+               placeholder="ammount">
+            <c:out value="${ww.ammount}" />
+         </div>
+         <br> <label for="sel1"> 사용(조회) 가능여부 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="useable"
+               placeholder="useable">
+            <c:out value="${ww.useable}" />
+         </div>
+          <br> <label for="sel1"> 적요 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="conVer"
+               placeholder="conVer">
+            <c:out value="${ww.conVer}" />
+         </div>
 
-			<br>
-			<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
-				for="sel1"> 거래처 </label>
-			<div class="col-sm-20">
-				<!-- 버튼 -->
-				<input type="text" class="form-control" id="clientNo"
-					placeholder="선택" onclick='clientPopupOpen();'>
-			</div>
-			<br> <label for="sel1"> 거래 계좌 </label> <br> <input
-				type="text" class="form-control" id="accountNo" placeholder="선택"
-				onclick='accountPopupOpen();'> <br> <label for="sel1">
-				거래 금액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="금액">
-			</div>
-			<br> <label for="sel1"> 세액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="tax" placeholder="세액">
-			</div>
-			<div class="col-sm-20">
-				<br> <label for="sel1">적요 </label>
-				<div class="col-sm-20">
-					<input type="text" class="form-control" id="conVer"
-						placeholder="내용"> <br>
-					<div class="form-group">
-						<label for="comment"> 비고 </label>
-						<textarea class="form-control" rows="10" id="note"></textarea>
-					</div>
-					<button type="button" class="btn btn-primary btn-md">등록</button>
-					<button type="button" class="btn btn-primary btn-md">닫기</button>
-				</div>
-			</div>
+         <br><br> <label for="sel1"><h4> [입금정보] </h4></label> <br> <label
+            for="sel1"> 거래처 </label>
+         <div class="col-sm-20">
+            <!-- 버튼 -->
+            <input type="text" class="form-control" id="clientNo"
+               placeholder="선택" onclick='clientPopupOpen();'>
+         </div>
+         <br> <label for="sel1"> 거래 계좌 </label> <br> <input
+            type="text" class="form-control" id="accountNo" placeholder="선택"
+            onclick='accountPopupOpen();'> <br>
+         <label for="sel1"> 거래 금액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="ammount"
+               placeholder="금액">
+         </div>
+         <br> <label for="sel1"> 세액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="tax" placeholder="세액">
+         </div>
+         <div class="col-sm-20">
+            <br>
+            <label for="sel1">적요 </label>
+            <div class="col-sm-20">
+               <input type="text" class="form-control" id="conVer"
+                  placeholder="내용"> <br>
+               <div class="form-group">
+                  <label for="comment"> 비고 </label>
+                  <textarea class="form-control" rows="10" id="note"></textarea>
+               </div>
+               <button type="button" class="btn btn-primary btn-md">등록</button>
+               <button type="button" class="btn btn-primary btn-md">닫기</button>
+            </div>
+         </div>
 
-			<!-- jQuery CDN -->
-			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-			<!-- Bootstrap Js CDN -->
-			<script
-				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('#sidebarCollapse').on('click', function() {
-						$('#sidebar').toggleClass('active');
-					});
-				});
-			</script>
+         <script type="text/javascript">
+            $(document).ready(function() {
+               $('#sidebarCollapse').on('click', function() {
+                  $('#sidebar').toggleClass('active');
+               });
+            });
+         </script>
 
 
-			<script type="text/javascript">
-				$(document).ready(
-						function() {
-							$("#sidebar").mCustomScrollbar({
-								theme : "minimal"
-							});
-							// when opening the sidebar
-							$('#sidebarCollapse').on(
-									'click',
-									function() {
-										// open sidebar
-										$('#sidebar').addClass('active');
-										// fade in the overlay
-										$('.overlay').fadeIn();
-										$('.collapse.in').toggleClass('in');
-										$('a[aria-expanded=true]').attr(
-												'aria-expanded', 'false');
-									});
-							// if dismiss or overlay was clicked
-							$('#dismiss, .overlay').on('click', function() {
-								// hide the sidebar
-								$('#sidebar').removeClass('active');
-								// fade out the overlay
-								$('.overlay').fadeOut();
-							});
-						});
-			</script>
+         <script type="text/javascript">
+            $(document).ready(
+                  function() {
+                     $("#sidebar").mCustomScrollbar({
+                        theme : "minimal"
+                     });
+                     // when opening the sidebar
+                     $('#sidebarCollapse').on(
+                           'click',
+                           function() {
+                              // open sidebar
+                              $('#sidebar').addClass('active');
+                              // fade in the overlay
+                              $('.overlay').fadeIn();
+                              $('.collapse.in').toggleClass('in');
+                              $('a[aria-expanded=true]').attr(
+                                    'aria-expanded', 'false');
+                           });
+                     // if dismiss or overlay was clicked
+                     $('#dismiss, .overlay').on('click', function() {
+                        // hide the sidebar
+                        $('#sidebar').removeClass('active');
+                        // fade out the overlay
+                        $('.overlay').fadeOut();
+                     });
+                  });
+         </script>
 </body>
 </html>
