@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -8,24 +8,24 @@
 <head>
 
 <script
-   src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-   window.alert = function() {
-   };
-   var defaultCSS = document.getElementById('bootstrap-css');
-   function changeCSS(css) {
-      if (css)
-         $('head > link')
-               .filter(':first')
-               .replaceWith(
-                     '<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-      else
-         $('head > link').filter(':first').replaceWith(defaultCSS);
-   }
-   $(document).ready(function() {
-      var iframe_height = parseInt($('html').height());
-      window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-   });
+	window.alert = function() {
+	};
+	var defaultCSS = document.getElementById('bootstrap-css');
+	function changeCSS(css) {
+		if (css)
+			$('head > link')
+					.filter(':first')
+					.replaceWith(
+							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+		else
+			$('head > link').filter(':first').replaceWith(defaultCSS);
+	}
+	$(document).ready(function() {
+		var iframe_height = parseInt($('html').height());
+		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+	});
 </script>
 
 
@@ -37,109 +37,109 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
-   href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-   rel="stylesheet" id="bootstrap-css">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
 <style type="text/css">
 /*
     DEMO STYLE
 */
 @import
-   "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+	"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 #div2 {
-   width: 850px;
-   height: 100%;
+	width: 850px;
+	height: 100%;
 }
 
 body {
-   font-family: 'Poppins', sans-serif;
-   background: #fafafa;
+	font-family: 'Poppins', sans-serif;
+	background: #fafafa;
 }
 
 p {
-   font-family: 'Poppins', sans-serif;
-   font-size: 1.1em;
-   font-weight: 300;
-   line-height: 1.7em;
-   color: #999;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.7em;
+	color: #999;
 }
 
 a, a:hover, a:focus {
-   color: inherit;
-   text-decoration: none;
-   transition: all 0.3s;
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s;
 }
 
 .navbar {
-   padding: 15px 10px;
-   background: #fff;
-   border: none;
-   border-radius: 0;
-   margin-bottom: 40px;
-   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	padding: 15px 10px;
+	background: #fff;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 40px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
-   box-shadow: none;
-   outline: none !important;
-   border: none;
+	box-shadow: none;
+	outline: none !important;
+	border: none;
 }
 
 .line {
-   width: 100%;
-   height: 1px;
-   border-bottom: 1px dashed #ddd;
-   margin: 40px 0;
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px dashed #ddd;
+	margin: 40px 0;
 }
 
 <!--
 -->
 .container {
-   padding-bottom: 10px;
-   float: right;
-   align-items: stretch;
-   position: static;
-   float: right
+	padding-bottom: 10px;
+	float: right;
+	align-items: stretch;
+	position: static;
+	float: right
 }
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
 .wrapper {
-   display: flex;
-   align-items: stretch;
+	display: flex;
+	align-items: stretch;
 }
 
 #sidebar {
-   min-width: 250px;
-   max-width: 250px;
-   background: #7386D5;
-   color: #fff;
-   transition: all 0.3s;
+	min-width: 250px;
+	max-width: 250px;
+	background: #7386D5;
+	color: #fff;
+	transition: all 0.3s;
 }
 
 #sidebar.active {
-   margin-left: -250px;
+	margin-left: -250px;
 }
 
 #sidebar .sidebar-header {
-   padding: 20px;
-   background: #6d7fcc;
+	padding: 20px;
+	background: #6d7fcc;
 }
 
 #sidebar ul.components {
-   padding: 20px 0;
-   border-bottom: 1px solid #47748b;
+	padding: 20px 0;
+	border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
-   color: #fff;
-   padding: 10px;
+	color: #fff;
+	padding: 10px;
 }
 
 #sidebar ul li a {
-   padding: 10px;
-   font-size: 1.1em;
-   display: block;
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
 }
 
 #sidebar ul li a:hover {
@@ -148,119 +148,119 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
-   color: #fff;
-   background: #6d7fcc;
+	color: #fff;
+	background: #6d7fcc;
 }
 
 a[data-toggle="collapse"] {
-   position: relative;
+	position: relative;
 }
 
 a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-   content: '\e259';
-   display: block;
-   position: absolute;
-   right: 20px;
-   font-family: 'Glyphicons Halflings';
-   font-size: 0.6em;
+	content: '\e259';
+	display: block;
+	position: absolute;
+	right: 20px;
+	font-family: 'Glyphicons Halflings';
+	font-size: 0.6em;
 }
 
 a[aria-expanded="true"]::before {
-   content: '\e260';
+	content: '\e260';
 }
 
 ul ul a {
-   font-size: 0.9em !important;
-   padding-left: 30px !important;
-   background: #6d7fcc;
+	font-size: 0.9em !important;
+	padding-left: 30px !important;
+	background: #6d7fcc;
 }
 
 ul.CTAs {
-   padding: 20px;
+	padding: 20px;
 }
 
 ul.CTAs a {
-   text-align: center;
-   font-size: 0.9em !important;
-   display: block;
-   border-radius: 5px;
-   margin-bottom: 5px;
+	text-align: center;
+	font-size: 0.9em !important;
+	display: block;
+	border-radius: 5px;
+	margin-bottom: 5px;
 }
 
 a.download {
-   background: #fff;
-   color: #7386D5;
+	background: #fff;
+	color: #7386D5;
 }
 
 a.article, a.article:hover {
-   background: #6d7fcc !important;
-   color: #fff !important;
+	background: #6d7fcc !important;
+	color: #fff !important;
 }
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-   padding: 20px;
-   min-height: 100vh;
-   transition: all 0.3s;
+	padding: 20px;
+	min-height: 100vh;
+	transition: all 0.3s;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media ( max-width : 768px) {
-   #sidebar {
-      margin-left: -250px;
-   }
-   #sidebar.active {
-      margin-left: 0;
-   }
-   #sidebarCollapse span {
-      display: none;
-   }
+	#sidebar {
+		margin-left: -250px;
+	}
+	#sidebar.active {
+		margin-left: 0;
+	}
+	#sidebarCollapse span {
+		display: none;
+	}
 }
 
 .pagination {
-   display: block;
-   text-align: center;
+	display: block;
+	text-align: center;
 }
 
 .pagination>li>a {
-   float: none;
-   margin-left: -5px;
+	float: none;
+	margin-left: -5px;
 }
 </style>
 <script type="text/javascript">
-   function div2Resize() {
-      var div2 = document.getElementById('div2');
-      div2.style.width = window.innerWidth - 350 + 'px';
-   }
-   window.onload = function() {
-      div2Resize();
-      // 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
-      window.addEventListener('resize', div2Resize);
-   }
+	function div2Resize() {
+		var div2 = document.getElementById('div2');
+		div2.style.width = window.innerWidth - 350 + 'px';
+	}
+	window.onload = function() {
+		div2Resize();
+		// 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
+		window.addEventListener('resize', div2Resize);
+	}
 </script>
 <script
-   src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
-   src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-   window.alert = function() {
-   };
-   var defaultCSS = document.getElementById('bootstrap-css');
-   function changeCSS(css) {
-      if (css)
-         $('head > link')
-               .filter(':first')
-               .replaceWith(
-                     '<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-      else
-         $('head > link').filter(':first').replaceWith(defaultCSS);
-   }
-   $(document).ready(function() {
-      var iframe_height = parseInt($('html').height());
-      window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-   });
+	window.alert = function() {
+	};
+	var defaultCSS = document.getElementById('bootstrap-css');
+	function changeCSS(css) {
+		if (css)
+			$('head > link')
+					.filter(':first')
+					.replaceWith(
+							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+		else
+			$('head > link').filter(':first').replaceWith(defaultCSS);
+	}
+	$(document).ready(function() {
+		var iframe_height = parseInt($('html').height());
+		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+	});
 </script>
 
 
@@ -274,57 +274,57 @@ a.article, a.article:hover {
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="style.css">
 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
-   src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-   window.alert = function() {
-   };
-   var defaultCSS = document.getElementById('bootstrap-css');
-   function changeCSS(css) {
-      if (css)
-         $('head > link')
-               .filter(':first')
-               .replaceWith(
-                     '<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-      else
-         $('head > link').filter(':first').replaceWith(defaultCSS);
-   }
-   $(document).ready(function() {
-      var iframe_height = parseInt($('html').height());
-      window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-   });
-   function toggle(id, id2) {
-      var n = document.getElementById(id);
-      if (n.style.display != 'none') {
-         n.style.display = 'none';
-         document.getElementById(id2).setAttribute('aria-expanded', 'false');
-      } else {
-         n.style.display = '';
-         document.getElementById(id2).setAttribute('aria-expanded', 'true');
-      }
-   }
+	window.alert = function() {
+	};
+	var defaultCSS = document.getElementById('bootstrap-css');
+	function changeCSS(css) {
+		if (css)
+			$('head > link')
+					.filter(':first')
+					.replaceWith(
+							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+		else
+			$('head > link').filter(':first').replaceWith(defaultCSS);
+	}
+	$(document).ready(function() {
+		var iframe_height = parseInt($('html').height());
+		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+	});
+	function toggle(id, id2) {
+		var n = document.getElementById(id);
+		if (n.style.display != 'none') {
+			n.style.display = 'none';
+			document.getElementById(id2).setAttribute('aria-expanded', 'false');
+		} else {
+			n.style.display = '';
+			document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		}
+	}
 </script>
 <script type="text/javascript">
-   var openWin;
+	var openWin;
 
-   function accountPopupOpen() {
-      window.name = "accountPopup";
+	function accountPopupOpen() {
+		window.name = "accountPopup";
 
-      var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-      openWin = window.open("/account/popup", "acPopup", option);
-   }
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/account/popup", "acPopup", option);
+	}
 
-   function clientPopupOpen() {
-      window.name = "clientPopup";
+	function clientPopupOpen() {
+		window.name = "clientPopup";
 
-      var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-      openWin = window.open("/client/popup", "clPopup", option);
-   }
+		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
+		openWin = window.open("/client/popup", "clPopup", option);
+	}
 </script>
 </head>
 <body>

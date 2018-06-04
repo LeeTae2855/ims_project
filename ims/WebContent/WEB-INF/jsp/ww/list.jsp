@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -298,20 +299,17 @@ a.article, a.article:hover {
 		var iframe_height = parseInt($('html').height());
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
-	
+
 	function toggle(id, id2) {
-	    var n = document.getElementById(id);
-		if (n.style.display != 'none') 
-		  {
-		  n.style.display = 'none';
-	      document.getElementById(id2).setAttribute('aria-expanded', 'false');
-	  }
-	  else
-	  {
-	  n.style.display = '';
-	  document.getElementById(id2).setAttribute('aria-expanded', 'true');
-		  }
-	  }
+		var n = document.getElementById(id);
+		if (n.style.display != 'none') {
+			n.style.display = 'none';
+			document.getElementById(id2).setAttribute('aria-expanded', 'false');
+		} else {
+			n.style.display = '';
+			document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		}
+	}
 </script>
 </head>
 <body>
@@ -329,31 +327,25 @@ a.article, a.article:hover {
 					data-toggle="collapse" aria-expanded="true" id='hsubmenu'
 					onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#" style="color: white"> 매입현황 </a></li>
-						<li><a href="#" style="color: white"> 매출현황 </a></li>
-						<li><a href="#" style="color: white"> 발주예약 </a></li>
-						<li><a href="#" style="color: white"> 수주예약 </a></li>
-						<li><a href="#" style="color: white"> 대체거래 </a></li>
-						<li><a href="#" style="color: white"> 입금거래 </a></li>
-						<li><a href="#" style="color: white"> 출금거래 </a></li>
+						<li><a href="/ww/list" style="color: white"> 매입현황 </a></li>
+						<li><a href="/bd/list" style="color: white"> 매출현황 </a></li>
+						<li><a href="/ware/list" style="color: white"> 발주예약 </a></li>
+						<li><a href="/be/list" style="color: white"> 수주예약 </a></li>
+						<li><a href="/ts/list" style="color: white"> 대체거래 </a></li>
+						<li><a href="/dep/list" style="color: white"> 입금거래 </a></li>
+						<li><a href="/with/list" style="color: white"> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
 					data-toggle="collapse" aria-expanded="true" id='psubmenu'
 					onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
-						<li><a href="#" style="color: white"> 담당자 조회 </a></li>
-						<li><a href="#" style="color: white"> 거래처 조회 </a></li>
-						<li><a href="#" style="color: white"> 재고조회 </a></li>
+						<li><a href="/account/list" style="color: white"> 계좌/장부
+								조회 </a></li>
+						<li><a href="/manager/list" style="color: white"> 담당자 조회
+						</a></li>
+						<li><a href="/client/list" style="color: white"> 거래처 조회 </a></li>
+						<li><a href="/item/list" style="color: white"> 재고조회 </a></li>
 					</ul></li>
-				<li class="active"><a href="#bogoSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='bsubmenu'
-					onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
-					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#" style="color: white"> 손익보고서 </a></li>
-						<li><a href="#" style="color: white"> 발주서 </a></li>
-						<li><a href="#" style="color: white"> 주문서 </a></li>
-					</ul>
 		</nav>
 
 		<!-- Page Content Holder -->
@@ -371,10 +363,10 @@ a.article, a.article:hover {
 
 					<div id="div2">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#"> 계좌/장부 조회 </a></li>
-							<li><a href="#"> 담장자 조회 </a></li>
-							<li><a href="#"> 거래처 조회 </a></li>
-							<li><a href="#"> 재고 조회 </a></li>
+							<li><a href="/account/list"> 계좌/장부 조회 </a></li>
+							<li><a href="/manager/list"> 담장자 조회 </a></li>
+							<li><a href="/client/list"> 거래처 조회 </a></li>
+							<li><a href="/item/list"> 재고 조회 </a></li>
 						</ul>
 					</div>
 				</div>
@@ -494,43 +486,49 @@ a.article, a.article:hover {
 						src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 					<script type="text/javascript">
-				$(document).ready(function() {
-					$('#sidebarCollapse').on('click', function() {
-						$('#sidebar').toggleClass('active');
-					});
-				});
-			</script>
+						$(document).ready(function() {
+							$('#sidebarCollapse').on('click', function() {
+								$('#sidebar').toggleClass('active');
+							});
+						});
+					</script>
 
 
 					<script type="text/javascript">
-				$(document).ready(
-						function() {
+						$(document).ready(
+								function() {
 
-							$("#sidebar").mCustomScrollbar({
-								theme : "minimal"
-							});
-
-							// when opening the sidebar
-							$('#sidebarCollapse').on(
-									'click',
-									function() {
-										// open sidebar
-										$('#sidebar').addClass('active');
-										// fade in the overlay
-										$('.overlay').fadeIn();
-										$('.collapse.in').toggleClass('in');
-										$('a[aria-expanded=true]').attr(
-												'aria-expanded', 'false');
+									$("#sidebar").mCustomScrollbar({
+										theme : "minimal"
 									});
 
-							// if dismiss or overlay was clicked
-							$('#dismiss, .overlay').on('click', function() {
-								// hide the sidebar
-								$('#sidebar').removeClass('active');
-								// fade out the overlay
-								$('.overlay').fadeOut();
-							});
-						});
-			</script>
+									// when opening the sidebar
+									$('#sidebarCollapse').on(
+											'click',
+											function() {
+												// open sidebar
+												$('#sidebar')
+														.addClass('active');
+												// fade in the overlay
+												$('.overlay').fadeIn();
+												$('.collapse.in').toggleClass(
+														'in');
+												$('a[aria-expanded=true]')
+														.attr('aria-expanded',
+																'false');
+											});
+
+									// if dismiss or overlay was clicked
+									$('#dismiss, .overlay').on(
+											'click',
+											function() {
+												// hide the sidebar
+												$('#sidebar').removeClass(
+														'active');
+												// fade out the overlay
+												$('.overlay').fadeOut();
+											});
+								});
+					</script>
 </body>
 </html>
