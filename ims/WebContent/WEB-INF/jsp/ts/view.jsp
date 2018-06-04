@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,6 +104,7 @@ a, a:hover, a:focus {
 	position: static;
 	float: right
 }
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -196,6 +200,7 @@ a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -204,6 +209,7 @@ a.article, a.article:hover {
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -236,6 +242,7 @@ a.article, a.article:hover {
 	}
 	window.onload = function() {
 		div2Resize();
+
 		// 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
 		window.addEventListener('resize', div2Resize);
 	}
@@ -309,23 +316,6 @@ a.article, a.article:hover {
 		}
 	}
 </script>
-<script type="text/javascript">
-	var openWin;
-
-	function accountPopupOpen() {
-		window.name = "accountPopup";
-
-		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-		openWin = window.open("/account/popup", "acPopup", option);
-	}
-
-	function clientPopupOpen() {
-		window.name = "clientPopup";
-
-		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-		openWin = window.open("/client/popup", "clPopup", option);
-	}
-</script>
 </head>
 <body>
 
@@ -386,81 +376,111 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>입금 수정</h3>
+			<h3>대체거래 내역 단일 조회</h3>
+			<br />
+			<!-- Search Panel... -->
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="input-group">
 
-			<br> <label for="sel1"><h4>[입금 정보]</h4></label> <br> <label
-				for="sel1"> 입금 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="depNo"
-					placeholder="depNo">
-				<c:out value="${dep.depNo}" />
-			</div>
-			<br> <label for="sel1"> 입금일 </label>
-			<div class="col-sm-20">
-				<input type="date" name="from" />
-				<c:out value="${dep.depDate}" />
-			</div>
-			<br> <label for="sel1"> 자사계정(계좌) </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="accountNo"
-					placeholder="accountNo">
-				<c:out value="${dep.accountNo}" />
-			</div>
-			<br> <label for="sel1"> 적요 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer"
-					placeholder="conVer">
-				<c:out value="${dep.conVer}" />
-			</div>
-			<br> <label for="sel1"> 금액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="ammount">
-				<c:out value="${dep.ammount}" />
-			</div>
-			<br> <label for="sel1"> 세액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="tax" placeholder="tax">
-				<c:out value="${dep.tax}" />
-			</div>
-			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="useable"
-					placeholder="useable">
-				<c:out value="${dep.useable}" />
-			</div>
+							<table style="border_color: white; align: center;">
+								<input type="date" name="from" /> ~
+								<input type="date" name="to" />
+								<br>
+								<br>
+								<tr>
+									<td><select id="findOption" name="findOption">
+											<option value='NONE' selected>-- 선택 --</option>
+											<option value='DEBTOR_NO'>차변계좌번호</option>
+											<option value='CREDIT_NO'>대변계좌번호</option>
+											<option value='DEBTOR_NAME'>차변계좌명</option>
+											<option value='CREDIT_NAME'>대변계좌명</option>
+									</select></td>
+									<td><input type="text" id="keyword" name="keyword" /></td>
+									<td><input type="submit" value="검색" /></td>
+								</tr>
+							</table>
 
-			<br>
-			<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
-				for="sel1"> 거래처 </label>
-			<div class="col-sm-20">
-				<!-- 버튼 -->
-				<input type="text" class="form-control" id="clientNo"
-					placeholder="선택" onclick='clientPopupOpen();'>
-			</div>
-			<br> <label for="sel1"> 거래 계좌 </label> <br> <input
-				type="text" class="form-control" id="accountNo" placeholder="선택"
-				onclick='accountPopupOpen();'> <br> <label for="sel1">
-				거래 금액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="금액">
-			</div>
-			<br> <label for="sel1"> 세액 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="tax" placeholder="세액">
-			</div>
-			<div class="col-sm-20">
-				<br> <label for="sel1">적요 </label>
-				<div class="col-sm-20">
-					<input type="text" class="form-control" id="conVer"
-						placeholder="내용"> <br>
-					<div class="form-group">
-						<label for="comment"> 비고 </label>
-						<textarea class="form-control" rows="10" id="note"></textarea>
+						</div>
 					</div>
-					<button type="button" class="btn btn-primary btn-md">수정</button>
-					<button type="button" class="btn btn-primary btn-md">닫기</button>
+				</div>
+				<br /> <br />
+				<script type="text/javascript">
+					$(document)
+							.ready(
+									function(e) {
+										$('.search-panel .dropdown-menu')
+												.find('a')
+												.click(
+														function(e) {
+															e.preventDefault();
+															var param = $(this)
+																	.attr(
+																			"href")
+																	.replace(
+																			"#",
+																			"");
+															var concept = $(
+																	this)
+																	.text();
+															$(
+																	'.search-panel span#search_concept')
+																	.text(
+																			concept);
+															$(
+																	'.input-group #search_param')
+																	.val(param);
+														});
+									});
+				</script>
+				<div>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th width="7%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="10%"></th>
+								<th width="7%"></th>
+								<th width="7%"></th>
+								<th width="7%"></th>
+								<th width="7%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="article" items="${articles}" varStatus="status">
+								<tr align=center>
+									<td>${article.articleNumber}</td>
+									<td id="title"><c:if test="${article.depth > 0}">
+                  &nbsp;&nbsp;
+                </c:if> <a
+										href="/bbs/content.bbs?articleNumber=${article.articleNumber}&pageNum=${pageNum}">${article.title}</a>
+									</td>
+									<td>${article.id}</td>
+									<td>${article.writeDate}</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><button type="button" name="btnDeal"
+											class="btn btn-primary btn-md">거래</button></td>
+									<td><button type="button" name="btnDetail"
+											class="btn btn-primary btn-md">상세</button></td>
+									<td><button type="button" name="btnChange"
+											class="btn btn-primary btn-md">수정</button></td>
+									<td><button type="button" name="btnDelete"
+											class="btn btn-primary btn-md">삭제</button></td>
+								<tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
+
 				</div>
 			</div>
 
@@ -482,9 +502,11 @@ a.article, a.article:hover {
 			<script type="text/javascript">
 				$(document).ready(
 						function() {
+
 							$("#sidebar").mCustomScrollbar({
 								theme : "minimal"
 							});
+
 							// when opening the sidebar
 							$('#sidebarCollapse').on(
 									'click',
@@ -497,6 +519,7 @@ a.article, a.article:hover {
 										$('a[aria-expanded=true]').attr(
 												'aria-expanded', 'false');
 									});
+
 							// if dismiss or overlay was clicked
 							$('#dismiss, .overlay').on('click', function() {
 								// hide the sidebar

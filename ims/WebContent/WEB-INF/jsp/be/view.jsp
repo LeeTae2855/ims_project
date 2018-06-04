@@ -2,8 +2,10 @@
    pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+   request.setCharacterEncoding("UTF-8");
 %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,12 +98,12 @@ a, a:hover, a:focus {
 <!--
 -->
 .container {
-   padding-bottom: 10px;
-   float: right;
+   padding-bottom: 10px; float : right;
    align-items: stretch;
    position: static;
    float: right
 }
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -197,6 +199,7 @@ a.article, a.article:hover {
    background: #6d7fcc !important;
    color: #fff !important;
 }
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -205,6 +208,7 @@ a.article, a.article:hover {
    min-height: 100vh;
    transition: all 0.3s;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -237,6 +241,7 @@ a.article, a.article:hover {
    }
    window.onload = function() {
       div2Resize();
+
       // 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
       window.addEventListener('resize', div2Resize);
    }
@@ -300,49 +305,32 @@ a.article, a.article:hover {
       window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
    });
    function toggle(id, id2) {
-      var n = document.getElementById(id);
-      if (n.style.display != 'none') {
-         n.style.display = 'none';
-         document.getElementById(id2).setAttribute('aria-expanded', 'false');
-      } else {
-         n.style.display = '';
-         document.getElementById(id2).setAttribute('aria-expanded', 'true');
-      }
-   }
-</script>
-<script type="text/javascript">
-   var openWin;
-
-   function accountPopupOpen() {
-      window.name = "accountPopup";
-
-      var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-      openWin = window.open("/account/popup", "acPopup", option);
-   }
-
-   function clientPopupOpen() {
-      window.name = "clientPopup";
-
-      var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-      openWin = window.open("/client/popup", "clPopup", option);
-   }
+	      var n = document.getElementById(id);
+	      if (n.style.display != 'none') {
+	         n.style.display = 'none';
+	         document.getElementById(id2).setAttribute('aria-expanded', 'false');
+	      } else {
+	         n.style.display = '';
+	         document.getElementById(id2).setAttribute('aria-expanded', 'true');
+	      }
+	}
 </script>
 </head>
 <body>
 
-   <div class="wrapper">
-      <!-- Sidebar Holder -->
-      <nav id="sidebar">
-         <div class="sidebar-header">
-            <h3>메뉴</h3>
-         </div>
+<div class="wrapper">
+   <!-- Sidebar Holder -->
+   <nav id="sidebar">
+      <div class="sidebar-header">
+         <h3>메뉴</h3>
+      </div>
 
-         <ul class="list-unstyled components">
+      <ul class="list-unstyled components">
 
-            <li class="active"><a href="#homeSubmenu"
-               data-toggle="collapse" aria-expanded="true" id='hsubmenu'
-               onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
-               <ul class="collapse list-unstyled" id="homeSubmenu">
+         <li class="active"><a href="#homeSubmenu"
+            data-toggle="collapse" aria-expanded="true" id='hsubmenu'
+            onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
                   	<li><a href="/ww/list" style=color:white> 매입현황 </a></li>
 					<li><a href="/bd/list" style=color:white> 매출현황 </a></li>
 					<li><a href="/ware/list" style=color:white> 발주예약 </a></li>
@@ -385,76 +373,104 @@ a.article, a.article:hover {
                </div>
             </div>
          </nav>
-         <h3>수주 등록</h3>
-
-         <br> <label for="sel1"><h4> [수주 예약 정보] </h4></label> <br> <label
-            for="sel1"> 수주 번호 </label>
-         <div class="col-sm-20">
-         	<input type="text" class="form-control" id="inputcode"
-					placeholder="beNo">
-            <c:out value="${bd.bdNo}" />
-         </div>
-         <br> <label for="sel1"> 제품 코드 </label>
-         <div class="col-sm-20">
-         	<input type="text" class="form-control" id="inputcode"
-					placeholder="itemNo">
-            <c:out value="${bd.itemNo}" />
-         </div>
-         <br> <label for="sel1"> 수주 예정일 </label>
-         <div class="col-sm-20">
-         	<input type="date" name="from" />
-            <c:out value="${bd.beDate}" />
-         </div>
-         <br> <label for="sel1"> 출고 단위 </label>
-         <div class="col-sm-20">
-         	<input type="text" class="form-control" id="inputcode"
-					placeholder="unit">
-            <c:out value="${bd.unit}" />
-         </div>
-         <br> <label for="sel1"> 매출단가 </label>
-         <div class="col-sm-20">
-         	<input type="text" class="form-control" id="inputcode"
-					placeholder="price">
-            <c:out value="${bd.price}" />
-         </div>
-         <br> <label for="sel1"> 할인금액 </label>
-         <div class="col-sm-20">
-         	<input type="text" class="form-control" id="inputcode"
-					placeholder="discount">
-            <c:out value="${bd.price}" />
-         </div>
-
-         <br><br> <label for="sel1"><h4> [입금정보] </h4></label> <br> <label
-            for="sel1"> 거래처 </label>
-         <div class="col-sm-20">
-            <!-- 버튼 -->
-            <input type="text" class="form-control" id="clientNo"
-               placeholder="선택" onclick='clientPopupOpen();'>
-         </div>
-         <br> <label for="sel1"> 거래 계좌 </label> <br> <input
-            type="text" class="form-control" id="accountNo" placeholder="선택"
-            onclick='accountPopupOpen();'> <br>
-         <label for="sel1"> 거래 금액 </label>
-         <div class="col-sm-20">
-            <input type="text" class="form-control" id="ammount"
-               placeholder="금액">
-         </div>
-         <br> <label for="sel1"> 세액 </label>
-         <div class="col-sm-20">
-            <input type="text" class="form-control" id="tax" placeholder="세액">
-         </div>
-         <div class="col-sm-20">
-            <br>
-            <label for="sel1">적요 </label>
-            <div class="col-sm-20">
-               <input type="text" class="form-control" id="conVer"
-                  placeholder="내용"> <br>
-               <div class="form-group">
-                  <label for="comment"> 비고 </label>
-                  <textarea class="form-control" rows="10" id="note"></textarea>
+         <h3>수주 예약 단일 조회</h3>
+         <br />
+         <!-- Search Panel... -->
+         <div class="container">
+			<div class="row">
+               <div class="col-xs-8 col-xs-offset-2">
+                  <div class="input-group">
+                     
+                     <table style="border_color: white; align: center;">
+                     <input type="date" name="from" />  ~  <input type="date" name="to" />
+                     <br><br>
+						<tr>
+							<td><select id="findOption" name="findOption">
+									<option value='NONE' selected>-- 선택 --</option>
+									<option value='ITEM_NAME'>제품명</option>
+									<option value='CON_VER'>적요</option>
+								</select>
+							</td>
+							<td><input type="text" id="keyword" name="keyword" /></td>
+							<td><input type="submit" value="검색" /></td>
+						</tr>
+					</table>
+                     
+                  </div>
                </div>
-               <button type="button" class="btn btn-primary btn-md">등록</button>
-               <button type="button" class="btn btn-primary btn-md">닫기</button>
+            </div>
+            <br /><br />
+            <script type="text/javascript">
+               $(document)
+                     .ready(
+                           function(e) {
+                              $('.search-panel .dropdown-menu')
+                                    .find('a')
+                                    .click(
+                                          function(e) {
+                                             e.preventDefault();
+                                             var param = $(this)
+                                                   .attr(
+                                                         "href")
+                                                   .replace(
+                                                         "#",
+                                                         "");
+                                             var concept = $(
+                                                   this)
+                                                   .text();
+                                             $(
+                                                   '.search-panel span#search_concept')
+                                                   .text(
+                                                         concept);
+                                             $(
+                                                   '.input-group #search_param')
+                                                   .val(param);
+                                          });
+                           });
+            </script>
+            <div>
+               <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                     <tr>
+                        <th width="7%"></th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
+                        <th width="7%"></th>
+                        <th width="7%"></th>
+                        <th width="7%"></th>
+                        <th width="7%"></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <c:forEach var="article" items="${articles}" varStatus="status">
+                        <tr align=center>
+                           <td>${article.articleNumber}</td>
+                           <td id="title"><c:if test="${article.depth > 0}">
+                  &nbsp;&nbsp;
+                </c:if> <a
+                              href="/bbs/content.bbs?articleNumber=${article.articleNumber}&pageNum=${pageNum}">${article.title}</a>
+                           </td>
+                           <td>${article.id}</td>
+                           <td>${article.writeDate}</td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td><button type="button" name="btnDeal" class="btn btn-primary btn-md">거래</button></td>
+                           <td><button type="button" name="btnDetail" class="btn btn-primary btn-md">상세</button></td>
+                           <td><button type="button" name="btnChange" class="btn btn-primary btn-md">수정</button></td>
+                           <td><button type="button" name="btnDelete" class="btn btn-primary btn-md">삭제</button></td>
+                        <tr>
+                     </c:forEach>
+
+                  </tbody>
+               </table>
+
+               
+
             </div>
          </div>
 
@@ -476,9 +492,11 @@ a.article, a.article:hover {
          <script type="text/javascript">
             $(document).ready(
                   function() {
+
                      $("#sidebar").mCustomScrollbar({
                         theme : "minimal"
                      });
+
                      // when opening the sidebar
                      $('#sidebarCollapse').on(
                            'click',
@@ -491,6 +509,7 @@ a.article, a.article:hover {
                               $('a[aria-expanded=true]').attr(
                                     'aria-expanded', 'false');
                            });
+
                      // if dismiss or overlay was clicked
                      $('#dismiss, .overlay').on('click', function() {
                         // hide the sidebar
