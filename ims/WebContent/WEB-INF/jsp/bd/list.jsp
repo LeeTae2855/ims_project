@@ -385,7 +385,7 @@ a.article, a.article:hover {
 						<div class="input-group">
 
 							<table style="border_color: white; align: center;">
-								<input type="date" name="from" /> 
+								<input type="date" name="from" /> ~
 								<input type="date" name="to" />
 								<br>
 								<br>
