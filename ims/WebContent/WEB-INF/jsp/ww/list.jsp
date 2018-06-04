@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 
 
 <!DOCTYPE html>
@@ -148,7 +146,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li a:hover {
 	color: #7386D5;
-	background: #fff;
+	background: #7386D5;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
@@ -381,7 +379,7 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>매입내역</h3>
+			<h3>매입내역 조회</h3>
 			<br />
 			<!-- Search Panel... -->
 			<div class="container">
