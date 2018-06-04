@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -392,128 +392,133 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>출고입금 수정</h3>
+			<h3>품목 등록</h3>
 
-			<br> <label for="sel1"><h4>[출고입금 정보]</h4></label> <br> <label
-				for="sel1"> 출고입금 번호 </label>
+			<br> <label for="sel1"><h4>[품목 정보]</h4></label> <br> <label
+				for="sel1"> 품목 코드 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="bdNo"
-					placeholder="bdNo">
-				<c:out value="${bd.bdNo}" />
+				<input type="text" class="form-control" id="itemCode"
+					placeholder="itemCode">
+				<c:out value="${item.itemCode}" />
 			</div>
-			<br> <label for="sel1"> 출고 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="beNo"
-					placeholder="beNo">
-				<c:out value="${bd.beNo}" />
+			<br>
+			<div class="form-group">
+				<label for="sel1"> 품목구분 </label> <select class="form-control" id="itemCfc" 
+				placeholder="itemCfc">
+				<c:out value="${item.itemCfc}" />
+					<option>상품</option>
+					<option>제품</option>
+					<option>부품</option>
+					<option>반제품</option>
+					<option>세트</option>
+				</select>
 			</div>
-			<br> <label for="sel1"> 입금 번호 </label>
+			<br> <label for="sel1"> 품목명 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="depNo"
-					placeholder="depNo">
-				<c:out value="${bd.depNo}" />
+				<input type="text" class="form-control" id="itemName"
+					placeholder="itemName">
+				<c:out value="${item.itemName}" />
 			</div>
-			<br> <label for="sel1"> 거래 완료일 </label>
+			<br> <label for="sel1"> 규격/별칭 </label>
 			<div class="col-sm-20">
-				<input type="date" name="from" />
-				<c:out value="${bd.bdDate}" />
+				<input type="text" class="form-control" id="standard"
+					placeholder="standard">
+				<c:out value="${item.standard}" />
 			</div>
-			<br> <label for="sel1"> 매출수량 </label>
+			<br> <label for="sel1"> 기초 재고량 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="quantity"
-					placeholder="quantity">
-				<c:out value="${bd.quantity}" />
+				<input type="text" class="form-control" id="baseQuantity"
+					placeholder="baseQuantity">
+				<c:out value="${item.baseQuantity}" />
 			</div>
-			<br> <label for="sel1"> 금액합계 </label>
+			<br> <label for="sel1"> 재고상태 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="ammount">
-				<c:out value="${bd.ammount}" />
+				<input type="text" class="form-control" id="itemStatus"
+					placeholder="itemStatus">
+				<c:out value="${item.Status}" />
 			</div>
 			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="useable"
 					placeholder="useable">
-				<c:out value="${bd.useable}" />
+				<c:out value="${item.useable}" />
 			</div>
-			<br> <label for="sel1"> 적요 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer"
-					placeholder="conVer">
-				<c:out value="${bd.conVer}" />
-			</div>
-			
 
-		<br>
-		<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
-			for="sel1"> 거래처 </label>
-		<div class="col-sm-20">
-			<!-- 버튼 -->
-			<input type="text" class="form-control" id="clientNo"
-				placeholder="선택" onclick='clientPopupOpen();'>
-		</div>
-		<br> <label for="sel1"> 거래 계좌 </label> <br> <input
-			type="text" class="form-control" id="accountNo" placeholder="선택"
-			onclick='accountPopupOpen();'> <br> <label for="sel1">
-			거래 금액 </label>
-		<div class="col-sm-20">
-			<input type="text" class="form-control" id="ammount" placeholder="금액">
-		</div>
-		<br> <label for="sel1"> 세액 </label>
-		<div class="col-sm-20">
-			<input type="text" class="form-control" id="tax" placeholder="세액">
-		</div>
-		<div class="col-sm-20">
-			<br> <label for="sel1">적요 </label>
+			<br>
+			<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
+				for="sel1"> 거래처 </label>
 			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer" placeholder="내용">
-				<br>
-				<div class="form-group">
-					<label for="comment"> 비고 </label>
-					<textarea class="form-control" rows="10" id="note"></textarea>
+				<!-- 버튼 -->
+				<input type="text" class="form-control" id="clientNo"
+					placeholder="선택" onclick='clientPopupOpen();'>
+			</div>
+			<br> <label for="sel1"> 거래 계좌 </label> <br> <input
+				type="text" class="form-control" id="accountNo" placeholder="선택"
+				onclick='accountPopupOpen();'> <br> <label for="sel1">
+				거래 금액 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="ammount"
+					placeholder="금액">
+			</div>
+			<br> <label for="sel1"> 세액 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="tax" placeholder="세액">
+			</div>
+			<div class="col-sm-20">
+				<br> <label for="sel1">적요 </label>
+				<div class="col-sm-20">
+					<input type="text" class="form-control" id="conVer"
+						placeholder="내용"> <br>
+					<div class="form-group">
+						<label for="comment"> 비고 </label>
+						<textarea class="form-control" rows="10" id="note"></textarea>
+					</div>
+					<button type="button" class="btn btn-primary btn-md">등록</button>
+					<button type="button" class="btn btn-primary btn-md">닫기</button>
 				</div>
-				<button type="button" class="btn btn-primary btn-md">수정</button>
-				<button type="button" class="btn btn-primary btn-md">닫기</button>
 			</div>
-		</div>
 
-		<!-- jQuery CDN -->
-		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-		<!-- Bootstrap Js CDN -->
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<!-- jQuery CDN -->
+			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+			<!-- Bootstrap Js CDN -->
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#sidebarCollapse').on('click', function() {
-					$('#sidebar').toggleClass('active');
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#sidebarCollapse').on('click', function() {
+						$('#sidebar').toggleClass('active');
+					});
 				});
-			});
-		</script>
+			</script>
 
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#sidebar").mCustomScrollbar({
-					theme : "minimal"
-				});
-				// when opening the sidebar
-				$('#sidebarCollapse').on('click', function() {
-					// open sidebar
-					$('#sidebar').addClass('active');
-					// fade in the overlay
-					$('.overlay').fadeIn();
-					$('.collapse.in').toggleClass('in');
-					$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-				});
-				// if dismiss or overlay was clicked
-				$('#dismiss, .overlay').on('click', function() {
-					// hide the sidebar
-					$('#sidebar').removeClass('active');
-					// fade out the overlay
-					$('.overlay').fadeOut();
-				});
-			});
-		</script>
+			<script type="text/javascript">
+				$(document).ready(
+						function() {
+							$("#sidebar").mCustomScrollbar({
+								theme : "minimal"
+							});
+							// when opening the sidebar
+							$('#sidebarCollapse').on(
+									'click',
+									function() {
+										// open sidebar
+										$('#sidebar').addClass('active');
+										// fade in the overlay
+										$('.overlay').fadeIn();
+										$('.collapse.in').toggleClass('in');
+										$('a[aria-expanded=true]').attr(
+												'aria-expanded', 'false');
+									});
+							// if dismiss or overlay was clicked
+							$('#dismiss, .overlay').on('click', function() {
+								// hide the sidebar
+								$('#sidebar').removeClass('active');
+								// fade out the overlay
+								$('.overlay').fadeOut();
+							});
+						});
+			</script>
 </body>
 </html>

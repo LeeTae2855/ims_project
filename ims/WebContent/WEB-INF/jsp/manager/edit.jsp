@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -392,56 +392,83 @@ a.article, a.article:hover {
                </div>
             </div>
          </nav>
-         <h3>계좌 수정</h3>
+         <h3>담당자 수정</h3>
 
-         <br> <label for="sel1"><h4> [계좌 정보] </h4></label> <br> <label for="sel1"> 계좌번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountNo">
-            <c:out value="${account.accountNo}" />
+         <br> <label for="sel1"><h4> [담당자 정보] </h4></label> <br> <label
+            for="sel1"> 담당자 번호 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="managerNo"
+               placeholder="managerNo">
+            <c:out value="${manager.managerNo}" />
          </div>
-         <br> <label for="sel1"> 계정명 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountName">
-            <c:out value="${account.accountName}" />
+         <br> <label for="sel1"> 담당자명 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="managerName"
+               placeholder="managerName">
+            <c:out value="${manager.managerName}" />
          </div>
-         <br> <label for="sel1"> 계정구분 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountCfc">
-            <c:out value="${account.accountCfc}" />
+         <br> <label for="sel1"> 부서명 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="depName"
+               placeholder="depName">
+            <c:out value="${manager.depName}" />
          </div>
-         <br> <label for="sel1"> 예금주 </label>
-			<br><div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="masterName">
-            <c:out value="${account.masterName}" />
+         <br> <label for="sel1"> 전화(집) </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="telephone"
+               placeholder="telephone">
+            <c:out value="${manager.telephone}" />
          </div>
          <br> <label for="sel1"> 휴대전화 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="cellphone">
-            <c:out value="${account.cellphone}" />
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="cellphone"
+               placeholder="cellphone">
+            <c:out value="${manager.cellphone}" />
          </div>
-        <br> <label for="sel1"> 은행명/개설지 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="bankName">
-            <c:out value="${account.bankName}" />
+         <br> <label for="sel1"> 이메일 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="email"
+               placeholder="email">
+            <c:out value="${manager.email}" />
          </div>
-         <br> <label for="sel1"> 자사계정여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="isowner">
-            <c:out value="${account.isowner}" />
+          <br> <label for="sel1"> 팩스 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="fax"
+               placeholder="fax">
+            <c:out value="${manager.fax}" />
          </div>
          <br> <label for="sel1"> 사용(조회) 가능여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="useable">
-            <c:out value="${account.useable}" />
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="useable"
+               placeholder="useable">
+            <c:out value="${manager.useable}" />
          </div>
+
+         <br><br> <label for="sel1"><h4> [입금정보] </h4></label> <br> <label
+            for="sel1"> 거래처 </label>
+         <div class="col-sm-20">
+            <!-- 버튼 -->
+            <input type="text" class="form-control" id="clientNo"
+               placeholder="선택" onclick='clientPopupOpen();'>
+         </div>
+         <br> <label for="sel1"> 거래 계좌 </label> <br> <input
+            type="text" class="form-control" id="accountNo" placeholder="선택"
+            onclick='accountPopupOpen();'> <br>
+         <label for="sel1"> 거래 금액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="ammount"
+               placeholder="금액">
+         </div>
+         <br> <label for="sel1"> 세액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="tax" placeholder="세액">
+         </div>
+         <div class="col-sm-20">
+            <br>
+            <label for="sel1">적요 </label>
+            <div class="col-sm-20">
+               <input type="text" class="form-control" id="conVer"
+                  placeholder="내용"> <br>
                <div class="form-group">
                   <label for="comment"> 비고 </label>
                   <textarea class="form-control" rows="10" id="note"></textarea>

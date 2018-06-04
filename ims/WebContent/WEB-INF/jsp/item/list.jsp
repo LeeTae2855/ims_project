@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,6 +104,7 @@ a, a:hover, a:focus {
 	position: static;
 	float: right
 }
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -196,6 +200,7 @@ a.article, a.article:hover {
 	background: #6d7fcc !important;
 	color: #fff !important;
 }
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -204,6 +209,7 @@ a.article, a.article:hover {
 	min-height: 100vh;
 	transition: all 0.3s;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -236,6 +242,7 @@ a.article, a.article:hover {
 	}
 	window.onload = function() {
 		div2Resize();
+
 		// 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
 		window.addEventListener('resize', div2Resize);
 	}
@@ -299,32 +306,18 @@ a.article, a.article:hover {
 		window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
 	});
 	function toggle(id, id2) {
-		var n = document.getElementById(id);
-		if (n.style.display != 'none') {
-			n.style.display = 'none';
-			document.getElementById(id2).setAttribute('aria-expanded', 'false');
-		} else {
-			n.style.display = '';
-			document.getElementById(id2).setAttribute('aria-expanded', 'true');
-		}
-	}
-</script>
-<script type="text/javascript">
-	var openWin;
-
-	function accountPopupOpen() {
-		window.name = "accountPopup";
-
-		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-		openWin = window.open("/account/popup", "acPopup", option);
-	}
-
-	function clientPopupOpen() {
-		window.name = "clientPopup";
-
-		var option = "width=700, height=410, resizable=no, scrollbars=no, status=no, toolbar=yes, directories=yes, menubar=yes, location=no;";
-		openWin = window.open("/client/popup", "clPopup", option);
-	}
+	    var n = document.getElementById(id);
+		if (n.style.display != 'none') 
+		  {
+		  n.style.display = 'none';
+	      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+	  }
+	  else
+	  {
+	  n.style.display = '';
+	  document.getElementById(id2).setAttribute('aria-expanded', 'true');
+		  }
+	  }
 </script>
 </head>
 <body>
@@ -339,33 +332,30 @@ a.article, a.article:hover {
 			<ul class="list-unstyled components">
 
 				<li class="active"><a href="#homeSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='hsubmenu'
-					onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
+					data-toggle="collapse" aria-expanded="true" id='hsubmenu' onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#" style="color: white"> 매입현황 </a></li>
-						<li><a href="#" style="color: white"> 매출현황 </a></li>
-						<li><a href="#" style="color: white"> 발주예약 </a></li>
-						<li><a href="#" style="color: white"> 수주예약 </a></li>
-						<li><a href="#" style="color: white"> 대체거래 </a></li>
-						<li><a href="#" style="color: white"> 입금거래 </a></li>
-						<li><a href="#" style="color: white"> 출금거래 </a></li>
+						<li><a href="#" style=color:white> 매입현황 </a></li>
+						<li><a href="#" style=color:white> 매출현황 </a></li>
+						<li><a href="#" style=color:white> 발주예약 </a></li>
+						<li><a href="#" style=color:white> 수주예약 </a></li>
+						<li><a href="#" style=color:white> 대체거래 </a></li>
+						<li><a href="#" style=color:white> 입금거래 </a></li>
+						<li><a href="#" style=color:white> 출금거래 </a></li>
 					</ul></li>
 				<li class="active"><a href="#pageSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='psubmenu'
-					onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
+					data-toggle="collapse" aria-expanded="true" id='psubmenu' onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
-						<li><a href="#" style="color: white"> 담당자 조회 </a></li>
-						<li><a href="#" style="color: white"> 거래처 조회 </a></li>
-						<li><a href="#" style="color: white"> 재고조회 </a></li>
+						<li><a href="#" style=color:white> 계좌/장부 조회 </a></li>
+						<li><a href="#" style=color:white> 담당자 조회 </a></li>
+						<li><a href="#" style=color:white> 거래처 조회 </a></li>
+						<li><a href="#" style=color:white> 재고조회 </a></li>
 					</ul></li>
 				<li class="active"><a href="#bogoSubmenu"
-					data-toggle="collapse" aria-expanded="true" id='bsubmenu'
-					onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
+					data-toggle="collapse" aria-expanded="true" id='bsubmenu' onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
 					<ul class="collapse list-unstyled" id="bogoSubmenu">
-						<li><a href="#" style="color: white"> 손익보고서 </a></li>
-						<li><a href="#" style="color: white"> 발주서 </a></li>
-						<li><a href="#" style="color: white"> 주문서 </a></li>
+						<li><a href="#" style=color:white> 손익보고서 </a></li>
+						<li><a href="#" style=color:white> 발주서 </a></li>
+						<li><a href="#" style=color:white> 주문서 </a></li>
 					</ul>
 		</nav>
 
@@ -392,128 +382,180 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>출고입금 수정</h3>
+			<h3>조회</h3>
+			<br />
+			<div id="write">
+				<input type="date" name="from" /> ~ <input type="date" name="to" />
+				<button class="btn_emdfhr" type="button" style="float: right;">
+					<h4>등록하기</h4>
+				</button>
+			</div>
+			<br />
+			<!-- Search Panel... -->
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="input-group">
+							<div class="input-group-btn search-panel">
+								<button type="button" class="btn btn-default dropdown-toggle"
+									data-toggle="dropdown">
+									<span id="search_concept"> --선택-- </span> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#contains"> 등록번호 </a></li>
+									<li><a href="#its_equal"> 출고내역 </a></li>
+									<li><a href="#greather_than"> 입금내역 </a></li>
+									<li><a href="#less_than"> 거래완료일 </a></li>
+									<li><a href="#next"> 매출수량 </a></li>
+									<li><a href="#next"> 금액 </a></li>
+									<li><a href="#next"> 적요 </a></li>
+									<li><a href="#next"> 비고 </a></li>
 
-			<br> <label for="sel1"><h4>[출고입금 정보]</h4></label> <br> <label
-				for="sel1"> 출고입금 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="bdNo"
-					placeholder="bdNo">
-				<c:out value="${bd.bdNo}" />
-			</div>
-			<br> <label for="sel1"> 출고 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="beNo"
-					placeholder="beNo">
-				<c:out value="${bd.beNo}" />
-			</div>
-			<br> <label for="sel1"> 입금 번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="depNo"
-					placeholder="depNo">
-				<c:out value="${bd.depNo}" />
-			</div>
-			<br> <label for="sel1"> 거래 완료일 </label>
-			<div class="col-sm-20">
-				<input type="date" name="from" />
-				<c:out value="${bd.bdDate}" />
-			</div>
-			<br> <label for="sel1"> 매출수량 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="quantity"
-					placeholder="quantity">
-				<c:out value="${bd.quantity}" />
-			</div>
-			<br> <label for="sel1"> 금액합계 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="ammount"
-					placeholder="ammount">
-				<c:out value="${bd.ammount}" />
-			</div>
-			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="useable"
-					placeholder="useable">
-				<c:out value="${bd.useable}" />
-			</div>
-			<br> <label for="sel1"> 적요 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer"
-					placeholder="conVer">
-				<c:out value="${bd.conVer}" />
-			</div>
-			
-
-		<br>
-		<br> <label for="sel1"><h4>[입금정보]</h4></label> <br> <label
-			for="sel1"> 거래처 </label>
-		<div class="col-sm-20">
-			<!-- 버튼 -->
-			<input type="text" class="form-control" id="clientNo"
-				placeholder="선택" onclick='clientPopupOpen();'>
-		</div>
-		<br> <label for="sel1"> 거래 계좌 </label> <br> <input
-			type="text" class="form-control" id="accountNo" placeholder="선택"
-			onclick='accountPopupOpen();'> <br> <label for="sel1">
-			거래 금액 </label>
-		<div class="col-sm-20">
-			<input type="text" class="form-control" id="ammount" placeholder="금액">
-		</div>
-		<br> <label for="sel1"> 세액 </label>
-		<div class="col-sm-20">
-			<input type="text" class="form-control" id="tax" placeholder="세액">
-		</div>
-		<div class="col-sm-20">
-			<br> <label for="sel1">적요 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="conVer" placeholder="내용">
-				<br>
-				<div class="form-group">
-					<label for="comment"> 비고 </label>
-					<textarea class="form-control" rows="10" id="note"></textarea>
+								</ul>
+							</div>
+							<input type="hidden" name="search_param" value="all"
+								id="search_param"> <input type="text"
+								class="form-control" name="x" placeholder="search"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
 				</div>
-				<button type="button" class="btn btn-primary btn-md">수정</button>
-				<button type="button" class="btn btn-primary btn-md">닫기</button>
+				<br />
+				<script type="text/javascript">
+					$(document)
+							.ready(
+									function(e) {
+										$('.search-panel .dropdown-menu')
+												.find('a')
+												.click(
+														function(e) {
+															e.preventDefault();
+															var param = $(this)
+																	.attr(
+																			"href")
+																	.replace(
+																			"#",
+																			"");
+															var concept = $(
+																	this)
+																	.text();
+															$(
+																	'.search-panel span#search_concept')
+																	.text(
+																			concept);
+															$(
+																	'.input-group #search_param')
+																	.val(param);
+														});
+									});
+				</script>
+				<div>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th width="10%">등록번호</th>
+								<th width="10%">출고내역</th>
+								<th width="10%">입금내역</th>
+								<th width="10%">거래완료일</th>
+								<th width="10%">매출수량</th>
+								<th width="10%">금액</th>
+								<th width="10%">적요</th>
+								<th width="10%">비고</th>
+								<th width="20%">수정/삭제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="article" items="${articles}" varStatus="status">
+								<tr>
+									<td>${article.articleNumber}</td>
+									<td id="title"><c:if test="${article.depth > 0}">
+                  &nbsp;&nbsp;
+                </c:if> <a
+										href="/bbs/content.bbs?articleNumber=${article.articleNumber}&pageNum=${pageNum}">${article.title}</a>
+									</td>
+									<td>${article.id}</td>
+									<td>${article.writeDate}</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><button type="button" class="btn btn-primary btn-md">수정</button>
+										<button type="button" class="btn btn-primary btn-md">삭제</button></td>
+								<tr>
+							</c:forEach>
+
+						</tbody>
+					</table>
+
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#">4</a></li>
+							<li class="page-item"><a class="page-link" href="#">5</a></li>
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</nav>
+
+				</div>
 			</div>
-		</div>
 
-		<!-- jQuery CDN -->
-		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-		<!-- Bootstrap Js CDN -->
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<!-- jQuery CDN -->
+			<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+			<!-- Bootstrap Js CDN -->
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#sidebarCollapse').on('click', function() {
-					$('#sidebar').toggleClass('active');
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#sidebarCollapse').on('click', function() {
+						$('#sidebar').toggleClass('active');
+					});
 				});
-			});
-		</script>
+			</script>
 
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#sidebar").mCustomScrollbar({
-					theme : "minimal"
-				});
-				// when opening the sidebar
-				$('#sidebarCollapse').on('click', function() {
-					// open sidebar
-					$('#sidebar').addClass('active');
-					// fade in the overlay
-					$('.overlay').fadeIn();
-					$('.collapse.in').toggleClass('in');
-					$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-				});
-				// if dismiss or overlay was clicked
-				$('#dismiss, .overlay').on('click', function() {
-					// hide the sidebar
-					$('#sidebar').removeClass('active');
-					// fade out the overlay
-					$('.overlay').fadeOut();
-				});
-			});
-		</script>
+			<script type="text/javascript">
+				$(document).ready(
+						function() {
+
+							$("#sidebar").mCustomScrollbar({
+								theme : "minimal"
+							});
+
+							// when opening the sidebar
+							$('#sidebarCollapse').on(
+									'click',
+									function() {
+										// open sidebar
+										$('#sidebar').addClass('active');
+										// fade in the overlay
+										$('.overlay').fadeIn();
+										$('.collapse.in').toggleClass('in');
+										$('a[aria-expanded=true]').attr(
+												'aria-expanded', 'false');
+									});
+
+							// if dismiss or overlay was clicked
+							$('#dismiss, .overlay').on('click', function() {
+								// hide the sidebar
+								$('#sidebar').removeClass('active');
+								// fade out the overlay
+								$('.overlay').fadeOut();
+							});
+						});
+			</script>
 </body>
 </html>

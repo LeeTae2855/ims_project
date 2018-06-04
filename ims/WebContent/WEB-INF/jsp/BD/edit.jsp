@@ -399,48 +399,48 @@ a.article, a.article:hover {
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="bdNo"
 					placeholder="bdNo">
-				<c:out value="${bd.bdNo}" />
+				<c:out value="${BD.bdNo}" />
 			</div>
 			<br> <label for="sel1"> 출고 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="beNo"
 					placeholder="beNo">
-				<c:out value="${bd.beNo}" />
+				<c:out value="${BD.beNo}" />
 			</div>
 			<br> <label for="sel1"> 입금 번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="depNo"
 					placeholder="depNo">
-				<c:out value="${bd.depNo}" />
+				<c:out value="${BD.depNo}" />
 			</div>
 			<br> <label for="sel1"> 거래 완료일 </label>
 			<div class="col-sm-20">
 				<input type="date" name="from" />
-				<c:out value="${bd.bdDate}" />
+				<c:out value="${BD.bdDate}" />
 			</div>
 			<br> <label for="sel1"> 매출수량 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="quantity"
 					placeholder="quantity">
-				<c:out value="${bd.quantity}" />
+				<c:out value="${BD.quantity}" />
 			</div>
 			<br> <label for="sel1"> 금액합계 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="ammount"
 					placeholder="ammount">
-				<c:out value="${bd.ammount}" />
+				<c:out value="${BD.ammount}" />
 			</div>
 			<br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="useable"
 					placeholder="useable">
-				<c:out value="${bd.useable}" />
+				<c:out value="${BD.useable}" />
 			</div>
 			<br> <label for="sel1"> 적요 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="conVer"
 					placeholder="conVer">
-				<c:out value="${bd.conVer}" />
+				<c:out value="${BD.conVer}" />
 			</div>
 			
 

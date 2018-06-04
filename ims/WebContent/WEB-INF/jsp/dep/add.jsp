@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -392,61 +392,81 @@ a.article, a.article:hover {
                </div>
             </div>
          </nav>
-         <h3>계좌 수정</h3>
+         <h3>입금 등록</h3>
 
-         <br> <label for="sel1"><h4> [계좌 정보] </h4></label> <br> <label for="sel1"> 계좌번호 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountNo">
-            <c:out value="${account.accountNo}" />
+         <br> <label for="sel1"><h4> [입금 정보] </h4></label> <br> <label
+            for="sel1"> 입금 번호 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="depNo"
+               placeholder="depNo">
+            <c:out value="${dep.depNo}" />
          </div>
-         <br> <label for="sel1"> 계정명 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountName">
-            <c:out value="${account.accountName}" />
+         <br> <label for="sel1"> 입금일 </label>
+         <div class="col-sm-20">
+            <input type="date" name="from" />
+            <c:out value="${dep.depDate}" />
          </div>
-         <br> <label for="sel1"> 계정구분 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountCfc">
-            <c:out value="${account.accountCfc}" />
+         <br> <label for="sel1"> 자사계정(계좌) </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="accountNo"
+               placeholder="accountNo">
+            <c:out value="${dep.accountNo}" />
          </div>
-         <br> <label for="sel1"> 예금주 </label>
-			<br><div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="masterName">
-            <c:out value="${account.masterName}" />
+         <br> <label for="sel1"> 적요 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="conVer"
+               placeholder="conVer">
+            <c:out value="${dep.conVer}" />
          </div>
-         <br> <label for="sel1"> 휴대전화 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="cellphone">
-            <c:out value="${account.cellphone}" />
+         <br> <label for="sel1"> 금액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="ammount"
+               placeholder="ammount">
+            <c:out value="${dep.ammount}" />
          </div>
-        <br> <label for="sel1"> 은행명/개설지 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="bankName">
-            <c:out value="${account.bankName}" />
-         </div>
-         <br> <label for="sel1"> 자사계정여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="isowner">
-            <c:out value="${account.isowner}" />
+         <br> <label for="sel1"> 세액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="tax"
+               placeholder="tax">
+            <c:out value="${dep.tax}" />
          </div>
          <br> <label for="sel1"> 사용(조회) 가능여부 </label>
-			<div class="col-sm-20">
-				<input type="text" class="form-control" id="inputcode"
-					placeholder="useable">
-            <c:out value="${account.useable}" />
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="useable"
+               placeholder="useable">
+            <c:out value="${dep.useable}" />
          </div>
+
+         <br><br> <label for="sel1"><h4> [입금정보] </h4></label> <br> <label
+            for="sel1"> 거래처 </label>
+         <div class="col-sm-20">
+            <!-- 버튼 -->
+            <input type="text" class="form-control" id="clientNo"
+               placeholder="선택" onclick='clientPopupOpen();'>
+         </div>
+         <br> <label for="sel1"> 거래 계좌 </label> <br> <input
+            type="text" class="form-control" id="accountNo" placeholder="선택"
+            onclick='accountPopupOpen();'> <br>
+         <label for="sel1"> 거래 금액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="ammount"
+               placeholder="금액">
+         </div>
+         <br> <label for="sel1"> 세액 </label>
+         <div class="col-sm-20">
+            <input type="text" class="form-control" id="tax" placeholder="세액">
+         </div>
+         <div class="col-sm-20">
+            <br>
+            <label for="sel1">적요 </label>
+            <div class="col-sm-20">
+               <input type="text" class="form-control" id="conVer"
+                  placeholder="내용"> <br>
                <div class="form-group">
                   <label for="comment"> 비고 </label>
                   <textarea class="form-control" rows="10" id="note"></textarea>
                </div>
-               <button type="button" class="btn btn-primary btn-md">수정</button>
+               <button type="button" class="btn btn-primary btn-md">등록</button>
                <button type="button" class="btn btn-primary btn-md">닫기</button>
             </div>
          </div>

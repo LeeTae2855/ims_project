@@ -392,61 +392,110 @@ a.article, a.article:hover {
                </div>
             </div>
          </nav>
-         <h3>계좌 수정</h3>
+         <h3>거래처 등록</h3>
 
-         <br> <label for="sel1"><h4> [계좌 정보] </h4></label> <br> <label for="sel1"> 계좌번호 </label>
+         <br> <label for="sel1"><h4> [거래처 정보] </h4></label> <br> <label for="sel1"> 거래처번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountNo">
-            <c:out value="${account.accountNo}" />
+					placeholder="clientNo">
+            <c:out value="${client.clientNo}" />
          </div>
-         <br> <label for="sel1"> 계정명 </label>
+         <br> <label for="sel1"> 거래처명 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountName">
-            <c:out value="${account.accountName}" />
+					placeholder="clientName">
+            <c:out value="${client.clientName}" />
          </div>
-         <br> <label for="sel1"> 계정구분 </label>
+         <br> <label for="sel1"> 상호명 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="accountCfc">
-            <c:out value="${account.accountCfc}" />
+					placeholder="compName">
+            <c:out value="${client.compName}" />
          </div>
-         <br> <label for="sel1"> 예금주 </label>
+         <br> <label for="sel1"> 대표자 </label>
 			<br><div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="masterName">
-            <c:out value="${account.masterName}" />
+					placeholder="rep">
+            <c:out value="${client.rep}" />
          </div>
-         <br> <label for="sel1"> 휴대전화 </label>
+         <br> <label for="sel1"> 사업자번호 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="bsnLicNo">
+            <c:out value="${client.bsnLicNo}" />
+         </div>
+        <br> <label for="sel1"> 종사업장 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="bsnEst">
+            <c:out value="${client.bsnEst}" />
+         </div>
+         <br> <label for="sel1"> 종사업장주소 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="bsnEstAddr">
+            <c:out value="${client.bsnEstAddr}" />
+         </div>
+         <br> <label for="sel1"> 종목 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="event">
+            <c:out value="${client.event}" />
+         </div>
+         <br> <label for="sel1"> 대표전화 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="repPhone">
+            <c:out value="${client.repPhone}" />
+         </div>
+         <br> <label for="sel1"> 대표팩스 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="repFax">
+            <c:out value="${client.repFax}" />
+         </div>
+         <br> <label for="sel1"> 이메일 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="email">
+            <c:out value="${client.email}" />
+         </div>
+        <br> <label for="sel1"> 휴대전화 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
 					placeholder="cellphone">
-            <c:out value="${account.cellphone}" />
+            <c:out value="${client.cellphone}" />
          </div>
-        <br> <label for="sel1"> 은행명/개설지 </label>
+         <br> <label for="sel1"> 담당자번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="bankName">
-            <c:out value="${account.bankName}" />
+					placeholder="managerNo">
+            <c:out value="${client.managerNo}" />
          </div>
-         <br> <label for="sel1"> 자사계정여부 </label>
+         <br> <label for="sel1"> 우편번호 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
-					placeholder="isowner">
-            <c:out value="${account.isowner}" />
+					placeholder="zipNo">
+            <c:out value="${client.zipNo}" />
+         </div>
+         <br> <label for="sel1"> 계좌정보 </label>
+			<div class="col-sm-20">
+				<input type="text" class="form-control" id="inputcode"
+					placeholder="accountNo">
+            <c:out value="${client.accountNo}" />
          </div>
          <br> <label for="sel1"> 사용(조회) 가능여부 </label>
 			<div class="col-sm-20">
 				<input type="text" class="form-control" id="inputcode"
 					placeholder="useable">
-            <c:out value="${account.useable}" />
+            <c:out value="${client.useable}" />
          </div>
+         <br>
                <div class="form-group">
                   <label for="comment"> 비고 </label>
                   <textarea class="form-control" rows="10" id="note"></textarea>
                </div>
-               <button type="button" class="btn btn-primary btn-md">수정</button>
+               <button type="button" class="btn btn-primary btn-md">등록</button>
                <button type="button" class="btn btn-primary btn-md">닫기</button>
             </div>
          </div>
