@@ -376,7 +376,7 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>출금 단일조회</h3>
+			<h3>입금 단일조회</h3>
 			<br />
 </body>
 </html>
