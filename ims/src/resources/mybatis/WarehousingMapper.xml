@@ -5,9 +5,9 @@
 
 <mapper namespace="ims.sunmoon.persistance.WarehousingMapper">
 	<resultMap id="warehousingResultMap" type="warehousing">
-		<id column="WARE_NO" property="beNo" />
+		<id column="WARE_NO" property="wareNo" />
 		<result column="ITEM_NO" property="itemNo" />
-		<result column="WARE_DATE" property="beDate" />
+		<result column="WARE_DATE" property="wareDate" />
 		<result column="UNIT" property="unit" />
 		<result column="PRICE" property="price" />
 		<result column="DISCOUNT" property="discount" />
@@ -27,13 +27,13 @@
 		FROM WAREHOUSING
 		<where>
 		AND USEABLE = #{useable}
-			<if test="beNo > 0">
+			<if test="wareNo > 0">
 				AND WARE_NO = #{wareNo}
 			</if>
 			<if test="itemNo != null and itemNo != ''">
 				AND UPPER( ITEM_NO ) LIKE UPPER ( '%' || #{itemNo} || '%' )
 			</if>
-			<if test="beDate != null and beDate != ''">
+			<if test="wareDate != null and wareDate != ''">
 				AND WARE_DATE = #{wareDate}
 			</if>
 			<if test="first != null and last != null">
@@ -121,7 +121,7 @@
 		WAREHOUSING
 		SET
 		ITEM_NO   = #{itemNo}, 
-		BE_DATE   = #{wareDate}, 
+		WARE_DATE = #{wareDate}, 
 		UNIT      = #{unit}, 
 		PRICE     = #{price}, 
 		DISCOUNT  = #{discount},
