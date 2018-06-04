@@ -386,7 +386,7 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>출고입금 수정</h3>
+			<h3>매출내역 수정</h3>
 
 			<br> <label for="sel1"><h4>[출고입금 정보]</h4></label> <br> <label
 				for="sel1"> 출고입금 번호 </label>

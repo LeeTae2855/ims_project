@@ -386,7 +386,7 @@ a.article, a.article:hover {
 					</div>
 				</div>
 			</nav>
-			<h3>수주 등록</h3>
+			<h3>매출내역 등록</h3>
 
 			<br> <label for="sel1"> [수주 예약 정보] </label> <br> <label
 				for="sel1"> 수주 번호 </label>
