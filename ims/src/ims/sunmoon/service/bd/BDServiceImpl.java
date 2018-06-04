@@ -20,11 +20,7 @@ public class BDServiceImpl implements BDService {
 	public List<BD> list(BD bd) {
 		bd.setUseable(1);
 
-		if (bd.getKeyword() != null || !"".equals(bd.getKeyword())) {
-			return this.list(bd, bd.getKeyword());
-		} else {
-			return this.bdMapper.list(bd);
-		}
+		return this.bdMapper.list(bd);
 	}
 
 	@Override

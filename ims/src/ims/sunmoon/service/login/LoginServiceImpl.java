@@ -12,11 +12,12 @@ import ims.sunmoon.persistance.LoginInfoMapper;
 public class LoginServiceImpl implements LoginService {
 	@Resource
 	private LoginInfoMapper loginInfoMapper;
-	
+
 	@Override
 	public LoginInfo login(HttpServletRequest request) throws Exception {
-		LoginInfo loginInfo = new LoginInfo((String) request.getAttribute("id"), (String) request.getAttribute("password"));
-		
+		LoginInfo loginInfo = new LoginInfo((String) request.getParameter("id"),
+				(String) request.getParameter("password"));
+
 		if (this.loginInfoMapper.select(loginInfo) == null) {
 			return null;
 		} else {

@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import ims.sunmoon.domain.Account;
+import ims.sunmoon.domain.Client;
+import ims.sunmoon.domain.Document;
 import ims.sunmoon.domain.Transferslip;
+import ims.sunmoon.service.account.AccountService;
+import ims.sunmoon.service.client.ClientService;
 import ims.sunmoon.service.transferslip.TransferslipService;
 
 @Controller
@@ -18,6 +23,10 @@ import ims.sunmoon.service.transferslip.TransferslipService;
 public class TransferslipController {
 	@Resource
 	private TransferslipService transferslipService;
+	@Resource
+	private ClientService clientService;
+	@Resource
+	private AccountService accountService;
 
 	@RequestMapping(value = "/list")
 	public ModelAndView list(Transferslip transferslip, HttpServletRequest request) throws Exception {
@@ -96,6 +105,23 @@ public class TransferslipController {
 		ModelAndView modelAndView = new ModelAndView("/ts/view");
 		modelAndView.addObject("transferslip", this.transferslipService.view(tsNo));
 
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/doc/{tsNo}")
+	public ModelAndView docView(@PathVariable String tsNo) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("/ts/doc");
+
+		Transferslip ts = this.transferslipService.view(tsNo);
+		Client client = this.clientService.view(ts.getClientNo().toString());
+		Account account = this.accountService.view(client.getAccountNo().toString());
+
+		Document doc = new Document();
+		doc.setTs(ts);
+		doc.setClient(client);
+		doc.setAccount(account);
+
+		modelAndView.addObject("doc", doc);
 		return modelAndView;
 	}
 }

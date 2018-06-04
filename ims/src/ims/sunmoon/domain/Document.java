@@ -17,12 +17,13 @@ public class Document implements Serializable {
 
 	private BD bd;
 	private WW ww;
+	private Transferslip ts;
 
 	public Document() {
 	}
 
 	public Document(Account account, Bereleased be, Client client, Deposit dep, Item item, Manager manager,
-			Warehousing ware, Withdraw with, BD bd, WW ww) {
+			Warehousing ware, Withdraw with, BD bd, WW ww, Transferslip ts) {
 		this.account = account;
 		this.be = be;
 		this.client = client;
@@ -33,6 +34,7 @@ public class Document implements Serializable {
 		this.with = with;
 		this.bd = bd;
 		this.ww = ww;
+		this.ts = ts;
 	}
 
 	public Account getAccount() {
@@ -113,5 +115,13 @@ public class Document implements Serializable {
 
 	public void setWw(WW ww) {
 		this.ww = ww;
+	}
+
+	public Transferslip getTs() {
+		return ts;
+	}
+
+	public void setTs(Transferslip ts) {
+		this.ts = ts;
 	}
 }

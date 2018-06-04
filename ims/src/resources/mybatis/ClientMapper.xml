@@ -21,7 +21,7 @@
 		<result column="MANAGER_NO" property="managerNo" />
 		<result column="ZIP_NO" property="zipNo" />
 		<result column="ACCOUNT_NO" property="accountNo" />
-		<result column="USEABLE" property="usable" />
+		<result column="USEABLE" property="useable" />
 		<result column="NOTE" property="note" />
 	</resultMap>
 	

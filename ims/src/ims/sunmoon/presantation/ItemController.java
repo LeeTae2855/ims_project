@@ -84,4 +84,18 @@ public class ItemController {
 
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/popup")
+	public ModelAndView popup(Item item, HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("/item/popup");
+
+		String keyword = item.getKeyword();
+		if (("".equals(keyword)) || (keyword == null)) {
+			modelAndView.addObject("listItem", this.itemService.list(item));
+		} else {
+			modelAndView.addObject("listItem", this.itemService.list(item, keyword));
+		}
+
+		return modelAndView;
+	}
 }
