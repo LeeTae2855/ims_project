@@ -290,7 +290,7 @@ a.article, a.article:hover {
 			$('head > link')
 					.filter(':first')
 					.replaceWith(
-							'<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+							'_$tag_____________________________________________________');
 		else
 			$('head > link').filter(':first').replaceWith(defaultCSS);
 	}
