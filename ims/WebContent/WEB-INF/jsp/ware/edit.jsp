@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,31 +343,23 @@ a.article, a.article:hover {
                data-toggle="collapse" aria-expanded="true" id='hsubmenu'
                onclick="toggle('homeSubmenu', 'hsubmenu');"> 거래내역 </a>
                <ul class="collapse list-unstyled" id="homeSubmenu">
-                  <li><a href="#" style="color: white"> 매입현황 </a></li>
-                  <li><a href="#" style="color: white"> 매출현황 </a></li>
-                  <li><a href="#" style="color: white"> 발주예약 </a></li>
-                  <li><a href="#" style="color: white"> 수주예약 </a></li>
-                  <li><a href="#" style="color: white"> 대체거래 </a></li>
-                  <li><a href="#" style="color: white"> 입금거래 </a></li>
-                  <li><a href="#" style="color: white"> 출금거래 </a></li>
+                  	<li><a href="/ww/list" style=color:white> 매입현황 </a></li>
+					<li><a href="/bd/list" style=color:white> 매출현황 </a></li>
+					<li><a href="/ware/list" style=color:white> 발주예약 </a></li>
+					<li><a href="/be/list" style=color:white> 수주예약 </a></li>
+					<li><a href="/ts/list" style=color:white> 대체거래 </a></li>
+					<li><a href="/dep/list" style=color:white> 입금거래 </a></li>
+					<li><a href="/with/list" style=color:white> 출금거래 </a></li>
                </ul></li>
             <li class="active"><a href="#pageSubmenu"
                data-toggle="collapse" aria-expanded="true" id='psubmenu'
                onclick="toggle('pageSubmenu', 'psubmenu');"> 기초정보 </a>
                <ul class="collapse list-unstyled" id="pageSubmenu">
-                  <li><a href="#" style="color: white"> 계좌/장부 조회 </a></li>
-                  <li><a href="#" style="color: white"> 담당자 조회 </a></li>
-                  <li><a href="#" style="color: white"> 거래처 조회 </a></li>
-                  <li><a href="#" style="color: white"> 재고조회 </a></li>
+                 	<li><a href="/account/list" style=color:white> 계좌/장부 조회 </a></li>
+					<li><a href="/manager/list" style=color:white> 담당자 조회 </a></li>
+					<li><a href="/client/list" style=color:white> 거래처 조회 </a></li>
+					<li><a href="/item/list" style=color:white> 재고조회 </a></li>
                </ul></li>
-            <li class="active"><a href="#bogoSubmenu"
-               data-toggle="collapse" aria-expanded="true" id='bsubmenu'
-               onclick="toggle('bogoSubmenu', 'bsubmenu');"> 보고서 </a>
-               <ul class="collapse list-unstyled" id="bogoSubmenu">
-                  <li><a href="#" style="color: white"> 손익보고서 </a></li>
-                  <li><a href="#" style="color: white"> 발주서 </a></li>
-                  <li><a href="#" style="color: white"> 주문서 </a></li>
-               </ul>
       </nav>
 
       <!-- Page Content Holder -->
@@ -384,10 +377,10 @@ a.article, a.article:hover {
 
                <div id="div2">
                   <ul class="nav navbar-nav navbar-right">
-                     <li><a href="#"> 계좌/장부 조회 </a></li>
-                     <li><a href="#"> 담장자 조회 </a></li>
-                     <li><a href="#"> 거래처 조회 </a></li>
-                     <li><a href="#"> 재고 조회 </a></li>
+                     <li><a href="/account/list"> 계좌/장부 조회 </a></li>
+                     <li><a href="/manager/list"> 담장자 조회 </a></li>
+                     <li><a href="/client/list"> 거래처 조회 </a></li>
+                     <li><a href="/item/list"> 재고 조회 </a></li>
                   </ul>
                </div>
             </div>
