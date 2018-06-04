@@ -378,5 +378,149 @@ a.article, a.article:hover {
 			</nav>
 			<h3>입고출금 단일조회</h3>
 			<br />
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="input-group">
+
+							<table style="border_color: white; align: center;">
+								<input type="date" name="from" /> ~
+								<input type="date" name="to" />
+								<br>
+								<br>
+								<tr>
+									<td><select id="findOption" name="findOption">
+											<option value='NONE' selected>-- 선택 --</option>
+											<option value='ITEM_CODE'>제품코드</option>
+											<option value='ITEM_NAME'>제품명</option>
+											<option value='CLIENT_NAME'>거래처 명</option>
+											<option value='CON_VER'>적요</option>
+									</select></td>
+									<td><input type="text" id="keyword" name="keyword" /></td>
+									<td><input type="submit" value="검색" /></td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<br />
+				<script type="text/javascript">
+					$(document)
+							.ready(
+									function(e) {
+										$('.search-panel .dropdown-menu')
+												.find('a')
+												.click(
+														function(e) {
+															e.preventDefault();
+															var param = $(this)
+																	.attr(
+																			"href")
+																	.replace(
+																			"#",
+																			"");
+															var concept = $(
+																	this)
+																	.text();
+															$(
+																	'.search-panel span#search_concept')
+																	.text(
+																			concept);
+															$(
+																	'.input-group #search_param')
+																	.val(param);
+														});
+									});
+				</script>
+				<div>
+					<div class="container">
+
+						<br />
+
+						<div>
+							<table class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="article" items="${articles}" varStatus="status">
+										<tr align=center>
+											<td>${article.articleNumber}</td>
+											<td id="title"><c:if test="${article.depth > 0}">
+                  &nbsp;&nbsp;
+                </c:if> <a
+												href="/bbs/content.bbs?articleNumber=${article.articleNumber}&pageNum=${pageNum}">${article.title}</a>
+											</td>
+											<td>${article.id}</td>
+											<td>${article.writeDate}</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										<tr>
+									</c:forEach>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- jQuery CDN -->
+					<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+					<!-- Bootstrap Js CDN -->
+					<script
+						src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$('#sidebarCollapse').on('click', function() {
+								$('#sidebar').toggleClass('active');
+							});
+						});
+					</script>
+
+
+					<script type="text/javascript">
+						$(document).ready(
+								function() {
+
+									$("#sidebar").mCustomScrollbar({
+										theme : "minimal"
+									});
+
+									// when opening the sidebar
+									$('#sidebarCollapse').on(
+											'click',
+											function() {
+												// open sidebar
+												$('#sidebar')
+														.addClass('active');
+												// fade in the overlay
+												$('.overlay').fadeIn();
+												$('.collapse.in').toggleClass(
+														'in');
+												$('a[aria-expanded=true]')
+														.attr('aria-expanded',
+																'false');
+											});
+
+									// if dismiss or overlay was clicked
+									$('#dismiss, .overlay').on(
+											'click',
+											function() {
+												// hide the sidebar
+												$('#sidebar').removeClass(
+														'active');
+												// fade out the overlay
+												$('.overlay').fadeOut();
+											});
+								});
+					</script>
 </body>
 </html>
