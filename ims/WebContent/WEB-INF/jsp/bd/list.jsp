@@ -368,10 +368,10 @@ a.article, a.article:hover {
 
 					<div id="div2">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#"> 계좌/장부 조회 </a></li>
-							<li><a href="#"> 담장자 조회 </a></li>
-							<li><a href="#"> 거래처 조회 </a></li>
-							<li><a href="#"> 재고 조회 </a></li>
+							<li><a href="/account/list"> 계좌/장부 조회 </a></li>
+							<li><a href="/manager/list"> 담장자 조회 </a></li>
+							<li><a href="/client/list"> 거래처 조회 </a></li>
+							<li><a href="/item/list"> 재고 조회 </a></li>
 						</ul>
 					</div>
 				</div>
